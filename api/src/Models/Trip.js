@@ -8,11 +8,11 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4
     },
     start_date: {
-        type: DataTypes.DATETIME,
+        type: DataTypes.STRING,
         allowNull: false
     },
     finish_date: {
-        type: DataTypes.DATETIME,
+        type: DataTypes.STRING,
         allowNull: false
     },
     origin: {
