@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
         defaultValue: DataTypes.UUIDV4,
       },
       role: {
-        type: DataTypes.STRING(20),
+        type: DataTypes.STRING,
         allowNull: false,
       },
     },

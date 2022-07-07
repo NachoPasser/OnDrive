@@ -15,10 +15,10 @@ const basename = path.basename(__filename);
 const modelDefiners = [];
 
 // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
-fs.readdirSync(path.join(__dirname, '/Models'))
+fs.readdirSync(path.join(__dirname, '/models'))
   .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
   .forEach((file) => {
-    modelDefiners.push(require(path.join(__dirname, '/Models', file)));
+    modelDefiners.push(require(path.join(__dirname, '/models', file)));
   });
 
 // Injectamos la conexion (sequelize) a todos los modelos
@@ -30,54 +30,40 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Car, Comment, Driver, Passenger, Roles, Trip, User } = sequelize.models;
+//const { Modelo } = sequelize.models;
+const { User, Roles, Passenger, Trip, Driver, Comment, Car } = sequelize.models;
+// Aca vendrian las relaciones
+// Product.hasMany(Reviews);
 
-//Relations
-//---------
+User.belongsToMany(Roles,{through:"users_roles",timestamps: false});
+Roles.belongsToMany(User,{through:"users_roles",timestamps: false});
 
-//User ---:M --> Rol
-//User <--:N--- Rol
-User.belongsToMany(Roles, {
-  through: "user_rol",
-  foreignKey: "user_id",
-  timestamps: false,
-});
+Passenger.belongsToMany(Trip,{through:"passengers_trips",timestamps: false});
+Trip.belongsToMany(Passenger,{through:"passengers_trips",timestamps: false});
 
-Roles.belongsToMany(User, {
-  through: "user_rol",
-  foreignKey: "rol_id",
-  timestamps: false,
-});
+User.hasOne(Passenger);
+Passenger.belongsTo(User);
 
-//Driver ---1:M---> Rol
-Driver.belongsTo(Roles,{sourceKey:"id",foreignKey:"rol_id"});
+User.hasOne(Driver);
+Driver.belongsTo(User);
 
-//Driver ---1:M ---> Car
-Driver.belongsTo(Car,{sourceKey:"id",foreignKey:"car_id"});
+Driver.hasMany(Car);
+Car.belongsTo(Driver);
 
-//Passenger ---1:M---> Rol
-Passenger.belongsTo(Roles,{sourceKey:"id",foreignKey:"rol_id"});
+Passenger.hasMany(Comment);
+Comment.belongsTo(Passenger);
 
-//Passenger / Driver / Trip --- 1:M ----> Comment
-Comment.belongsTo(Passenger,{sourceKey:"id",foreignKey:"passenger_id"});
-Comment.belongsTo(Driver,{sourceKey:"id",foreignKey:"driver_id"});
-Comment.belongsTo(Trip,{sourceKey:"id",foreignKey:"trip_id"});
+Driver.hasMany(Comment);
+Comment.belongsTo(Driver);
 
-//Passenger M:N Trip
-Passenger.belongsToMany(Trip, {
-  through: "passenger_trip",
-  foreignKey: "passenger_id",
-  timestamps: false,
-});
+Trip.hasMany(Comment);
+Comment.belongsTo(Trip);
 
-Trip.belongsToMany(Passenger, {
-  through: "passenger_trip",
-  foreignKey: "trip_id",
-  timestamps: false,
-});
+Driver.hasMany(Trip);
+Trip.belongsTo(Driver);
 
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: sequelize, // para importart la conexión { conn } = require('./db.js');
+  conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
 };

@@ -23,11 +23,7 @@ module.exports = (sequelize) => {
     last_name: {
         type: DataTypes.STRING(75),
         allowNull: false
-    },
-    dni: {
-      type: DataTypes.STRING(10),
-      allowNull: false
-    },
+    }
   }, {
     timestamps: false
   });
