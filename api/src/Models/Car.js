@@ -45,6 +45,13 @@ module.exports = (sequelize) => {
           isValidRange: (val) => validator_validRange(val, "car", "year"),
         },
       },
+      patente: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      fuel: {
+        type: DataTypes.STRING,
+      },
     },
     {
       timestamps: false,
