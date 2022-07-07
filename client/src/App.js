@@ -1,13 +1,13 @@
-import {Route} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import LandingPage from './LandingPage/LandingPage';
-// import Home from './Home/Home';
+import Home from './Home/home';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Route exact path='/' component={LandingPage}/>
-      {/* <Route path='/home' component={Home}/> */}
+      <Route exact path='/' component={LandingPage} />
+      <Route path='/home' component={Home} />
     </div>
   );
 }
