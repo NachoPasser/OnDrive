@@ -18,7 +18,14 @@ module.exports = (sequelize) => {
     year: {
       type: DataTypes.INTEGER,
       allowNull: false
-    }
+    },
+    patente: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    fuel: {
+      type: DataTypes.STRING,
+    },
   }, {
     timestamps: false
   });
