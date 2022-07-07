@@ -53,6 +53,34 @@ const { user, car, trip, comment, driver, passenger, roles } = sequelize.models;
 // Relaciones:
 
 
+User.belongsToMany(Roles, { through: "users_roles", timestamps: false });
+Roles.belongsToMany(User, { through: "users_roles", timestamps: false });
+
+Passenger.belongsToMany(Trip, { through: "passengers_trips", timestamps: false });
+Trip.belongsToMany(Passenger, { through: "passengers_trips", timestamps: false });
+
+User.hasOne(Passenger);
+Passenger.belongsTo(User);
+
+User.hasOne(Driver);
+Driver.belongsTo(User);
+
+Driver.hasMany(Car);
+Car.belongsTo(Driver);
+
+Passenger.hasMany(Comment);
+Comment.belongsTo(Passenger);
+
+Driver.hasMany(Comment);
+Comment.belongsTo(Driver);
+
+Trip.hasMany(Comment);
+Comment.belongsTo(Trip);
+
+Driver.hasMany(Trip);
+Trip.belongsTo(Driver);
+
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
