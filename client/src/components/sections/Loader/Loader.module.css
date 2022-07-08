@@ -1,0 +1,127 @@
+.LoaderContainer{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.BackgroundLoader{
+  background-image: url("../../../assets/Loader/background-loader.png");
+  background-repeat: repeat-x;
+  position: absolute;
+  top: 35%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 800%;
+  opacity: .1;
+  animation: moveRight 10s linear infinite;
+}
+
+.PinLoader{
+  background-image: url("../../../assets/Loader/pin-loader.png");
+  width: 60px;
+  height: 76px;
+  z-index: 2;
+  animation: scale 3.5s ease-in-out infinite;
+  position: absolute;
+  margin-top: -140px;
+}
+
+
+.CarLoader{
+  background-image: url("../../../assets/Loader/car-loader.png");
+  width: 234px;
+  height: 90px;
+  z-index: 1;
+  margin-top: 80px;
+  animation: run 1.5s steps(8) infinite;
+}
+
+.Cargando{
+  color: var(--primary-color);
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-top: 10px;
+  animation: textAnimation 2s ease-in-out infinite;
+}
+
+@keyframes moveRight{
+  100%{transform: translateX(-2000px);}
+}
+
+@keyframes textAnimation{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: .7;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+
+@keyframes scale{
+  0%{transform: scale(.9);}
+  50%{transform: scale(1);}
+  100%{transform: scale(.9);}
+}
+
+
+@keyframes run{
+  0%{
+      background-position: 0px;
+  }
+  100%{
+      background-position: 1872px;
+  }
+}
+
+@keyframes forward{
+  0%{
+      transform: translateX(0px);
+  }
+  100%{
+      transform: translateX(50px);
+  }
+}
+
+
+/* Media queries for mid-size devices (Tablet) */
+@media screen
+and (min-device-width: 768px) 
+and (max-device-width: 1024px) {
+  .BackgroundLoader{
+    width: 1500%;
+    animation: moveRight 8s linear infinite;
+  }
+  .CarLoader{
+    margin-top: 20px;
+  }
+  .PinLoader{
+    margin-top: -200px;
+  }
+}
+
+/* Media queries for large-size devices (Laptop & Desktop) */
+@media screen
+and (min-device-width: 1200px) {
+  .BackgroundLoader{
+    width: 30000%;
+    animation: moveRight 7s linear infinite;
+  }
+  .CarLoader{
+    margin-top: 110px;
+  }
+  .PinLoader{
+    margin-top: -110px;
+  }
+}
