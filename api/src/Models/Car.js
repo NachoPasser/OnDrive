@@ -45,9 +45,27 @@ module.exports = (sequelize) => {
           isValidRange: (val) => validator_validRange(val, "car", "year"),
         },
       },
-      patente: {
-        type: DataTypes.TEXT,
+      color: {
+        type: DataTypes.STRING(20),
         allowNull: false,
+        validate: {
+          isAlpha: {
+            msg: "car color is invalid, only letters",
+          },
+          isEmptyString: (val) => validator_emptyString(val, "car", "color"),
+          isAllowedLength: (val) =>
+            validator_validLength(val, "car", "model", 20),
+        },
+      },
+      license_plate: {
+        type: DataTypes.STRING(20),
+        allowNull: false,
+        validate: {
+          isEmptyString: (val) =>
+            validator_emptyString(val, "car", "license plate"),
+          isAllowedLength: (val) =>
+            validator_validLength(val, "car", "license plate", 20),
+        },
       },
       fuel: {
         type: DataTypes.STRING,
