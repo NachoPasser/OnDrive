@@ -6,6 +6,7 @@ function generateCar(){
         color += letters[Math.floor(Math.random() * 16)];
     }
     const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const combutible = ["Gasoil", "Euro", "Premium", "Super"];
     let result1= ' ';
     const charactersLength = characters.length;
     for ( let i = 0; i < 8; i++ ) {
@@ -13,7 +14,8 @@ function generateCar(){
     }
     return{
         color: color,
-        patente: result1,
+        license_plate: result1,
+        combutible: combutible[Math.random() * combutible.length],
         year: Math.floor(Math.random() * (2022 - 1990 + 1)) + 1990,
     }
 }
@@ -33,11 +35,44 @@ function generate(){
         email: firstname[rand_first].toLowerCase().split(' ').join('_') + '.' + lastname[rand_last].toLowerCase() + "@gmail.com",
         phone: Math.floor(Math.random()*10000000000),
         password: Math.floor(Math.random()*100),
-        role: Math.floor(Math.random()*100) < 50 ? 'conductor' : 'passenger',
+        role: Math.floor(Math.random()*100) < 50 ? 'driver' : 'passenger',
         car: [
             generateCar(),
         ]
     } 
+}
+// return {
+//     id: trip.id,
+//     start_date: trip.start_date,
+//     finish_date: trip.finish_date,
+//     origin: trip.origin,
+//     destination: trip.destination,
+//     price: trip.price
+function randomDate(start, end, startHour, endHour) {
+    var date = new Date(+start + Math.random() * (end - start));
+    var hour = startHour + Math.random() * (endHour - startHour) | 0;
+    date.setHours(hour);
+    return date;
+}
+const objTrip = (driver) => {
+    const ciudades = ['Buenos Aires', 'Córdoba', 'La Plata', 'Mar del Plata', 'Mendoza', 'Rosario', 'Salta', 'San Juan', 'San Luis', 'Santa Fe', 'Santiago del Estero', 'Tandil', 'Tucumán', 'Ushuaia'];
+    return {
+        start_date: randomDate(0, 16, 0, 16),
+        finish_date: randomDate(16, 23, 16, 23),
+        capacity: Math.floor(Math.random()*(3-5+1)+3),
+        rating: Math.floor(Math.random()*5),
+        price: Math.floor(Math.random()*1000),
+        origin: ciudades[Math.floor(Math.random()*ciudades.length)],
+        destination: ciudades[Math.floor(Math.random()*ciudades.length)],
+        driver,
+    }
+}
+// }
+const getTripsUsersFake = (req, res) => {
+    const tripsDrivers = [];
+    for (let j = 0; j < 100; j++) {
+        tripsDrivers.push(objTrip(generate()));
+    }
 }
 
 // Generate a list of random users
@@ -49,4 +84,4 @@ const usersJson = (req, res) => {
     res.json(users);
 }
 
-module.exports = usersJson;
+module.exports = {usersJson, getTripsUsersFake};
