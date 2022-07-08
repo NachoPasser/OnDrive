@@ -1,13 +1,57 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Raleway:ital,wght@0,400;1,600&display=swap");
+
+* {
+  /* Colors */
+  --primary-color: #fed428;
+  --secondary-color: #00a3fe;
+  --accent-color: #fb8701;
+  --dark-color: #212734;
+  --clear-color: #f1f2f6;
+  /* Fonts */
+
+  --font-title-color: #c8c8c8;
+  --font-dark-color: rgba(33, 39, 52, .8);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--dark-color);
+  width: 100%;
+  height: 100vh;
+}
+
+h1,h2,h3,h4,h5,h6,p,span{
+  margin: 0;
+  padding: 0;
+}
+
+
+*::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+*::-webkit-scrollbar:vertical {
+  width:15px;
+}
+
+*::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+  display: none;
+} 
+
+*::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+}
+
+body::-webkit-scrollbar-track {
+  background: #252C38;
 }

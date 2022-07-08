@@ -1,0 +1,77 @@
+.Full{
+  width: 100%;
+}
+
+.SemiFull{
+  width: 80%;
+}
+
+.Button{
+  width: 100%;
+  font-weight: 700;
+  border-radius: 10px;
+  border-style: none;
+
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.ButtonIcon{
+  width: 32px;
+}
+
+.PrimaryButton{
+  background-color: var(--primary-color);
+  color: var(--dark-color);
+  transition: .9s ease-in-out;
+}
+
+.SecondaryButton{
+  background-color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  color: var(--clear-color);
+  transition: .9s ease-in-out;
+}
+
+.AccentButton{
+  background-color: var(--accent-color);
+  color: var(--dark-color);
+  transition: .9s ease-in-out;
+}
+
+.PrimaryButton:hover,.SecondaryButton:hover, .AccentButton:hover{
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+.PrimaryButton:hover{
+  background-color: var(--clear-color);
+}
+
+.SecondaryButton:hover{
+  border: 2px solid var(--secondary-color);
+  background-color: transparent;
+}
+
+.AccentButton:hover{
+  background-color: var(--primary-color);
+}
+
+.SmallButton{
+  font-size: 1.2rem;
+  padding: 8px;
+}
+
+.MidButton{
+  font-size: 1.4rem;
+  padding: 10px;
+}
+
+.LargeButton{
+  font-size: 1.7rem;
+  padding: 12px;
+}
+
