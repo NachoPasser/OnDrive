@@ -27,9 +27,13 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(45),
         allowNull: false
     },
-    distance:{
-      type:DataTypes.DECIMAL(2),
-      allowNull:false,
+    distance: {
+      type: DataTypes.DECIMAL(2),
+      allowNull: false
+    },
+    onCourse: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     }
   }, {
     timestamps: false

@@ -24,12 +24,36 @@ const tripHistory = async(req, res) => {
 
 }
 
-const postHistoryTrip = async(req, res) => {
+const postTrip = async(req, res) => {
     await Trip.create(req.body);
     res.send('create trip');
 }
 
+const getTrips = async(req, res) => {
+    const trips = Trip.findAll({
+        where: {
+            onCourse: true
+        }
+    })
+    .then((data) => {
+        data = data.map(trip => {
+            return {
+                id: trip.id,
+                start_date: trip.start_date,
+                finish_date: trip.finish_date,
+                origin: trip.origin,
+                destination: trip.destination,
+                price: trip.price
+            }
+        })
+        res.json(data)
+    }).catch((err) => {
+        console.log(err)
+    })
+}
+
 module.exports = {
     tripHistory,
-    postHistoryTrip
+    postTrip,
+    getTrips
 }
