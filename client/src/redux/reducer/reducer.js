@@ -1,7 +1,7 @@
 import { GET_TRIPS } from '../actions/getTrips.js';
 
 
-state = {
+const initialState = {
     trips: [],//Todos los Trips [{},{},{},{},]
 }
 
