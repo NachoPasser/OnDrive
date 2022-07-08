@@ -1,0 +1,72 @@
+.MainContainer{
+    width: 100%;
+}
+.MainContainer, .ImageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.LogoDesktop{
+    display: none;
+    width: 30%;
+    margin-top: 7%;
+    margin-bottom: 2%;
+}
+.middleImg{
+    display: none;
+    width: 100%;
+}
+.TextContainer{
+    width: 40%;
+    align-items: center;
+}
+.TextContainer2{
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.Text{
+    color: var(--font-title-color);
+    font-size: 1.5rem;
+    text-align: center;
+    display: none;
+}
+.yellowText{
+    color: var(--font-title-yellow-color);
+    font-size: 1.5rem;
+    text-align: center;
+    display: none;
+}
+.linkDecoration{
+    text-decoration: none;
+}
+/* Media queries for large-size devices (Laptop & Desktop) */
+@media screen
+and (min-device-width: 1200px) {
+  .ContainerLogin{
+    flex-direction: row;
+    width: 75%;
+    gap: 70px;
+  }
+
+  .ImageContainer{
+    background: transparent;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .LogoDesktop {
+    display: block;
+  }
+
+  .Text {
+    display: block;
+  }
+  .yellowText {
+    display: block;
+  }
+
+  .middleImg{
+    display: block;
+  }
+}
