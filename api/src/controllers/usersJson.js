@@ -1,3 +1,5 @@
+const usersStatic = require('./driver.json');
+
 // Generate a random car
 function generateCar(){
     var letters = '0123456789ABCDEF';
@@ -78,4 +80,8 @@ const usersJson = (req, res) => {
     res.json(users);
 }
 
-module.exports = {usersJson, getTripsUsersFake};
+const getStaticUsers = (req, res) => {
+    res.json(usersStatic);
+}
+
+module.exports = {usersJson, getTripsUsersFake, getStaticUsers};
