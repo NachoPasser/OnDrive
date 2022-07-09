@@ -8,12 +8,13 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_TRIPS: {
+        case GET_TRIPS:
             return {
                 ...state,
                 trips: action.payload //trips debe sobreescribirse siempre
             }
-        }
+        default:
+            return state
     }
 }
 

@@ -1,3 +1,5 @@
+const usersStatic = require('./driver.json');
+
 // Generate a random car
 function generateCar(){
     var letters = '0123456789ABCDEF';
@@ -6,6 +8,7 @@ function generateCar(){
         color += letters[Math.floor(Math.random() * 16)];
     }
     const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const combutible = ["Gasoil", "Euro", "Premium", "Super"];
     let result1= ' ';
     const charactersLength = characters.length;
     for ( let i = 0; i < 8; i++ ) {
@@ -13,13 +16,14 @@ function generateCar(){
     }
     return{
         color: color,
-        patente: result1,
+        license_plate: result1,
+        combutible: combutible[Math.random() * combutible.length],
         year: Math.floor(Math.random() * (2022 - 1990 + 1)) + 1990,
     }
 }
 
 // Generate a random user
-function generate(){
+function generate(isRol=true){
 	var firstname = ["Adrián", "Agustín", "Alberto", "Alejandro", "Alexander", "Alexis", "Alonso", "Andrés Felipe", "Ángel", "Anthony", "Antonio", "Bautista", "Benicio", "Benjamín", "Carlos", "Carlos Alberto", "Carlos Eduardo", "Carlos Roberto", "César", "Cristóbal", "Daniel", "David", "Diego", "Dylan", "Eduardo", "Emiliano", "Emmanuel", "Enrique", "Erik", "Ernesto", "Ethan", "Fabián", "Facundo", "Felipe", "Félix", "Félix María", "Fernando", "Francisco", "Francisco Javier", "Gabriel", "Gaspar", "Gustavo Adolfo", "Hugo", "Ian", "Iker", "Isaac", "Jacob", "Javier", "Jayden", "Jeremy", "Jerónimo", "Jesús", "Jesús Antonio", "Jesús Víctor", "Joaquín", "Jorge", "Jorge  Alberto", "Jorge Luis", "José", "José Antonio", "José Daniel", "José David", "José Francisco", "José Gregorio", "José Luis", "José Manuel", "José Pablo", "Josué", "Juan", "Juan Ángel", "Juan Carlos", "Juan David", "Juan Esteban", "Juan Ignacio", "Juan José", "Juan Manuel", "Juan Pablo", "Juan Sebastián", "Julio", "Julio Cesar", "Justin", "Kevin", "Lautaro", "Liam", "Lian", "Lorenzo", "Lucas", "Luis", "Luis Alberto", "Luis Emilio", "Luis Fernando", "Manuel", "Manuel Antonio", "Marco Antonio", "Mario", "Martín", "Mateo", "Matías", "Maximiliano", "Maykel", "Miguel", "Miguel  ngel", "Nelson", "Noah", "Oscar", "Pablo", "Pedro", "Rafael", "Ramón", "Raúl", "Ricardo", "Rigoberto", "Roberto", "Rolando", "Samuel", "Samuel David", "Santiago", "Santino", "Santos", "Sebastián", "Thiago", "Thiago Benjamín", "Tomás", "Valentino", "Vicente", "Víctor", "Víctor Hugo"];
 	var lastname= ["Garcia", "Gonzalez", "Rodriguez", "Fernandez", "Lopez", "Martinez", "Sanchez", "Perez", "Gomez", "Martin", "Jimenez", "Ruiz", "Hernandez", "Diaz", "Moreno", "Alvarez", "Muñoz", "Romero", "Alonso", "Gutierrez", "Navarro", "Torres", "Dominguez",
 	"Vazquez", "Ramos", "Gil", "Ramirez", "Serrano", "Blanco", "Suarez", "Molina", "Morales", "Ortega", "Delgado", "Castro", "Ortiz", "Rubio", "Marin", "Sanz", "Nuñez", "Iglesias", "Medina", "Garrido", "Santos", "Castillo", "Cortes", "Lozano", "Guerrero", "Cano", "Prieto", "Mendez", "Calvo", "Cruz", "Gallego", "Vidal", "Leon", "Herrera", "Marquez", "Peña", "Cabrera", "Flores", "Campos", "Vega", "Diez", "Fuentes", "Carrasco", "Caballero", "Nieto", "Reyes", "Aguilar", "Pascual", "Herrero", "Santana", "Lorenzo", "Hidalgo", "Montero", "Ibañez", "Gimenez", "Ferrer", "Duran", "Vicente", "Benitez", "Mora", "Santiago", "Arias", "Vargas", "Carmona", "Crespo", "Roman", "Pastor", "Soto", "Saez", "Velasco", "Soler", "Moya", "Esteban", "Parra", "Bravo", "Gallardo", "Rojas", "Pardo", "Merino", "Franco", "Espinosa", "Izquierdo", "Lara", "Rivas", "Silva", "Rivera", "Casado", "Arroyo", "Redondo", "Camacho", "Rey", "Vera", "Otero", "Luque", "Galan", "Montes", "Rios", "Sierra", "Segura", "Carrillo", "Marcos", "Marti", "Soriano", "Mendoza"];
@@ -32,12 +36,39 @@ function generate(){
         license: Math.floor(Math.random()*100000),
         email: firstname[rand_first].toLowerCase().split(' ').join('_') + '.' + lastname[rand_last].toLowerCase() + "@gmail.com",
         phone: Math.floor(Math.random()*10000000000),
-        password: Math.floor(Math.random()*100),
-        role: Math.floor(Math.random()*100) < 50 ? 'conductor' : 'passenger',
+        password: Math.floor(Math.random()*(999999-111111+1)+111111),
+        role: isRol ? Math.floor(Math.random()*100) < 50 ? 'driver' : 'passenger' : null,
         car: [
             generateCar(),
         ]
     } 
+}
+
+// Generate a random user for drivers
+const objTrip = (driver) => {
+    const dia = Math.floor(Math.random() * (30 - 5 +1) +4);
+    const mes = Math.floor(Math.random() * 10) + 1;
+    const marca = ["Ford","Nissan", "Chevrolet", "VW", "Toyota", "Renault", "Fiat"]
+    const ciudades = ['Buenos Aires', 'Córdoba', 'La Plata', 'Mar del Plata', 'Mendoza', 'Rosario', 'Salta', 'San Juan', 'San Luis', 'Santa Fe', 'Santiago del Estero', 'Tandil', 'Tucumán', 'Ushuaia'];
+    return {
+        start_date: new Date(2022, mes, dia-2),
+        finish_date:  new Date(2022, mes, dia),
+        capacity: Math.floor(Math.random()*(3-5+1)+3),
+        rating: Math.floor(Math.random()*5),
+        price: Math.floor(Math.random()*1000),
+        origin: ciudades[Math.floor(Math.random()*ciudades.length)],
+        destination: ciudades[Math.floor(Math.random()*ciudades.length)],
+        marca: marca[Math.floor(Math.random()*marca.length)],
+        driver,
+    }
+}
+// Generate a random user json for drivers
+const getTripsUsersFake = (req, res) => {
+    const tripsDrivers = [];
+    for (let j = 0; j < 100; j++) {
+        tripsDrivers.push(objTrip(generate(false)));
+    }
+    res.json(tripsDrivers);
 }
 
 // Generate a list of random users
@@ -49,4 +80,8 @@ const usersJson = (req, res) => {
     res.json(users);
 }
 
-module.exports = usersJson;
+const getStaticUsers = (req, res) => {
+    res.json(usersStatic);
+}
+
+module.exports = {usersJson, getTripsUsersFake, getStaticUsers};
