@@ -1,3 +1,5 @@
+const usersStatic = require('./driver.json');
+
 // Generate a random car
 function generateCar(){
     var letters = '0123456789ABCDEF';
@@ -49,8 +51,8 @@ const objTrip = (driver) => {
     const marca = ["Ford","Nissan", "Chevrolet", "VW", "Toyota", "Renault", "Fiat"]
     const ciudades = ['Buenos Aires', 'Córdoba', 'La Plata', 'Mar del Plata', 'Mendoza', 'Rosario', 'Salta', 'San Juan', 'San Luis', 'Santa Fe', 'Santiago del Estero', 'Tandil', 'Tucumán', 'Ushuaia'];
     return {
-        start_date: `${dia-2}/${mes}/2022`,
-        finish_date:  `${dia}/${mes}/2022`,
+        start_date: new Date(2022, mes, dia-2),
+        finish_date:  new Date(2022, mes, dia),
         capacity: Math.floor(Math.random()*(3-5+1)+3),
         rating: Math.floor(Math.random()*5),
         price: Math.floor(Math.random()*1000),
@@ -78,4 +80,9 @@ const usersJson = (req, res) => {
     res.json(users);
 }
 
-module.exports = {usersJson, getTripsUsersFake};
+const getStaticUsers = (req, res) => {
+    res.json(usersStatic);
+}
+
+module.exports = {usersJson, getTripsUsersFake, getStaticUsers};
+
