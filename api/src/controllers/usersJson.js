@@ -85,3 +85,4 @@ const getStaticUsers = (req, res) => {
 }
 
 module.exports = {usersJson, getTripsUsersFake, getStaticUsers};
+
