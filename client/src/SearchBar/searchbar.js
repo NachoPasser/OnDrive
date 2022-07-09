@@ -5,7 +5,7 @@ import Fecha from "./filterByDate";
 //faltan las funciones de las actions y los estados globales
 
 
-export default function SearchBar() {
+export default function SearchBar({style}) {
 
     //dispatch
     //const dispatch = useDispatch()
@@ -42,7 +42,7 @@ export default function SearchBar() {
     }
 
     return (
-        <div>
+        <div className={style}>
             <div>
                 <input
                     onChange={(e) => handleInputChange(e)}

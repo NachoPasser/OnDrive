@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getTrips } from "../redux/actions/getTrips";
 
 //estilos
 import style from '../Home/home.module.css'
 import logo from "../NavBar/logo-ondrive.png"
 
 //componentes
+import FilterByDestination from "../SearchBar/filterByDestination";
+import FilterByOrigin from "../SearchBar/filterByOrigin";
+import SortAlphabetically from "../SearchBar/sortAlphabetically";
+import SortByRating from "../SearchBar/sortByRating";
+import SearchBar from "../SearchBar/searchbar";
 //import HomeCard from "../HomeCard/HomeCard"
 import NavBar from "../NavBar/navbar.js";
+import { sortTripsAlphabetically } from "../redux/actions/sortTripsAlphabetically";
 
 
 //paginado
@@ -21,45 +28,22 @@ import NavBar from "../NavBar/navbar.js";
 
 export default function Home() {
 
-    // //dispatch
-    // //const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
-    // //estados globales
-    // //traer todos los travels
-
-    // useEffect(() => {
-    //     dispatch(/*accion que trae todos los travels*/);
-    // }, [dispatch])
+    useEffect(() => {
+        dispatch(getTrips());
+    }, [])
 
     return (
         <div>
             <div>
                 <NavBar></NavBar>
                 <div className={style.containerFiltros}>
-                    <select className={style.filtros}>
-                        <option value="default" selected="selected" hidden>-Filtro-</option>
-                        <option>opcion 1</option>
-                        <option>opcion 2</option>
-                        <option>opcion 3</option>
-                    </select>
-                    <select className={style.filtros}>
-                        <option value="default" selected="selected" hidden>-Filtro-</option>
-                        <option>opcion 1</option>
-                        <option>opcion 2</option>
-                        <option>opcion 3</option>
-                    </select>
-                    <select className={style.filtros}>
-                        <option value="default" selected="selected" hidden>-Filtro-</option>
-                        <option>opcion 1</option>
-                        <option>opcion 2</option>
-                        <option>opcion 3</option>
-                    </select>
-                    <select className={style.filtros}>
-                        <option value="default" selected="selected" hidden>-Filtro-</option>
-                        <option>opcion 1</option>
-                        <option>opcion 2</option>
-                        <option>opcion 3</option>
-                    </select>
+                    <SortAlphabetically style={style.filtros}/>
+                    <SortByRating style={style.filtros}/>
+                    <FilterByDestination style={style.filtros}/>
+                    <SearchBar style={style.filtros} />
+                    <FilterByOrigin style={style.filtros}/>
                 </div>
             </div>
             <div className={style.divisor}>
@@ -105,7 +89,7 @@ export default function Home() {
                     <div className={style.mapa}>
                         <img id={style.maps} src="https://noticiasrtv.com/wp-content/uploads/2020/02/Google-Maps-celebra-15-anos-con-novedades-y-un-nuevo.jpg"></img>
                     </div>
-                    <div className={style.form}>
+                    {/* <div className={style.form}>
                         <input
                             type='text'
                             name=''
@@ -142,7 +126,7 @@ export default function Home() {
                             onChange=""
                         />
                         <button className={style.submit} type='submit'>Boton</button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
