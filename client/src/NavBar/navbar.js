@@ -3,7 +3,10 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 //logo
-import logo from "../NavBar/logo-ondrive.png"
+import logo from "../NavBar/on-logox0.5.png"
+
+//estilos
+import style from '../NavBar/navbar.module.css'
 
 //componentes
 import SearchBar from "../SearchBar/searchbar";
@@ -18,39 +21,32 @@ export default function NavBar() {
     //handlers
     const handleClick = (e) => {
         e.preventDefault();
-
         window.location = "http://localhost:3000/home"
     }
 
 
     return (
-        <nav>
-            <div>
-                <NavLink exact to="/home" onClick={(e) => handleClick(e)}>
-                    <img src={logo} />
+        <ul className={style.nav}>
+            <li className={style.li}>
+                <NavLink className={style.navLink} exact to="/home" onClick={(e) => handleClick(e)}>
+                    <img className={style.logo} src={logo} />
                 </NavLink>
-            </div>
-            <div>
-                <NavLink exact to="/features">Features</NavLink>
-            </div>
-            <div>
-                <NavLink exact to="/pricing">Pricing</NavLink>
-            </div>
-            <div>
-                <NavLink exact to="/community">Community</NavLink>
-            </div>
-            <div>
-                <NavLink exact to="/support">Support</NavLink>
-            </div>
-            <div>
-                <NavLink exact to="/login">Login</NavLink>
-            </div>
-            <div>
-                <NavLink exact to="/register">Register</NavLink>
-            </div>
-            <div>
+            </li>
+            <li className={style.li}>
+                <NavLink className={style.navLink} exact to="/features">Features</NavLink>
+            </li>
+            <li className={style.li}>
+                <NavLink className={style.navLink} exact to="/pricing">Pricing</NavLink>
+            </li>
+            <li className={style.li}>
+                <NavLink className={style.navLink} exact to="/community">Community</NavLink>
+            </li>
+            <li className={style.li}>
+                <NavLink className={style.navLink} exact to="/support">Support</NavLink>
+            </li>
+            {/* <li className={style.li}>
                 <SearchBar />
-            </div>
-        </nav>
+            </li> */}
+        </ul>
     )
 }

@@ -1,0 +1,36 @@
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #212734;
+
+    /* fijar navbar*/
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+.li {
+    float: left;
+}
+
+.navLink {
+    display: block;
+    padding: 8px;
+    background-color: #212734;
+    color: #FED428;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navLink:hover {
+    background-color: #111;
+}
+
+.logo {
+    max-width: 80%;
+    max-height: 80%;
+}
+
