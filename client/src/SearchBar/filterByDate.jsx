@@ -18,43 +18,6 @@ export default function Fecha() {
         }
     }, [])
 
-    // console.log(trips)
-    //CANCELADO
-    // function genTrip(driver) {
-    //     const dia = Math.floor(Math.random() * (30 - 5 + 1) + 4);
-    //     const mes = Math.floor(Math.random() * 10) + 1;
-    //     return [{
-    //         start_date: new Date(2022, mes, dia - 2),
-    //         finish_date: new Date(2022, mes, dia),
-    //         capacity: Math.floor(Math.random() * (3 - 5 + 1) + 3),
-    //         rating: Math.floor(Math.random() * 5),
-    //         price: Math.floor(Math.random() * 1000),
-    //         origin: "ROS",
-    //         destination: "SFE",
-    //         marca: "AUDI",
-    //         driver,
-    //     }, {
-    //         start_date: new Date(2022, mes, dia - 2),
-    //         finish_date: new Date(2022, mes, dia),
-    //         capacity: Math.floor(Math.random() * (3 - 5 + 1) + 3),
-    //         rating: Math.floor(Math.random() * 5),
-    //         price: Math.floor(Math.random() * 1000),
-    //         origin: "BS AS",
-    //         destination: "FSA",
-    //         marca: "NISSAN",
-    //         driver,
-    //     }]
-    // }
-    // const trips = genTrip("Toretto")
-
-    //HARDCODE#1 === CANCELLED RETURN trips AGAIN
-
-    // const t = [{ "start_date": new Date("2022-09-10"), "finish_date": new Date("2022-09-12"), "capacity": 2, "rating": 1, "price": 5, "origin": "La Plata", "destination": "Santiago del Estero", "marca": "Renault", "driver": { "name": "Santino", "lastname": "Lozano", "age": 22, "license": 94601, "email": "santino.lozano@gmail.com", "phone": 9913645013, "password": 353438, "role": null, "car": [{ "color": "#40159C", "license_plate": " as09EC6o", "year": 2017 }] } },
-    // { "start_date": new Date("2022-09-15"), "finish_date": new Date("2022-09-16"), "capacity": 2, "rating": 1, "price": 5, "origin": "La Plata", "destination": "Santiago del Estero", "marca": "Renault", "driver": { "name": "Santino", "lastname": "Lozano", "age": 22, "license": 94601, "email": "santino.lozano@gmail.com", "phone": 9913645013, "password": 353438, "role": null, "car": [{ "color": "#40159C", "license_plate": " as09EC6o", "year": 2017 }] } }
-    // ]
-    // A los del Front: 
-    // Perdón por el código comentado en medio del componente (.-.)
-
     let prev
     let away
     if (fixedTrips.length) {
