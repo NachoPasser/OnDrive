@@ -3,6 +3,7 @@ import { FILTER_TRIPS_BY_DESTINATION } from '../actions/getTripsByDestination.js
 import { SORT_TRIPS_BY_RATING } from '../actions/sortTripsByRating.js';
 import { SORT_TRIPS_ALPHABETICALLY } from '../actions/sortTripsAlphabetically.js';
 import { FILTER_TRIPS_BY_ORIGIN } from '../actions/getTripsByOrigin.js';
+import { FILTER_TRIPS_BY_DATE } from '../actions/getTripsByDate.js';
 
 const initialState = {
     trips: [], // trips variables
@@ -41,6 +42,13 @@ const rootReducer = (state = initialState, action) => {
                 trips: filteredDestTrips
             }
 
+        case FILTER_TRIPS_BY_DATE:
+            let found = state.fixedTrips.filter((trip) => new Date(trip.start_date).toDateString() === action.payload.toDateString())
+            return {
+                ...state,
+                trips: found
+            }
+            
         case SORT_TRIPS_BY_RATING: 
             let sortedByRating = action.payload === 'ASC'
             ? state.trips.sort((a, b) => a.rating - b.rating)
