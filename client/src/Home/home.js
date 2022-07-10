@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import HomeCard from "../components/containers/HomeCard/HomeCard.jsx";
 
 //componentes
 //import HomeCard from "../HomeCard/HomeCard"
@@ -33,6 +34,7 @@ export default function Home() {
                 <NavBar></NavBar>
             </div>
             <div>holiwis</div>
+            <HomeCard/>
         </div>
     )
 }
