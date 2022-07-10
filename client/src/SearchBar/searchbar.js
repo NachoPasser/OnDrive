@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Fecha from "./filterByDate";
 
 //faltan las funciones de las actions y los estados globales
 
 
-export default function SearchBar() {
+export default function SearchBar({style}) {
 
     //dispatch
     //const dispatch = useDispatch()
@@ -12,6 +13,7 @@ export default function SearchBar() {
     //estados locales
     const [travels, setTravels] = useState('')
     const [loader, setLoader] = useState(false)
+    const [calendar, setCalendar] = useState(false)
 
     //estados globales (falta armar redux)
     // const search = useSelector((state) => state.search)
@@ -34,8 +36,13 @@ export default function SearchBar() {
         // dispatch(/*accion buscadora*/(travels))
     }
 
+    function renderCalendar() {
+        if (!calendar) setCalendar(true)
+        else setCalendar(false)
+    }
+
     return (
-        <div>
+        <div className={style}>
             <div>
                 <input
                     onChange={(e) => handleInputChange(e)}
@@ -51,6 +58,10 @@ export default function SearchBar() {
                 />
                 <button type="submit" onClick={(e) => handleSubmit(e)}>Buscar</button>
             </div>
+            <button onClick={renderCalendar}>
+                Filtrar por fecha de partida
+            </button>
+            {calendar && <Fecha />}
         </div>
     )
 }
