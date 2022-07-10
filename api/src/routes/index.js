@@ -8,5 +8,6 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.use('/trip', require('./trip.js'));
-module.exports = router;
+router.use('/api', require('./userTest.js'));
 
+module.exports = router;
