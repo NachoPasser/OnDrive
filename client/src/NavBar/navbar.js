@@ -27,26 +27,29 @@ export default function NavBar() {
 
     return (
         <ul className={style.nav}>
-            <li className={style.li}>
+            <li className={style.liLogo}>
                 <NavLink className={style.navLink} exact to="/home" onClick={(e) => handleClick(e)}>
                     <img className={style.logo} src={logo} />
                 </NavLink>
             </li>
-            <li className={style.li}>
-                <NavLink className={style.navLink} exact to="/features">Features</NavLink>
-            </li>
-            <li className={style.li}>
-                <NavLink className={style.navLink} exact to="/pricing">Pricing</NavLink>
-            </li>
-            <li className={style.li}>
-                <NavLink className={style.navLink} exact to="/community">Community</NavLink>
-            </li>
-            <li className={style.li}>
-                <NavLink className={style.navLink} exact to="/support">Support</NavLink>
-            </li>
-            {/* <li className={style.li}>
-                <SearchBar />
-            </li> */}
+            <div className={style.buttons}>
+                <NavLink className={style.login} exact to="/login">Login</NavLink>
+                <NavLink className={style.register} exact to="/register">Register</NavLink>
+            </div>
+            <div className={style.items}>
+                <li className={style.li}>
+                    <NavLink className={style.navLink} exact to="/features">Item 4</NavLink>
+                </li>
+                <li className={style.li}>
+                    <NavLink className={style.navLink} exact to="/pricing">Item 3</NavLink>
+                </li>
+                <li className={style.li}>
+                    <NavLink className={style.navLink} exact to="/community">Item 2</NavLink>
+                </li>
+                <li className={style.li}>
+                    <NavLink className={style.navLink} exact to="/support">Item 1</NavLink>
+                </li>
+            </div>
         </ul>
     )
 }
