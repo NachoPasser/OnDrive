@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getTrips } from "../redux/actions/getTrips";
-
-//estilos
-import style from '../Home/home.module.css'
-import mapa from "../Home/home imagenes/mapa.png"
-import ubicacion from "../Home/home imagenes/ubicacion.png"
-import destino from "../Home/home imagenes/destino.png"
-import sent from "../Home/home imagenes/sent.png"
-import buscarTuRuta from "../Home/home imagenes/busca-tu-ruta.png"
+import HomeCard from "../components/containers/HomeCard/HomeCard.jsx";
+import style from './home.module.css'
 
 //componentes
 import FilterByDestination from "../SearchBar/filterByDestination";
@@ -17,7 +10,6 @@ import FilterByOrigin from "../SearchBar/filterByOrigin";
 import SortAlphabetically from "../SearchBar/sortAlphabetically";
 import SortByRating from "../SearchBar/sortByRating";
 //import SearchBar from "../SearchBar/searchbar";
-import HomeCard from "../components/containers/HomeCard/HomeCard"
 import NavBar from "../NavBar/navbar.js";
 
 //paginado
