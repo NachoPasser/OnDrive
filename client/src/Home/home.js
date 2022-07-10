@@ -5,128 +5,90 @@ import { getTrips } from "../redux/actions/getTrips";
 
 //estilos
 import style from '../Home/home.module.css'
-import logo from "../NavBar/logo-ondrive.png"
+import mapa from "../Home/home imagenes/mapa.png"
+import ubicacion from "../Home/home imagenes/ubicacion.png"
+import destino from "../Home/home imagenes/destino.png"
+import sent from "../Home/home imagenes/sent.png"
+import buscarTuRuta from "../Home/home imagenes/busca-tu-ruta.png"
 
 //componentes
 import FilterByDestination from "../SearchBar/filterByDestination";
 import FilterByOrigin from "../SearchBar/filterByOrigin";
 import SortAlphabetically from "../SearchBar/sortAlphabetically";
 import SortByRating from "../SearchBar/sortByRating";
-import SearchBar from "../SearchBar/searchbar";
-//import HomeCard from "../HomeCard/HomeCard"
+//import SearchBar from "../SearchBar/searchbar";
+import HomeCard from "../components/containers/HomeCard/HomeCard"
 import NavBar from "../NavBar/navbar.js";
-import { sortTripsAlphabetically } from "../redux/actions/sortTripsAlphabetically";
-
 
 //paginado
 //loader
 //errores
 
-//actions (faltan crear)
-
-
 
 export default function Home() {
 
+    //dispatch
     const dispatch = useDispatch()
+
+    //estados globales
+    const trips = useSelector(state => state.trips)
 
     useEffect(() => {
         dispatch(getTrips());
     }, [])
 
     return (
-        <div>
-            <div>
-                <NavBar></NavBar>
-                <div className={style.containerFiltros}>
-                    <SortAlphabetically style={style.filtros}/>
-                    <SortByRating style={style.filtros}/>
-                    <FilterByDestination style={style.filtros}/>
-                    <SearchBar style={style.filtros} />
-                    <FilterByOrigin style={style.filtros}/>
-                </div>
-            </div>
+        <div className={style.containerAll}>
+            <NavBar></NavBar>
             <div className={style.divisor}>
-                <div className={style.homecards}>
-                    <div className={style.cards}>
-                        <img src={logo}></img>
-                        <p>descripcion breve</p>
+                <div className={style.homeIzquierda}>
+                    <img id={style.logoBuscaTuRuta} src={buscarTuRuta} />
+                    <div className={style.boxSearchAndFilters}>
+                        <div className={style.buscador}>
+                            <img id={style.logoUbicacion} src={ubicacion} />
+                            <FilterByOrigin />
+                            <img id={style.logoDestino} src={destino} />
+                            <FilterByDestination />
+                            <button className={style.buttonSent}> <img id={style.sent} src={sent} /> </button>
+                        </div>
+                        <div className={style.containerFiltros}>
+                            <div className={style.filtrosAvanzados}>
+                                <SortByRating style={style.filtros} />
+                            </div>
+                            <div className={style.filtroCapacidad}>
+                                <h1 id={style.h1}><span id={style.span1}>Por </span><span id={style.span2}>capacidad</span></h1>
+                            </div>
+                        </div>
                     </div>
-                    <div className={style.cards}>
-                        <img src={logo}></img>
-                        <p>descripcion breve</p>
-                    </div>
-                    <div className={style.cards}>
-                        <img src={logo}></img>
-                        <p>descripcion breve</p>
-                    </div>
-                    <div className={style.cards}>
-                        <img src={logo}></img>
-                        <p>descripcion breve</p>
-                    </div>
-                    <div className={style.cards}>
-                        <img src={logo}></img>
-                        <p>descripcion breve</p>
-                    </div>
-                    <div className={style.cards}>
-                        <img src={logo}></img>
-                        <p>descripcion breve</p>
-                    </div>
-                    <div className={style.cards}>
-                        <img src={logo}></img>
-                        <p>descripcion breve</p>
-                    </div>
-                    <div className={style.cards}>
-                        <img src={logo}></img>
-                        <p>descripcion breve</p>
-                    </div>
-                    <div className={style.cards}>
-                        <img src={logo}></img>
-                        <p>descripcion breve</p>
-                    </div>
+                    {
+                        trips && trips.length ?
+                            <div className={style.homecards}>
+                                {
+                                    trips.map(trip => {
+                                        return (
+                                            <div className={style.cards} key={trip.id}>
+                                                <Link to={`/home/${trip.id}`}>
+                                                    <HomeCard
+                                                        key={trip.id}
+                                                        img={trip.img}
+                                                        rating={trip.rating}
+                                                        capacity={trip.capacity}
+                                                        start_date={trip.start_date}
+                                                        finish_date={trip.finish_date}
+                                                        origin={trip.origin}
+                                                        destination={trip.destination}
+                                                        price={trip.price}
+                                                    />
+                                                </Link>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div> : null
+                    }
                 </div>
-                <div className={style.mapYform}>
-                    <div className={style.mapa}>
-                        <img id={style.maps} src="https://noticiasrtv.com/wp-content/uploads/2020/02/Google-Maps-celebra-15-anos-con-novedades-y-un-nuevo.jpg"></img>
-                    </div>
-                    {/* <div className={style.form}>
-                        <input
-                            type='text'
-                            name=''
-                            value=""
-                            placeholder='Campo 1'
-                            onChange=""
-                        />
-                        <input
-                            type='text'
-                            name=''
-                            value=""
-                            placeholder='Campo 2'
-                            onChange=""
-                        />
-                        <input
-                            type='text'
-                            name=''
-                            value=""
-                            placeholder='Campo 3'
-                            onChange=""
-                        />
-                        <input
-                            type='text'
-                            name=''
-                            value=""
-                            placeholder='Campo 4'
-                            onChange=""
-                        />
-                        <input
-                            type='text'
-                            name=''
-                            value=""
-                            placeholder='Campo 5'
-                            onChange=""
-                        />
-                        <button className={style.submit} type='submit'>Boton</button>
-                    </div> */}
+                <div className={style.homeDerecha}>
+                    <img id={style.maps} src={mapa}></img>
                 </div>
             </div>
         </div>

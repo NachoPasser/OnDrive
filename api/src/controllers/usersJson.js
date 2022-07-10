@@ -51,6 +51,13 @@ const objTrip = (driver) => {
     const marca = ["Ford", "Nissan", "Chevrolet", "VW", "Toyota", "Renault", "Fiat"]
     const ciudades = ['Buenos Aires', 'Córdoba', 'La Plata', 'Mar del Plata', 'Mendoza', 'Rosario', 'Salta', 'San Juan', 'San Luis', 'Santa Fe', 'Santiago del Estero', 'Tandil', 'Tucumán', 'Ushuaia'];
     return {
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+        id: generateUUID(),
+=======
+>>>>>>> ca06896b2c09a2c0b84b4ea9bfb3d3dde55488e7
+>>>>>>> Stashed changes
         start_date: new Date(2022, mes, dia - 2),
         finish_date: new Date(2022, mes, dia),
         capacity: Math.floor(Math.random() * (3 - 5 + 1) + 3),
@@ -101,5 +108,21 @@ const getStaticUsers = (req, res) => {
     res.json(usersStatic);
 }
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+function generateUUID() {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+    return uuid;
+}
+
+=======
+>>>>>>> ca06896b2c09a2c0b84b4ea9bfb3d3dde55488e7
+>>>>>>> Stashed changes
 module.exports = { usersJson, getTripsUsersFake, getStaticUsers };
 

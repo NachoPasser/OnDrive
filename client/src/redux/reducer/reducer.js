@@ -5,8 +5,8 @@ import { SORT_TRIPS_ALPHABETICALLY } from '../actions/sortTripsAlphabetically.js
 import { FILTER_TRIPS_BY_ORIGIN } from '../actions/getTripsByOrigin.js';
 
 const initialState = {
-    trips: [], //100 a 5
-    fixedTrips: []
+    trips: [], // trips variables
+    fixedTrips: [] //trips fijos
 }
 
 const rootReducer = (state = initialState, action) => {
