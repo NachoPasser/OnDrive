@@ -15,7 +15,6 @@ import SortByRating from "../SearchBar/sortByRating";
 import SearchBar from "../SearchBar/searchbar";
 //import HomeCard from "../HomeCard/HomeCard"
 import NavBar from "../NavBar/navbar.js";
-import { sortTripsAlphabetically } from "../redux/actions/sortTripsAlphabetically";
 
 
 //paginado
