@@ -2,26 +2,24 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTrips } from '../redux/actions/getTrips.js'
 import { sortTripsAlphabetically } from '../redux/actions/sortTripsAlphabetically.js'
-export default function SortAlphabetically({style}) {
+export default function SortAlphabetically({style, sorters, setSorters}) {
     let dispatch = useDispatch()
-    const [selected, setSelected] = useState('Orden')
-
     const handleSelectOrder= (e) => {
-        setSelected(e.target.value) //cambio el valor del select
-        if(e.target.value !== 'Orden'){
-            dispatch(sortTripsAlphabetically(e.target.value))
-        } else{
-            dispatch(getTrips()) //me va a devolver lo mismo que el ultimo orden ingresado
-            //ya que trips depende de fixedTrips actualmente
-        }
+        setSorters({
+            sortRating: '',
+            sortAlphabetically: e.target.value
+        }) //cambio el valor del select
+                
+        if(e.target.value !== 'Orden') dispatch(sortTripsAlphabetically(e.target.value))
+       
     }
 
     return (
         <div>
-            <select className={style} onChange={handleSelectOrder} value={selected}>
-                <option value="Orden">Alfabetico</option>
-                <option value="ASC">ASC</option>
-                <option value="DSC">DSC</option>
+            <select className={style} onChange={handleSelectOrder} value={sorters.sortAlphabetically}>
+                <option value="Orden">Destinos - alfabetico</option>
+                <option value="ASC">A - Z</option>
+                <option value="DSC">Z - A</option>
             </select>
         </div>
     )

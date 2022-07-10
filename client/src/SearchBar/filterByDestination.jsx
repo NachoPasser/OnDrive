@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getTripsByDestination } from '../redux/actions/getTripsByDestination.js'
 import { getTrips } from '../redux/actions/getTrips.js'
 import { useEffect } from 'react'
-export default function FilterByDestination({ style }) {
+export default function FilterByDestination({ style, filters, setFilters }) {
     let dispatch = useDispatch()
     const [destinations, setDestinations] = useState([])
     const [selected, setSelected] = useState('Destino')
@@ -11,12 +11,14 @@ export default function FilterByDestination({ style }) {
     const trips = useSelector(state => state.trips)
 
     const handleSelectDestination = (e) => {
+
         setSelected(e.target.value) //cambio el valor del select
-        if (e.target.value !== 'Destino') {
-            dispatch(getTripsByDestination(e.target.value))
-        } else {
-            dispatch(getTrips())
-        }
+        
+        // if (e.target.value !== 'Destino') {
+        //     dispatch(getTripsByDestination(e.target.value))
+        // } else {
+        //     dispatch(getTrips())
+        // }
     }
 
     useEffect(() => {
@@ -27,12 +29,15 @@ export default function FilterByDestination({ style }) {
             }
         }
         setDestinations(destinationsArray)
+
     }, [trips])
 
-
-    // const handleBtn = (e) => {
-    //     console.log(trips)
-    // }
+    useEffect(() => {
+        setFilters({
+            ...filters,
+            filterDest: selected
+        })
+    }, [selected])
 
     return (
         <div>
@@ -44,7 +49,6 @@ export default function FilterByDestination({ style }) {
                     </option>)}
 
             </select>
-            {/* <button className={style} onClick={handleBtn}>Obtener trips</button> */}
         </div>
     )
 }

@@ -7,16 +7,7 @@ import car from '../../../assets/HomeCard/Toyota-Corolla-2001.jpg'
 import salta from '../../../assets/HomeCard/L_134003_salta001.jpg'
 import cordoba from '../../../assets/HomeCard/WhatsApp-Image-2021-09-06-at-15.14.27-800x400.jpeg'
 
-const HomeCard = (/*{id, rating, price, capacity, start_date, finish_date, origin, destination, isAvailable, album }*/) => {
-    const id = "01"
-    const rating = [3.5, 4.7, 2, 1]
-    const price = 25
-    const capacity = 2
-    const start_date = "5/10/22"
-    const finish_date = "15/10/22"
-    const origin = "Salta"
-    const destination = "Cordoba"
-    const isAvailable = true
+const HomeCard = ({id, rating, price, capacity, start_date, finish_date, origin, destination}) => {
     const album = [car, salta, cordoba]
     return (
         <div className={styles.comp_card}>
@@ -43,11 +34,10 @@ const HomeCard = (/*{id, rating, price, capacity, start_date, finish_date, origi
                         <p>Start date: {start_date}</p>
                         <p>Finish date: {finish_date}</p>
                         <p>Capacity: {capacity}</p>
-                        <p>Available: {isAvailable}</p>
                     </div>
                     <div className={styles.cardstars}>
                         <div className={styles.star}>
-                            {rating.map(e => <BsStarFill/>)}
+                            <p>Rating: {rating}</p>
                         </div>
                     </div>
                     <div className={styles.UL}>
