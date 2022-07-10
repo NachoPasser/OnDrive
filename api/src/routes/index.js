@@ -1,6 +1,5 @@
 const { Router } = require('express');
 const { getTripsUsersFake, usersJson } = require('../controllers/usersJson.js');
-const {getTripsUsersFake, usersJson} = require('../controllers/usersJson.js');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
