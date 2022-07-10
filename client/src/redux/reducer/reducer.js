@@ -6,8 +6,8 @@ import { FILTER_TRIPS_BY_ORIGIN } from '../actions/getTripsByOrigin.js';
 import { FILTER_TRIPS_BY_DATE } from '../actions/getTripsByDate.js';
 
 const initialState = {
-    trips: [], //100 a 5
-    fixedTrips: []
+    trips: [], // trips variables
+    fixedTrips: [] //trips fijos
 }
 
 const rootReducer = (state = initialState, action) => {
