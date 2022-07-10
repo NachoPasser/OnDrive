@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import { BsStarFill } from 'react-icons/bs'
-import styles from './HomeCard.module.css'
+import styles from './HomeCardProvisional.module.css'
 import Carousel from 'react-bootstrap/Carousel';
 import car from '../../../assets/HomeCard/Toyota-Corolla-2001.jpg'
 import salta from '../../../assets/HomeCard/L_134003_salta001.jpg'
@@ -45,14 +45,14 @@ const HomeCard = (/*{id, rating, price, capacity, start_date, finish_date, origi
                         <p>Capacity: {capacity}</p>
                         <p>Available: {isAvailable}</p>
                     </div>
-                    <div className={styles.cardstars}>
-                        <div className={styles.star}>
-                            {rating.map(e => <BsStarFill/>)}
-                        </div>
-                    </div>
                     <div className={styles.UL}>
                         <div className={styles.pricebox}>
                             <p className={styles.titleprice}>U$ {price} </p>
+                        </div>
+                    </div>
+                    <div className={styles.cardstars}>
+                        <div className={styles.star}>
+                            <p>Rating: {rating}</p>
                         </div>
                     </div>
                 </div>       
