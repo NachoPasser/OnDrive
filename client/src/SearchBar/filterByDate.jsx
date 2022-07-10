@@ -69,15 +69,11 @@ export default function Fecha() {
 
     const [value, onChange] = React.useState(new Date());
 
-    function find() {
-        dispatch(getTripsByDate(value))
-    }
-
     return (
         <div>
             <Calendar onChange={onChange} value={value} minDate={new Date(prev)} maxDate={new Date(away)} />
             {value && <>Viajes con salida el día</>} {value && value.toLocaleDateString()}
-            <button onClick={find}>Buscar</button>
+            <button onClick={() => dispatch(getTripsByDate(value))}>Buscar</button>
         </div >
     )
 }
