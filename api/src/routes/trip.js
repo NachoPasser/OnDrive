@@ -1,4 +1,5 @@
 const {tripHistory, postTrip, getTrips} = require('../controllers/tripController.js');
+
 const {getTripById} = require('../controllers/usersJson.js')
 const router = require('express').Router();
 

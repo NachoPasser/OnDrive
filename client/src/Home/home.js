@@ -57,11 +57,9 @@ export default function Home() {
     
     if(trips.length > 0) maxNumberOfPages = Math.ceil(trips.length / cardsPerPage)
 
-
     useEffect(() => {
         dispatch(getTrips());
-    }, [dispatch])
-
+    }, [])
 
     //handlers
     async function handleBtn() {
@@ -114,18 +112,18 @@ export default function Home() {
                             ).map(trip => {
                                         return (
                                             <div className={style.cards} key={trip.id}>
-                                                    <HomeCard
-                                                        key={trip.id}
-                                                        id={trip.id}
-                                                        img={trip.img}
-                                                        rating={trip.rating}
-                                                        capacity={trip.capacity}
-                                                        start_date={trip.start_date}
-                                                        finish_date={trip.finish_date}
-                                                        origin={trip.origin}
-                                                        destination={trip.destination}
-                                                        price={trip.price}
-                                                    />
+                                                <HomeCard
+                                                    key={trip.id}
+                                                    id={trip.id}
+                                                    img={trip.img}
+                                                    rating={trip.rating}
+                                                    capacity={trip.capacity}
+                                                    start_date={trip.start_date}
+                                                    finish_date={trip.finish_date}
+                                                    origin={trip.origin}
+                                                    destination={trip.destination}
+                                                    price={trip.price}
+                                                />
                                             </div>
                                         )
                                     })

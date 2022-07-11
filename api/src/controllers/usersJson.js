@@ -8,7 +8,7 @@ function generateCar() {
         color += letters[Math.floor(Math.random() * 16)];
     }
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const combutible = ["Gasoil", "Euro", "Premium", "Super"];
+    const fuel = ["Gasoil", "Euro", "Premium", "Super"];
     let result1 = ' ';
     const charactersLength = characters.length;
     for (let i = 0; i < 8; i++) {
@@ -17,7 +17,7 @@ function generateCar() {
     return {
         color: color,
         license_plate: result1,
-        combutible: combutible[Math.random() * combutible.length],
+        fuel: fuel[Math.random() * fuel.length],
         year: Math.floor(Math.random() * (2022 - 1990 + 1)) + 1990,
     }
 }
@@ -134,6 +134,7 @@ const getTripById = (req,res) => {
     }
 }
 
+
 function generateUUID() {
     var d = new Date().getTime();
     var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -144,5 +145,5 @@ function generateUUID() {
     return uuid;
 }
 
-module.exports = { usersJson, getTripsUsersFake, getStaticUsers, getTripById };
+module.exports = { usersJson, getTripsUsersFake, getStaticUsers, getTripById,objTrip,generate,Ascensora};
 

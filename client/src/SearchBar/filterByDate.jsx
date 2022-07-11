@@ -12,7 +12,8 @@ export default function Fecha() {
     let fixedTrips = useSelector(state => state.fixedTrips)
     const dispatch = useDispatch()
 
-    useEffect( () => {
+
+    useEffect(() => {
         if (!trips.length) {
             dispatch(getTrips())
         }
@@ -35,8 +36,10 @@ export default function Fecha() {
     return (
         <div>
             <Calendar onChange={onChange} value={value} minDate={new Date(prev)} maxDate={new Date(away)} />
-            {value && <>Viajes con salida el día</>} {value && value.toLocaleDateString()}
-            <button onClick={() => dispatch(getTripsByDate(value))}>Buscar</button>
+            <div id="divBuscar">
+                {value && <>Viajes con salida el día</>} {value && value.toLocaleDateString()}
+                <button id="btnBuscar" onClick={() => dispatch(getTripsByDate(value))}>Buscar</button>
+            </div>
         </div >
     )
 }
