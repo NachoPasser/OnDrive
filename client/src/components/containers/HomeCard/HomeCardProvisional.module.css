@@ -1,0 +1,105 @@
+.comp_card {
+    margin-bottom: 20px;
+    height: 370px;
+    width: 300px;
+}
+
+.card {
+    border-radius: 18px;
+    background: rgb(255, 255, 255);
+    font-family: roboto;
+    transition: 0.5s ease;
+    cursor: pointer;
+    width: 300px;
+    height: 370px;
+    margin-bottom: 5px;
+}
+
+.imgn {
+    grid-area: image;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 300px;
+    height: 180px;
+}
+
+.cardimage {
+    grid-area: image;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 100%;
+}
+
+.titlec {
+    margin-bottom: 5px;
+    color: var(--font-dark-color);
+    text-align: left;
+}
+
+.otherText {
+    text-align: left;
+}
+
+.cardtext {
+    font-family: "Poppins", sans-serif;
+    grid-area: text;
+    margin: 15px;
+    padding: 1px;
+    font-size: 15px;
+    position: relative;
+    bottom: 12px;
+}
+
+.textstars {
+    padding-top: 10px;
+    font-size: 20px;
+    color: azure;
+}
+
+.cardtext h1 {
+    color: rgb(49, 49, 49);
+    font-size: 1.7em;
+}
+
+.cardtext p {
+    color: rgb(71, 70, 70);
+    font-size: 15px;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+}
+
+.cardstars {
+    display: flex;
+    justify-content: center;
+    color: rgb(171, 145, 29);
+    border-color: black;
+    position: absolute;
+    left: 38%;
+}
+
+.card:hover {
+    box-shadow: 0 0 3px 3px rgba(78, 78, 76, 0.75),
+        0 40px 25px -15px rgba(0, 0, 0, 0.35);
+}
+
+.titleprice {
+    position: absolute;
+    top: 20px;
+    color: rgba(0, 0, 0, 0.35);
+}
+
+.titlestar {
+    text-align: left;
+    bottom: -10px;
+}
+
+.UL {
+    margin-bottom: 20px;
+    position: relative;
+    bottom: 20px;
+}
+
+.like {
+    position: absolute;
+    margin-left: 230px;
+}

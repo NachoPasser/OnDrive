@@ -8,7 +8,7 @@ function generateCar() {
         color += letters[Math.floor(Math.random() * 16)];
     }
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const combutible = ["Gasoil", "Euro", "Premium", "Super"];
+    const fuel = ["Gasoil", "Euro", "Premium", "Super"];
     let result1 = ' ';
     const charactersLength = characters.length;
     for (let i = 0; i < 8; i++) {
@@ -17,7 +17,7 @@ function generateCar() {
     return {
         color: color,
         license_plate: result1,
-        combutible: combutible[Math.random() * combutible.length],
+        fuel: fuel[Math.random() * fuel.length],
         year: Math.floor(Math.random() * (2022 - 1990 + 1)) + 1990,
     }
 }
@@ -60,8 +60,8 @@ const objTrip = (driver) => {
 // >>>>>>> Stashed changes
         start_date: new Date(2022, mes, dia - 2),
         finish_date: new Date(2022, mes, dia),
-        capacity: Math.floor(Math.random() * (3 - 5 + 1) + 3),
-        rating: Math.floor(Math.random() * 5),
+        capacity: Math.floor(Math.random() * 6 + 1),
+        rating: Math.floor(Math.random() * 6),
         price: Math.floor(Math.random() * 1000),
         origin: ciudades[Math.floor(Math.random() * ciudades.length)],
         destination: ciudades[Math.floor(Math.random() * ciudades.length)],
@@ -84,15 +84,28 @@ function Ascensora(trps, all, min, max) {//ASCENSORA POR FECHAS
         return trps
     }
 }
+
+const removeAccents = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+} 
+
 // Generate a random user json for drivers
 const getTripsUsersFake = (req, res) => {
+    let { idParams } = req.params;
     const tripsDrivers = [];
     for (let j = 0; j < 100; j++) {
         tripsDrivers.push(objTrip(generate(false)));
     }
-    const orderedTrips = Ascensora(tripsDrivers, true)
-
-    res.json(orderedTrips);
+    if(idParams){
+        idParams = idParams.toLowerCase()
+        var filterCurrent = tripsDrivers.filter(curr => {
+            let current = curr.destination.toLowerCase()
+            let noAccents = removeAccents(current)
+            return current.includes(idParams) || noAccents.includes(idParams)
+        })
+        res.json(filterCurrent);
+    }
+    else res.json(tripsDrivers);
 }
 
 // Generate a list of random users
@@ -105,6 +118,16 @@ const usersJson = (req, res) => {
 }
 
 const getStaticUsers = (req, res) => {
+    let { idParams } = req.params;
+    if(idParams){
+        idParams = idParams.toLowerCase()
+        var filterCurrent = usersStatic.filter(curr => {
+            let current = curr.destination.toLowerCase()
+            let noAccents = removeAccents(current)
+            return current.includes(idParams) || noAccents.includes(idParams)
+        })
+        res.json(filterCurrent);
+    }
     res.json(usersStatic);
 }
 

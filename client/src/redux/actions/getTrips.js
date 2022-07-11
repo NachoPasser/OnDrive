@@ -4,7 +4,7 @@ export const GET_TRIP_BY_ID = "GET_TRIP_BY_ID";
 
 export const getTrips = (destination) => {
     return async function (dispatch) {
-        axios.get("http://localhost:3001/api/driver"
+        axios.get("http://localhost:3001/api/static"
         ).then(trips => dispatch({ type: GET_TRIPS, payload: trips.data })
         ).catch(c => console.log(c))
     }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getSearch } from "../redux/actions/getSearch";
 import Fecha from "./filterByDate";
 
 //faltan las funciones de las actions y los estados globales
@@ -8,7 +9,7 @@ import Fecha from "./filterByDate";
 export default function SearchBar({style}) {
 
     //dispatch
-    //const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     //estados locales
     const [travels, setTravels] = useState('')
@@ -16,8 +17,7 @@ export default function SearchBar({style}) {
     const [calendar, setCalendar] = useState(false)
 
     //estados globales (falta armar redux)
-    // const search = useSelector((state) => state.search)
-
+    
     //ciclo de vida
     useEffect(() => {
         setLoader(false)
@@ -33,7 +33,7 @@ export default function SearchBar({style}) {
         e.preventDefault()
         setLoader(true)
         // dispatch(/*accion para limpiar el search*/)
-        // dispatch(/*accion buscadora*/(travels))
+        dispatch(getSearch(travels))
     }
 
     function renderCalendar() {
@@ -42,26 +42,23 @@ export default function SearchBar({style}) {
     }
 
     return (
-        <div className={style}>
+        <div className={style.searchbar}>
             <div>
                 <input
                     onChange={(e) => handleInputChange(e)}
                     type='search'
+                    value={travels}
                     placeholder="Buscar un viaje..."
                     onKeyPress={(e => {
                         if (e.key === 'Enter') {
                             // dispatch(/*accion para limpiar el search*/)
-                            // dispatch(/*accion buscadora*/(travels))
+                            dispatch(getSearch(travels))
                             setLoader(true)
                         }
                     })}
                 />
-                <button type="submit" onClick={(e) => handleSubmit(e)}>Buscar</button>
+                <button id={style.btnSearchBar} type="submit" onClick={(e) => handleSubmit(e)}>Buscar</button>
             </div>
-            <button onClick={renderCalendar}>
-                Filtrar por fecha de partida
-            </button>
-            {calendar && <Fecha />}
         </div>
     )
 }
