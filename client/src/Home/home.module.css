@@ -15,7 +15,7 @@
 }
 
 #logoBuscaTuRuta {
-    margin-top: 50px;
+    margin-top: 43px;
 }
 
 .homecards {
@@ -28,60 +28,51 @@
     grid-row-gap: 15px;
 }
 
-.cards {
-    background-color: gray;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.18);
-}
+/* .cards {
+    
+} */
 
 .containerFiltros {
-    margin-left: 5px;
     height: 200px;
+    width: auto;
 }
 
 .filtrosAvanzados {
-    border-bottom: 1px solid #e1d9d943;
-    height: 120px;
-    width: 895px;
+    display: flex;
+    margin-right: 30px;
+    margin-top: 30px;
 }
 
-.filtroCapacidad{
+.filtroCapacidad {
     margin-top: 25px;
     position: absolute;
     left: 35px;
     top: 340px;
 }
 
-#h1{
-    font-size:large;
+#h1 {
+    font-size: large;
 }
 
-#span1{
+#span1 {
     color: white;
 }
 
-#span2{
+#span2 {
     color: #00A3FE;
 }
 
 .filtros {
-    margin-top: 30px;
-    margin-left: 3px;
-    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+    float: inline-start;
 }
 
-/* .homeDerecha {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 10px;
-} */
 
-#maps {
-    margin-top: 70px;
-    max-width: 100%;
-    max-height: 100%;
+.homeDerecha {
+    background-image: url(../Home/home\ imagenes/mapa.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .boxSearchAndFilters {
@@ -89,6 +80,8 @@
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+
+    height: 320px;
 
     margin-top: 30px;
     margin-left: 20px;
@@ -100,10 +93,11 @@
 }
 
 .buscador {
+    margin-left: 10px;
     margin-top: 20px;
     height: 40px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -130,4 +124,21 @@
     right: 35px;
     margin-right: 20px;
     margin-left: 20px;
+}
+
+#calendario {
+    position: absolute;
+    left: 42px;
+    bottom: 500px;
+}
+
+.searchbar {
+    position: absolute;
+    left: 42px;
+    bottom: 570px;
+}
+
+#btnSearchBar {
+    margin-left: 5px;
+    height: 32px;
 }

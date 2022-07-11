@@ -29,7 +29,6 @@ export default function FilterByDestination({ style, filters, setFilters }) {
             }
         }
         setDestinations(destinationsArray)
-
     }, [trips])
 
     useEffect(() => {
