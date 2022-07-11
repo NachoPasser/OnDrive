@@ -8,13 +8,16 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4
     },
     license: {
-        type: DataTypes.STRING(45),
-        allowNull: false,
+      type: DataTypes.STRING(45),
+      allowNull: false,
     },
     driving_permit: {
-        type: DataTypes.STRING(45),
-        allowNull: false
-    }
+      type: DataTypes.STRING(45),
+      allowNull: false
+    },
+    rating: {
+      type: DataTypes.DECIMAL(1),
+    },
   }, {
     timestamps: false
   });
