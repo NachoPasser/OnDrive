@@ -3,6 +3,7 @@ const { getTripsUsersFake, usersJson, getStaticUsers } = require('../controllers
 //Ordené las rutas de index en un solo archivo para exportarlas
 router.get('/driver', getTripsUsersFake);
 router.get('/driver/:idParams', getTripsUsersFake)
+router.get('/static/:idParams', getStaticUsers)
 router.get('/static', getStaticUsers);
 router.get('/users', usersJson);
 
