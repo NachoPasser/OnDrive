@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import HomeCard from "../components/containers/HomeCard/HomeCard.jsx";
+import style from './home.module.css'
 import { getTrips } from "../redux/actions/getTrips";
 
 //estilos
-import style from '../Home/home.module.css'
-import mapa from "../Home/home imagenes/mapa.png"
-import ubicacion from "../Home/home imagenes/ubicacion.png"
-import destino from "../Home/home imagenes/destino.png"
-import sent from "../Home/home imagenes/sent.png"
-import buscarTuRuta from "../Home/home imagenes/busca-tu-ruta.png"
+// import mapa from "../Home/home imagenes/mapa.png"
+// import ubicacion from "../Home/home imagenes/ubicacion.png"
+// import destino from "../Home/home imagenes/destino.png"
+// import sent from "../Home/home imagenes/sent.png"
+// import buscarTuRuta from "../Home/home imagenes/busca-tu-ruta.png"
 
 //componentes
 import FilterByDestination from "../SearchBar/filterByDestination";
 import FilterByOrigin from "../SearchBar/filterByOrigin";
 import SortAlphabetically from "../SearchBar/sortAlphabetically";
 import SortByRating from "../SearchBar/sortByRating";
+import { getTripsByDestination } from '../redux/actions/getTripsByDestination.js'
+import { getTripsByOrigin } from "../redux/actions/getTripsByOrigin";
 //import SearchBar from "../SearchBar/searchbar";
-import HomeCard from "../components/containers/HomeCard/HomeCard"
 import NavBar from "../NavBar/navbar.js";
 
 //paginado
@@ -32,28 +34,49 @@ export default function Home() {
 
     //estados globales
     const trips = useSelector(state => state.trips)
+    const [filters, setFilters] = useState({
+        filterOrg: '',
+        filterDest: ''
+    })
+    const [sorters, setSorters] = useState({
+        sortRating: '',
+        sortAlphabetically: ''
+    })
 
     useEffect(() => {
         dispatch(getTrips());
     }, [])
 
+    async function handleBtn(){
+        console.log(filters) //ej {filterOrg: 'Salta', filterDest: 'Tucumán'}
+        dispatch(getTripsByOrigin(filters.filterOrg))
+        dispatch(getTripsByDestination(filters.filterDest))
+      
+    }
+
+    useEffect(() => {
+        console.log(trips)
+    }, [trips])
+
     return (
         <div className={style.containerAll}>
-            <NavBar></NavBar>
+            <NavBar/>
             <div className={style.divisor}>
                 <div className={style.homeIzquierda}>
-                    <img id={style.logoBuscaTuRuta} src={buscarTuRuta} />
+                    {/* <img id={style.logoBuscaTuRuta} src={buscarTuRuta} /> */}
                     <div className={style.boxSearchAndFilters}>
                         <div className={style.buscador}>
-                            <img id={style.logoUbicacion} src={ubicacion} />
-                            <FilterByOrigin />
-                            <img id={style.logoDestino} src={destino} />
-                            <FilterByDestination />
-                            <button className={style.buttonSent}> <img id={style.sent} src={sent} /> </button>
+                            {/* <img id={style.logoUbicacion} src={ubicacion} /> */}
+                            <FilterByOrigin filters={filters} setFilters={setFilters}/>
+                            {/* <img id={style.logoDestino} src={destino} /> */}
+                            <FilterByDestination filters={filters} setFilters={setFilters}/>
+                            <button className={style.buttonSent} onClick={() => handleBtn()}> Buscar </button>
+                            {/* <img id={style.sent} src={sent} /> */}
                         </div>
                         <div className={style.containerFiltros}>
                             <div className={style.filtrosAvanzados}>
-                                <SortByRating style={style.filtros} />
+                                <SortByRating style={style.filtros} sorters={sorters} setSorters={setSorters} />
+                                <SortAlphabetically sorters={sorters} setSorters={setSorters}/>
                             </div>
                             <div className={style.filtroCapacidad}>
                                 <h1 id={style.h1}><span id={style.span1}>Por </span><span id={style.span2}>capacidad</span></h1>
@@ -61,15 +84,15 @@ export default function Home() {
                         </div>
                     </div>
                     {
-                        trips && trips.length ?
+                        trips.length !== 0 ?
                             <div className={style.homecards}>
                                 {
                                     trips.map(trip => {
                                         return (
                                             <div className={style.cards} key={trip.id}>
-                                                <Link to={`/home/${trip.id}`}>
                                                     <HomeCard
                                                         key={trip.id}
+                                                        id={trip.id}
                                                         img={trip.img}
                                                         rating={trip.rating}
                                                         capacity={trip.capacity}
@@ -79,7 +102,6 @@ export default function Home() {
                                                         destination={trip.destination}
                                                         price={trip.price}
                                                     />
-                                                </Link>
                                             </div>
                                         )
                                     })
@@ -88,7 +110,7 @@ export default function Home() {
                     }
                 </div>
                 <div className={style.homeDerecha}>
-                    <img id={style.maps} src={mapa}></img>
+                    {/* <img id={style.maps} src={mapa}></img> */}
                 </div>
             </div>
         </div>

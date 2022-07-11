@@ -102,6 +102,7 @@ const getStaticUsers = (req, res) => {
     res.json(usersStatic);
 }
 
+
 const getTripById = (req,res) => {
     const {id} = req.params;
     try {
@@ -121,6 +122,7 @@ const getTripById = (req,res) => {
     }
 }
 
+
 function generateUUID() {
     var d = new Date().getTime();
     var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -132,4 +134,5 @@ function generateUUID() {
 }
 
 module.exports = { usersJson, getTripsUsersFake, getStaticUsers, getTripById,objTrip,generate,Ascensora};
+
 
