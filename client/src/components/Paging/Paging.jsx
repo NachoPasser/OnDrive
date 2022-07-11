@@ -1,22 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 import s from './Paging.module.css'
 export default function Paging({setNumber, max, actualPage}) {
-    const [inputValue, setInputValue] = useState('')
     let pages = []
    
     for (let i = 1; i <= max; i++) {
             pages.push(i)
-    }
-
-    function handleChange(e){
-        let num = Number(e.target.value)
-        if(!isNaN(num) && num >= 1 && num <= 22){
-            setInputValue(num)
-        }
-        
-        if(!e.target.value){
-            setInputValue('')
-        }
     }
 
     return (

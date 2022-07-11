@@ -112,6 +112,16 @@ const usersJson = (req, res) => {
 }
 
 const getStaticUsers = (req, res) => {
+    let { idParams } = req.params;
+    if(idParams){
+        idParams = idParams.toLowerCase()
+        var filterCurrent = usersStatic.filter(curr => {
+            let current = curr.destination.toLowerCase()
+            let noAccents = removeAccents(current)
+            return current.includes(idParams) || noAccents.includes(idParams)
+        })
+        res.json(filterCurrent);
+    }
     res.json(usersStatic);
 }
 
