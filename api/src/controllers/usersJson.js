@@ -115,6 +115,24 @@ const getStaticUsers = (req, res) => {
     res.json(usersStatic);
 }
 
+const getTripById = (req,res) => {
+    const {id} = req.params;
+    try {
+        //valid id
+        if(typeof id !== "string") throw new Error(`Invalid ID(must be a string)`)
+        if(id.length !== 32) throw new Error(`Invalid ID(${id})`);
+        //search trip
+        const trip = usersStatic.filter((trip) => trip.id === id);
+        if(trip.length === 0) throw new Error(`Trip ID(${id}) not found`);
+        //response ok
+        res.status(200);
+        res.json({message:"Trip was found",value:{trip:trip[0]}})
+    } catch (e) {
+        //response error
+        res.status(400);
+        res.json({message:`something has wrong: ${e.message}`, value: null})
+    }
+}
 
 function generateUUID() {
     var d = new Date().getTime();
@@ -126,5 +144,5 @@ function generateUUID() {
     return uuid;
 }
 
-module.exports = { usersJson, getTripsUsersFake, getStaticUsers };
+module.exports = { usersJson, getTripsUsersFake, getStaticUsers, getTripById };
 

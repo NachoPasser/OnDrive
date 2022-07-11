@@ -53,7 +53,6 @@ export default function SearchBar({style}) {
                         if (e.key === 'Enter') {
                             // dispatch(/*accion para limpiar el search*/)
                             dispatch(getSearch(travels))
-                            setTravels('')
                             setLoader(true)
                         }
                     })}
