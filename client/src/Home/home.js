@@ -23,6 +23,7 @@ import { getTripsByOrigin } from "../redux/actions/getTripsByOrigin";
 import SearchBar from "../SearchBar/searchbar";
 import NavBar from "../NavBar/navbar.js";
 import Fecha from "../SearchBar/filterByDate.jsx";
+import Paging from "../components/Paging/Paging.jsx";
 
 //paginado
 //loader
@@ -50,11 +51,15 @@ export default function Home() {
         sortAlphabetically: ''
     })
 
+    const [numberOfPage, setNumberOfPage] = useState(1)
+    let maxNumberOfPages = 0
+    const cardsPerPage = 3
+    
+    if(trips.length > 0) maxNumberOfPages = Math.ceil(trips.length / cardsPerPage)
 
     useEffect(() => {
         dispatch(getTrips());
-    }, [dispatch])
-
+    }, [])
 
     //handlers
     async function handleBtn() {
@@ -77,6 +82,7 @@ export default function Home() {
                 <div className={style.homeIzquierda}>
                     <img id={style.logoBuscaTuRuta} src={buscarTuRuta} />
                     <div className={style.boxSearchAndFilters}>
+                    <Paging setNumber={setNumberOfPage} max={maxNumberOfPages} actualPage={numberOfPage} />  
                         <div className={style.buscador}>
                             <img id={style.logoUbicacion} src={ubicacion} />
                             <FilterByOrigin filters={filters} setFilters={setFilters} />
@@ -99,9 +105,11 @@ export default function Home() {
                     </div>
                     {
                         trips.length !== 0 ?
-                            <div className={style.homecards}>
-                                {
-                                    trips.map(trip => {
+                        <div className={style.homecards}>
+                            {trips.slice(
+                                (numberOfPage - 1) * cardsPerPage,
+                                (numberOfPage - 1) * cardsPerPage + cardsPerPage
+                            ).map(trip => {
                                         return (
                                             <div className={style.cards} key={trip.id}>
                                                 <HomeCard

@@ -1,0 +1,75 @@
+.paging{
+    position: absolute;
+    left: -5px;
+    height: 50%;
+    width: 100%;
+    color: white;
+}
+.arrowsContainer{
+    position: absolute;
+    height: 50px;
+    left: 45%;
+    font-family: 'Fredoka One', cursive;
+}
+
+.arrows{
+    margin: 10px;
+    font-size: 20px;
+    width: 30px;
+    border: none;
+    color: white;
+    background-color: rgb(250, 146, 11);
+    transition: .5s ease;
+}
+
+.arrows:hover:enabled{
+    transform: scale(1.2);
+}
+
+.arrows:disabled{
+    opacity: 0.2;
+}
+
+.search{
+    width: fit-content;
+    position: absolute;
+    left: 70%;
+}
+
+#input{
+    height: 30px;
+    width: 5cm;
+    border-radius: 20px;
+    border: 1px solid black;
+    font-family: 'Fredoka One', cursive;
+}
+
+#input:focus{
+    border: 1px solid black;
+    outline: none;
+}
+
+
+#go{
+    height: 36px;
+    margin: 5px;
+    width: 38px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+#go:disabled{
+    opacity: 0.5;
+    cursor: default;
+}
+
+#go:hover:enabled{
+    transform: scale(1.2);
+}
+
+
+
+
