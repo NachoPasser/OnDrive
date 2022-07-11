@@ -1,42 +1,44 @@
-.paging{
+.paging {
     position: absolute;
-    left: -5px;
+    top: 880px;
+    right: 455px;
     height: 50%;
     width: 100%;
     color: white;
 }
-.arrowsContainer{
+
+.arrowsContainer {
     position: absolute;
     height: 50px;
     left: 45%;
-    font-family: 'Fredoka One', cursive;
+    font-family: "Poppins", sans-serif;
 }
 
-.arrows{
+.arrows {
     margin: 10px;
     font-size: 20px;
     width: 30px;
     border: none;
-    color: white;
-    background-color: rgb(250, 146, 11);
+    color: var(--dark-color);
+    background-color: var(--primary-color);
     transition: .5s ease;
 }
 
-.arrows:hover:enabled{
+.arrows:hover:enabled {
     transform: scale(1.2);
 }
 
-.arrows:disabled{
+.arrows:disabled {
     opacity: 0.2;
 }
 
-.search{
+.search {
     width: fit-content;
     position: absolute;
     left: 70%;
 }
 
-#input{
+#input {
     height: 30px;
     width: 5cm;
     border-radius: 20px;
@@ -44,13 +46,13 @@
     font-family: 'Fredoka One', cursive;
 }
 
-#input:focus{
+#input:focus {
     border: 1px solid black;
     outline: none;
 }
 
 
-#go{
+#go {
     height: 36px;
     margin: 5px;
     width: 38px;
@@ -61,15 +63,11 @@
     transition: .5s ease;
 }
 
-#go:disabled{
+#go:disabled {
     opacity: 0.5;
     cursor: default;
 }
 
-#go:hover:enabled{
+#go:hover:enabled {
     transform: scale(1.2);
 }
-
-
-
-

@@ -54,12 +54,16 @@ export default function Home() {
     const [numberOfPage, setNumberOfPage] = useState(1)
     let maxNumberOfPages = 0
     const cardsPerPage = 3
-    
-    if(trips.length > 0) maxNumberOfPages = Math.ceil(trips.length / cardsPerPage)
+
+    if (trips.length > 0) maxNumberOfPages = Math.ceil(trips.length / cardsPerPage)
 
     useEffect(() => {
         dispatch(getTrips());
     }, [])
+
+    useEffect(() => {
+        setNumberOfPage(1)
+    }, [trips])
 
     //handlers
     async function handleBtn() {
@@ -82,7 +86,6 @@ export default function Home() {
                 <div className={style.homeIzquierda}>
                     <img id={style.logoBuscaTuRuta} src={buscarTuRuta} />
                     <div className={style.boxSearchAndFilters}>
-                    <Paging setNumber={setNumberOfPage} max={maxNumberOfPages} actualPage={numberOfPage} />  
                         <div className={style.buscador}>
                             <img id={style.logoUbicacion} src={ubicacion} />
                             <FilterByOrigin filters={filters} setFilters={setFilters} />
@@ -96,7 +99,7 @@ export default function Home() {
                                 <SortAlphabetically style={style.filtros} sorters={sorters} setSorters={setSorters} />
                                 <FilterByCapacity style={style.filtros} />
                             </div>
-                            <SearchBar style={style}/>
+                            <SearchBar style={style} />
                             <button id={style.calendario} onClick={renderCalendar}>
                                 Filtrar por fecha de partida
                             </button>
@@ -105,31 +108,32 @@ export default function Home() {
                     </div>
                     {
                         trips.length !== 0 ?
-                        <div className={style.homecards}>
-                            {trips.slice(
-                                (numberOfPage - 1) * cardsPerPage,
-                                (numberOfPage - 1) * cardsPerPage + cardsPerPage
-                            ).map(trip => {
-                                        return (
-                                            <div className={style.cards} key={trip.id}>
-                                                <HomeCard
-                                                    key={trip.id}
-                                                    id={trip.id}
-                                                    img={trip.img}
-                                                    rating={trip.rating}
-                                                    capacity={trip.capacity}
-                                                    start_date={trip.start_date}
-                                                    finish_date={trip.finish_date}
-                                                    origin={trip.origin}
-                                                    destination={trip.destination}
-                                                    price={trip.price}
-                                                />
-                                            </div>
-                                        )
-                                    })
+                            <div className={style.homecards}>
+                                {trips.slice(
+                                    (numberOfPage - 1) * cardsPerPage,
+                                    (numberOfPage - 1) * cardsPerPage + cardsPerPage
+                                ).map(trip => {
+                                    return (
+                                        <div className={style.cards} key={trip.id}>
+                                            <HomeCard
+                                                key={trip.id}
+                                                id={trip.id}
+                                                img={trip.img}
+                                                rating={trip.rating}
+                                                capacity={trip.capacity}
+                                                start_date={trip.start_date}
+                                                finish_date={trip.finish_date}
+                                                origin={trip.origin}
+                                                destination={trip.destination}
+                                                price={trip.price}
+                                            />
+                                        </div>
+                                    )
+                                })
                                 }
                             </div> : null
                     }
+                    <Paging style={style} setNumber={setNumberOfPage} max={maxNumberOfPages} actualPage={numberOfPage} />
                 </div>
                 <div className={style.homeDerecha}>
                     {/* <img id={style.maps} src={mapa}></img> */}
