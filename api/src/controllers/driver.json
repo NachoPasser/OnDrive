@@ -1,2802 +1,2801 @@
 [
-  {
-    "id": "04fd3a8ce2e74bb2ac1113cea897ce7a",
-    "start_date": "2022-02-08T03:00:00.000Z",
-    "finish_date": "2022-02-10T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 592,
-    "origin": "San Luis",
-    "destination": "Mar del Plata",
-    "marca": "Fiat",
-    "driver": {
-      "name": "Martín",
-      "lastname": "Ramirez",
-      "age": 28,
-      "license": 1782,
-      "email": "martín.ramirez@gmail.com",
-      "phone": 9552327868,
-      "password": 225878,
-      "role": null,
-      "car": [
-        {
-          "color": "#7C014A",
-          "license_plate": " g3tCfyc2",
-          "year": 2013
-        }
-      ]
-    }
-  },
-  {
-    "id": "5804a138752744a19ab9fb5e820aa103",
-    "start_date": "2022-02-10T03:00:00.000Z",
-    "finish_date": "2022-02-12T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 510,
-    "origin": "Salta",
-    "destination": "Salta",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Dylan",
-      "lastname": "Vazquez",
-      "age": 21,
-      "license": 77456,
-      "email": "dylan.vazquez@gmail.com",
-      "phone": 6780565314,
-      "password": 742931,
-      "role": null,
-      "car": [
-        {
-          "color": "#670759",
-          "license_plate": " vlapYaK6",
-          "year": 2017
-        }
-      ]
-    }
-  },
-  {
-    "id": "a48f473c08be4a3baca3a382caa09e54",
-    "start_date": "2022-02-12T03:00:00.000Z",
-    "finish_date": "2022-02-14T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 62,
-    "origin": "Mendoza",
-    "destination": "Mar del Plata",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "César",
-      "lastname": "Martin",
-      "age": 30,
-      "license": 13168,
-      "email": "césar.martin@gmail.com",
-      "phone": 7291788775,
-      "password": 557158,
-      "role": null,
-      "car": [
-        {
-          "color": "#8217B0",
-          "license_plate": " TnrM7u1U",
-          "year": 2020
-        }
-      ]
-    }
-  },
-  {
-    "id": "de7ec9012ec84c9690d52c1db832dd19",
-    "start_date": "2022-02-13T03:00:00.000Z",
-    "finish_date": "2022-02-15T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 538,
-    "origin": "Salta",
-    "destination": "Mar del Plata",
-    "marca": "Renault",
-    "driver": {
-      "name": "Liam",
-      "lastname": "Moreno",
-      "age": 18,
-      "license": 5194,
-      "email": "liam.moreno@gmail.com",
-      "phone": 4396793245,
-      "password": 375749,
-      "role": null,
-      "car": [
-        {
-          "color": "#A3A2EA",
-          "license_plate": " sXnSH2Ba",
-          "year": 2016
-        }
-      ]
-    }
-  },
-  {
-    "id": "09e6e29244e54a9187ea44e09de454fb",
-    "start_date": "2022-02-14T03:00:00.000Z",
-    "finish_date": "2022-02-16T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 813,
-    "origin": "Córdoba",
-    "destination": "Mar del Plata",
-    "marca": "VW",
-    "driver": {
-      "name": "Alejandro",
-      "lastname": "Izquierdo",
-      "age": 24,
-      "license": 41223,
-      "email": "alejandro.izquierdo@gmail.com",
-      "phone": 7115056439,
-      "password": 932973,
-      "role": null,
-      "car": [
-        {
-          "color": "#AAEA26",
-          "license_plate": " KErfHxn1",
-          "year": 1993
-        }
-      ]
-    }
-  },
-  {
-    "id": "6b779cb86afb4c6c9fe12c51a1de0cd0",
-    "start_date": "2022-02-23T03:00:00.000Z",
-    "finish_date": "2022-02-25T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 45,
-    "origin": "Santa Fe",
-    "destination": "Salta",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Hugo",
-      "lastname": "Redondo",
-      "age": 36,
-      "license": 32544,
-      "email": "hugo.redondo@gmail.com",
-      "phone": 4479143259,
-      "password": 948839,
-      "role": null,
-      "car": [
-        {
-          "color": "#94C6DE",
-          "license_plate": " rFoRuo79",
-          "year": 2006
-        }
-      ]
-    }
-  },
-  {
-    "id": "56c9ec0bae4a4953a284f4103ee03ec3",
-    "start_date": "2022-02-24T03:00:00.000Z",
-    "finish_date": "2022-02-26T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 688,
-    "origin": "Santa Fe",
-    "destination": "Ushuaia",
-    "marca": "Nissan",
-    "driver": {
-      "name": "David",
-      "lastname": "Pardo",
-      "age": 27,
-      "license": 93688,
-      "email": "david.pardo@gmail.com",
-      "phone": 7753421540,
-      "password": 578757,
-      "role": null,
-      "car": [
-        {
-          "color": "#1CFA5F",
-          "license_plate": " vgc4blvT",
-          "year": 2007
-        }
-      ]
-    }
-  },
-  {
-    "id": "1dcf0c63a9ab41aca841e111d5940cc4",
-    "start_date": "2022-02-24T03:00:00.000Z",
-    "finish_date": "2022-02-26T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 425,
-    "origin": "Santiago del Estero",
-    "destination": "Ushuaia",
-    "marca": "Renault",
-    "driver": {
-      "name": "Ricardo",
-      "lastname": "Santiago",
-      "age": 42,
-      "license": 41899,
-      "email": "ricardo.santiago@gmail.com",
-      "phone": 2058670387,
-      "password": 676881,
-      "role": null,
-      "car": [
-        {
-          "color": "#EED1E6",
-          "license_plate": " qzZIqpC7",
-          "year": 2022
-        }
-      ]
-    }
-  },
-  {
-    "id": "da9ab89c5b8149f1835c55b2670df231",
-    "start_date": "2022-02-26T03:00:00.000Z",
-    "finish_date": "2022-02-28T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 672,
-    "origin": "Tandil",
-    "destination": "Mendoza",
-    "marca": "Nissan",
-    "driver": {
-      "name": "Javier",
-      "lastname": "Carrasco",
-      "age": 28,
-      "license": 42299,
-      "email": "javier.carrasco@gmail.com",
-      "phone": 342244135,
-      "password": 680081,
-      "role": null,
-      "car": [
-        {
-          "color": "#B0D59D",
-          "license_plate": " NkE1WFVC",
-          "year": 1999
-        }
-      ]
-    }
-  },
-  {
-    "id": "a72c577497b64969bbbcf1399c3ea925",
-    "start_date": "2022-03-03T03:00:00.000Z",
-    "finish_date": "2022-03-05T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 189,
-    "origin": "San Juan",
-    "destination": "Mar del Plata",
-    "marca": "Ford",
-    "driver": {
-      "name": "Lorenzo",
-      "lastname": "Alonso",
-      "age": 19,
-      "license": 15798,
-      "email": "lorenzo.alonso@gmail.com",
-      "phone": 5594018302,
-      "password": 446976,
-      "role": null,
-      "car": [
-        {
-          "color": "#6AF92D",
-          "license_plate": " HgDNTYQ5",
-          "year": 2008
-        }
-      ]
-    }
-  },
-  {
-    "id": "c99a65dcaa554443992bd550f93f4918",
-    "start_date": "2022-03-05T03:00:00.000Z",
-    "finish_date": "2022-03-07T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 190,
-    "origin": "Santa Fe",
-    "destination": "Tandil",
-    "marca": "Nissan",
-    "driver": {
-      "name": "Valentino",
-      "lastname": "Lorenzo",
-      "age": 40,
-      "license": 26260,
-      "email": "valentino.lorenzo@gmail.com",
-      "phone": 2250861924,
-      "password": 514466,
-      "role": null,
-      "car": [
-        {
-          "color": "#A77A1B",
-          "license_plate": " VOHWP4yY",
-          "year": 2006
-        }
-      ]
-    }
-  },
-  {
-    "id": "6ac0b6eb241e41269160b07c3d647223",
-    "start_date": "2022-03-10T03:00:00.000Z",
-    "finish_date": "2022-03-12T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 640,
-    "origin": "Santa Fe",
-    "destination": "La Plata",
-    "marca": "Renault",
-    "driver": {
-      "name": "Maximiliano",
-      "lastname": "Delgado",
-      "age": 47,
-      "license": 65453,
-      "email": "maximiliano.delgado@gmail.com",
-      "phone": 3355181298,
-      "password": 479360,
-      "role": null,
-      "car": [
-        {
-          "color": "#9B3310",
-          "license_plate": " NovXFcJ4",
-          "year": 2001
-        }
-      ]
-    }
-  },
-  {
-    "id": "5a36f964086045fd81dd3f030f193161",
-    "start_date": "2022-03-13T03:00:00.000Z",
-    "finish_date": "2022-03-15T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 314,
-    "origin": "San Juan",
-    "destination": "Córdoba",
-    "marca": "Toyota",
-    "driver": {
-      "name": "Mateo",
-      "lastname": "Prieto",
-      "age": 18,
-      "license": 95797,
-      "email": "mateo.prieto@gmail.com",
-      "phone": 1768247924,
-      "password": 354625,
-      "role": null,
-      "car": [
-        {
-          "color": "#F5A4E6",
-          "license_plate": " w9YZxunc",
-          "year": 2007
-        }
-      ]
-    }
-  },
-  {
-    "id": "e9dd5c557a5140399de32c9449fcadee",
-    "start_date": "2022-03-15T03:00:00.000Z",
-    "finish_date": "2022-03-17T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 806,
-    "origin": "Santiago del Estero",
-    "destination": "Santa Fe",
-    "marca": "Toyota",
-    "driver": {
-      "name": "Félix María",
-      "lastname": "Izquierdo",
-      "age": 18,
-      "license": 53998,
-      "email": "félix_maría.izquierdo@gmail.com",
-      "phone": 5279746113,
-      "password": 569883,
-      "role": null,
-      "car": [
-        {
-          "color": "#A9CBA7",
-          "license_plate": " dUuWGUhs",
-          "year": 2009
-        }
-      ]
-    }
-  },
-  {
-    "id": "1806ebb075e5466aa1b5ece8eaa77a44",
-    "start_date": "2022-03-16T03:00:00.000Z",
-    "finish_date": "2022-03-18T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 794,
-    "origin": "San Juan",
-    "destination": "Santiago del Estero",
-    "marca": "Toyota",
-    "driver": {
-      "name": "Víctor Hugo",
-      "lastname": "Duran",
-      "age": 22,
-      "license": 94503,
-      "email": "víctor_hugo.duran@gmail.com",
-      "phone": 5496403418,
-      "password": 291497,
-      "role": null,
-      "car": [
-        {
-          "color": "#67AD1B",
-          "license_plate": " ShlST3cu",
-          "year": 2021
-        }
-      ]
-    }
-  },
-  {
-    "id": "df8b528648b8414dba53572e487cc224",
-    "start_date": "2022-03-20T03:00:00.000Z",
-    "finish_date": "2022-03-22T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 55,
-    "origin": "Ushuaia",
-    "destination": "Mendoza",
-    "marca": "Ford",
-    "driver": {
-      "name": "Fernando",
-      "lastname": "Galan",
-      "age": 35,
-      "license": 6605,
-      "email": "fernando.galan@gmail.com",
-      "phone": 1457285519,
-      "password": 538032,
-      "role": null,
-      "car": [
-        {
-          "color": "#351CA8",
-          "license_plate": " wt96oNRB",
-          "year": 2002
-        }
-      ]
-    }
-  },
-  {
-    "id": "b8fedfb6abf246a08f2cdafd8c3a3382",
-    "start_date": "2022-03-21T03:00:00.000Z",
-    "finish_date": "2022-03-23T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 454,
-    "origin": "La Plata",
-    "destination": "Mendoza",
-    "marca": "Renault",
-    "driver": {
-      "name": "Thiago",
-      "lastname": "Arroyo",
-      "age": 27,
-      "license": 25483,
-      "email": "thiago.arroyo@gmail.com",
-      "phone": 815568113,
-      "password": 376353,
-      "role": null,
-      "car": [
-        {
-          "color": "#B16E6C",
-          "license_plate": " HJmqLp8k",
-          "year": 2018
-        }
-      ]
-    }
-  },
-  {
-    "id": "6649ead14d5a4c219feb36d2863944b1",
-    "start_date": "2022-04-04T03:00:00.000Z",
-    "finish_date": "2022-04-06T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 270,
-    "origin": "La Plata",
-    "destination": "Tandil",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Felipe",
-      "lastname": "Fuentes",
-      "age": 45,
-      "license": 72772,
-      "email": "felipe.fuentes@gmail.com",
-      "phone": 2076511807,
-      "password": 139235,
-      "role": null,
-      "car": [
-        {
-          "color": "#A5EB77",
-          "license_plate": " xzd5E3u0",
-          "year": 2019
-        }
-      ]
-    }
-  },
-  {
-    "id": "ff43c2e804e04b6cab5231eba646558d",
-    "start_date": "2022-04-06T03:00:00.000Z",
-    "finish_date": "2022-04-08T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 254,
-    "origin": "Rosario",
-    "destination": "San Luis",
-    "marca": "Fiat",
-    "driver": {
-      "name": "Felipe",
-      "lastname": "Carmona",
-      "age": 18,
-      "license": 38266,
-      "email": "felipe.carmona@gmail.com",
-      "phone": 9203813727,
-      "password": 875184,
-      "role": null,
-      "car": [
-        {
-          "color": "#83E3E6",
-          "license_plate": " oOAOihl2",
-          "year": 1998
-        }
-      ]
-    }
-  },
-  {
-    "id": "b0af2ef1cdff4a2d8e44c07024e021fb",
-    "start_date": "2022-04-11T03:00:00.000Z",
-    "finish_date": "2022-04-13T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 303,
-    "origin": "Santiago del Estero",
-    "destination": "Tandil",
-    "marca": "Nissan",
-    "driver": {
-      "name": "Santos",
-      "lastname": "Lorenzo",
-      "age": 45,
-      "license": 26290,
-      "email": "santos.lorenzo@gmail.com",
-      "phone": 9944693350,
-      "password": 851272,
-      "role": null,
-      "car": [
-        {
-          "color": "#FD3675",
-          "license_plate": " FlBUiyu4",
-          "year": 2005
-        }
-      ]
-    }
-  },
-  {
-    "id": "15ddbb58d93d4eb6ad68b31fe21f2c1d",
-    "start_date": "2022-04-17T03:00:00.000Z",
-    "finish_date": "2022-04-19T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 189,
-    "origin": "Córdoba",
-    "destination": "Rosario",
-    "marca": "Nissan",
-    "driver": {
-      "name": "Enrique",
-      "lastname": "Vidal",
-      "age": 32,
-      "license": 77659,
-      "email": "enrique.vidal@gmail.com",
-      "phone": 3479126601,
-      "password": 282283,
-      "role": null,
-      "car": [
-        {
-          "color": "#4CAE7C",
-          "license_plate": " eH7uYmGW",
-          "year": 2005
-        }
-      ]
-    }
-  },
-  {
-    "id": "ad8bbe0c4ef64a4f86f1d1b22e9d52a3",
-    "start_date": "2022-04-18T03:00:00.000Z",
-    "finish_date": "2022-04-20T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 159,
-    "origin": "Santiago del Estero",
-    "destination": "Mendoza",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Maykel",
-      "lastname": "Gallego",
-      "age": 32,
-      "license": 77596,
-      "email": "maykel.gallego@gmail.com",
-      "phone": 1478678664,
-      "password": 565903,
-      "role": null,
-      "car": [
-        {
-          "color": "#7CAA15",
-          "license_plate": " bkAqWraO",
-          "year": 2010
-        }
-      ]
-    }
-  },
-  {
-    "id": "42867dfdf892449fa2c3f944a86941a9",
-    "start_date": "2022-04-18T03:00:00.000Z",
-    "finish_date": "2022-04-20T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 696,
-    "origin": "Santa Fe",
-    "destination": "San Juan",
-    "marca": "Renault",
-    "driver": {
-      "name": "Luis Fernando",
-      "lastname": "Carmona",
-      "age": 21,
-      "license": 44071,
-      "email": "luis_fernando.carmona@gmail.com",
-      "phone": 951241801,
-      "password": 533085,
-      "role": null,
-      "car": [
-        {
-          "color": "#6E9FED",
-          "license_plate": " iGEC3zSx",
-          "year": 2018
-        }
-      ]
-    }
-  },
-  {
-    "id": "9e98fb339e17484e9f7ccf504fb30de6",
-    "start_date": "2022-04-19T03:00:00.000Z",
-    "finish_date": "2022-04-21T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 405,
-    "origin": "San Juan",
-    "destination": "Tucumán",
-    "marca": "Fiat",
-    "driver": {
-      "name": "Jeremy",
-      "lastname": "Vera",
-      "age": 26,
-      "license": 26264,
-      "email": "jeremy.vera@gmail.com",
-      "phone": 1983296046,
-      "password": 529766,
-      "role": null,
-      "car": [
-        {
-          "color": "#87E608",
-          "license_plate": " m5ctX8dR",
-          "year": 2005
-        }
-      ]
-    }
-  },
-  {
-    "id": "2e27934d0df34fd49d2215a47f830221",
-    "start_date": "2022-04-21T03:00:00.000Z",
-    "finish_date": "2022-04-23T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 938,
-    "origin": "San Luis",
-    "destination": "Mar del Plata",
-    "marca": "VW",
-    "driver": {
-      "name": "Kevin",
-      "lastname": "Mora",
-      "age": 44,
-      "license": 14898,
-      "email": "kevin.mora@gmail.com",
-      "phone": 6870847164,
-      "password": 206093,
-      "role": null,
-      "car": [
-        {
-          "color": "#C4593F",
-          "license_plate": " qhFMMNks",
-          "year": 2019
-        }
-      ]
-    }
-  },
-  {
-    "id": "e3dff6a2e08447ad94efc87e167686a5",
-    "start_date": "2022-04-24T03:00:00.000Z",
-    "finish_date": "2022-04-26T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 93,
-    "origin": "Córdoba",
-    "destination": "La Plata",
-    "marca": "VW",
-    "driver": {
-      "name": "Emmanuel",
-      "lastname": "Castillo",
-      "age": 18,
-      "license": 19132,
-      "email": "emmanuel.castillo@gmail.com",
-      "phone": 4442832770,
-      "password": 223469,
-      "role": null,
-      "car": [
-        {
-          "color": "#676C94",
-          "license_plate": " XuNsovQA",
-          "year": 1990
-        }
-      ]
-    }
-  },
-  {
-    "id": "52a7101a3084421694b0d8d350e2ba34",
-    "start_date": "2022-04-24T03:00:00.000Z",
-    "finish_date": "2022-04-26T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 695,
-    "origin": "Salta",
-    "destination": "Salta",
-    "marca": "Toyota",
-    "driver": {
-      "name": "Martín",
-      "lastname": "Saez",
-      "age": 23,
-      "license": 69844,
-      "email": "martín.saez@gmail.com",
-      "phone": 3545435389,
-      "password": 210210,
-      "role": null,
-      "car": [
-        {
-          "color": "#E77A43",
-          "license_plate": " PgPWSQBv",
-          "year": 1999
-        }
-      ]
-    }
-  },
-  {
-    "id": "f04e357992414e3aabdf072e1fb60dc2",
-    "start_date": "2022-04-25T03:00:00.000Z",
-    "finish_date": "2022-04-27T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 89,
-    "origin": "Mar del Plata",
-    "destination": "Ushuaia",
-    "marca": "Fiat",
-    "driver": {
-      "name": "Javier",
-      "lastname": "Mendoza",
-      "age": 50,
-      "license": 58674,
-      "email": "javier.mendoza@gmail.com",
-      "phone": 4301635047,
-      "password": 609519,
-      "role": null,
-      "car": [
-        {
-          "color": "#144A75",
-          "license_plate": " MfVC7S8v",
-          "year": 2022
-        }
-      ]
-    }
-  },
-  {
-    "id": "6089ab9f573744d9a947355ca01e09a6",
-    "start_date": "2022-04-26T03:00:00.000Z",
-    "finish_date": "2022-04-28T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 84,
-    "origin": "Ushuaia",
-    "destination": "Santa Fe",
-    "marca": "Ford",
-    "driver": {
-      "name": "Adrián",
-      "lastname": "Garcia",
-      "age": 45,
-      "license": 2627,
-      "email": "adrián.garcia@gmail.com",
-      "phone": 2804128070,
-      "password": 123878,
-      "role": null,
-      "car": [
-        {
-          "color": "#F7B3B8",
-          "license_plate": " tqXLx6P0",
-          "year": 1993
-        }
-      ]
-    }
-  },
-  {
-    "id": "15a9c77ccd3b4c1d9680f3dd0b9b62cf",
-    "start_date": "2022-05-06T03:00:00.000Z",
-    "finish_date": "2022-05-08T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 832,
-    "origin": "Santa Fe",
-    "destination": "Santa Fe",
-    "marca": "Renault",
-    "driver": {
-      "name": "Juan Pablo",
-      "lastname": "Gomez",
-      "age": 37,
-      "license": 72946,
-      "email": "juan_pablo.gomez@gmail.com",
-      "phone": 3387539945,
-      "password": 607756,
-      "role": null,
-      "car": [
-        {
-          "color": "#EFAF83",
-          "license_plate": " P47PlMv8",
-          "year": 2009
-        }
-      ]
-    }
-  },
-  {
-    "id": "15b1db884d3f43f7822f3cc24f505baa",
-    "start_date": "2022-05-11T03:00:00.000Z",
-    "finish_date": "2022-05-13T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 457,
-    "origin": "Mendoza",
-    "destination": "San Luis",
-    "marca": "Nissan",
-    "driver": {
-      "name": "Vicente",
-      "lastname": "Silva",
-      "age": 19,
-      "license": 3106,
-      "email": "vicente.silva@gmail.com",
-      "phone": 7190373781,
-      "password": 143211,
-      "role": null,
-      "car": [
-        {
-          "color": "#E4F9ED",
-          "license_plate": " kFaEjt2A",
-          "year": 2016
-        }
-      ]
-    }
-  },
-  {
-    "id": "4213b5d5708e4a6e95091d910c7a684a",
-    "start_date": "2022-05-11T03:00:00.000Z",
-    "finish_date": "2022-05-13T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 779,
-    "origin": "San Juan",
-    "destination": "Salta",
-    "marca": "Nissan",
-    "driver": {
-      "name": "Luis Emilio",
-      "lastname": "Silva",
-      "age": 25,
-      "license": 92937,
-      "email": "luis_emilio.silva@gmail.com",
-      "phone": 7897781261,
-      "password": 526470,
-      "role": null,
-      "car": [
-        {
-          "color": "#1A76EE",
-          "license_plate": " DWU8EAIO",
-          "year": 2009
-        }
-      ]
-    }
-  },
-  {
-    "id": "4ac46a2807f4458b84416d1b7a2b8e8a",
-    "start_date": "2022-05-16T03:00:00.000Z",
-    "finish_date": "2022-05-18T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 470,
-    "origin": "Santiago del Estero",
-    "destination": "San Juan",
-    "marca": "Fiat",
-    "driver": {
-      "name": "Maximiliano",
-      "lastname": "Arias",
-      "age": 21,
-      "license": 47198,
-      "email": "maximiliano.arias@gmail.com",
-      "phone": 8426515699,
-      "password": 431553,
-      "role": null,
-      "car": [
-        {
-          "color": "#381814",
-          "license_plate": " KF4w0MXv",
-          "year": 2014
-        }
-      ]
-    }
-  },
-  {
-    "id": "63bef035b6784cdaaee2d67d4e4759dc",
-    "start_date": "2022-05-18T03:00:00.000Z",
-    "finish_date": "2022-05-20T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 50,
-    "origin": "La Plata",
-    "destination": "Córdoba",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Maykel",
-      "lastname": "Sierra",
-      "age": 42,
-      "license": 58251,
-      "email": "maykel.sierra@gmail.com",
-      "phone": 2838953023,
-      "password": 458373,
-      "role": null,
-      "car": [
-        {
-          "color": "#DB1812",
-          "license_plate": " wYUna3du",
-          "year": 2011
-        }
-      ]
-    }
-  },
-  {
-    "id": "ad08856de1d8416cbbdc7bf2d4ac23b2",
-    "start_date": "2022-05-19T03:00:00.000Z",
-    "finish_date": "2022-05-21T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 23,
-    "origin": "Ushuaia",
-    "destination": "La Plata",
-    "marca": "Fiat",
-    "driver": {
-      "name": "Justin",
-      "lastname": "Alvarez",
-      "age": 43,
-      "license": 95836,
-      "email": "justin.alvarez@gmail.com",
-      "phone": 1754919434,
-      "password": 806894,
-      "role": null,
-      "car": [
-        {
-          "color": "#2B769C",
-          "license_plate": " s47GwQcW",
-          "year": 2015
-        }
-      ]
-    }
-  },
-  {
-    "id": "b796359a93ed4708b1a88ed9c9ded7ee",
-    "start_date": "2022-05-21T03:00:00.000Z",
-    "finish_date": "2022-05-23T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 251,
-    "origin": "Mendoza",
-    "destination": "Mar del Plata",
-    "marca": "Renault",
-    "driver": {
-      "name": "Juan José",
-      "lastname": "Crespo",
-      "age": 31,
-      "license": 95479,
-      "email": "juan_josé.crespo@gmail.com",
-      "phone": 7072777938,
-      "password": 786894,
-      "role": null,
-      "car": [
-        {
-          "color": "#52A8ED",
-          "license_plate": " rTcNHGoY",
-          "year": 2018
-        }
-      ]
-    }
-  },
-  {
-    "id": "314139c57d06439e83c96a69c1f2575a",
-    "start_date": "2022-05-22T03:00:00.000Z",
-    "finish_date": "2022-05-24T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 60,
-    "origin": "Tucumán",
-    "destination": "Tandil",
-    "marca": "VW",
-    "driver": {
-      "name": "Juan Manuel",
-      "lastname": "Fernandez",
-      "age": 29,
-      "license": 96003,
-      "email": "juan_manuel.fernandez@gmail.com",
-      "phone": 8600240346,
-      "password": 574148,
-      "role": null,
-      "car": [
-        {
-          "color": "#211EFE",
-          "license_plate": " ORprkRU5",
-          "year": 2004
-        }
-      ]
-    }
-  },
-  {
-    "id": "f9d2042a2f14495bb7c0c8d73d6320db",
-    "start_date": "2022-05-22T03:00:00.000Z",
-    "finish_date": "2022-05-24T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 900,
-    "origin": "Santiago del Estero",
-    "destination": "Tandil",
-    "marca": "VW",
-    "driver": {
-      "name": "Miguel  ngel",
-      "lastname": "Silva",
-      "age": 45,
-      "license": 89561,
-      "email": "miguel__ngel.silva@gmail.com",
-      "phone": 290543086,
-      "password": 234752,
-      "role": null,
-      "car": [
-        {
-          "color": "#9E8DE8",
-          "license_plate": " Og24sWeH",
-          "year": 2003
-        }
-      ]
-    }
-  },
-  {
-    "id": "9b580b75423c44538f45c3a9395a70d1",
-    "start_date": "2022-05-24T03:00:00.000Z",
-    "finish_date": "2022-05-26T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 635,
-    "origin": "La Plata",
-    "destination": "San Juan",
-    "marca": "Nissan",
-    "driver": {
-      "name": "Ángel",
-      "lastname": "Galan",
-      "age": 18,
-      "license": 24488,
-      "email": "ángel.galan@gmail.com",
-      "phone": 4987168630,
-      "password": 141079,
-      "role": null,
-      "car": [
-        {
-          "color": "#299774",
-          "license_plate": " Dyadu4nD",
-          "year": 2003
-        }
-      ]
-    }
-  },
-  {
-    "id": "4063ddc24a154c098ba78302def77307",
-    "start_date": "2022-05-27T03:00:00.000Z",
-    "finish_date": "2022-05-29T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 822,
-    "origin": "San Luis",
-    "destination": "Rosario",
-    "marca": "Ford",
-    "driver": {
-      "name": "Marco Antonio",
-      "lastname": "Marcos",
-      "age": 22,
-      "license": 66882,
-      "email": "marco_antonio.marcos@gmail.com",
-      "phone": 8656458035,
-      "password": 671259,
-      "role": null,
-      "car": [
-        {
-          "color": "#25D654",
-          "license_plate": " tcjk2c5X",
-          "year": 1999
-        }
-      ]
-    }
-  },
-  {
-    "id": "6076b0ee504749ed8ca8fd219d5a6785",
-    "start_date": "2022-06-03T03:00:00.000Z",
-    "finish_date": "2022-06-05T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 65,
-    "origin": "Rosario",
-    "destination": "Mendoza",
-    "marca": "Fiat",
-    "driver": {
-      "name": "Samuel David",
-      "lastname": "Marin",
-      "age": 47,
-      "license": 85501,
-      "email": "samuel_david.marin@gmail.com",
-      "phone": 663498798,
-      "password": 460786,
-      "role": null,
-      "car": [
-        {
-          "color": "#644CA1",
-          "license_plate": " CXgNasBL",
-          "year": 2014
-        }
-      ]
-    }
-  },
-  {
-    "id": "241a51037a9c471083d373247272bb44",
-    "start_date": "2022-06-05T03:00:00.000Z",
-    "finish_date": "2022-06-07T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 194,
-    "origin": "Rosario",
-    "destination": "Santa Fe",
-    "marca": "Ford",
-    "driver": {
-      "name": "Eduardo",
-      "lastname": "Arias",
-      "age": 20,
-      "license": 27688,
-      "email": "eduardo.arias@gmail.com",
-      "phone": 8501347948,
-      "password": 521474,
-      "role": null,
-      "car": [
-        {
-          "color": "#6D9C1F",
-          "license_plate": " vTnpIQFJ",
-          "year": 1990
-        }
-      ]
-    }
-  },
-  {
-    "id": "6afa4de5e0fb442a83bd0f8c1b1d75ee",
-    "start_date": "2022-06-08T03:00:00.000Z",
-    "finish_date": "2022-06-10T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 752,
-    "origin": "Ushuaia",
-    "destination": "Santiago del Estero",
-    "marca": "Fiat",
-    "driver": {
-      "name": "Daniel",
-      "lastname": "Lozano",
-      "age": 19,
-      "license": 56338,
-      "email": "daniel.lozano@gmail.com",
-      "phone": 3599927134,
-      "password": 256099,
-      "role": null,
-      "car": [
-        {
-          "color": "#DAFA09",
-          "license_plate": " GHJzc8L4",
-          "year": 2016
-        }
-      ]
-    }
-  },
-  {
-    "id": "568e62ce6eed4bb7a689a129e996a474",
-    "start_date": "2022-06-15T03:00:00.000Z",
-    "finish_date": "2022-06-17T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 630,
-    "origin": "La Plata",
-    "destination": "Mendoza",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Víctor",
-      "lastname": "Muñoz",
-      "age": 28,
-      "license": 79766,
-      "email": "víctor.muñoz@gmail.com",
-      "phone": 5932856893,
-      "password": 587848,
-      "role": null,
-      "car": [
-        {
-          "color": "#272C8E",
-          "license_plate": " TG9Yv1Yy",
-          "year": 2008
-        }
-      ]
-    }
-  },
-  {
-    "id": "756014e8e7c6481c8ecb11f8fe2522e2",
-    "start_date": "2022-06-16T03:00:00.000Z",
-    "finish_date": "2022-06-18T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 568,
-    "origin": "Rosario",
-    "destination": "Mendoza",
-    "marca": "Renault",
-    "driver": {
-      "name": "Javier",
-      "lastname": "Mora",
-      "age": 29,
-      "license": 63898,
-      "email": "javier.mora@gmail.com",
-      "phone": 9462478199,
-      "password": 676243,
-      "role": null,
-      "car": [
-        {
-          "color": "#71F605",
-          "license_plate": " Bc4jBj7S",
-          "year": 2021
-        }
-      ]
-    }
-  },
-  {
-    "id": "e2b12208b75e4f5781ffd17bd49d154f",
-    "start_date": "2022-06-18T03:00:00.000Z",
-    "finish_date": "2022-06-20T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 883,
-    "origin": "Córdoba",
-    "destination": "Santiago del Estero",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Víctor",
-      "lastname": "Rodriguez",
-      "age": 27,
-      "license": 36951,
-      "email": "víctor.rodriguez@gmail.com",
-      "phone": 6320697932,
-      "password": 990128,
-      "role": null,
-      "car": [
-        {
-          "color": "#CDA573",
-          "license_plate": " zDGRdbxz",
-          "year": 1990
-        }
-      ]
-    }
-  },
-  {
-    "id": "68bfb1f6eb0046cc86eba579473d032d",
-    "start_date": "2022-06-20T03:00:00.000Z",
-    "finish_date": "2022-06-22T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 618,
-    "origin": "Mar del Plata",
-    "destination": "Santiago del Estero",
-    "marca": "Fiat",
-    "driver": {
-      "name": "Facundo",
-      "lastname": "Crespo",
-      "age": 27,
-      "license": 93776,
-      "email": "facundo.crespo@gmail.com",
-      "phone": 9380870214,
-      "password": 749762,
-      "role": null,
-      "car": [
-        {
-          "color": "#20A7CF",
-          "license_plate": " tiR9evYA",
-          "year": 2001
-        }
-      ]
-    }
-  },
-  {
-    "id": "3d67e5d952ec44f587a7ab518aaa3c86",
-    "start_date": "2022-06-21T03:00:00.000Z",
-    "finish_date": "2022-06-23T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 874,
-    "origin": "Mar del Plata",
-    "destination": "Mar del Plata",
-    "marca": "VW",
-    "driver": {
-      "name": "Diego",
-      "lastname": "Luque",
-      "age": 32,
-      "license": 92861,
-      "email": "diego.luque@gmail.com",
-      "phone": 7183193215,
-      "password": 997482,
-      "role": null,
-      "car": [
-        {
-          "color": "#597CCF",
-          "license_plate": " H6tVwA4q",
-          "year": 2017
-        }
-      ]
-    }
-  },
-  {
-    "id": "8875aa11cea6456f9a81d8f5ca005d9d",
-    "start_date": "2022-06-25T03:00:00.000Z",
-    "finish_date": "2022-06-27T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 440,
-    "origin": "Buenos Aires",
-    "destination": "Santiago del Estero",
-    "marca": "Toyota",
-    "driver": {
-      "name": "Félix",
-      "lastname": "Aguilar",
-      "age": 38,
-      "license": 58356,
-      "email": "félix.aguilar@gmail.com",
-      "phone": 8975862184,
-      "password": 460841,
-      "role": null,
-      "car": [
-        {
-          "color": "#52D9F6",
-          "license_plate": " 4caQFXs3",
-          "year": 1994
-        }
-      ]
-    }
-  },
-  {
-    "id": "0eeab4b336fc4a07a0156d53046f261f",
-    "start_date": "2022-06-26T03:00:00.000Z",
-    "finish_date": "2022-06-28T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 731,
-    "origin": "San Luis",
-    "destination": "Salta",
-    "marca": "Fiat",
-    "driver": {
-      "name": "Mario",
-      "lastname": "Leon",
-      "age": 34,
-      "license": 82255,
-      "email": "mario.leon@gmail.com",
-      "phone": 2921187755,
-      "password": 278805,
-      "role": null,
-      "car": [
-        {
-          "color": "#5B9BEE",
-          "license_plate": " QgeOexCC",
-          "year": 2012
-        }
-      ]
-    }
-  },
-  {
-    "id": "ad2fb5da7f534e8794728ef0c6976164",
-    "start_date": "2022-06-27T03:00:00.000Z",
-    "finish_date": "2022-06-29T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 662,
-    "origin": "Salta",
-    "destination": "Buenos Aires",
-    "marca": "Toyota",
-    "driver": {
-      "name": "Bautista",
-      "lastname": "Alvarez",
-      "age": 31,
-      "license": 96680,
-      "email": "bautista.alvarez@gmail.com",
-      "phone": 7531986679,
-      "password": 827123,
-      "role": null,
-      "car": [
-        {
-          "color": "#9BF1BA",
-          "license_plate": " f2jNPYuY",
-          "year": 2011
-        }
-      ]
-    }
-  },
-  {
-    "id": "7bff4c7f424648e4a8807bb2daa4642b",
-    "start_date": "2022-06-27T03:00:00.000Z",
-    "finish_date": "2022-06-29T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 771,
-    "origin": "Buenos Aires",
-    "destination": "San Luis",
-    "marca": "Fiat",
-    "driver": {
-      "name": "Juan José",
-      "lastname": "Franco",
-      "age": 33,
-      "license": 35580,
-      "email": "juan_josé.franco@gmail.com",
-      "phone": 9145186878,
-      "password": 620913,
-      "role": null,
-      "car": [
-        {
-          "color": "#16463B",
-          "license_plate": " RFzDgaGv",
-          "year": 2003
-        }
-      ]
-    }
-  },
-  {
-    "id": "adcdbdeb35ab43f79b1a21bc452059cb",
-    "start_date": "2022-07-04T03:00:00.000Z",
-    "finish_date": "2022-07-06T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 896,
-    "origin": "La Plata",
-    "destination": "San Juan",
-    "marca": "Renault",
-    "driver": {
-      "name": "Samuel David",
-      "lastname": "Soriano",
-      "age": 44,
-      "license": 61637,
-      "email": "samuel_david.soriano@gmail.com",
-      "phone": 6418656050,
-      "password": 817118,
-      "role": null,
-      "car": [
-        {
-          "color": "#C13318",
-          "license_plate": " mOo7QUAZ",
-          "year": 1999
-        }
-      ]
-    }
-  },
-  {
-    "id": "2fb9ac9e1da74ac58a9481b76da82b91",
-    "start_date": "2022-07-06T03:00:00.000Z",
-    "finish_date": "2022-07-08T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 645,
-    "origin": "Tucumán",
-    "destination": "Rosario",
-    "marca": "Ford",
-    "driver": {
-      "name": "Santino",
-      "lastname": "Rivas",
-      "age": 45,
-      "license": 47214,
-      "email": "santino.rivas@gmail.com",
-      "phone": 4964911722,
-      "password": 393296,
-      "role": null,
-      "car": [
-        {
-          "color": "#191BD2",
-          "license_plate": " HQdXTo04",
-          "year": 2007
-        }
-      ]
-    }
-  },
-  {
-    "id": "0939fab41f664e7b9297e0c5ffdeb7b6",
-    "start_date": "2022-07-07T03:00:00.000Z",
-    "finish_date": "2022-07-09T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 359,
-    "origin": "San Juan",
-    "destination": "Córdoba",
-    "marca": "Nissan",
-    "driver": {
-      "name": "Luis Fernando",
-      "lastname": "Prieto",
-      "age": 38,
-      "license": 87544,
-      "email": "luis_fernando.prieto@gmail.com",
-      "phone": 7123347476,
-      "password": 687921,
-      "role": null,
-      "car": [
-        {
-          "color": "#4E19A4",
-          "license_plate": " 8fP7jSkA",
-          "year": 2018
-        }
-      ]
-    }
-  },
-  {
-    "id": "385e56a1076045c38aa905cb19b6fcd1",
-    "start_date": "2022-07-10T03:00:00.000Z",
-    "finish_date": "2022-07-12T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 976,
-    "origin": "Buenos Aires",
-    "destination": "Tandil",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Jayden",
-      "lastname": "Medina",
-      "age": 34,
-      "license": 71621,
-      "email": "jayden.medina@gmail.com",
-      "phone": 6126747927,
-      "password": 485975,
-      "role": null,
-      "car": [
-        {
-          "color": "#DE4FB0",
-          "license_plate": " CVNLNXau",
-          "year": 2005
-        }
-      ]
-    }
-  },
-  {
-    "id": "72a5d0e26eda4c05a858fea25ecdec5a",
-    "start_date": "2022-07-10T03:00:00.000Z",
-    "finish_date": "2022-07-12T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 663,
-    "origin": "Tandil",
-    "destination": "Santiago del Estero",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Jorge",
-      "lastname": "Marcos",
-      "age": 31,
-      "license": 57899,
-      "email": "jorge.marcos@gmail.com",
-      "phone": 3673081023,
-      "password": 239394,
-      "role": null,
-      "car": [
-        {
-          "color": "#95595F",
-          "license_plate": " 7EHdIWno",
-          "year": 1997
-        }
-      ]
-    }
-  },
-  {
-    "id": "7616b8440f7b40078bc54043302b98ce",
-    "start_date": "2022-07-12T03:00:00.000Z",
-    "finish_date": "2022-07-14T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 597,
-    "origin": "Santa Fe",
-    "destination": "Tandil",
-    "marca": "Toyota",
-    "driver": {
-      "name": "Lautaro",
-      "lastname": "Mendez",
-      "age": 26,
-      "license": 96330,
-      "email": "lautaro.mendez@gmail.com",
-      "phone": 8012842512,
-      "password": 585728,
-      "role": null,
-      "car": [
-        {
-          "color": "#5B1755",
-          "license_plate": " X7YNyLV9",
-          "year": 2009
-        }
-      ]
-    }
-  },
-  {
-    "id": "c3bf4358c19d44c49bbe854c004e7669",
-    "start_date": "2022-07-17T03:00:00.000Z",
-    "finish_date": "2022-07-19T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 947,
-    "origin": "Tucumán",
-    "destination": "San Luis",
-    "marca": "VW",
-    "driver": {
-      "name": "Juan David",
-      "lastname": "Diaz",
-      "age": 41,
-      "license": 12167,
-      "email": "juan_david.diaz@gmail.com",
-      "phone": 9481878699,
-      "password": 609969,
-      "role": null,
-      "car": [
-        {
-          "color": "#11F881",
-          "license_plate": " clqnskzk",
-          "year": 1995
-        }
-      ]
-    }
-  },
-  {
-    "id": "ba0dd92372c041fe97313102abd727a8",
-    "start_date": "2022-07-18T03:00:00.000Z",
-    "finish_date": "2022-07-20T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 197,
-    "origin": "Rosario",
-    "destination": "Buenos Aires",
-    "marca": "Nissan",
-    "driver": {
-      "name": "Emiliano",
-      "lastname": "Saez",
-      "age": 31,
-      "license": 51172,
-      "email": "emiliano.saez@gmail.com",
-      "phone": 9345805691,
-      "password": 123190,
-      "role": null,
-      "car": [
-        {
-          "color": "#5909F6",
-          "license_plate": " ro7SjJgb",
-          "year": 1992
-        }
-      ]
-    }
-  },
-  {
-    "id": "13f972b0bf6c4eeea60087ba8faa65db",
-    "start_date": "2022-07-22T03:00:00.000Z",
-    "finish_date": "2022-07-24T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 390,
-    "origin": "Mendoza",
-    "destination": "San Luis",
-    "marca": "Ford",
-    "driver": {
-      "name": "Sebastián",
-      "lastname": "Ortiz",
-      "age": 41,
-      "license": 69868,
-      "email": "sebastián.ortiz@gmail.com",
-      "phone": 2897986477,
-      "password": 670918,
-      "role": null,
-      "car": [
-        {
-          "color": "#142342",
-          "license_plate": " 19jtqnz7",
-          "year": 2014
-        }
-      ]
-    }
-  },
-  {
-    "id": "a905b67a7fba447cabfe246a62946719",
-    "start_date": "2022-07-24T03:00:00.000Z",
-    "finish_date": "2022-07-26T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 135,
-    "origin": "Mendoza",
-    "destination": "San Luis",
-    "marca": "Ford",
-    "driver": {
-      "name": "José Manuel",
-      "lastname": "Montero",
-      "age": 24,
-      "license": 26744,
-      "email": "josé_manuel.montero@gmail.com",
-      "phone": 8051200679,
-      "password": 721468,
-      "role": null,
-      "car": [
-        {
-          "color": "#E2F2D2",
-          "license_plate": " 9qezVs4o",
-          "year": 2000
-        }
-      ]
-    }
-  },
-  {
-    "id": "17e1d3638d2b429c85d03724249fd2bd",
-    "start_date": "2022-08-05T03:00:00.000Z",
-    "finish_date": "2022-08-07T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 371,
-    "origin": "Ushuaia",
-    "destination": "Santiago del Estero",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Cristóbal",
-      "lastname": "Arroyo",
-      "age": 48,
-      "license": 36454,
-      "email": "cristóbal.arroyo@gmail.com",
-      "phone": 1759997142,
-      "password": 173593,
-      "role": null,
-      "car": [
-        {
-          "color": "#D986A6",
-          "license_plate": " WAkPmyrB",
-          "year": 2006
-        }
-      ]
-    }
-  },
-  {
-    "id": "965bd525a2744abea93d328869186ab7",
-    "start_date": "2022-08-07T03:00:00.000Z",
-    "finish_date": "2022-08-09T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 75,
-    "origin": "Santa Fe",
-    "destination": "Santiago del Estero",
-    "marca": "Toyota",
-    "driver": {
-      "name": "Francisco Javier",
-      "lastname": "Gonzalez",
-      "age": 41,
-      "license": 88827,
-      "email": "francisco_javier.gonzalez@gmail.com",
-      "phone": 8486612452,
-      "password": 963383,
-      "role": null,
-      "car": [
-        {
-          "color": "#426725",
-          "license_plate": " yphe11Dj",
-          "year": 2016
-        }
-      ]
-    }
-  },
-  {
-    "id": "b0ab6b3899044b2eaffa05cbbc875910",
-    "start_date": "2022-08-07T03:00:00.000Z",
-    "finish_date": "2022-08-09T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 964,
-    "origin": "Córdoba",
-    "destination": "San Luis",
-    "marca": "Fiat",
-    "driver": {
-      "name": "José Manuel",
-      "lastname": "Sierra",
-      "age": 41,
-      "license": 72757,
-      "email": "josé_manuel.sierra@gmail.com",
-      "phone": 6987095699,
-      "password": 643482,
-      "role": null,
-      "car": [
-        {
-          "color": "#72CD75",
-          "license_plate": " 11FrrJ1J",
-          "year": 2012
-        }
-      ]
-    }
-  },
-  {
-    "id": "70612b193c424de59c6682b3e9cc4f5e",
-    "start_date": "2022-08-08T03:00:00.000Z",
-    "finish_date": "2022-08-10T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 151,
-    "origin": "Salta",
-    "destination": "San Juan",
-    "marca": "VW",
-    "driver": {
-      "name": "Jesús Víctor",
-      "lastname": "Montes",
-      "age": 48,
-      "license": 10730,
-      "email": "jesús_víctor.montes@gmail.com",
-      "phone": 9210074071,
-      "password": 928679,
-      "role": null,
-      "car": [
-        {
-          "color": "#6122EE",
-          "license_plate": " NAwhPrlZ",
-          "year": 2009
-        }
-      ]
-    }
-  },
-  {
-    "id": "c5660be962c9457f9b32fb193f177649",
-    "start_date": "2022-08-08T03:00:00.000Z",
-    "finish_date": "2022-08-10T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 29,
-    "origin": "Salta",
-    "destination": "Santa Fe",
-    "marca": "VW",
-    "driver": {
-      "name": "Anthony",
-      "lastname": "Lara",
-      "age": 19,
-      "license": 12260,
-      "email": "anthony.lara@gmail.com",
-      "phone": 6683178815,
-      "password": 613536,
-      "role": null,
-      "car": [
-        {
-          "color": "#01C801",
-          "license_plate": " a8TGFnE1",
-          "year": 2007
-        }
-      ]
-    }
-  },
-  {
-    "id": "f5e0dfce86ef4cd5bce50cf4cb7f050c",
-    "start_date": "2022-08-09T03:00:00.000Z",
-    "finish_date": "2022-08-11T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 318,
-    "origin": "Buenos Aires",
-    "destination": "Rosario",
-    "marca": "Fiat",
-    "driver": {
-      "name": "José Manuel",
-      "lastname": "Ramos",
-      "age": 36,
-      "license": 96531,
-      "email": "josé_manuel.ramos@gmail.com",
-      "phone": 839684522,
-      "password": 954829,
-      "role": null,
-      "car": [
-        {
-          "color": "#350BD2",
-          "license_plate": " WIqwfs7z",
-          "year": 2016
-        }
-      ]
-    }
-  },
-  {
-    "id": "da963065f4af46a99deeee9203d13931",
-    "start_date": "2022-08-11T03:00:00.000Z",
-    "finish_date": "2022-08-13T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 108,
-    "origin": "Santa Fe",
-    "destination": "San Luis",
-    "marca": "Toyota",
-    "driver": {
-      "name": "Isaac",
-      "lastname": "Rey",
-      "age": 20,
-      "license": 71923,
-      "email": "isaac.rey@gmail.com",
-      "phone": 4689250963,
-      "password": 794806,
-      "role": null,
-      "car": [
-        {
-          "color": "#C62DC3",
-          "license_plate": " RaLVFTXO",
-          "year": 2002
-        }
-      ]
-    }
-  },
-  {
-    "id": "27a1e4d099a64537aabc562ae480219b",
-    "start_date": "2022-08-11T03:00:00.000Z",
-    "finish_date": "2022-08-13T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 387,
-    "origin": "Ushuaia",
-    "destination": "Buenos Aires",
-    "marca": "Ford",
-    "driver": {
-      "name": "David",
-      "lastname": "Santos",
-      "age": 21,
-      "license": 34554,
-      "email": "david.santos@gmail.com",
-      "phone": 6779416722,
-      "password": 421171,
-      "role": null,
-      "car": [
-        {
-          "color": "#088139",
-          "license_plate": " GpRz7omE",
-          "year": 2014
-        }
-      ]
-    }
-  },
-  {
-    "id": "efc4f50bb45a43b6a8dd79a8f1fa80ed",
-    "start_date": "2022-08-11T03:00:00.000Z",
-    "finish_date": "2022-08-13T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 863,
-    "origin": "San Juan",
-    "destination": "Salta",
-    "marca": "Renault",
-    "driver": {
-      "name": "Maximiliano",
-      "lastname": "Ortiz",
-      "age": 28,
-      "license": 51545,
-      "email": "maximiliano.ortiz@gmail.com",
-      "phone": 3450509959,
-      "password": 798403,
-      "role": null,
-      "car": [
-        {
-          "color": "#1666FD",
-          "license_plate": " MAd8hE0y",
-          "year": 1997
-        }
-      ]
-    }
-  },
-  {
-    "id": "b9374d5809db4ef1802e37a4b08ee93a",
-    "start_date": "2022-08-12T03:00:00.000Z",
-    "finish_date": "2022-08-14T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 564,
-    "origin": "Santiago del Estero",
-    "destination": "San Luis",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Carlos Roberto",
-      "lastname": "Rivas",
-      "age": 21,
-      "license": 40857,
-      "email": "carlos_roberto.rivas@gmail.com",
-      "phone": 7792409291,
-      "password": 990656,
-      "role": null,
-      "car": [
-        {
-          "color": "#D51815",
-          "license_plate": " tJ32o19D",
-          "year": 2009
-        }
-      ]
-    }
-  },
-  {
-    "id": "ba2abbd461ec4cddbfe954bd06aa07bc",
-    "start_date": "2022-08-19T03:00:00.000Z",
-    "finish_date": "2022-08-21T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 887,
-    "origin": "San Luis",
-    "destination": "San Luis",
-    "marca": "Toyota",
-    "driver": {
-      "name": "Alonso",
-      "lastname": "Garcia",
-      "age": 40,
-      "license": 62728,
-      "email": "alonso.garcia@gmail.com",
-      "phone": 7290118583,
-      "password": 718521,
-      "role": null,
-      "car": [
-        {
-          "color": "#0D37A1",
-          "license_plate": " mf8VDRSW",
-          "year": 2018
-        }
-      ]
-    }
-  },
-  {
-    "id": "515f1fe403564f79bbdc48e6a4150d72",
-    "start_date": "2022-08-19T03:00:00.000Z",
-    "finish_date": "2022-08-21T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 853,
-    "origin": "Tucumán",
-    "destination": "Córdoba",
-    "marca": "Ford",
-    "driver": {
-      "name": "Daniel",
-      "lastname": "Esteban",
-      "age": 47,
-      "license": 32921,
-      "email": "daniel.esteban@gmail.com",
-      "phone": 1452091440,
-      "password": 813972,
-      "role": null,
-      "car": [
-        {
-          "color": "#A4EB6F",
-          "license_plate": " owcVfMlY",
-          "year": 2002
-        }
-      ]
-    }
-  },
-  {
-    "id": "39d436a07cad46e4af0a2efc2a0af592",
-    "start_date": "2022-08-20T03:00:00.000Z",
-    "finish_date": "2022-08-22T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 926,
-    "origin": "Santa Fe",
-    "destination": "Ushuaia",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Hugo",
-      "lastname": "Iglesias",
-      "age": 36,
-      "license": 2167,
-      "email": "hugo.iglesias@gmail.com",
-      "phone": 9045049462,
-      "password": 903880,
-      "role": null,
-      "car": [
-        {
-          "color": "#A4307F",
-          "license_plate": " u23rSjk0",
-          "year": 2018
-        }
-      ]
-    }
-  },
-  {
-    "id": "11534d7689e140fca28e3c3f864a4c51",
-    "start_date": "2022-08-23T03:00:00.000Z",
-    "finish_date": "2022-08-25T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 387,
-    "origin": "San Juan",
-    "destination": "Tucumán",
-    "marca": "VW",
-    "driver": {
-      "name": "Gustavo Adolfo",
-      "lastname": "Arias",
-      "age": 42,
-      "license": 72126,
-      "email": "gustavo_adolfo.arias@gmail.com",
-      "phone": 5719371548,
-      "password": 466806,
-      "role": null,
-      "car": [
-        {
-          "color": "#761B2B",
-          "license_plate": " hEfi9ZIq",
-          "year": 2006
-        }
-      ]
-    }
-  },
-  {
-    "id": "62a4066e08024883b2f220be6fe869ff",
-    "start_date": "2022-09-05T03:00:00.000Z",
-    "finish_date": "2022-09-07T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 494,
-    "origin": "Córdoba",
-    "destination": "Santa Fe",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Jacob",
-      "lastname": "Fernandez",
-      "age": 43,
-      "license": 99706,
-      "email": "jacob.fernandez@gmail.com",
-      "phone": 5461015338,
-      "password": 445093,
-      "role": null,
-      "car": [
-        {
-          "color": "#E8A031",
-          "license_plate": " at1Vyb2g",
-          "year": 2016
-        }
-      ]
-    }
-  },
-  {
-    "id": "1bbe68f285d94c8886256ca3df9ba290",
-    "start_date": "2022-09-06T03:00:00.000Z",
-    "finish_date": "2022-09-08T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 101,
-    "origin": "Tandil",
-    "destination": "Mar del Plata",
-    "marca": "Fiat",
-    "driver": {
-      "name": "Facundo",
-      "lastname": "Roman",
-      "age": 44,
-      "license": 37764,
-      "email": "facundo.roman@gmail.com",
-      "phone": 6851823402,
-      "password": 180309,
-      "role": null,
-      "car": [
-        {
-          "color": "#0A1B71",
-          "license_plate": " yfmqxrNS",
-          "year": 1996
-        }
-      ]
-    }
-  },
-  {
-    "id": "fbbd6f57ef2749ad9bb977e69b7940f6",
-    "start_date": "2022-09-07T03:00:00.000Z",
-    "finish_date": "2022-09-09T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 381,
-    "origin": "Santiago del Estero",
-    "destination": "Mar del Plata",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Jesús",
-      "lastname": "Ibañez",
-      "age": 27,
-      "license": 74148,
-      "email": "jesús.ibañez@gmail.com",
-      "phone": 9119303310,
-      "password": 468629,
-      "role": null,
-      "car": [
-        {
-          "color": "#636A37",
-          "license_plate": " JSOZz4s2",
-          "year": 2002
-        }
-      ]
-    }
-  },
-  {
-    "id": "ca67ce8c3e2546359ede9e17cf219316",
-    "start_date": "2022-09-15T03:00:00.000Z",
-    "finish_date": "2022-09-17T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 449,
-    "origin": "Salta",
-    "destination": "Rosario",
-    "marca": "Fiat",
-    "driver": {
-      "name": "Jorge  Alberto",
-      "lastname": "Izquierdo",
-      "age": 31,
-      "license": 49782,
-      "email": "jorge__alberto.izquierdo@gmail.com",
-      "phone": 7023326932,
-      "password": 862946,
-      "role": null,
-      "car": [
-        {
-          "color": "#54397A",
-          "license_plate": " YqP0uN8o",
-          "year": 1993
-        }
-      ]
-    }
-  },
-  {
-    "id": "d14d2bdc68214ca0961c61da74d38531",
-    "start_date": "2022-09-15T03:00:00.000Z",
-    "finish_date": "2022-09-17T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 572,
-    "origin": "Mendoza",
-    "destination": "Tandil",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Juan Sebastián",
-      "lastname": "Alvarez",
-      "age": 45,
-      "license": 67765,
-      "email": "juan_sebastián.alvarez@gmail.com",
-      "phone": 2546588451,
-      "password": 895115,
-      "role": null,
-      "car": [
-        {
-          "color": "#2C0093",
-          "license_plate": " tziyuGtN",
-          "year": 2018
-        }
-      ]
-    }
-  },
-  {
-    "id": "e3dae20d8a1e463eb97ff3507659ced3",
-    "start_date": "2022-09-20T03:00:00.000Z",
-    "finish_date": "2022-09-22T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 706,
-    "origin": "Buenos Aires",
-    "destination": "San Juan",
-    "marca": "Nissan",
-    "driver": {
-      "name": "Miguel",
-      "lastname": "Ruiz",
-      "age": 38,
-      "license": 93341,
-      "email": "miguel.ruiz@gmail.com",
-      "phone": 3386006535,
-      "password": 686151,
-      "role": null,
-      "car": [
-        {
-          "color": "#379806",
-          "license_plate": " bvGIT3AP",
-          "year": 2017
-        }
-      ]
-    }
-  },
-  {
-    "id": "a8927ccbac434b6abb1473802232e838",
-    "start_date": "2022-09-21T03:00:00.000Z",
-    "finish_date": "2022-09-23T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 176,
-    "origin": "Ushuaia",
-    "destination": "Córdoba",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Ricardo",
-      "lastname": "Casado",
-      "age": 18,
-      "license": 47067,
-      "email": "ricardo.casado@gmail.com",
-      "phone": 4775127201,
-      "password": 941979,
-      "role": null,
-      "car": [
-        {
-          "color": "#C27DC0",
-          "license_plate": " ZMZceF84",
-          "year": 2014
-        }
-      ]
-    }
-  },
-  {
-    "id": "978d1d99bc00402cadab68340cd48d13",
-    "start_date": "2022-09-24T03:00:00.000Z",
-    "finish_date": "2022-09-26T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 741,
-    "origin": "Santiago del Estero",
-    "destination": "Mar del Plata",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Jerónimo",
-      "lastname": "Campos",
-      "age": 41,
-      "license": 16581,
-      "email": "jerónimo.campos@gmail.com",
-      "phone": 2065008463,
-      "password": 789130,
-      "role": null,
-      "car": [
-        {
-          "color": "#9BF125",
-          "license_plate": " GKUmcBYF",
-          "year": 1992
-        }
-      ]
-    }
-  },
-  {
-    "id": "8f279fdd8c6b4464b9c2533d62d232f1",
-    "start_date": "2022-09-26T03:00:00.000Z",
-    "finish_date": "2022-09-28T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 168,
-    "origin": "Tucumán",
-    "destination": "Santa Fe",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Lian",
-      "lastname": "Esteban",
-      "age": 40,
-      "license": 83084,
-      "email": "lian.esteban@gmail.com",
-      "phone": 5264233318,
-      "password": 975503,
-      "role": null,
-      "car": [
-        {
-          "color": "#4E8F85",
-          "license_plate": " Yyf4pElD",
-          "year": 2011
-        }
-      ]
-    }
-  },
-  {
-    "id": "54c94719d64e4455a3c6bd2593bdde6a",
-    "start_date": "2022-09-26T03:00:00.000Z",
-    "finish_date": "2022-09-28T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 643,
-    "origin": "San Juan",
-    "destination": "San Luis",
-    "marca": "Nissan",
-    "driver": {
-      "name": "Jorge  Alberto",
-      "lastname": "Nieto",
-      "age": 46,
-      "license": 82327,
-      "email": "jorge__alberto.nieto@gmail.com",
-      "phone": 9687566711,
-      "password": 657771,
-      "role": null,
-      "car": [
-        {
-          "color": "#DB29EA",
-          "license_plate": " X5ytV0XU",
-          "year": 1995
-        }
-      ]
-    }
-  },
-  {
-    "id": "8a75b05440b94d928e17a5c961b71069",
-    "start_date": "2022-09-27T03:00:00.000Z",
-    "finish_date": "2022-09-29T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 149,
-    "origin": "Córdoba",
-    "destination": "Mendoza",
-    "marca": "Toyota",
-    "driver": {
-      "name": "Carlos Eduardo",
-      "lastname": "Ramirez",
-      "age": 25,
-      "license": 2181,
-      "email": "carlos_eduardo.ramirez@gmail.com",
-      "phone": 3729782582,
-      "password": 773550,
-      "role": null,
-      "car": [
-        {
-          "color": "#C238A8",
-          "license_plate": " R91Qsnrb",
-          "year": 2005
-        }
-      ]
-    }
-  },
-  {
-    "id": "82c37c07ee0446749c6815f35fcc4ab9",
-    "start_date": "2022-10-09T03:00:00.000Z",
-    "finish_date": "2022-10-11T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 431,
-    "origin": "Mendoza",
-    "destination": "Tucumán",
-    "marca": "VW",
-    "driver": {
-      "name": "Enrique",
-      "lastname": "Segura",
-      "age": 41,
-      "license": 92028,
-      "email": "enrique.segura@gmail.com",
-      "phone": 7279243352,
-      "password": 741580,
-      "role": null,
-      "car": [
-        {
-          "color": "#F501A7",
-          "license_plate": " PDKO98Mj",
-          "year": 2000
-        }
-      ]
-    }
-  },
-  {
-    "id": "3ab7da3e9ddb47dfb2714002dfb75e97",
-    "start_date": "2022-10-22T03:00:00.000Z",
-    "finish_date": "2022-10-24T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 69,
-    "origin": "Mar del Plata",
-    "destination": "San Juan",
-    "marca": "Ford",
-    "driver": {
-      "name": "Thiago Benjamín",
-      "lastname": "Crespo",
-      "age": 25,
-      "license": 62110,
-      "email": "thiago_benjamín.crespo@gmail.com",
-      "phone": 3712236848,
-      "password": 737738,
-      "role": null,
-      "car": [
-        {
-          "color": "#E2715B",
-          "license_plate": " wsLfNjDg",
-          "year": 1991
-        }
-      ]
-    }
-  },
-  {
-    "id": "fa753d96c54a4ab3a17b61b2549e8e5c",
-    "start_date": "2022-10-22T03:00:00.000Z",
-    "finish_date": "2022-10-24T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 5,
-    "origin": "Rosario",
-    "destination": "Córdoba",
-    "marca": "Ford",
-    "driver": {
-      "name": "Gaspar",
-      "lastname": "Marcos",
-      "age": 38,
-      "license": 99951,
-      "email": "gaspar.marcos@gmail.com",
-      "phone": 6787240265,
-      "password": 918217,
-      "role": null,
-      "car": [
-        {
-          "color": "#F77406",
-          "license_plate": " 0xipLt8A",
-          "year": 1991
-        }
-      ]
-    }
-  },
-  {
-    "id": "d6855709b27d49f084c4527d36b6a2a2",
-    "start_date": "2022-10-25T03:00:00.000Z",
-    "finish_date": "2022-10-27T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 310,
-    "origin": "Santa Fe",
-    "destination": "San Juan",
-    "marca": "Toyota",
-    "driver": {
-      "name": "Andrés Felipe",
-      "lastname": "Galan",
-      "age": 22,
-      "license": 22003,
-      "email": "andrés_felipe.galan@gmail.com",
-      "phone": 7756589488,
-      "password": 635066,
-      "role": null,
-      "car": [
-        {
-          "color": "#A65768",
-          "license_plate": " XwKavpsl",
-          "year": 2005
-        }
-      ]
-    }
-  },
-  {
-    "id": "d131c574b6f245078fa16dd91573cb43",
-    "start_date": "2022-10-25T03:00:00.000Z",
-    "finish_date": "2022-10-27T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 408,
-    "origin": "Rosario",
-    "destination": "Mendoza",
-    "marca": "VW",
-    "driver": {
-      "name": "Cristóbal",
-      "lastname": "Diez",
-      "age": 23,
-      "license": 85572,
-      "email": "cristóbal.diez@gmail.com",
-      "phone": 5497183175,
-      "password": 990903,
-      "role": null,
-      "car": [
-        {
-          "color": "#E31800",
-          "license_plate": " QSDRhUjk",
-          "year": 2015
-        }
-      ]
-    }
-  },
-  {
-    "id": "bb8cd1f0c45e4886ac7f75600a16b5f8",
-    "start_date": "2022-11-03T03:00:00.000Z",
-    "finish_date": "2022-11-05T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 772,
-    "origin": "La Plata",
-    "destination": "Tucumán",
-    "marca": "Renault",
-    "driver": {
-      "name": "Ángel",
-      "lastname": "Aguilar",
-      "age": 25,
-      "license": 10648,
-      "email": "ángel.aguilar@gmail.com",
-      "phone": 7095444916,
-      "password": 208216,
-      "role": null,
-      "car": [
-        {
-          "color": "#F1D32C",
-          "license_plate": " Ol4XRvA4",
-          "year": 1999
-        }
-      ]
-    }
-  },
-  {
-    "id": "30cde81b4f7441eabff44b641cb6acce",
-    "start_date": "2022-11-03T03:00:00.000Z",
-    "finish_date": "2022-11-05T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 746,
-    "origin": "San Luis",
-    "destination": "La Plata",
-    "marca": "Fiat",
-    "driver": {
-      "name": "César",
-      "lastname": "Cortes",
-      "age": 19,
-      "license": 19679,
-      "email": "césar.cortes@gmail.com",
-      "phone": 9673096899,
-      "password": 376628,
-      "role": null,
-      "car": [
-        {
-          "color": "#B10254",
-          "license_plate": " 42rIcXTG",
-          "year": 2014
-        }
-      ]
-    }
-  },
-  {
-    "id": "ad68eb32acb144b8b867f2f628c9accd",
-    "start_date": "2022-11-09T03:00:00.000Z",
-    "finish_date": "2022-11-11T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 260,
-    "origin": "Córdoba",
-    "destination": "Ushuaia",
-    "marca": "Fiat",
-    "driver": {
-      "name": "Luis Fernando",
-      "lastname": "Castro",
-      "age": 19,
-      "license": 45150,
-      "email": "luis_fernando.castro@gmail.com",
-      "phone": 5185871105,
-      "password": 371802,
-      "role": null,
-      "car": [
-        {
-          "color": "#E6235C",
-          "license_plate": " HxLXv6nh",
-          "year": 2015
-        }
-      ]
-    }
-  },
-  {
-    "id": "a58bb57c26e84b0381f70c0a91def7be",
-    "start_date": "2022-11-09T03:00:00.000Z",
-    "finish_date": "2022-11-11T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 4,
-    "price": 66,
-    "origin": "Tucumán",
-    "destination": "San Luis",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Juan Carlos",
-      "lastname": "Medina",
-      "age": 38,
-      "license": 98069,
-      "email": "juan_carlos.medina@gmail.com",
-      "phone": 107520085,
-      "password": 483019,
-      "role": null,
-      "car": [
-        {
-          "color": "#7DE5F4",
-          "license_plate": " HPFiexvD",
-          "year": 2006
-        }
-      ]
-    }
-  },
-  {
-    "id": "04ff319d55104b23ae6386ebc2276dc6",
-    "start_date": "2022-11-11T03:00:00.000Z",
-    "finish_date": "2022-11-13T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 0,
-    "price": 881,
-    "origin": "Mar del Plata",
-    "destination": "Ushuaia",
-    "marca": "Toyota",
-    "driver": {
-      "name": "Fernando",
-      "lastname": "Dominguez",
-      "age": 23,
-      "license": 76383,
-      "email": "fernando.dominguez@gmail.com",
-      "phone": 9500950706,
-      "password": 113764,
-      "role": null,
-      "car": [
-        {
-          "color": "#0F54C9",
-          "license_plate": " IGt7xAQb",
-          "year": 1997
-        }
-      ]
-    }
-  },
-  {
-    "id": "a05b9b2de20045a7a2e36e6ca22eb375",
-    "start_date": "2022-11-14T03:00:00.000Z",
-    "finish_date": "2022-11-16T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 2,
-    "price": 355,
-    "origin": "Mendoza",
-    "destination": "Rosario",
-    "marca": "Renault",
-    "driver": {
-      "name": "Lorenzo",
-      "lastname": "Luque",
-      "age": 34,
-      "license": 28404,
-      "email": "lorenzo.luque@gmail.com",
-      "phone": 6949844990,
-      "password": 954414,
-      "role": null,
-      "car": [
-        {
-          "color": "#290F83",
-          "license_plate": " 6dG0lZcH",
-          "year": 1991
-        }
-      ]
-    }
-  },
-  {
-    "id": "d522d1122d7f40c7be6cf3ef9eca0621",
-    "start_date": "2022-11-23T03:00:00.000Z",
-    "finish_date": "2022-11-25T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 1,
-    "price": 119,
-    "origin": "Ushuaia",
-    "destination": "Tandil",
-    "marca": "Chevrolet",
-    "driver": {
-      "name": "Thiago Benjamín",
-      "lastname": "Reyes",
-      "age": 50,
-      "license": 34337,
-      "email": "thiago_benjamín.reyes@gmail.com",
-      "phone": 3837538709,
-      "password": 121120,
-      "role": null,
-      "car": [
-        {
-          "color": "#B3BEB4",
-          "license_plate": " zJtsprTh",
-          "year": 2004
-        }
-      ]
-    }
-  },
-  {
-    "id": "a78ce30db18b469d9ca92ffc808d6435",
-    "start_date": "2022-11-25T03:00:00.000Z",
-    "finish_date": "2022-11-27T03:00:00.000Z",
-    "capacity": 2,
-    "rating": 3,
-    "price": 924,
-    "origin": "Salta",
-    "destination": "Santiago del Estero",
-    "marca": "Ford",
-    "driver": {
-      "name": "Benicio",
-      "lastname": "Medina",
-      "age": 43,
-      "license": 6519,
-      "email": "benicio.medina@gmail.com",
-      "phone": 9580059217,
-      "password": 253542,
-      "role": null,
-      "car": [
-        {
-          "color": "#33425F",
-          "license_plate": " KFt08b9d",
-          "year": 2017
-        }
-      ]
-    }
-  }
-]
+    {
+        "id": "945a996dea3142bbb311cc362f2e81de",
+        "start_date": "2022-08-08T03:00:00.000Z",
+        "finish_date": "2022-08-10T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 1,
+        "price": 584,
+        "origin": "Córdoba",
+        "destination": "La Plata",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Vicente",
+            "lastname": "Camacho",
+            "age": 20,
+            "license": 15518,
+            "email": "vicente.camacho@gmail.com",
+            "phone": 4507490695,
+            "password": 575813,
+            "role": null,
+            "car": [
+                {
+                    "color": "#6D7B6B",
+                    "license_plate": " UWLnARER",
+                    "year": 1994
+                }
+            ]
+        }
+    },
+    {
+        "id": "eb384aa2e4f64710ae0c6bc6becff4e3",
+        "start_date": "2022-03-26T03:00:00.000Z",
+        "finish_date": "2022-03-28T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 0,
+        "price": 522,
+        "origin": "La Plata",
+        "destination": "La Plata",
+        "marca": "VW",
+        "driver": {
+            "name": "Juan José",
+            "lastname": "Luque",
+            "age": 43,
+            "license": 960,
+            "email": "juan_josé.luque@gmail.com",
+            "phone": 9193078500,
+            "password": 682479,
+            "role": null,
+            "car": [
+                {
+                    "color": "#DC81F3",
+                    "license_plate": " 7D2do863",
+                    "year": 2003
+                }
+            ]
+        }
+    },
+    {
+        "id": "6d3a789a2d2d4318b0b39b132229adbc",
+        "start_date": "2022-05-05T03:00:00.000Z",
+        "finish_date": "2022-05-07T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 3,
+        "price": 33,
+        "origin": "Tucumán",
+        "destination": "Ushuaia",
+        "marca": "VW",
+        "driver": {
+            "name": "Juan Sebastián",
+            "lastname": "Vicente",
+            "age": 20,
+            "license": 51906,
+            "email": "juan_sebastián.vicente@gmail.com",
+            "phone": 2866439654,
+            "password": 178915,
+            "role": null,
+            "car": [
+                {
+                    "color": "#5281D8",
+                    "license_plate": " eBXQndrR",
+                    "year": 2018
+                }
+            ]
+        }
+    },
+    {
+        "id": "172ab4af36504472a6c903dee84ab06d",
+        "start_date": "2022-09-07T03:00:00.000Z",
+        "finish_date": "2022-09-09T03:00:00.000Z",
+        "capacity": 6,
+        "rating": 3,
+        "price": 161,
+        "origin": "San Juan",
+        "destination": "Mendoza",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Carlos",
+            "lastname": "Carmona",
+            "age": 19,
+            "license": 6076,
+            "email": "carlos.carmona@gmail.com",
+            "phone": 1022778871,
+            "password": 603762,
+            "role": null,
+            "car": [
+                {
+                    "color": "#3A81EB",
+                    "license_plate": " IwiCJsgw",
+                    "year": 2008
+                }
+            ]
+        }
+    },
+    {
+        "id": "245b2da895c74fc1b7b73fb2608813ec",
+        "start_date": "2022-11-22T03:00:00.000Z",
+        "finish_date": "2022-11-24T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 3,
+        "price": 244,
+        "origin": "Santiago del Estero",
+        "destination": "San Juan",
+        "marca": "Ford",
+        "driver": {
+            "name": "José David",
+            "lastname": "Mendoza",
+            "age": 45,
+            "license": 85255,
+            "email": "josé_david.mendoza@gmail.com",
+            "phone": 8549291892,
+            "password": 192526,
+            "role": null,
+            "car": [
+                {
+                    "color": "#3FFC64",
+                    "license_plate": " vEMGWqmJ",
+                    "year": 2013
+                }
+            ]
+        }
+    },
+    {
+        "id": "654b5d9d1b4b4971b992d88712fde27e",
+        "start_date": "2022-10-18T03:00:00.000Z",
+        "finish_date": "2022-10-20T03:00:00.000Z",
+        "capacity": 1,
+        "rating": 1,
+        "price": 581,
+        "origin": "Córdoba",
+        "destination": "Tandil",
+        "marca": "Nissan",
+        "driver": {
+            "name": "David",
+            "lastname": "Velasco",
+            "age": 26,
+            "license": 9033,
+            "email": "david.velasco@gmail.com",
+            "phone": 3432880647,
+            "password": 281218,
+            "role": null,
+            "car": [
+                {
+                    "color": "#128119",
+                    "license_plate": " RFwouvij",
+                    "year": 2018
+                }
+            ]
+        }
+    },
+    {
+        "id": "2c537dc24a084b9c8067a1c2c9d7dfd5",
+        "start_date": "2022-04-13T03:00:00.000Z",
+        "finish_date": "2022-04-15T03:00:00.000Z",
+        "capacity": 3,
+        "rating": 1,
+        "price": 846,
+        "origin": "Tucumán",
+        "destination": "San Luis",
+        "marca": "VW",
+        "driver": {
+            "name": "Jerónimo",
+            "lastname": "Mendez",
+            "age": 41,
+            "license": 74851,
+            "email": "jerónimo.mendez@gmail.com",
+            "phone": 3032528495,
+            "password": 611879,
+            "role": null,
+            "car": [
+                {
+                    "color": "#5DD613",
+                    "license_plate": " K8pLakoe",
+                    "year": 1998
+                }
+            ]
+        }
+    },
+    {
+        "id": "d96ac727ef8846adb85e1b42e2a7704d",
+        "start_date": "2022-09-15T03:00:00.000Z",
+        "finish_date": "2022-09-17T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 0,
+        "price": 173,
+        "origin": "Santa Fe",
+        "destination": "Córdoba",
+        "marca": "Toyota",
+        "driver": {
+            "name": "Lorenzo",
+            "lastname": "Soto",
+            "age": 26,
+            "license": 72404,
+            "email": "lorenzo.soto@gmail.com",
+            "phone": 2149456494,
+            "password": 977062,
+            "role": null,
+            "car": [
+                {
+                    "color": "#4E4B2A",
+                    "license_plate": " TCPn8N0j",
+                    "year": 2013
+                }
+            ]
+        }
+    },
+    {
+        "id": "4ba74e04075848b4bfee828122ccd11c",
+        "start_date": "2022-10-05T03:00:00.000Z",
+        "finish_date": "2022-10-07T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 3,
+        "price": 529,
+        "origin": "Rosario",
+        "destination": "Mar del Plata",
+        "marca": "Ford",
+        "driver": {
+            "name": "Luis Fernando",
+            "lastname": "Lara",
+            "age": 42,
+            "license": 51050,
+            "email": "luis_fernando.lara@gmail.com",
+            "phone": 6085628585,
+            "password": 664230,
+            "role": null,
+            "car": [
+                {
+                    "color": "#721B8B",
+                    "license_plate": " WgxlXpFV",
+                    "year": 2016
+                }
+            ]
+        }
+    },
+    {
+        "id": "ac2892a44cc24b548b159b8929a90f2e",
+        "start_date": "2022-05-04T03:00:00.000Z",
+        "finish_date": "2022-05-06T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 2,
+        "price": 897,
+        "origin": "Tandil",
+        "destination": "Santiago del Estero",
+        "marca": "Renault",
+        "driver": {
+            "name": "Juan David",
+            "lastname": "Arias",
+            "age": 34,
+            "license": 84876,
+            "email": "juan_david.arias@gmail.com",
+            "phone": 6742589435,
+            "password": 287461,
+            "role": null,
+            "car": [
+                {
+                    "color": "#19BF8C",
+                    "license_plate": " rzMicv6d",
+                    "year": 1993
+                }
+            ]
+        }
+    },
+    {
+        "id": "2830b145b2a04541958ae2552c49f9b0",
+        "start_date": "2022-09-07T03:00:00.000Z",
+        "finish_date": "2022-09-09T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 5,
+        "price": 508,
+        "origin": "Mendoza",
+        "destination": "Tucumán",
+        "marca": "Fiat",
+        "driver": {
+            "name": "Benjamín",
+            "lastname": "Romero",
+            "age": 47,
+            "license": 16436,
+            "email": "benjamín.romero@gmail.com",
+            "phone": 8556665272,
+            "password": 787582,
+            "role": null,
+            "car": [
+                {
+                    "color": "#AF3E72",
+                    "license_plate": " stmMfam8",
+                    "year": 1999
+                }
+            ]
+        }
+    },
+    {
+        "id": "d420616d590e438ca864c28936daf727",
+        "start_date": "2022-08-27T03:00:00.000Z",
+        "finish_date": "2022-08-29T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 2,
+        "price": 556,
+        "origin": "Santa Fe",
+        "destination": "Buenos Aires",
+        "marca": "VW",
+        "driver": {
+            "name": "Jayden",
+            "lastname": "Vargas",
+            "age": 23,
+            "license": 69343,
+            "email": "jayden.vargas@gmail.com",
+            "phone": 2198202228,
+            "password": 369264,
+            "role": null,
+            "car": [
+                {
+                    "color": "#185455",
+                    "license_plate": " dzGu0SJN",
+                    "year": 2007
+                }
+            ]
+        }
+    },
+    {
+        "id": "51781123db2d427ebac101032fb75d55",
+        "start_date": "2022-04-09T03:00:00.000Z",
+        "finish_date": "2022-04-11T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 1,
+        "price": 128,
+        "origin": "Santa Fe",
+        "destination": "Mar del Plata",
+        "marca": "Nissan",
+        "driver": {
+            "name": "Agustín",
+            "lastname": "Cabrera",
+            "age": 30,
+            "license": 19397,
+            "email": "agustín.cabrera@gmail.com",
+            "phone": 7002309414,
+            "password": 276120,
+            "role": null,
+            "car": [
+                {
+                    "color": "#E3A7CD",
+                    "license_plate": " VRHi77Qs",
+                    "year": 1997
+                }
+            ]
+        }
+    },
+    {
+        "id": "e7094001cf7a4d30b77deaf51e54e6fd",
+        "start_date": "2022-05-09T03:00:00.000Z",
+        "finish_date": "2022-05-11T03:00:00.000Z",
+        "capacity": 3,
+        "rating": 0,
+        "price": 231,
+        "origin": "Salta",
+        "destination": "Mendoza",
+        "marca": "Fiat",
+        "driver": {
+            "name": "Noah",
+            "lastname": "Marti",
+            "age": 19,
+            "license": 36713,
+            "email": "noah.marti@gmail.com",
+            "phone": 9480673846,
+            "password": 720225,
+            "role": null,
+            "car": [
+                {
+                    "color": "#0C4328",
+                    "license_plate": " Iy38Hc2o",
+                    "year": 2006
+                }
+            ]
+        }
+    },
+    {
+        "id": "52dd3ea0b34744eeb2485f550c909c05",
+        "start_date": "2022-08-09T03:00:00.000Z",
+        "finish_date": "2022-08-11T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 5,
+        "price": 384,
+        "origin": "Salta",
+        "destination": "San Juan",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Kevin",
+            "lastname": "Aguilar",
+            "age": 38,
+            "license": 25646,
+            "email": "kevin.aguilar@gmail.com",
+            "phone": 5427269137,
+            "password": 114683,
+            "role": null,
+            "car": [
+                {
+                    "color": "#D01A0D",
+                    "license_plate": " aGGOAtbA",
+                    "year": 1996
+                }
+            ]
+        }
+    },
+    {
+        "id": "98e1ec381d124bb580ee66c006ca1b3a",
+        "start_date": "2022-02-11T03:00:00.000Z",
+        "finish_date": "2022-02-13T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 3,
+        "price": 950,
+        "origin": "Tucumán",
+        "destination": "San Luis",
+        "marca": "Ford",
+        "driver": {
+            "name": "Santiago",
+            "lastname": "Montero",
+            "age": 41,
+            "license": 28338,
+            "email": "santiago.montero@gmail.com",
+            "phone": 1772432134,
+            "password": 674889,
+            "role": null,
+            "car": [
+                {
+                    "color": "#D00C74",
+                    "license_plate": " gRxZZ145",
+                    "year": 1997
+                }
+            ]
+        }
+    },
+    {
+        "id": "2e179afb0a844c36aebd37748b0bb547",
+        "start_date": "2022-03-21T03:00:00.000Z",
+        "finish_date": "2022-03-23T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 5,
+        "price": 738,
+        "origin": "Tucumán",
+        "destination": "Mendoza",
+        "marca": "Renault",
+        "driver": {
+            "name": "Alberto",
+            "lastname": "Peña",
+            "age": 32,
+            "license": 4968,
+            "email": "alberto.peña@gmail.com",
+            "phone": 4102222969,
+            "password": 886927,
+            "role": null,
+            "car": [
+                {
+                    "color": "#08EFD8",
+                    "license_plate": " uPb5Hn8F",
+                    "year": 1996
+                }
+            ]
+        }
+    },
+    {
+        "id": "a0633fba8a1b4bd7b377509e8cd4ecd8",
+        "start_date": "2022-08-22T03:00:00.000Z",
+        "finish_date": "2022-08-24T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 1,
+        "price": 188,
+        "origin": "La Plata",
+        "destination": "San Luis",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Jesús",
+            "lastname": "Peña",
+            "age": 30,
+            "license": 5126,
+            "email": "jesús.peña@gmail.com",
+            "phone": 1302783826,
+            "password": 350000,
+            "role": null,
+            "car": [
+                {
+                    "color": "#6ECED1",
+                    "license_plate": " xDKx6QkA",
+                    "year": 2022
+                }
+            ]
+        }
+    },
+    {
+        "id": "496c38ba60714e9ba450973eb64b370f",
+        "start_date": "2022-05-23T03:00:00.000Z",
+        "finish_date": "2022-05-25T03:00:00.000Z",
+        "capacity": 1,
+        "rating": 2,
+        "price": 428,
+        "origin": "Mar del Plata",
+        "destination": "Rosario",
+        "marca": "Ford",
+        "driver": {
+            "name": "César",
+            "lastname": "Peña",
+            "age": 19,
+            "license": 87310,
+            "email": "césar.peña@gmail.com",
+            "phone": 9971139652,
+            "password": 674820,
+            "role": null,
+            "car": [
+                {
+                    "color": "#00FE8B",
+                    "license_plate": " ixX9xxzP",
+                    "year": 1998
+                }
+            ]
+        }
+    },
+    {
+        "id": "7840f132ecc34a0398759f9cfc40c780",
+        "start_date": "2022-07-27T03:00:00.000Z",
+        "finish_date": "2022-07-29T03:00:00.000Z",
+        "capacity": 1,
+        "rating": 1,
+        "price": 153,
+        "origin": "Santa Fe",
+        "destination": "Rosario",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Eduardo",
+            "lastname": "Santos",
+            "age": 20,
+            "license": 73510,
+            "email": "eduardo.santos@gmail.com",
+            "phone": 3280639641,
+            "password": 673720,
+            "role": null,
+            "car": [
+                {
+                    "color": "#3F1978",
+                    "license_plate": " oFTuYhGE",
+                    "year": 2019
+                }
+            ]
+        }
+    },
+    {
+        "id": "97ce5b2074b04843ab4ebeee362542b9",
+        "start_date": "2022-09-02T03:00:00.000Z",
+        "finish_date": "2022-09-04T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 4,
+        "price": 828,
+        "origin": "Tandil",
+        "destination": "San Luis",
+        "marca": "Renault",
+        "driver": {
+            "name": "Jorge Luis",
+            "lastname": "Herrera",
+            "age": 19,
+            "license": 39970,
+            "email": "jorge_luis.herrera@gmail.com",
+            "phone": 6591567706,
+            "password": 833490,
+            "role": null,
+            "car": [
+                {
+                    "color": "#E182A4",
+                    "license_plate": " G70NBprY",
+                    "year": 1995
+                }
+            ]
+        }
+    },
+    {
+        "id": "2cec3e2d4d644542ac430238f7f83ded",
+        "start_date": "2022-10-12T03:00:00.000Z",
+        "finish_date": "2022-10-14T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 4,
+        "price": 660,
+        "origin": "Córdoba",
+        "destination": "Ushuaia",
+        "marca": "Nissan",
+        "driver": {
+            "name": "Lucas",
+            "lastname": "Serrano",
+            "age": 42,
+            "license": 94225,
+            "email": "lucas.serrano@gmail.com",
+            "phone": 7307943751,
+            "password": 630256,
+            "role": null,
+            "car": [
+                {
+                    "color": "#D6E447",
+                    "license_plate": " 42gm95tC",
+                    "year": 2004
+                }
+            ]
+        }
+    },
+    {
+        "id": "a914a56091cf4970b3d52b357b3f7430",
+        "start_date": "2022-02-26T03:00:00.000Z",
+        "finish_date": "2022-02-28T03:00:00.000Z",
+        "capacity": 1,
+        "rating": 4,
+        "price": 185,
+        "origin": "Santiago del Estero",
+        "destination": "Ushuaia",
+        "marca": "VW",
+        "driver": {
+            "name": "Emmanuel",
+            "lastname": "Cortes",
+            "age": 20,
+            "license": 9028,
+            "email": "emmanuel.cortes@gmail.com",
+            "phone": 5682459554,
+            "password": 237796,
+            "role": null,
+            "car": [
+                {
+                    "color": "#996A18",
+                    "license_plate": " CLERPzl7",
+                    "year": 2001
+                }
+            ]
+        }
+    },
+    {
+        "id": "55f6d50ce4e74d7a9f1837de92e45cf9",
+        "start_date": "2022-03-12T03:00:00.000Z",
+        "finish_date": "2022-03-14T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 3,
+        "price": 27,
+        "origin": "Tandil",
+        "destination": "Santa Fe",
+        "marca": "Toyota",
+        "driver": {
+            "name": "Facundo",
+            "lastname": "Martin",
+            "age": 44,
+            "license": 57258,
+            "email": "facundo.martin@gmail.com",
+            "phone": 471303857,
+            "password": 955933,
+            "role": null,
+            "car": [
+                {
+                    "color": "#5F88E1",
+                    "license_plate": " sSLf1QZR",
+                    "year": 1997
+                }
+            ]
+        }
+    },
+    {
+        "id": "7a737d80d58b433d8639ed4761582a6f",
+        "start_date": "2022-04-07T03:00:00.000Z",
+        "finish_date": "2022-04-09T03:00:00.000Z",
+        "capacity": 3,
+        "rating": 4,
+        "price": 253,
+        "origin": "Rosario",
+        "destination": "Tucumán",
+        "marca": "Nissan",
+        "driver": {
+            "name": "Maykel",
+            "lastname": "Herrero",
+            "age": 18,
+            "license": 53097,
+            "email": "maykel.herrero@gmail.com",
+            "phone": 2025965107,
+            "password": 319505,
+            "role": null,
+            "car": [
+                {
+                    "color": "#31006A",
+                    "license_plate": " PeKA9QIZ",
+                    "year": 2013
+                }
+            ]
+        }
+    },
+    {
+        "id": "cf70a9afab23481cbf9376edd22f12c1",
+        "start_date": "2022-03-19T03:00:00.000Z",
+        "finish_date": "2022-03-21T03:00:00.000Z",
+        "capacity": 1,
+        "rating": 3,
+        "price": 781,
+        "origin": "Córdoba",
+        "destination": "Córdoba",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Eduardo",
+            "lastname": "Alvarez",
+            "age": 28,
+            "license": 86719,
+            "email": "eduardo.alvarez@gmail.com",
+            "phone": 7167258524,
+            "password": 492893,
+            "role": null,
+            "car": [
+                {
+                    "color": "#480541",
+                    "license_plate": " tMxIGHeK",
+                    "year": 2000
+                }
+            ]
+        }
+    },
+    {
+        "id": "a25c40a41c064af191246c9ab31b7b21",
+        "start_date": "2022-06-20T03:00:00.000Z",
+        "finish_date": "2022-06-22T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 3,
+        "price": 393,
+        "origin": "San Luis",
+        "destination": "Mar del Plata",
+        "marca": "Toyota",
+        "driver": {
+            "name": "Jorge",
+            "lastname": "Fernandez",
+            "age": 44,
+            "license": 47486,
+            "email": "jorge.fernandez@gmail.com",
+            "phone": 392169653,
+            "password": 978604,
+            "role": null,
+            "car": [
+                {
+                    "color": "#B403E5",
+                    "license_plate": " YSyvVgir",
+                    "year": 2011
+                }
+            ]
+        }
+    },
+    {
+        "id": "792cca073a4d4dc3a0807ba0e326c2d0",
+        "start_date": "2022-10-20T03:00:00.000Z",
+        "finish_date": "2022-10-22T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 4,
+        "price": 765,
+        "origin": "Santa Fe",
+        "destination": "San Luis",
+        "marca": "Nissan",
+        "driver": {
+            "name": "Miguel  ngel",
+            "lastname": "Cano",
+            "age": 38,
+            "license": 49676,
+            "email": "miguel__ngel.cano@gmail.com",
+            "phone": 8615747975,
+            "password": 715994,
+            "role": null,
+            "car": [
+                {
+                    "color": "#07DF14",
+                    "license_plate": " KiYqn7dZ",
+                    "year": 2016
+                }
+            ]
+        }
+    },
+    {
+        "id": "d9dd7a12a6ee4e68b9687d49e55f54ee",
+        "start_date": "2022-02-17T03:00:00.000Z",
+        "finish_date": "2022-02-19T03:00:00.000Z",
+        "capacity": 1,
+        "rating": 1,
+        "price": 923,
+        "origin": "Mendoza",
+        "destination": "Tandil",
+        "marca": "Renault",
+        "driver": {
+            "name": "Víctor",
+            "lastname": "Montero",
+            "age": 24,
+            "license": 47002,
+            "email": "víctor.montero@gmail.com",
+            "phone": 3771497198,
+            "password": 451432,
+            "role": null,
+            "car": [
+                {
+                    "color": "#DB6096",
+                    "license_plate": " FLbjFCQn",
+                    "year": 2014
+                }
+            ]
+        }
+    },
+    {
+        "id": "92fb1ee6e58a422a94a384db86b828ea",
+        "start_date": "2022-09-10T03:00:00.000Z",
+        "finish_date": "2022-09-12T03:00:00.000Z",
+        "capacity": 3,
+        "rating": 4,
+        "price": 159,
+        "origin": "Ushuaia",
+        "destination": "Tandil",
+        "marca": "Fiat",
+        "driver": {
+            "name": "Cristóbal",
+            "lastname": "Alonso",
+            "age": 39,
+            "license": 36100,
+            "email": "cristóbal.alonso@gmail.com",
+            "phone": 9602633673,
+            "password": 584776,
+            "role": null,
+            "car": [
+                {
+                    "color": "#638149",
+                    "license_plate": " ZTaiS7Re",
+                    "year": 1995
+                }
+            ]
+        }
+    },
+    {
+        "id": "60bed379bdf4477b90963072c752732b",
+        "start_date": "2022-05-11T03:00:00.000Z",
+        "finish_date": "2022-05-13T03:00:00.000Z",
+        "capacity": 6,
+        "rating": 3,
+        "price": 158,
+        "origin": "Ushuaia",
+        "destination": "San Juan",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Ricardo",
+            "lastname": "Leon",
+            "age": 46,
+            "license": 42810,
+            "email": "ricardo.leon@gmail.com",
+            "phone": 1143272727,
+            "password": 170614,
+            "role": null,
+            "car": [
+                {
+                    "color": "#F006E4",
+                    "license_plate": " qwL5Dkdz",
+                    "year": 2022
+                }
+            ]
+        }
+    },
+    {
+        "id": "c50d4a792fd245f8b9e3e83647e8bd17",
+        "start_date": "2022-07-18T03:00:00.000Z",
+        "finish_date": "2022-07-20T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 3,
+        "price": 121,
+        "origin": "Santiago del Estero",
+        "destination": "Mar del Plata",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Facundo",
+            "lastname": "Navarro",
+            "age": 44,
+            "license": 17099,
+            "email": "facundo.navarro@gmail.com",
+            "phone": 8477231526,
+            "password": 848470,
+            "role": null,
+            "car": [
+                {
+                    "color": "#DB5502",
+                    "license_plate": " NlNQrLb7",
+                    "year": 2020
+                }
+            ]
+        }
+    },
+    {
+        "id": "3acf8ee458a94062b12b0ff600174e22",
+        "start_date": "2022-09-21T03:00:00.000Z",
+        "finish_date": "2022-09-23T03:00:00.000Z",
+        "capacity": 3,
+        "rating": 4,
+        "price": 822,
+        "origin": "Córdoba",
+        "destination": "San Luis",
+        "marca": "VW",
+        "driver": {
+            "name": "Jayden",
+            "lastname": "Gil",
+            "age": 47,
+            "license": 80361,
+            "email": "jayden.gil@gmail.com",
+            "phone": 3239347320,
+            "password": 538972,
+            "role": null,
+            "car": [
+                {
+                    "color": "#395130",
+                    "license_plate": " DnzGGCKt",
+                    "year": 2018
+                }
+            ]
+        }
+    },
+    {
+        "id": "5dd1cd227d154f64bdb8bb8835d88daf",
+        "start_date": "2022-05-27T03:00:00.000Z",
+        "finish_date": "2022-05-29T03:00:00.000Z",
+        "capacity": 3,
+        "rating": 3,
+        "price": 862,
+        "origin": "Salta",
+        "destination": "Tandil",
+        "marca": "Fiat",
+        "driver": {
+            "name": "Maximiliano",
+            "lastname": "Garrido",
+            "age": 47,
+            "license": 84088,
+            "email": "maximiliano.garrido@gmail.com",
+            "phone": 4425958699,
+            "password": 669175,
+            "role": null,
+            "car": [
+                {
+                    "color": "#BB6D2B",
+                    "license_plate": " FbTZTGqr",
+                    "year": 2009
+                }
+            ]
+        }
+    },
+    {
+        "id": "817771f04fbf418896b8dd905ce6c97b",
+        "start_date": "2022-09-10T03:00:00.000Z",
+        "finish_date": "2022-09-12T03:00:00.000Z",
+        "capacity": 6,
+        "rating": 5,
+        "price": 4,
+        "origin": "San Juan",
+        "destination": "San Juan",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "David",
+            "lastname": "Arroyo",
+            "age": 33,
+            "license": 94594,
+            "email": "david.arroyo@gmail.com",
+            "phone": 2985213742,
+            "password": 892514,
+            "role": null,
+            "car": [
+                {
+                    "color": "#685BAC",
+                    "license_plate": " 4Be4sa8N",
+                    "year": 2011
+                }
+            ]
+        }
+    },
+    {
+        "id": "0079103785f34c279f9ff4b4834b4819",
+        "start_date": "2022-10-12T03:00:00.000Z",
+        "finish_date": "2022-10-14T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 0,
+        "price": 264,
+        "origin": "Buenos Aires",
+        "destination": "Rosario",
+        "marca": "Toyota",
+        "driver": {
+            "name": "César",
+            "lastname": "Lara",
+            "age": 42,
+            "license": 72152,
+            "email": "césar.lara@gmail.com",
+            "phone": 9861342872,
+            "password": 260332,
+            "role": null,
+            "car": [
+                {
+                    "color": "#B42A38",
+                    "license_plate": " H56Sid9d",
+                    "year": 1993
+                }
+            ]
+        }
+    },
+    {
+        "id": "350728dc8a584c03b92c8d03c22f5afe",
+        "start_date": "2022-10-13T03:00:00.000Z",
+        "finish_date": "2022-10-15T03:00:00.000Z",
+        "capacity": 1,
+        "rating": 5,
+        "price": 216,
+        "origin": "Córdoba",
+        "destination": "Santa Fe",
+        "marca": "VW",
+        "driver": {
+            "name": "Juan José",
+            "lastname": "Blanco",
+            "age": 18,
+            "license": 16637,
+            "email": "juan_josé.blanco@gmail.com",
+            "phone": 9144597971,
+            "password": 810998,
+            "role": null,
+            "car": [
+                {
+                    "color": "#1B4767",
+                    "license_plate": " FrJGAYXg",
+                    "year": 1999
+                }
+            ]
+        }
+    },
+    {
+        "id": "1fd424691a444ab68286fa8b7263f253",
+        "start_date": "2022-02-19T03:00:00.000Z",
+        "finish_date": "2022-02-21T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 4,
+        "price": 771,
+        "origin": "Mar del Plata",
+        "destination": "Tandil",
+        "marca": "Fiat",
+        "driver": {
+            "name": "Joaquín",
+            "lastname": "Gomez",
+            "age": 31,
+            "license": 87485,
+            "email": "joaquín.gomez@gmail.com",
+            "phone": 6836253531,
+            "password": 292267,
+            "role": null,
+            "car": [
+                {
+                    "color": "#BCD675",
+                    "license_plate": " X8cef6qr",
+                    "year": 1990
+                }
+            ]
+        }
+    },
+    {
+        "id": "cc14a39a7d8949a0b0e0d65ff76c3611",
+        "start_date": "2022-08-02T03:00:00.000Z",
+        "finish_date": "2022-08-04T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 1,
+        "price": 593,
+        "origin": "Salta",
+        "destination": "Ushuaia",
+        "marca": "Renault",
+        "driver": {
+            "name": "Jayden",
+            "lastname": "Carrillo",
+            "age": 45,
+            "license": 57219,
+            "email": "jayden.carrillo@gmail.com",
+            "phone": 2203457944,
+            "password": 865196,
+            "role": null,
+            "car": [
+                {
+                    "color": "#4091D7",
+                    "license_plate": " C5jlOt5H",
+                    "year": 1998
+                }
+            ]
+        }
+    },
+    {
+        "id": "951e411eb5f54a55907fc8ad782b9646",
+        "start_date": "2022-05-14T03:00:00.000Z",
+        "finish_date": "2022-05-16T03:00:00.000Z",
+        "capacity": 6,
+        "rating": 2,
+        "price": 575,
+        "origin": "Rosario",
+        "destination": "San Luis",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Maximiliano",
+            "lastname": "Segura",
+            "age": 46,
+            "license": 20632,
+            "email": "maximiliano.segura@gmail.com",
+            "phone": 2115540366,
+            "password": 895779,
+            "role": null,
+            "car": [
+                {
+                    "color": "#EA975D",
+                    "license_plate": " eOmlRZEk",
+                    "year": 2017
+                }
+            ]
+        }
+    },
+    {
+        "id": "e52e9e92e738408cb26d055f52166eec",
+        "start_date": "2022-11-04T03:00:00.000Z",
+        "finish_date": "2022-11-06T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 5,
+        "price": 497,
+        "origin": "San Luis",
+        "destination": "Santa Fe",
+        "marca": "Ford",
+        "driver": {
+            "name": "Félix María",
+            "lastname": "Leon",
+            "age": 20,
+            "license": 18801,
+            "email": "félix_maría.leon@gmail.com",
+            "phone": 2761455065,
+            "password": 817495,
+            "role": null,
+            "car": [
+                {
+                    "color": "#C4C6C4",
+                    "license_plate": " EPVGCNF0",
+                    "year": 1991
+                }
+            ]
+        }
+    },
+    {
+        "id": "0f6c65f65e6d44cda9b1c38a754925ce",
+        "start_date": "2022-10-16T03:00:00.000Z",
+        "finish_date": "2022-10-18T03:00:00.000Z",
+        "capacity": 6,
+        "rating": 1,
+        "price": 403,
+        "origin": "Santiago del Estero",
+        "destination": "Santiago del Estero",
+        "marca": "VW",
+        "driver": {
+            "name": "César",
+            "lastname": "Sanchez",
+            "age": 49,
+            "license": 78123,
+            "email": "césar.sanchez@gmail.com",
+            "phone": 685358199,
+            "password": 160676,
+            "role": null,
+            "car": [
+                {
+                    "color": "#43BA3F",
+                    "license_plate": " MmrRUtMN",
+                    "year": 2012
+                }
+            ]
+        }
+    },
+    {
+        "id": "5dbaf3160ccb489a89a9992410fdf701",
+        "start_date": "2022-09-23T03:00:00.000Z",
+        "finish_date": "2022-09-25T03:00:00.000Z",
+        "capacity": 6,
+        "rating": 5,
+        "price": 676,
+        "origin": "Mendoza",
+        "destination": "Buenos Aires",
+        "marca": "Ford",
+        "driver": {
+            "name": "Gaspar",
+            "lastname": "Luque",
+            "age": 28,
+            "license": 41174,
+            "email": "gaspar.luque@gmail.com",
+            "phone": 138162636,
+            "password": 921235,
+            "role": null,
+            "car": [
+                {
+                    "color": "#08780B",
+                    "license_plate": " oXqiqKJa",
+                    "year": 2012
+                }
+            ]
+        }
+    },
+    {
+        "id": "f375e59e3fd242ad8a58731b006833fc",
+        "start_date": "2022-09-07T03:00:00.000Z",
+        "finish_date": "2022-09-09T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 3,
+        "price": 836,
+        "origin": "Mendoza",
+        "destination": "Buenos Aires",
+        "marca": "Ford",
+        "driver": {
+            "name": "Benjamín",
+            "lastname": "Esteban",
+            "age": 31,
+            "license": 428,
+            "email": "benjamín.esteban@gmail.com",
+            "phone": 567737119,
+            "password": 656082,
+            "role": null,
+            "car": [
+                {
+                    "color": "#364C12",
+                    "license_plate": " YtKlCPp1",
+                    "year": 2003
+                }
+            ]
+        }
+    },
+    {
+        "id": "47a529f98c9d44029773d1efd8aa37dd",
+        "start_date": "2022-10-22T03:00:00.000Z",
+        "finish_date": "2022-10-24T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 0,
+        "price": 370,
+        "origin": "Rosario",
+        "destination": "Santiago del Estero",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Alberto",
+            "lastname": "Mendez",
+            "age": 21,
+            "license": 97089,
+            "email": "alberto.mendez@gmail.com",
+            "phone": 8463063501,
+            "password": 297999,
+            "role": null,
+            "car": [
+                {
+                    "color": "#F72359",
+                    "license_plate": " duA2y16b",
+                    "year": 2019
+                }
+            ]
+        }
+    },
+    {
+        "id": "d9ee4e9a62df4ff3b5694a16788f85a4",
+        "start_date": "2022-08-14T03:00:00.000Z",
+        "finish_date": "2022-08-16T03:00:00.000Z",
+        "capacity": 1,
+        "rating": 1,
+        "price": 120,
+        "origin": "San Juan",
+        "destination": "Santa Fe",
+        "marca": "Ford",
+        "driver": {
+            "name": "Noah",
+            "lastname": "Jimenez",
+            "age": 39,
+            "license": 52955,
+            "email": "noah.jimenez@gmail.com",
+            "phone": 5649610401,
+            "password": 707230,
+            "role": null,
+            "car": [
+                {
+                    "color": "#C5DCA9",
+                    "license_plate": " l5oe9zu1",
+                    "year": 2000
+                }
+            ]
+        }
+    },
+    {
+        "id": "3ebb2a40d4034d908edb833648030e99",
+        "start_date": "2022-06-19T03:00:00.000Z",
+        "finish_date": "2022-06-21T03:00:00.000Z",
+        "capacity": 3,
+        "rating": 2,
+        "price": 520,
+        "origin": "La Plata",
+        "destination": "San Juan",
+        "marca": "Nissan",
+        "driver": {
+            "name": "Juan David",
+            "lastname": "Calvo",
+            "age": 39,
+            "license": 99018,
+            "email": "juan_david.calvo@gmail.com",
+            "phone": 3311165618,
+            "password": 676818,
+            "role": null,
+            "car": [
+                {
+                    "color": "#FF7316",
+                    "license_plate": " y5uOYUJn",
+                    "year": 2009
+                }
+            ]
+        }
+    },
+    {
+        "id": "19e6f7a348b84ecda08b67ed56b31b8c",
+        "start_date": "2022-07-11T03:00:00.000Z",
+        "finish_date": "2022-07-13T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 2,
+        "price": 471,
+        "origin": "Santiago del Estero",
+        "destination": "Salta",
+        "marca": "VW",
+        "driver": {
+            "name": "Pedro",
+            "lastname": "Serrano",
+            "age": 36,
+            "license": 97443,
+            "email": "pedro.serrano@gmail.com",
+            "phone": 4047294925,
+            "password": 523566,
+            "role": null,
+            "car": [
+                {
+                    "color": "#875077",
+                    "license_plate": " YWqLmF3T",
+                    "year": 2008
+                }
+            ]
+        }
+    },
+    {
+        "id": "81c5e951d69e4ca882f4f708e2f9447d",
+        "start_date": "2022-09-03T03:00:00.000Z",
+        "finish_date": "2022-09-05T03:00:00.000Z",
+        "capacity": 1,
+        "rating": 5,
+        "price": 713,
+        "origin": "Tandil",
+        "destination": "San Luis",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Ian",
+            "lastname": "Montes",
+            "age": 48,
+            "license": 47410,
+            "email": "ian.montes@gmail.com",
+            "phone": 9045928040,
+            "password": 542708,
+            "role": null,
+            "car": [
+                {
+                    "color": "#CC7036",
+                    "license_plate": " QDUQg4pg",
+                    "year": 2013
+                }
+            ]
+        }
+    },
+    {
+        "id": "36c4d2e555c3441c8a16feed7200d0ad",
+        "start_date": "2022-04-08T03:00:00.000Z",
+        "finish_date": "2022-04-10T03:00:00.000Z",
+        "capacity": 3,
+        "rating": 0,
+        "price": 744,
+        "origin": "Santiago del Estero",
+        "destination": "Salta",
+        "marca": "Fiat",
+        "driver": {
+            "name": "Miguel  ngel",
+            "lastname": "Pardo",
+            "age": 45,
+            "license": 36437,
+            "email": "miguel__ngel.pardo@gmail.com",
+            "phone": 3150638157,
+            "password": 186842,
+            "role": null,
+            "car": [
+                {
+                    "color": "#9E684C",
+                    "license_plate": " s3raSLPK",
+                    "year": 2001
+                }
+            ]
+        }
+    },
+    {
+        "id": "1401f8e5b5064fb5848005999eef0bb5",
+        "start_date": "2022-03-17T03:00:00.000Z",
+        "finish_date": "2022-03-19T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 1,
+        "price": 921,
+        "origin": "Salta",
+        "destination": "Mendoza",
+        "marca": "Renault",
+        "driver": {
+            "name": "Ramón",
+            "lastname": "Gil",
+            "age": 20,
+            "license": 47345,
+            "email": "ramón.gil@gmail.com",
+            "phone": 5008776091,
+            "password": 841858,
+            "role": null,
+            "car": [
+                {
+                    "color": "#D53AAD",
+                    "license_plate": " IdY1QgOl",
+                    "year": 2008
+                }
+            ]
+        }
+    },
+    {
+        "id": "416d30f91d86474bb165e2dc6240098d",
+        "start_date": "2022-02-12T03:00:00.000Z",
+        "finish_date": "2022-02-14T03:00:00.000Z",
+        "capacity": 1,
+        "rating": 5,
+        "price": 389,
+        "origin": "Santa Fe",
+        "destination": "Córdoba",
+        "marca": "Fiat",
+        "driver": {
+            "name": "Carlos Alberto",
+            "lastname": "Espinosa",
+            "age": 37,
+            "license": 70565,
+            "email": "carlos_alberto.espinosa@gmail.com",
+            "phone": 5006850543,
+            "password": 958933,
+            "role": null,
+            "car": [
+                {
+                    "color": "#9E619B",
+                    "license_plate": " hr16P7xE",
+                    "year": 2002
+                }
+            ]
+        }
+    },
+    {
+        "id": "8f66323e13994d62b445a38c9a422a46",
+        "start_date": "2022-10-13T03:00:00.000Z",
+        "finish_date": "2022-10-15T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 2,
+        "price": 742,
+        "origin": "Córdoba",
+        "destination": "Rosario",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Alberto",
+            "lastname": "Vidal",
+            "age": 49,
+            "license": 58419,
+            "email": "alberto.vidal@gmail.com",
+            "phone": 9954996843,
+            "password": 367699,
+            "role": null,
+            "car": [
+                {
+                    "color": "#F8D516",
+                    "license_plate": " kVW04IaX",
+                    "year": 1998
+                }
+            ]
+        }
+    },
+    {
+        "id": "0dcbe296e1ff4478a2fdd6bab400b0b7",
+        "start_date": "2022-04-20T03:00:00.000Z",
+        "finish_date": "2022-04-22T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 2,
+        "price": 893,
+        "origin": "Mar del Plata",
+        "destination": "Tucumán",
+        "marca": "Fiat",
+        "driver": {
+            "name": "Agustín",
+            "lastname": "Silva",
+            "age": 48,
+            "license": 66447,
+            "email": "agustín.silva@gmail.com",
+            "phone": 1413351754,
+            "password": 407205,
+            "role": null,
+            "car": [
+                {
+                    "color": "#474854",
+                    "license_plate": " h3TlBOXj",
+                    "year": 2017
+                }
+            ]
+        }
+    },
+    {
+        "id": "64a2e9138bea417a88a971a61917569f",
+        "start_date": "2022-04-11T03:00:00.000Z",
+        "finish_date": "2022-04-13T03:00:00.000Z",
+        "capacity": 6,
+        "rating": 5,
+        "price": 931,
+        "origin": "San Luis",
+        "destination": "Salta",
+        "marca": "Toyota",
+        "driver": {
+            "name": "David",
+            "lastname": "Serrano",
+            "age": 40,
+            "license": 92028,
+            "email": "david.serrano@gmail.com",
+            "phone": 89245258,
+            "password": 591484,
+            "role": null,
+            "car": [
+                {
+                    "color": "#260822",
+                    "license_plate": " VpiNVbTv",
+                    "year": 1991
+                }
+            ]
+        }
+    },
+    {
+        "id": "ea2b956d9f9c4d13be69d27f4cb6f9fa",
+        "start_date": "2022-11-17T03:00:00.000Z",
+        "finish_date": "2022-11-19T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 2,
+        "price": 864,
+        "origin": "Tandil",
+        "destination": "La Plata",
+        "marca": "Fiat",
+        "driver": {
+            "name": "Tomás",
+            "lastname": "Fuentes",
+            "age": 42,
+            "license": 48700,
+            "email": "tomás.fuentes@gmail.com",
+            "phone": 140312605,
+            "password": 978650,
+            "role": null,
+            "car": [
+                {
+                    "color": "#F434BF",
+                    "license_plate": " 70r4fFQG",
+                    "year": 2008
+                }
+            ]
+        }
+    },
+    {
+        "id": "22b68b0b5cfb4412bbda5c7156d5faab",
+        "start_date": "2022-08-02T03:00:00.000Z",
+        "finish_date": "2022-08-04T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 0,
+        "price": 483,
+        "origin": "Mar del Plata",
+        "destination": "Córdoba",
+        "marca": "Fiat",
+        "driver": {
+            "name": "Josué",
+            "lastname": "Franco",
+            "age": 20,
+            "license": 79070,
+            "email": "josué.franco@gmail.com",
+            "phone": 2522878170,
+            "password": 291640,
+            "role": null,
+            "car": [
+                {
+                    "color": "#9820CF",
+                    "license_plate": " hdqfwUOB",
+                    "year": 2003
+                }
+            ]
+        }
+    },
+    {
+        "id": "5ea0dd172cb5487e832f5c7a424cb2a5",
+        "start_date": "2022-02-15T03:00:00.000Z",
+        "finish_date": "2022-02-17T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 3,
+        "price": 489,
+        "origin": "Santiago del Estero",
+        "destination": "Tandil",
+        "marca": "VW",
+        "driver": {
+            "name": "Erik",
+            "lastname": "Parra",
+            "age": 36,
+            "license": 6082,
+            "email": "erik.parra@gmail.com",
+            "phone": 7079603919,
+            "password": 977602,
+            "role": null,
+            "car": [
+                {
+                    "color": "#042F02",
+                    "license_plate": " PauAPTAB",
+                    "year": 2015
+                }
+            ]
+        }
+    },
+    {
+        "id": "4dc6a1db7efc48fe886500a5beae821e",
+        "start_date": "2022-11-23T03:00:00.000Z",
+        "finish_date": "2022-11-25T03:00:00.000Z",
+        "capacity": 3,
+        "rating": 0,
+        "price": 36,
+        "origin": "Santiago del Estero",
+        "destination": "Ushuaia",
+        "marca": "Ford",
+        "driver": {
+            "name": "Gabriel",
+            "lastname": "Saez",
+            "age": 32,
+            "license": 39108,
+            "email": "gabriel.saez@gmail.com",
+            "phone": 1500872595,
+            "password": 650061,
+            "role": null,
+            "car": [
+                {
+                    "color": "#2BAC68",
+                    "license_plate": " BdFMAPaw",
+                    "year": 1996
+                }
+            ]
+        }
+    },
+    {
+        "id": "254e007d13b34ce9b79b6d075db0a5ca",
+        "start_date": "2022-02-05T03:00:00.000Z",
+        "finish_date": "2022-02-07T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 0,
+        "price": 315,
+        "origin": "Salta",
+        "destination": "Mendoza",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "José Luis",
+            "lastname": "Diez",
+            "age": 39,
+            "license": 59332,
+            "email": "josé_luis.diez@gmail.com",
+            "phone": 5284697668,
+            "password": 666103,
+            "role": null,
+            "car": [
+                {
+                    "color": "#F1BE40",
+                    "license_plate": " 5RfKCRUt",
+                    "year": 1997
+                }
+            ]
+        }
+    },
+    {
+        "id": "31b05ad104184b8398c0e53551e37caa",
+        "start_date": "2022-03-02T03:00:00.000Z",
+        "finish_date": "2022-03-04T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 1,
+        "price": 235,
+        "origin": "Santiago del Estero",
+        "destination": "San Juan",
+        "marca": "VW",
+        "driver": {
+            "name": "César",
+            "lastname": "Hernandez",
+            "age": 40,
+            "license": 99198,
+            "email": "césar.hernandez@gmail.com",
+            "phone": 3980663077,
+            "password": 118207,
+            "role": null,
+            "car": [
+                {
+                    "color": "#10FCDF",
+                    "license_plate": " reDwe6Rp",
+                    "year": 2020
+                }
+            ]
+        }
+    },
+    {
+        "id": "7a674b256e274a61b2f90677e3719d75",
+        "start_date": "2022-11-08T03:00:00.000Z",
+        "finish_date": "2022-11-10T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 0,
+        "price": 217,
+        "origin": "Buenos Aires",
+        "destination": "San Juan",
+        "marca": "Fiat",
+        "driver": {
+            "name": "Félix María",
+            "lastname": "Pastor",
+            "age": 38,
+            "license": 15219,
+            "email": "félix_maría.pastor@gmail.com",
+            "phone": 5060136346,
+            "password": 884731,
+            "role": null,
+            "car": [
+                {
+                    "color": "#8A2248",
+                    "license_plate": " DWwoZSuN",
+                    "year": 2002
+                }
+            ]
+        }
+    },
+    {
+        "id": "4675e45cf0f24afe8f317e649480f45a",
+        "start_date": "2022-03-20T03:00:00.000Z",
+        "finish_date": "2022-03-22T03:00:00.000Z",
+        "capacity": 3,
+        "rating": 2,
+        "price": 51,
+        "origin": "Tandil",
+        "destination": "Buenos Aires",
+        "marca": "Toyota",
+        "driver": {
+            "name": "Alberto",
+            "lastname": "Hernandez",
+            "age": 27,
+            "license": 82542,
+            "email": "alberto.hernandez@gmail.com",
+            "phone": 5540657131,
+            "password": 806996,
+            "role": null,
+            "car": [
+                {
+                    "color": "#DA23E2",
+                    "license_plate": " VOWtt3Sb",
+                    "year": 1994
+                }
+            ]
+        }
+    },
+    {
+        "id": "33cf465a0f5144738f6e965545cd33c1",
+        "start_date": "2022-02-19T03:00:00.000Z",
+        "finish_date": "2022-02-21T03:00:00.000Z",
+        "capacity": 6,
+        "rating": 1,
+        "price": 786,
+        "origin": "Mendoza",
+        "destination": "Mendoza",
+        "marca": "Toyota",
+        "driver": {
+            "name": "Alejandro",
+            "lastname": "Moreno",
+            "age": 19,
+            "license": 84803,
+            "email": "alejandro.moreno@gmail.com",
+            "phone": 7213377265,
+            "password": 704674,
+            "role": null,
+            "car": [
+                {
+                    "color": "#4CEEEF",
+                    "license_plate": " 1AOsUjIp",
+                    "year": 1990
+                }
+            ]
+        }
+    },
+    {
+        "id": "bd0b8527f52c49aea918a17322be7d7a",
+        "start_date": "2022-05-17T03:00:00.000Z",
+        "finish_date": "2022-05-19T03:00:00.000Z",
+        "capacity": 6,
+        "rating": 2,
+        "price": 348,
+        "origin": "Córdoba",
+        "destination": "San Juan",
+        "marca": "Ford",
+        "driver": {
+            "name": "Marco Antonio",
+            "lastname": "Benitez",
+            "age": 48,
+            "license": 28852,
+            "email": "marco_antonio.benitez@gmail.com",
+            "phone": 6185888236,
+            "password": 703612,
+            "role": null,
+            "car": [
+                {
+                    "color": "#A4B2E6",
+                    "license_plate": " byTp0Pef",
+                    "year": 2017
+                }
+            ]
+        }
+    },
+    {
+        "id": "7374c52828964485a674787ebdf7f402",
+        "start_date": "2022-06-17T03:00:00.000Z",
+        "finish_date": "2022-06-19T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 4,
+        "price": 967,
+        "origin": "Rosario",
+        "destination": "Ushuaia",
+        "marca": "Renault",
+        "driver": {
+            "name": "Francisco Javier",
+            "lastname": "Rivas",
+            "age": 28,
+            "license": 5186,
+            "email": "francisco_javier.rivas@gmail.com",
+            "phone": 6109912109,
+            "password": 194260,
+            "role": null,
+            "car": [
+                {
+                    "color": "#4D111A",
+                    "license_plate": " 1ng1pNog",
+                    "year": 2015
+                }
+            ]
+        }
+    },
+    {
+        "id": "95852093b5aa4c3bb19d0297774ce626",
+        "start_date": "2022-08-06T03:00:00.000Z",
+        "finish_date": "2022-08-08T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 3,
+        "price": 104,
+        "origin": "Ushuaia",
+        "destination": "Ushuaia",
+        "marca": "Toyota",
+        "driver": {
+            "name": "Gustavo Adolfo",
+            "lastname": "Fuentes",
+            "age": 29,
+            "license": 16523,
+            "email": "gustavo_adolfo.fuentes@gmail.com",
+            "phone": 6340318761,
+            "password": 694085,
+            "role": null,
+            "car": [
+                {
+                    "color": "#656348",
+                    "license_plate": " ezEHZhsp",
+                    "year": 2004
+                }
+            ]
+        }
+    },
+    {
+        "id": "a75e3694d64647e2ab8ec0d6c3b0cc07",
+        "start_date": "2022-05-18T03:00:00.000Z",
+        "finish_date": "2022-05-20T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 5,
+        "price": 853,
+        "origin": "La Plata",
+        "destination": "Santa Fe",
+        "marca": "Nissan",
+        "driver": {
+            "name": "Maximiliano",
+            "lastname": "Lara",
+            "age": 34,
+            "license": 13676,
+            "email": "maximiliano.lara@gmail.com",
+            "phone": 7932595512,
+            "password": 763836,
+            "role": null,
+            "car": [
+                {
+                    "color": "#A25466",
+                    "license_plate": " gs4rqJ3u",
+                    "year": 2021
+                }
+            ]
+        }
+    },
+    {
+        "id": "c0e2477e0fa948a08bdeb46f31357191",
+        "start_date": "2022-03-10T03:00:00.000Z",
+        "finish_date": "2022-03-12T03:00:00.000Z",
+        "capacity": 3,
+        "rating": 0,
+        "price": 7,
+        "origin": "La Plata",
+        "destination": "Santiago del Estero",
+        "marca": "Ford",
+        "driver": {
+            "name": "José",
+            "lastname": "Izquierdo",
+            "age": 42,
+            "license": 34109,
+            "email": "josé.izquierdo@gmail.com",
+            "phone": 6191285895,
+            "password": 535729,
+            "role": null,
+            "car": [
+                {
+                    "color": "#273691",
+                    "license_plate": " KIXiJh1E",
+                    "year": 1990
+                }
+            ]
+        }
+    },
+    {
+        "id": "1eb28f219bb44736b9e40e6999c0b213",
+        "start_date": "2022-08-24T03:00:00.000Z",
+        "finish_date": "2022-08-26T03:00:00.000Z",
+        "capacity": 6,
+        "rating": 5,
+        "price": 303,
+        "origin": "Mar del Plata",
+        "destination": "Tandil",
+        "marca": "Toyota",
+        "driver": {
+            "name": "Santino",
+            "lastname": "Marin",
+            "age": 39,
+            "license": 75967,
+            "email": "santino.marin@gmail.com",
+            "phone": 7061079529,
+            "password": 160294,
+            "role": null,
+            "car": [
+                {
+                    "color": "#8FB69B",
+                    "license_plate": " GrOKAJJS",
+                    "year": 2018
+                }
+            ]
+        }
+    },
+    {
+        "id": "0b4a400749a844cc89582d8951dd0c6e",
+        "start_date": "2022-03-06T03:00:00.000Z",
+        "finish_date": "2022-03-08T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 5,
+        "price": 639,
+        "origin": "San Juan",
+        "destination": "Ushuaia",
+        "marca": "VW",
+        "driver": {
+            "name": "Daniel",
+            "lastname": "Castro",
+            "age": 24,
+            "license": 75016,
+            "email": "daniel.castro@gmail.com",
+            "phone": 3947098906,
+            "password": 588130,
+            "role": null,
+            "car": [
+                {
+                    "color": "#0EF0A2",
+                    "license_plate": " Ja2J08oO",
+                    "year": 1991
+                }
+            ]
+        }
+    },
+    {
+        "id": "65963da9caab44118cb6fe49ca63973f",
+        "start_date": "2022-04-11T03:00:00.000Z",
+        "finish_date": "2022-04-13T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 0,
+        "price": 579,
+        "origin": "Tandil",
+        "destination": "Ushuaia",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "José Antonio",
+            "lastname": "Soler",
+            "age": 40,
+            "license": 80648,
+            "email": "josé_antonio.soler@gmail.com",
+            "phone": 459348452,
+            "password": 634516,
+            "role": null,
+            "car": [
+                {
+                    "color": "#A9C946",
+                    "license_plate": " HTyikqN9",
+                    "year": 2017
+                }
+            ]
+        }
+    },
+    {
+        "id": "f46f5de2ccf14f7cb8b5cc3e15d6ebb5",
+        "start_date": "2022-08-14T03:00:00.000Z",
+        "finish_date": "2022-08-16T03:00:00.000Z",
+        "capacity": 1,
+        "rating": 5,
+        "price": 103,
+        "origin": "La Plata",
+        "destination": "San Luis",
+        "marca": "Ford",
+        "driver": {
+            "name": "Eduardo",
+            "lastname": "Ferrer",
+            "age": 23,
+            "license": 88831,
+            "email": "eduardo.ferrer@gmail.com",
+            "phone": 6108372155,
+            "password": 187303,
+            "role": null,
+            "car": [
+                {
+                    "color": "#9A70E5",
+                    "license_plate": " wV4tqY9t",
+                    "year": 2008
+                }
+            ]
+        }
+    },
+    {
+        "id": "ca49d1cea1e743b2a10632161c09c2ee",
+        "start_date": "2022-03-16T03:00:00.000Z",
+        "finish_date": "2022-03-18T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 0,
+        "price": 726,
+        "origin": "Córdoba",
+        "destination": "Rosario",
+        "marca": "VW",
+        "driver": {
+            "name": "Felipe",
+            "lastname": "Vera",
+            "age": 33,
+            "license": 7688,
+            "email": "felipe.vera@gmail.com",
+            "phone": 9148139414,
+            "password": 632520,
+            "role": null,
+            "car": [
+                {
+                    "color": "#AA419F",
+                    "license_plate": " 99LZw9Sr",
+                    "year": 1993
+                }
+            ]
+        }
+    },
+    {
+        "id": "dbd8e909c2ac47d38013ef20e61b6643",
+        "start_date": "2022-10-14T03:00:00.000Z",
+        "finish_date": "2022-10-16T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 5,
+        "price": 556,
+        "origin": "Mar del Plata",
+        "destination": "San Juan",
+        "marca": "Renault",
+        "driver": {
+            "name": "Víctor Hugo",
+            "lastname": "Muñoz",
+            "age": 30,
+            "license": 31461,
+            "email": "víctor_hugo.muñoz@gmail.com",
+            "phone": 5739211573,
+            "password": 690037,
+            "role": null,
+            "car": [
+                {
+                    "color": "#25BDC6",
+                    "license_plate": " xzFSyuyH",
+                    "year": 2020
+                }
+            ]
+        }
+    },
+    {
+        "id": "cd54074b7b874b9ca1777e9ca94ced37",
+        "start_date": "2022-06-25T03:00:00.000Z",
+        "finish_date": "2022-06-27T03:00:00.000Z",
+        "capacity": 1,
+        "rating": 3,
+        "price": 189,
+        "origin": "La Plata",
+        "destination": "Mendoza",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Gaspar",
+            "lastname": "Santiago",
+            "age": 18,
+            "license": 43534,
+            "email": "gaspar.santiago@gmail.com",
+            "phone": 2644438963,
+            "password": 336301,
+            "role": null,
+            "car": [
+                {
+                    "color": "#5011ED",
+                    "license_plate": " eS55qeYR",
+                    "year": 2019
+                }
+            ]
+        }
+    },
+    {
+        "id": "2a5d15b2cb6449e1829b61717bd1546a",
+        "start_date": "2022-10-13T03:00:00.000Z",
+        "finish_date": "2022-10-15T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 0,
+        "price": 456,
+        "origin": "Ushuaia",
+        "destination": "San Juan",
+        "marca": "Nissan",
+        "driver": {
+            "name": "Anthony",
+            "lastname": "Gutierrez",
+            "age": 24,
+            "license": 35101,
+            "email": "anthony.gutierrez@gmail.com",
+            "phone": 9429723735,
+            "password": 728560,
+            "role": null,
+            "car": [
+                {
+                    "color": "#EEEAA3",
+                    "license_plate": " 6qLOB9q1",
+                    "year": 1994
+                }
+            ]
+        }
+    },
+    {
+        "id": "4432f703b7334c5d9534860a59a59fa5",
+        "start_date": "2022-11-25T03:00:00.000Z",
+        "finish_date": "2022-11-27T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 0,
+        "price": 79,
+        "origin": "San Luis",
+        "destination": "La Plata",
+        "marca": "Ford",
+        "driver": {
+            "name": "Jorge  Alberto",
+            "lastname": "Perez",
+            "age": 20,
+            "license": 42364,
+            "email": "jorge__alberto.perez@gmail.com",
+            "phone": 7886371252,
+            "password": 274230,
+            "role": null,
+            "car": [
+                {
+                    "color": "#A1C103",
+                    "license_plate": " P9opJgmC",
+                    "year": 2022
+                }
+            ]
+        }
+    },
+    {
+        "id": "01473c5f2ca04c1faf49067a5549ed99",
+        "start_date": "2022-08-20T03:00:00.000Z",
+        "finish_date": "2022-08-22T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 0,
+        "price": 369,
+        "origin": "Rosario",
+        "destination": "Mendoza",
+        "marca": "Nissan",
+        "driver": {
+            "name": "Samuel David",
+            "lastname": "Pardo",
+            "age": 46,
+            "license": 76547,
+            "email": "samuel_david.pardo@gmail.com",
+            "phone": 2353503864,
+            "password": 734548,
+            "role": null,
+            "car": [
+                {
+                    "color": "#3C75B9",
+                    "license_plate": " hts85YTP",
+                    "year": 2020
+                }
+            ]
+        }
+    },
+    {
+        "id": "3345300bf58b45c1aa36e6d60aeb3de5",
+        "start_date": "2022-09-27T03:00:00.000Z",
+        "finish_date": "2022-09-29T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 4,
+        "price": 760,
+        "origin": "Córdoba",
+        "destination": "Rosario",
+        "marca": "Ford",
+        "driver": {
+            "name": "Carlos Alberto",
+            "lastname": "Montero",
+            "age": 49,
+            "license": 70451,
+            "email": "carlos_alberto.montero@gmail.com",
+            "phone": 6711665297,
+            "password": 954962,
+            "role": null,
+            "car": [
+                {
+                    "color": "#D04D2D",
+                    "license_plate": " nvsyLJ1k",
+                    "year": 2011
+                }
+            ]
+        }
+    },
+    {
+        "id": "306d1be5157e454cbc67cbbb12e85b5d",
+        "start_date": "2022-02-17T03:00:00.000Z",
+        "finish_date": "2022-02-19T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 4,
+        "price": 586,
+        "origin": "Mar del Plata",
+        "destination": "Rosario",
+        "marca": "Ford",
+        "driver": {
+            "name": "José David",
+            "lastname": "Lozano",
+            "age": 43,
+            "license": 19402,
+            "email": "josé_david.lozano@gmail.com",
+            "phone": 7774737124,
+            "password": 237368,
+            "role": null,
+            "car": [
+                {
+                    "color": "#F950D4",
+                    "license_plate": " lx9IEf1V",
+                    "year": 2019
+                }
+            ]
+        }
+    },
+    {
+        "id": "5ad9e944a01344c6bbafa00a1c6bf22a",
+        "start_date": "2022-08-22T03:00:00.000Z",
+        "finish_date": "2022-08-24T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 0,
+        "price": 196,
+        "origin": "Tucumán",
+        "destination": "San Juan",
+        "marca": "Ford",
+        "driver": {
+            "name": "Jorge  Alberto",
+            "lastname": "Morales",
+            "age": 42,
+            "license": 84020,
+            "email": "jorge__alberto.morales@gmail.com",
+            "phone": 9193632039,
+            "password": 630969,
+            "role": null,
+            "car": [
+                {
+                    "color": "#3BB2FB",
+                    "license_plate": " tOm1HpNO",
+                    "year": 2015
+                }
+            ]
+        }
+    },
+    {
+        "id": "ae3492148eee4d428b1d8a5f76e0e02c",
+        "start_date": "2022-04-09T03:00:00.000Z",
+        "finish_date": "2022-04-11T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 1,
+        "price": 574,
+        "origin": "Buenos Aires",
+        "destination": "La Plata",
+        "marca": "Toyota",
+        "driver": {
+            "name": "Emmanuel",
+            "lastname": "Mendez",
+            "age": 32,
+            "license": 40176,
+            "email": "emmanuel.mendez@gmail.com",
+            "phone": 4387276734,
+            "password": 478341,
+            "role": null,
+            "car": [
+                {
+                    "color": "#CF7CD5",
+                    "license_plate": " 3iNpSw0w",
+                    "year": 2020
+                }
+            ]
+        }
+    },
+    {
+        "id": "dbc079a5706941d9b8c8a172f3604e08",
+        "start_date": "2022-04-15T03:00:00.000Z",
+        "finish_date": "2022-04-17T03:00:00.000Z",
+        "capacity": 6,
+        "rating": 5,
+        "price": 658,
+        "origin": "Tandil",
+        "destination": "Córdoba",
+        "marca": "VW",
+        "driver": {
+            "name": "Miguel",
+            "lastname": "Soler",
+            "age": 40,
+            "license": 82418,
+            "email": "miguel.soler@gmail.com",
+            "phone": 4935252801,
+            "password": 153533,
+            "role": null,
+            "car": [
+                {
+                    "color": "#286265",
+                    "license_plate": " Hff5HSK5",
+                    "year": 2000
+                }
+            ]
+        }
+    },
+    {
+        "id": "f83ab6e378d9408f977cb0e4097a60e6",
+        "start_date": "2022-07-06T03:00:00.000Z",
+        "finish_date": "2022-07-08T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 4,
+        "price": 858,
+        "origin": "Santa Fe",
+        "destination": "Tucumán",
+        "marca": "VW",
+        "driver": {
+            "name": "Jesús Víctor",
+            "lastname": "Camacho",
+            "age": 47,
+            "license": 81586,
+            "email": "jesús_víctor.camacho@gmail.com",
+            "phone": 8533162973,
+            "password": 958907,
+            "role": null,
+            "car": [
+                {
+                    "color": "#CA846E",
+                    "license_plate": " LouBllNJ",
+                    "year": 2006
+                }
+            ]
+        }
+    },
+    {
+        "id": "261eeb9eaf564d8887dcd5d6e353e7f0",
+        "start_date": "2022-09-03T03:00:00.000Z",
+        "finish_date": "2022-09-05T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 5,
+        "price": 978,
+        "origin": "Tandil",
+        "destination": "Salta",
+        "marca": "Nissan",
+        "driver": {
+            "name": "Ángel",
+            "lastname": "Izquierdo",
+            "age": 30,
+            "license": 98613,
+            "email": "ángel.izquierdo@gmail.com",
+            "phone": 2353074114,
+            "password": 655846,
+            "role": null,
+            "car": [
+                {
+                    "color": "#5DF855",
+                    "license_plate": " eeshb5n2",
+                    "year": 1997
+                }
+            ]
+        }
+    },
+    {
+        "id": "d907b567486c4a8a9ade60a48f9789f2",
+        "start_date": "2022-06-06T03:00:00.000Z",
+        "finish_date": "2022-06-08T03:00:00.000Z",
+        "capacity": 4,
+        "rating": 0,
+        "price": 766,
+        "origin": "Mendoza",
+        "destination": "Santa Fe",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Juan Esteban",
+            "lastname": "Castro",
+            "age": 47,
+            "license": 96684,
+            "email": "juan_esteban.castro@gmail.com",
+            "phone": 8967386436,
+            "password": 255932,
+            "role": null,
+            "car": [
+                {
+                    "color": "#59770C",
+                    "license_plate": " ixHhVmKi",
+                    "year": 2006
+                }
+            ]
+        }
+    },
+    {
+        "id": "29e9f4448b464b6caaec2ce3bb3652f0",
+        "start_date": "2022-10-19T03:00:00.000Z",
+        "finish_date": "2022-10-21T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 3,
+        "price": 990,
+        "origin": "Tandil",
+        "destination": "Ushuaia",
+        "marca": "Ford",
+        "driver": {
+            "name": "Thiago Benjamín",
+            "lastname": "Rodriguez",
+            "age": 40,
+            "license": 1361,
+            "email": "thiago_benjamín.rodriguez@gmail.com",
+            "phone": 358458346,
+            "password": 439094,
+            "role": null,
+            "car": [
+                {
+                    "color": "#53A92F",
+                    "license_plate": " 73FMPNK2",
+                    "year": 1996
+                }
+            ]
+        }
+    },
+    {
+        "id": "7b3d788c335841908d22668f73714344",
+        "start_date": "2022-10-12T03:00:00.000Z",
+        "finish_date": "2022-10-14T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 3,
+        "price": 739,
+        "origin": "Ushuaia",
+        "destination": "Tandil",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Juan",
+            "lastname": "Bravo",
+            "age": 32,
+            "license": 45265,
+            "email": "juan.bravo@gmail.com",
+            "phone": 8230947038,
+            "password": 706649,
+            "role": null,
+            "car": [
+                {
+                    "color": "#BB0982",
+                    "license_plate": " pye2o44E",
+                    "year": 2015
+                }
+            ]
+        }
+    },
+    {
+        "id": "b0936637c1ff422899e9ed9f155d5f47",
+        "start_date": "2022-03-27T03:00:00.000Z",
+        "finish_date": "2022-03-29T03:00:00.000Z",
+        "capacity": 3,
+        "rating": 1,
+        "price": 802,
+        "origin": "Santiago del Estero",
+        "destination": "Tandil",
+        "marca": "Chevrolet",
+        "driver": {
+            "name": "Alejandro",
+            "lastname": "Rubio",
+            "age": 28,
+            "license": 94195,
+            "email": "alejandro.rubio@gmail.com",
+            "phone": 7388872022,
+            "password": 172233,
+            "role": null,
+            "car": [
+                {
+                    "color": "#DF2500",
+                    "license_plate": " FsEIZlam",
+                    "year": 2017
+                }
+            ]
+        }
+    },
+    {
+        "id": "6ef435232e3d4eeabaec6df5d79330ad",
+        "start_date": "2022-03-13T03:00:00.000Z",
+        "finish_date": "2022-03-15T03:00:00.000Z",
+        "capacity": 3,
+        "rating": 2,
+        "price": 112,
+        "origin": "Rosario",
+        "destination": "San Juan",
+        "marca": "Ford",
+        "driver": {
+            "name": "Thiago",
+            "lastname": "Ramirez",
+            "age": 22,
+            "license": 71199,
+            "email": "thiago.ramirez@gmail.com",
+            "phone": 4881729998,
+            "password": 693831,
+            "role": null,
+            "car": [
+                {
+                    "color": "#CE0624",
+                    "license_plate": " AFmPqIej",
+                    "year": 2010
+                }
+            ]
+        }
+    },
+    {
+        "id": "8c1cbf8da2cd44e19edc6903e67ab8fa",
+        "start_date": "2022-11-24T03:00:00.000Z",
+        "finish_date": "2022-11-26T03:00:00.000Z",
+        "capacity": 1,
+        "rating": 4,
+        "price": 428,
+        "origin": "La Plata",
+        "destination": "San Luis",
+        "marca": "Nissan",
+        "driver": {
+            "name": "Mario",
+            "lastname": "Nuñez",
+            "age": 40,
+            "license": 31148,
+            "email": "mario.nuñez@gmail.com",
+            "phone": 629647908,
+            "password": 885641,
+            "role": null,
+            "car": [
+                {
+                    "color": "#EB1733",
+                    "license_plate": " XZN3bjFD",
+                    "year": 2019
+                }
+            ]
+        }
+    },
+    {
+        "id": "535d07cb6e344216aa22a6765cb7cd16",
+        "start_date": "2022-09-02T03:00:00.000Z",
+        "finish_date": "2022-09-04T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 4,
+        "price": 566,
+        "origin": "Salta",
+        "destination": "Buenos Aires",
+        "marca": "Fiat",
+        "driver": {
+            "name": "Tomás",
+            "lastname": "Cano",
+            "age": 27,
+            "license": 32993,
+            "email": "tomás.cano@gmail.com",
+            "phone": 1634441870,
+            "password": 378055,
+            "role": null,
+            "car": [
+                {
+                    "color": "#C7EF46",
+                    "license_plate": " DGxRCfh6",
+                    "year": 1990
+                }
+            ]
+        }
+    },
+    {
+        "id": "c7374471c8f24639ac9c658c9064c893",
+        "start_date": "2022-08-11T03:00:00.000Z",
+        "finish_date": "2022-08-13T03:00:00.000Z",
+        "capacity": 6,
+        "rating": 4,
+        "price": 557,
+        "origin": "Santiago del Estero",
+        "destination": "Córdoba",
+        "marca": "Fiat",
+        "driver": {
+            "name": "Alonso",
+            "lastname": "Carrasco",
+            "age": 32,
+            "license": 442,
+            "email": "alonso.carrasco@gmail.com",
+            "phone": 4487597611,
+            "password": 688029,
+            "role": null,
+            "car": [
+                {
+                    "color": "#9ED6EA",
+                    "license_plate": " yJQXhnzG",
+                    "year": 2005
+                }
+            ]
+        }
+    },
+    {
+        "id": "64f9de6d09df4bb4aa67440ec53650ef",
+        "start_date": "2022-06-11T03:00:00.000Z",
+        "finish_date": "2022-06-13T03:00:00.000Z",
+        "capacity": 1,
+        "rating": 0,
+        "price": 162,
+        "origin": "Santa Fe",
+        "destination": "San Luis",
+        "marca": "Ford",
+        "driver": {
+            "name": "Alexander",
+            "lastname": "Mora",
+            "age": 23,
+            "license": 2908,
+            "email": "alexander.mora@gmail.com",
+            "phone": 1426266499,
+            "password": 273998,
+            "role": null,
+            "car": [
+                {
+                    "color": "#2276D3",
+                    "license_plate": " 0s7eFlHB",
+                    "year": 1992
+                }
+            ]
+        }
+    },
+    {
+        "id": "0c642a32685a4a2888b348127fa3b2b4",
+        "start_date": "2022-07-21T03:00:00.000Z",
+        "finish_date": "2022-07-23T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 3,
+        "price": 527,
+        "origin": "Santa Fe",
+        "destination": "San Juan",
+        "marca": "Renault",
+        "driver": {
+            "name": "Luis Emilio",
+            "lastname": "Roman",
+            "age": 28,
+            "license": 33185,
+            "email": "luis_emilio.roman@gmail.com",
+            "phone": 812105013,
+            "password": 859316,
+            "role": null,
+            "car": [
+                {
+                    "color": "#C8CBED",
+                    "license_plate": " Vg3euwux",
+                    "year": 1992
+                }
+            ]
+        }
+    },
+    {
+        "id": "4ce0fb638d2f4f1ca7ce6dd2e0f8a37e",
+        "start_date": "2022-06-06T03:00:00.000Z",
+        "finish_date": "2022-06-08T03:00:00.000Z",
+        "capacity": 5,
+        "rating": 0,
+        "price": 547,
+        "origin": "Salta",
+        "destination": "Mar del Plata",
+        "marca": "VW",
+        "driver": {
+            "name": "Alexander",
+            "lastname": "Otero",
+            "age": 28,
+            "license": 66366,
+            "email": "alexander.otero@gmail.com",
+            "phone": 369880129,
+            "password": 865332,
+            "role": null,
+            "car": [
+                {
+                    "color": "#EF3446",
+                    "license_plate": " Ve5l9st2",
+                    "year": 2021
+                }
+            ]
+        }
+    },
+    {
+        "id": "298013c50cf04576913bdc398d63decd",
+        "start_date": "2022-04-16T03:00:00.000Z",
+        "finish_date": "2022-04-18T03:00:00.000Z",
+        "capacity": 6,
+        "rating": 4,
+        "price": 484,
+        "origin": "Tandil",
+        "destination": "San Luis",
+        "marca": "VW",
+        "driver": {
+            "name": "Víctor",
+            "lastname": "Herrera",
+            "age": 42,
+            "license": 42750,
+            "email": "víctor.herrera@gmail.com",
+            "phone": 3048752083,
+            "password": 973135,
+            "role": null,
+            "car": [
+                {
+                    "color": "#019481",
+                    "license_plate": " QEVM72tT",
+                    "year": 1999
+                }
+            ]
+        }
+    },
+    {
+        "id": "2bd4b2d2a5844ce5b27b941d101b1299",
+        "start_date": "2022-06-24T03:00:00.000Z",
+        "finish_date": "2022-06-26T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 5,
+        "price": 644,
+        "origin": "Salta",
+        "destination": "Santa Fe",
+        "marca": "VW",
+        "driver": {
+            "name": "Juan David",
+            "lastname": "Casado",
+            "age": 36,
+            "license": 81081,
+            "email": "juan_david.casado@gmail.com",
+            "phone": 2495521900,
+            "password": 965372,
+            "role": null,
+            "car": [
+                {
+                    "color": "#6F2243",
+                    "license_plate": " srV4HDPL",
+                    "year": 2005
+                }
+            ]
+        }
+    },
+    {
+        "id": "8923acc47df242da916867d712e9bf40",
+        "start_date": "2022-11-04T03:00:00.000Z",
+        "finish_date": "2022-11-06T03:00:00.000Z",
+        "capacity": 2,
+        "rating": 3,
+        "price": 884,
+        "origin": "Buenos Aires",
+        "destination": "Santa Fe",
+        "marca": "Toyota",
+        "driver": {
+            "name": "Juan Carlos",
+            "lastname": "Izquierdo",
+            "age": 39,
+            "license": 7632,
+            "email": "juan_carlos.izquierdo@gmail.com",
+            "phone": 650503224,
+            "password": 198848,
+            "role": null,
+            "car": [
+                {
+                    "color": "#A49AC9",
+                    "license_plate": " yjPt7LKg",
+                    "year": 2009
+                }
+            ]
+        }
+    }]

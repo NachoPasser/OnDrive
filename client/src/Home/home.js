@@ -17,10 +17,12 @@ import FilterByDestination from "../SearchBar/filterByDestination";
 import FilterByOrigin from "../SearchBar/filterByOrigin";
 import SortAlphabetically from "../SearchBar/sortAlphabetically";
 import SortByRating from "../SearchBar/sortByRating";
+import FilterByCapacity from "../SearchBar/filterByCapacity.jsx";
 import { getTripsByDestination } from '../redux/actions/getTripsByDestination.js'
 import { getTripsByOrigin } from "../redux/actions/getTripsByOrigin";
-//import SearchBar from "../SearchBar/searchbar";
+import SearchBar from "../SearchBar/searchbar";
 import NavBar from "../NavBar/navbar.js";
+import Fecha from "../SearchBar/filterByDate.jsx";
 
 //paginado
 //loader
@@ -77,6 +79,8 @@ export default function Home() {
                             <div className={style.filtrosAvanzados}>
                                 <SortByRating style={style.filtros} sorters={sorters} setSorters={setSorters} />
                                 <SortAlphabetically sorters={sorters} setSorters={setSorters}/>
+                                <FilterByCapacity></FilterByCapacity>
+                                <SearchBar></SearchBar>
                             </div>
                             <div className={style.filtroCapacidad}>
                                 <h1 id={style.h1}><span id={style.span1}>Por </span><span id={style.span2}>capacidad</span></h1>
