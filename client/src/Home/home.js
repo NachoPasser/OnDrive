@@ -6,11 +6,11 @@ import style from './home.module.css'
 import { getTrips } from "../redux/actions/getTrips";
 
 //estilos
-// import mapa from "../Home/home imagenes/mapa.png"
-// import ubicacion from "../Home/home imagenes/ubicacion.png"
-// import destino from "../Home/home imagenes/destino.png"
-// import sent from "../Home/home imagenes/sent.png"
-// import buscarTuRuta from "../Home/home imagenes/busca-tu-ruta.png"
+import mapa from "../Home/home imagenes/mapa.png"
+import ubicacion from "../Home/home imagenes/ubicacion.png"
+import destino from "../Home/home imagenes/destino.png"
+import sent from "../Home/home imagenes/sent.png"
+import buscarTuRuta from "../Home/home imagenes/busca-tu-ruta.png"
 
 //componentes
 import FilterByDestination from "../SearchBar/filterByDestination";
@@ -23,6 +23,7 @@ import { getTripsByOrigin } from "../redux/actions/getTripsByOrigin";
 import SearchBar from "../SearchBar/searchbar";
 import NavBar from "../NavBar/navbar.js";
 import Fecha from "../SearchBar/filterByDate.jsx";
+import Paging from "../components/Paging/Paging.jsx";
 
 //paginado
 //loader
@@ -36,6 +37,11 @@ export default function Home() {
 
     //estados globales
     const trips = useSelector(state => state.trips)
+
+    //estados locales
+    const [calendar, setCalendar] = useState(false)
+    const [travels, setTravels] = useState('')
+
     const [filters, setFilters] = useState({
         filterOrg: '',
         filterDest: ''
@@ -45,53 +51,67 @@ export default function Home() {
         sortAlphabetically: ''
     })
 
+    const [numberOfPage, setNumberOfPage] = useState(1)
+    let maxNumberOfPages = 0
+    const cardsPerPage = 3
+    
+    if(trips.length > 0) maxNumberOfPages = Math.ceil(trips.length / cardsPerPage)
+
+
     useEffect(() => {
         dispatch(getTrips());
-    }, [])
+    }, [dispatch])
 
-    async function handleBtn(){
+
+    //handlers
+    async function handleBtn() {
         console.log(filters) //ej {filterOrg: 'Salta', filterDest: 'Tucumán'}
         dispatch(getTripsByOrigin(filters.filterOrg))
         dispatch(getTripsByDestination(filters.filterDest))
-      
+
     }
 
-    useEffect(() => {
-        console.log(trips)
-    }, [trips])
+    function renderCalendar() {
+        if (!calendar) setCalendar(true)
+        else setCalendar(false)
+    }
+
 
     return (
         <div className={style.containerAll}>
-            <NavBar/>
+            <NavBar></NavBar>
             <div className={style.divisor}>
                 <div className={style.homeIzquierda}>
-                    {/* <img id={style.logoBuscaTuRuta} src={buscarTuRuta} /> */}
+                    <img id={style.logoBuscaTuRuta} src={buscarTuRuta} />
                     <div className={style.boxSearchAndFilters}>
+                    <Paging setNumber={setNumberOfPage} max={maxNumberOfPages} actualPage={numberOfPage} />  
                         <div className={style.buscador}>
-                            {/* <img id={style.logoUbicacion} src={ubicacion} /> */}
-                            <FilterByOrigin filters={filters} setFilters={setFilters}/>
-                            {/* <img id={style.logoDestino} src={destino} /> */}
-                            <FilterByDestination filters={filters} setFilters={setFilters}/>
-                            <button className={style.buttonSent} onClick={() => handleBtn()}> Buscar </button>
-                            {/* <img id={style.sent} src={sent} /> */}
+                            <img id={style.logoUbicacion} src={ubicacion} />
+                            <FilterByOrigin filters={filters} setFilters={setFilters} />
+                            <img id={style.logoDestino} src={destino} />
+                            <FilterByDestination filters={filters} setFilters={setFilters} />
+                            <button className={style.buttonSent} onClick={() => handleBtn()}> <img id={style.sent} src={sent} /> </button>
                         </div>
                         <div className={style.containerFiltros}>
                             <div className={style.filtrosAvanzados}>
                                 <SortByRating style={style.filtros} sorters={sorters} setSorters={setSorters} />
-                                <SortAlphabetically sorters={sorters} setSorters={setSorters}/>
-                                <FilterByCapacity></FilterByCapacity>
-                                <SearchBar></SearchBar>
+                                <SortAlphabetically style={style.filtros} sorters={sorters} setSorters={setSorters} />
+                                <FilterByCapacity style={style.filtros} />
                             </div>
-                            <div className={style.filtroCapacidad}>
-                                <h1 id={style.h1}><span id={style.span1}>Por </span><span id={style.span2}>capacidad</span></h1>
-                            </div>
+                            <SearchBar style={style}/>
+                            <button id={style.calendario} onClick={renderCalendar}>
+                                Filtrar por fecha de partida
+                            </button>
+                            {calendar && <Fecha />}
                         </div>
                     </div>
                     {
                         trips.length !== 0 ?
-                            <div className={style.homecards}>
-                                {
-                                    trips.map(trip => {
+                        <div className={style.homecards}>
+                            {trips.slice(
+                                (numberOfPage - 1) * cardsPerPage,
+                                (numberOfPage - 1) * cardsPerPage + cardsPerPage
+                            ).map(trip => {
                                         return (
                                             <div className={style.cards} key={trip.id}>
                                                     <HomeCard
