@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getTripsByOrigin } from '../redux/actions/getTripsByOrigin.js'
 import { getTrips } from '../redux/actions/getTrips.js'
 import { useEffect } from 'react'
-export default function FilterByOrigin({ style }) {
+export default function FilterByOrigin({ style, filters, setFilters }) {
 
     let dispatch = useDispatch()
     const [origins, setOrigins] = useState([])
@@ -13,11 +13,11 @@ export default function FilterByOrigin({ style }) {
 
     const handleSelectOrigin = (e) => {
         setSelected(e.target.value) //cambio el valor del select
-        if (e.target.value !== 'Origen') {
-            dispatch(getTripsByOrigin(e.target.value))
-        } else {
-            dispatch(getTrips())
-        }
+        // if (e.target.value !== 'Origen') {
+        //     dispatch(getTripsByOrigin(e.target.value))
+        // } else {
+        //     dispatch(getTrips())
+        // }
     }
 
     useEffect(() => {
@@ -29,6 +29,14 @@ export default function FilterByOrigin({ style }) {
         }
         setOrigins(originsArray)
     }, [trips])
+
+    useEffect(() => {
+        setFilters({
+            ...filters,
+            filterOrg: selected
+        })
+    }, [selected])
+
 
     return (
         <div>

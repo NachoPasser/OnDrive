@@ -7,7 +7,7 @@ import { FILTER_TRIPS_BY_DATE } from '../actions/getTripsByDate.js';
 
 const initialState = {
     trips: [], // trips variables
-    fixedTrips: [] //trips fijos
+    fixedTrips: [], //trips fijos,
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -15,22 +15,31 @@ const rootReducer = (state = initialState, action) => {
         case GET_TRIPS: 
             return {
                 ...state,
-                trips: action.payload,//trips debe sobreescribirse siempre
-                fixedTrips: action.payload
+                trips: action.payload,
+                fixedTrips: action.payload,
             }
         
-        case FILTER_TRIPS_BY_DESTINATION: 
-            let filteredByDestination = state.fixedTrips.filter(t => t.destination.includes(action.payload))
+        case FILTER_TRIPS_BY_ORIGIN: 
+            if(action.payload === 'Origen'){
+                return {
+                    ...state,
+                    trips: state.fixedTrips
+                }
+            }
+            let filteredOrgTrips = state.fixedTrips.filter(t => t.origin.includes(action.payload))
             return {
                 ...state,
-                trips: filteredByDestination
+                trips: filteredOrgTrips
             }
 
-        case FILTER_TRIPS_BY_ORIGIN: 
-            let filteredByOrigin= state.fixedTrips.filter(t => t.origin.includes(action.payload))
+        case FILTER_TRIPS_BY_DESTINATION: 
+            if(action.payload === 'Destino'){
+                return state
+            }
+            let filteredDestTrips = state.trips.filter(t => t.destination.includes(action.payload))
             return {
                 ...state,
-                trips: filteredByOrigin
+                trips: filteredDestTrips
             }
 
         case FILTER_TRIPS_BY_DATE:
@@ -46,7 +55,7 @@ const rootReducer = (state = initialState, action) => {
             : state.trips.sort((a, b) => b.rating - a.rating)
             return {
                 ...state,
-                trips: sortedByRating
+                trips: [...sortedByRating]
             }
         
         case SORT_TRIPS_ALPHABETICALLY :
@@ -55,8 +64,9 @@ const rootReducer = (state = initialState, action) => {
             : state.trips.sort((a,b) => b.destination.localeCompare(a.destination))
             return {
                 ...state,
-                trips: sortedAlphabetically
+                trips: [...sortedAlphabetically]
             }
+
         default:
             return state
     }
