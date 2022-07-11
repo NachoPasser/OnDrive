@@ -42,7 +42,7 @@ export default function SearchBar({style}) {
     }
 
     return (
-        <div className={style}>
+        <div className={style.searchbar}>
             <div>
                 <input
                     onChange={(e) => handleInputChange(e)}
@@ -57,7 +57,7 @@ export default function SearchBar({style}) {
                         }
                     })}
                 />
-                <button type="submit" onClick={(e) => handleSubmit(e)}>Buscar</button>
+                <button id={style.btnSearchBar} type="submit" onClick={(e) => handleSubmit(e)}>Buscar</button>
             </div>
         </div>
     )

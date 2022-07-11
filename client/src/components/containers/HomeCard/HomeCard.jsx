@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { BsStarFill } from 'react-icons/bs'
 import styles from './HomeCardProvisional.module.css'
 import Carousel from 'react-bootstrap/Carousel';
@@ -7,24 +7,25 @@ import car from '../../../assets/HomeCard/Toyota-Corolla-2001.jpg'
 import salta from '../../../assets/HomeCard/L_134003_salta001.jpg'
 import cordoba from '../../../assets/HomeCard/WhatsApp-Image-2021-09-06-at-15.14.27-800x400.jpeg'
 
-const HomeCard = ({id, rating, price, capacity, start_date, finish_date, origin, destination}) => {
+const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin, destination }) => {
     const album = [car, salta, cordoba]
+    start_date = start_date.slice(0, 10)
+    finish_date = finish_date.slice(0, 10)
     return (
         <div className={styles.comp_card}>
             <div className={styles.card}>
-                <Link  to={`/trip/${id}`}>
+                <Link to={`/trip/${id}`}>
                     <div className={styles.cardimage}>
                         <div>
                             <Carousel>
-                                {album.map((e,i) => {
-                                    return(
-                                    <Carousel.Item key={i}>
-                                    <img className={styles.imgn} src={e} alt="First slide"/>
-                                    </Carousel.Item>
+                                {album.map((e, i) => {
+                                    return (
+                                        <Carousel.Item key={i}>
+                                            <img className={styles.imgn} src={e} alt="First slide" />
+                                        </Carousel.Item>
                                     )
                                 })}
                             </Carousel>
-                            {/* <img scr={car} ></img> */}
                         </div>
                     </div>
                 </Link>
@@ -41,11 +42,9 @@ const HomeCard = ({id, rating, price, capacity, start_date, finish_date, origin,
                         </div>
                     </div>
                     <div className={styles.cardstars}>
-                        <div className={styles.star}>
-                            <p>Rating: {rating}</p>
-                        </div>
+                        <p>Rating: {rating}</p>
                     </div>
-                </div>       
+                </div>
             </div>
         </div>
     );

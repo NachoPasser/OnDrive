@@ -9,7 +9,7 @@ import { GET_SEARCH_FOR_DESTINATION } from '../actions/getSearch.js';
 
 const initialState = {
     trips: [], // trips variables
-    fixedTrips: [], //trips fijos,
+    fixedTrips: [] //trips fijos
 }
 
 const rootReducer = (state = initialState, action) => {
