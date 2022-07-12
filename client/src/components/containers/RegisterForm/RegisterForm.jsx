@@ -23,7 +23,13 @@ const RegisterForm = () => {
       password: password.value,
       confirmPassword: confirmPassword.value,
     }
-    console.log(Submit);
+
+    axios.post('http://localhost:3001/auth/register', Submit)
+    .then(datos => {
+      window.localStorage.setItem('token', datos.data.token)
+      history.push('/home')
+    })
+    .catch(/TO DO/)
   }
 
   return (

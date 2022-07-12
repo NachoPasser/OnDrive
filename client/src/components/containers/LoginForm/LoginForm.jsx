@@ -2,13 +2,13 @@ import React from 'react';
 import styles from "./LoginForm.module.css";
 import { useField } from '../../hooks/useInputField';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import InputField from '../../sections/InputField/InputField';
 import Button from '../../sections/Button/Button';
 
 const LoginForm = () => {
-
+  const history = useHistory()
   const email = useField({type: "text"});
   const password = useField({type: "password"});
   
@@ -19,7 +19,13 @@ const LoginForm = () => {
       email: email.value,
       password: password.value 
     }
-    console.log(Submit);
+
+    axios.post('http://localhost:3001/auth/login', Submit)
+    .then(datos => {
+      window.localStorage.setItem('token', datos.data.token)
+      history.push('/home')
+    })
+    .catch(/TO DO/)
   }
 
   return (
