@@ -31,7 +31,7 @@ const corsOptions = {
       cb(null, true);
     }
     for (let i = 0; ALLOWED_ORIGINS_REGEX.length; i++) {
-      const regex = ALLOWED_ORIGINS_REGEX[i];
+      const regex = new RegExp(ALLOWED_ORIGINS_REGEX[i]);
       if (regex.test(origin)) return cb(null, true);
     }
     cb(new Error("Not allowed by CORS"));
