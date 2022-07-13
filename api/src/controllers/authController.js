@@ -1,4 +1,3 @@
-require('dotenv').config()
 const { User, Token} = require('../db.js')
 const jwt = require('jsonwebtoken')
 const {SECRET_KEY } = process.env;
@@ -7,24 +6,30 @@ const registerUser = async (req, res) => {
     const {email, password, name, last_name} = req.body
     if(!email || !password) return res.status(400).send('Faltan datos obligatorios.')
     const user = {email, password, name, last_name}
-    const dbUser = await User.create(user)
-    const token = jwt.sign({user}, SECRET_KEY, {expiresIn: '1h'})
+    const dbUser = await User.create(user) // meter solo id de usuario a token
+    const token = jwt.sign({id: dbUser.id}, SECRET_KEY, {expiresIn: '1h'})
     
-    res.json({dbUser, token})
+    res.json({token})
 }
 
 const logUser = async (req, res) => {
-    const user = await User.findOne({
+    var user = await User.findOne({
         where: {
             email: req.body.email,
             password: req.body.password
         }
     })
-    if(!user) res.status(400).json({error: 'Email o contraseña incorrecta.'})
-    else res.json(user)
+    if(!user){
+      res.status(400).json({error: 'Email o contraseña incorrecta.'})
+    }
+    else{
+      const token = jwt.sign({id: user.id}, SECRET_KEY, {expiresIn: '1h'})
+      res.json({token})
+    }
+    
 }
 
-const checkUserIsLogged = (req, res) => {
+const checkUserIsLogged = async (req, res) => {
     let token = req.headers['authorization']
     token = token.split(' ')[1]
     if (token) {
@@ -42,13 +47,17 @@ const checkUserIsLogged = (req, res) => {
     }
 }
 
-const getUsers = async (req, res) => { //obtener todos los usuarios, obtener usuario por id
+const getUserByToken = async (req, res) => {
+}
+
+const getUsers = async (req, res) => {
    User.findAll().then(u => res.json(u)).catch(e => console.log(e))
 }
 
 module.exports = {
     registerUser,
-    logUser,
-    checkUserIsLogged,
     getUsers,
+    getUserByToken,
+    logUser,
+    checkUserIsLogged
 }
