@@ -2,6 +2,8 @@ import React from 'react';
 import styles from "./LoginForm.module.css";
 import { useField } from '../../hooks/useInputField';
 import { Link, useHistory } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
+import GoogleBtn from '../../GoogleBtn/GoogleBtn';
 import axios from 'axios'
 import InputField from '../../sections/InputField/InputField';
 import Button from '../../sections/Button/Button';
@@ -11,6 +13,16 @@ const LoginForm = () => {
   const email = useField({type: "text"});
   const password = useField({type: "password"});
   
+  async function handleGoogleResponse(response){
+    const {email} = jwtDecode(response.credential)
+    await axios.post('http://localhost:3001/auth/login', {email})
+    .then(datos => {
+      window.localStorage.setItem('token', datos.data.token)
+    })
+    .catch(/TO DO/)
+    history.push('/home')
+  }
+
   async function onSubmit(e){
     /* Function Submit del Botón, obtenemos los values de nuestros inputs y los añadimos al objeto */
     e.preventDefault();
@@ -52,7 +64,8 @@ const LoginForm = () => {
         <span href="/">o inicia sesión con</span>
         <hr/>
       </div>
-      <Button title={"Loguéate con Google"} type={"secondary"} size={"md"} width={"SemiFull"} icon={"google"}/>
+      <GoogleBtn handleResponse={handleGoogleResponse}></GoogleBtn>
+      {/* <Button title={"Loguéate con Google"} type={"secondary"} size={"md"} width={"SemiFull"} icon={"google"}/> */}
       <span className={styles.NewAccount}>No estoy registrado, <Link to='/register'>Crear una Cuenta</Link></span>
 
     </section>
