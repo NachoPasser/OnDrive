@@ -1,4 +1,4 @@
-import { GET_TRIPS } from '../actions/getTrips.js';
+import { GET_TRIPS, GET_TRIP_BY_ID } from '../actions/getTrips.js';
 import { FILTER_TRIPS_BY_DESTINATION } from '../actions/getTripsByDestination.js';
 import { SORT_TRIPS_BY_RATING } from '../actions/sortTripsByRating.js';
 import { SORT_TRIPS_ALPHABETICALLY } from '../actions/sortTripsAlphabetically.js';
@@ -9,7 +9,8 @@ import { GET_SEARCH_FOR_DESTINATION } from '../actions/getSearch.js';
 
 const initialState = {
     trips: [], // trips variables
-    fixedTrips: [] //trips fijos
+    fixedTrips: [], //trips fijos
+    tripById: {},
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -20,7 +21,11 @@ const rootReducer = (state = initialState, action) => {
                 trips: action.payload,
                 fixedTrips: action.payload,
             }
-        
+        case GET_TRIP_BY_ID:
+            return {
+                ...state,
+                tripById: action.payload,
+            };
         case FILTER_TRIPS_BY_ORIGIN: 
             if(action.payload === 'Origen'){
                 return {

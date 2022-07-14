@@ -7,8 +7,9 @@
   --accent-color: #fb8701;
   --dark-color: #212734;
   --clear-color: #f1f2f6;
+  --ligth-color: rgb(200, 200, 200);
+  --grey-color: rgb(63, 70, 87);
   /* Fonts */
-
   --font-title-color: #c8c8c8;
   --font-title-yellow-color: #fed428;
   --font-dark-color: rgba(33, 39, 52, .8);

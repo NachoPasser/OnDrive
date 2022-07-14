@@ -8,6 +8,7 @@ import Login from "./components/pages/Login/Login";
 import Register from "./components/pages/Register/Register";
 import RecoveryPassword from "./components/pages/RecoveryPassword/RecoveryPassword";
 import NewPassword from "./components/pages/NewPassword/NewPassword";
+import CardDetail from "./components/pages/CardDetail/CardDetail.jsx"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path='/register' component={Register} />
       <Route path='/new-password' component={NewPassword} />
       <Route path='/recovery-password' component={RecoveryPassword} />
+      <Route path='/trip/:id' component={CardDetail} />
     </div>
   );
 }
