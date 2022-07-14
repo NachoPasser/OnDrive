@@ -23,6 +23,11 @@ module.exports = (sequelize) => {
     last_name: {
         type: DataTypes.STRING(75),
         allowNull: false
+    },
+    ban_status:{
+      type:DataTypes.BOOLEAN,
+      allowNull:false,
+      defaultValue: false,
     }
   }, {
     timestamps: false
