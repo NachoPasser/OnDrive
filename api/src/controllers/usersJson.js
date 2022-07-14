@@ -51,7 +51,13 @@ const objTrip = (driver) => {
     const marca = ["Ford", "Nissan", "Chevrolet", "VW", "Toyota", "Renault", "Fiat"]
     const ciudades = ['Buenos Aires', 'Córdoba', 'La Plata', 'Mar del Plata', 'Mendoza', 'Rosario', 'Salta', 'San Juan', 'San Luis', 'Santa Fe', 'Santiago del Estero', 'Tandil', 'Tucumán', 'Ushuaia'];
     return {
+// <<<<<<< Updated upstream
+// =======
+// <<<<<<< HEAD
         id: generateUUID(),
+// =======
+// >>>>>>> ca06896b2c09a2c0b84b4ea9bfb3d3dde55488e7
+// >>>>>>> Stashed changes
         start_date: new Date(2022, mes, dia - 2),
         finish_date: new Date(2022, mes, dia),
         capacity: Math.floor(Math.random() * 6 + 1),
@@ -125,26 +131,9 @@ const getStaticUsers = (req, res) => {
     res.json(usersStatic);
 }
 
-const getTripById = (req,res) => {
-    const {id} = req.params;
-    try {
-        //valid id
-        if(typeof id !== "string") throw new Error(`Invalid ID(must be a string)`)
-        if(id.length !== 32) throw new Error(`Invalid ID(${id})`);
-        //search trip
-        const trip = usersStatic.filter((trip) => trip.id === id);
-        if(trip.length === 0) throw new Error(`Trip ID(${id}) not found`);
-        //response ok
-        res.status(200);
-        res.json({message:"Trip was found",value:{trip:trip[0]}})
-    } catch (e) {
-        //response error
-        res.status(400);
-        res.json({message:`something has wrong: ${e.message}`, value: null})
-    }
-}
-
-
+// <<<<<<< Updated upstream
+// =======
+// <<<<<<< HEAD
 function generateUUID() {
     var d = new Date().getTime();
     var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -155,5 +144,8 @@ function generateUUID() {
     return uuid;
 }
 
-module.exports = { usersJson, getTripsUsersFake, getStaticUsers, getTripById,objTrip,generate,Ascensora};
+// =======
+// >>>>>>> ca06896b2c09a2c0b84b4ea9bfb3d3dde55488e7
+// >>>>>>> Stashed changes
+module.exports = { usersJson, getTripsUsersFake, getStaticUsers };
 

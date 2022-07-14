@@ -125,20 +125,3 @@
     margin-right: 20px;
     margin-left: 20px;
 }
-
-#calendario {
-    position: absolute;
-    left: 42px;
-    bottom: 500px;
-}
-
-.searchbar {
-    position: absolute;
-    left: 42px;
-    bottom: 570px;
-}
-
-#btnSearchBar {
-    margin-left: 5px;
-    height: 32px;
-}
