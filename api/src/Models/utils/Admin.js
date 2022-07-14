@@ -1,6 +1,7 @@
 const { Admin } = require("../../db"); //admin model
+const { findUserByEmail } = require("./User");
 
-//PARA AGREGAR UN NUEVO ADMIN A LA TABLA
+//PARA AGREGAR UN NUEVO ADMIN A LA TABLA(NO UTILIZAR)
 async function createAdmin({ username, password }) {
   try {
     const [admin, created] = await Admin.findOrCreate({
@@ -22,7 +23,7 @@ async function createAdmin({ username, password }) {
   }
 }
 
-//PARA VER SI UN ID ES DE UN ADMIN O NO
+//PARA VER SI UN USERNAME & PASSWORD ES DE UN ADMIN O NO
 async function verifyAdmin({ username, password }) {
   try {
     const admin = await Admin.findOne({ where: { username, password } });
@@ -46,4 +47,16 @@ async function initAdmin() {
   }
 }
 
-module.exports = { createAdmin, verifyAdmin, initAdmin };
+//FUNCION PARA BANEAR / DESBANEAR USUARIOS POR EMAIL
+async function setBanStatus(status = false, userEmail) {
+  try {
+    const foundUser = await findUserByEmail(userEmail); //busco el user a banear/desbanear
+    await foundUser.update({ ban_status: status }); //actualizo el ban status
+    await foundUser.save(); //guardo en la database
+    return "Updated ban status to: " + status;
+  } catch (e) {
+    return e.message;
+  }
+}
+
+module.exports = { createAdmin, verifyAdmin, initAdmin, setBanStatus };
