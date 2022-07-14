@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import InputField from "../../sections/InputField/InputField";
 import Button from "../../sections/Button/Button";
 import { useHistory } from "react-router-dom";
 import { useField } from '../../hooks/useInputField';
+import GoogleBtn from "../../GoogleBtn/GoogleBtn";
+import jwtDecode from 'jwt-decode'
 import styles from "./RegisterForm.module.css";
 import axios from 'axios'
 
@@ -13,6 +15,16 @@ const RegisterForm = () => {
   const lastName = useField({type: "text"});
   const password = useField({type: "password"});
   const confirmPassword = useField({type: "password"});
+  
+  async function handleGoogleResponse(response){
+    const {email, given_name: name, family_name: last_name} = jwtDecode(response.credential)
+    await axios.post('http://localhost:3001/auth/register', {email, name, last_name})
+    .then(datos => {
+      window.localStorage.setItem('token', datos.data.token)
+    })
+    .catch(/TO DO/)
+    history.push('/home')
+  }
 
   async function onSubmit(e){
     /* Function Submit del Botón, obtenemos los values de nuestros inputs y los añadimos al objeto */
@@ -20,7 +32,7 @@ const RegisterForm = () => {
     const Submit = {
       email: email.value,
       name: name.value,
-      lastName: lastName.value,
+      last_name: lastName.value,
       password: password.value,
       confirmPassword: confirmPassword.value,
     }
@@ -87,7 +99,9 @@ const RegisterForm = () => {
         <span href="/">o regístrate con</span>
         <hr/>
       </div>
-      <Button title={"Regístrate con Google"} type={"secondary"} size={"md"} width={"SemiFull"} icon={"google"} onClick={"Lo que venga de Google"}/>
+      <GoogleBtn handleResponse={handleGoogleResponse}></GoogleBtn>
+      {/* <div id='btnGoogle'></div> */}
+      {/* <Button title={"Regístrate con Google"} type={"secondary"} size={"md"} width={"SemiFull"} icon={"google"} onClick={"Lo que venga de Google"}/> */}
 
     </section>
   );
