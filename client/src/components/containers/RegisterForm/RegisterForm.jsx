@@ -4,6 +4,7 @@ import Button from "../../sections/Button/Button";
 import { useHistory } from "react-router-dom";
 import { useField } from '../../hooks/useInputField';
 import styles from "./RegisterForm.module.css";
+import axios from 'axios'
 
 const RegisterForm = () => {
   const history = useHistory()
