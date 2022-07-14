@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {API_URL} from "../../config/enviroment";
 export const GET_TRIPS = "GET_TRIPS";
 export const GET_TRIP_BY_ID = "GET_TRIP_BY_ID";
 
