@@ -9,5 +9,6 @@ const router = Router();
 router.use('/trip', require('./trip.js'));
 router.use('/api', require('./users.js'));
 router.use('/auth', require('./auth.js'));
+router.use('/admin', require('./admin.js'));
 
 module.exports = router;
