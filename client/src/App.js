@@ -8,6 +8,17 @@ import Login from "./components/pages/Login/Login";
 import Register from "./components/pages/Register/Register";
 import RecoveryPassword from "./components/pages/RecoveryPassword/RecoveryPassword";
 import NewPassword from "./components/pages/NewPassword/NewPassword";
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+
+function makePrivate(ruta, ruta_a_redirigir, componente_a_renderizar){
+  return (
+    <Route path={ruta}>
+      <PrivateRoute redirect={ruta_a_redirigir}>
+        {componente_a_renderizar}
+      </PrivateRoute>
+    </Route>
+  )
+}
 
 function App() {
   return (
@@ -16,8 +27,8 @@ function App() {
       <Route path='/home' component={Home} />
       <Route path='/login' component={Login} />
       <Route path='/register' component={Register} />
-      <Route path='/new-password' component={NewPassword} />
-      <Route path='/recovery-password' component={RecoveryPassword} />
+      {makePrivate('/new-password', '/login', <NewPassword/>)}
+      {makePrivate('/recovery-password', '/login', <RecoveryPassword/>)}
     </div>
   );
 }

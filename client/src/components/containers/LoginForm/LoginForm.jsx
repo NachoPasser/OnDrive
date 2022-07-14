@@ -1,25 +1,30 @@
 import React from 'react';
 import styles from "./LoginForm.module.css";
 import { useField } from '../../hooks/useInputField';
-
-import { Link } from 'react-router-dom';
-
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios'
 import InputField from '../../sections/InputField/InputField';
 import Button from '../../sections/Button/Button';
 
 const LoginForm = () => {
-
+  const history = useHistory()
   const email = useField({type: "text"});
   const password = useField({type: "password"});
   
-  function onSubmit(e){
+  async function onSubmit(e){
     /* Function Submit del Botón, obtenemos los values de nuestros inputs y los añadimos al objeto */
     e.preventDefault();
     const Submit = {
       email: email.value,
       password: password.value 
     }
-    console.log(Submit);
+
+    await axios.post('http://localhost:3001/auth/login', Submit)
+    .then(datos => {
+      window.localStorage.setItem('token', datos.data.token)
+    })
+    .catch(/TO DO/)
+    history.push('/home')
   }
 
   return (
