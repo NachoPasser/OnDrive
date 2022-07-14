@@ -1,19 +1,19 @@
 import React from "react";
 import InputField from "../../sections/InputField/InputField";
 import Button from "../../sections/Button/Button";
-
+import { useHistory } from "react-router-dom";
 import { useField } from '../../hooks/useInputField';
 import styles from "./RegisterForm.module.css";
 
 const RegisterForm = () => {
- 
+  const history = useHistory()
   const email = useField({type: "text"});
   const name = useField({type: "text"});
   const lastName = useField({type: "text"});
   const password = useField({type: "password"});
   const confirmPassword = useField({type: "password"});
 
-  function onSubmit(e){
+  async function onSubmit(e){
     /* Function Submit del Botón, obtenemos los values de nuestros inputs y los añadimos al objeto */
     e.preventDefault();
     const Submit = {
@@ -24,12 +24,12 @@ const RegisterForm = () => {
       confirmPassword: confirmPassword.value,
     }
 
-    axios.post('http://localhost:3001/auth/register', Submit)
+    await axios.post('http://localhost:3001/auth/register', Submit)
     .then(datos => {
       window.localStorage.setItem('token', datos.data.token)
-      history.push('/home')
     })
     .catch(/TO DO/)
+    history.push('/home')
   }
 
   return (
