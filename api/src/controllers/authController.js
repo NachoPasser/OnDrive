@@ -6,7 +6,8 @@ const { findUserByEmail } = require('../Models/utils/User.js');
 const registerUser = async (req, res) => {
     const {email, password, name, last_name} = req.body
     if(!email) return res.status(400).send('Faltan datos obligatorios.')
-    let dbUser = findUserByEmail(email)
+    let dbUser = await findUserByEmail(email)
+   
     if(!dbUser){
       const user = {email, password, name, last_name}
       dbUser = await User.create(user) // meter solo id de usuario a token
