@@ -1,14 +1,14 @@
 import { Route } from 'react-router-dom'
 import React from 'react';
-import Home from './Home/home';
+import Home from './components/Home/home';
 import './App.css';
-import LandingPage from './components/pages/LandingPage/LandingPage.jsx';
-import Login from "./components/pages/Login/Login";
-import Register from "./components/pages/Register/Register";
-import RecoveryPassword from "./components/pages/RecoveryPassword/RecoveryPassword";
-import NewPassword from "./components/pages/NewPassword/NewPassword";
-import AdminPanel from './components/AdminPanel/AdminPanel';
-import LoginAdmin from './components/pages/LoginAdmin/LoginAdmin';
+import LandingPage from './components/LandingPage/LandingPage.jsx';
+import Login from "./components/Forms/Login/Login";
+import Register from "./components/Forms/Register/Register";
+import RecoveryPassword from "./components/Forms/RecoveryPassword/RecoveryPassword";
+import NewPassword from "./components/Forms/NewPassword/NewPassword";
+import LoginAdmin from './components/Forms/LoginAdmin/LoginAdmin';
+import AdminPanel from './components/AdminPanel/AdminPanel'
 import PrivateRouteForNotAdmin from './components/PrivateRoutes/PrivateRouteForNotAdmin/PrivateRouteForNotAdmin';
 import PrivateRouteForLogged from './components/PrivateRoutes/PrivateRouteForLogged/PrivateRouteForLogged';
 import PrivateRouteForNotLogged from './components/PrivateRoutes/PrivateRouteForNotLogged/PrivateRouteForNotLogged';

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
-import axios from 'axios'
 import s from './AdminPanel.module.css'
-import User from '../sections/User/User'
+import User from '../Sections/User/User'
 import { getUsersFromDatabase } from '../../redux/actions/getUsersFromDatabase'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -10,6 +9,7 @@ export default function AdminPanel() {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getUsersFromDatabase())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
   return (
