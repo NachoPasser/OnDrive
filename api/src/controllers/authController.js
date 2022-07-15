@@ -1,14 +1,17 @@
 const { User, Token} = require('../db.js')
 const jwt = require('jsonwebtoken')
 const {SECRET_KEY } = process.env;
-const axios = require('axios')
+const axios = require('axios');
+const { findUserByEmail } = require('../Models/utils/User.js');
 const registerUser = async (req, res) => {
     const {email, password, name, last_name} = req.body
     if(!email) return res.status(400).send('Faltan datos obligatorios.')
-    const user = {email, password, name, last_name}
-    const dbUser = await User.create(user) // meter solo id de usuario a token
+    let dbUser = findUserByEmail(email)
+    if(!dbUser){
+      const user = {email, password, name, last_name}
+      dbUser = await User.create(user) // meter solo id de usuario a token
+    } 
     const token = jwt.sign({id: dbUser.id}, SECRET_KEY, {expiresIn: '1h'})
-    
     res.json({token})
 }
 
