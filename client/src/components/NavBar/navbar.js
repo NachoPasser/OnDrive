@@ -1,22 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from '../../assets/NavBar/on-logox0.5.png'
-import { API_URL } from "../../config/enviroment";
 import style from './navbar.module.css'
 
 export default function NavBar() {
 
-    //handlers
-    const handleClick = (e) => {
-        e.preventDefault();
-        window.location = `${API_URL}/home`
-    }
-
-
     return (
         <ul className={style.nav}>
             <li className={style.liLogo}>
-                <NavLink className={style.navLink} exact to="/home" onClick={(e) => handleClick(e)}>
+                <NavLink className={style.navLink} exact to="/home" >
                     <img className={style.logo} src={logo} alt='No se encontró la imagen.' />
                 </NavLink>
             </li>
