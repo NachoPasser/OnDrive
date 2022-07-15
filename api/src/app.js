@@ -2,7 +2,10 @@ const express = require("express");
 const routes = require("./routes/index.js");
 const { server_settings } = require("./config/server");
 
-require("./db.js");
+//set dabatase & relations
+require("./database/db.js");
+require("./database/relations.js");
+
 
 const server = express();
 
