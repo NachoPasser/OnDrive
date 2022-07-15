@@ -12,6 +12,7 @@ import AdminPanel from './components/AdminPanel/AdminPanel'
 import PrivateRouteForNotAdmin from './components/PrivateRoutes/PrivateRouteForNotAdmin/PrivateRouteForNotAdmin';
 import PrivateRouteForLogged from './components/PrivateRoutes/PrivateRouteForLogged/PrivateRouteForLogged';
 import PrivateRouteForNotLogged from './components/PrivateRoutes/PrivateRouteForNotLogged/PrivateRouteForNotLogged';
+import CardDetail from './components/CardDetail/CardDetail.jsx'
 
 function makePrivateForVisitors(route, route_to_redirect, component_to_render){
   return (
@@ -54,6 +55,7 @@ function App() {
       {makePrivateForNotAdmins('/adminPanel', '/loginAdmin', <AdminPanel/>)}
       {makePrivateForVisitors('/new-password', '/login', <NewPassword/>)}
       <Route path='/recovery-password' component={RecoveryPassword}/>
+      <Route path='/trip/:id' component={CardDetail} />
     </div>
   );
 }
