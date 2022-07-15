@@ -14,6 +14,7 @@ const PrivateRouteForLogged = ({ children, redirect }) => {
             console.log(res.data.message)
             setMessage(res.data.message)
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return(

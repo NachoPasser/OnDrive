@@ -13,6 +13,7 @@ const PrivateRouteForNotAdmin = ({ children, redirect }) => {
         }}).then(res => {
             setMessage(res.data.message)
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return(

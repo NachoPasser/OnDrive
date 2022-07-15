@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./InputField.module.css";
-
 import emailIcon from "../../../assets/Forms/email-icon.png";
 import userIcon from "../../../assets/Forms/user-icon.png";
 import passwordIcon from "../../../assets/Forms/password-icon.png";
