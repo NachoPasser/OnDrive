@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import {Redirect} from 'react-router-dom';
 import axios from 'axios'
-const PrivateRoute = ({ children, redirect }) => {
+import { API_URL } from "../../../config/enviroment";
+const PrivateRouteForNotAdmin = ({ children, redirect }) => {
 
     const token = window.localStorage.getItem('token')
     const [message, setMessage] = useState('')
     
     useEffect(() => {
-        axios.get('http://localhost:3001/auth/verify', {headers: {
+        axios.get(`${API_URL}/admin/verify`, {headers: {
             Authorization: `Bearer ${token}`
         }}).then(res => {
-            console.log(res.data.message)
             setMessage(res.data.message)
         })
     }, [])
@@ -18,10 +18,10 @@ const PrivateRoute = ({ children, redirect }) => {
     return(
         <div>
             {message
-            ? message === 'El usuario está logueado.' ? children : <Redirect to={redirect}/>
+            ? message === 'El usuario es administrador.' ? children : <Redirect to={redirect}/>
             : null}
         </div>
     )
 }
 
-export default PrivateRoute
+export default PrivateRouteForNotAdmin

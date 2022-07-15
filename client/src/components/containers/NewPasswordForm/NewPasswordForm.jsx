@@ -1,25 +1,27 @@
 import React from 'react';
 import styles from "./NewPasswordForm.module.css";
-
+import axios from 'axios';
+import {API_URL} from '../../../config/enviroment';
 import InputField from '../../sections/InputField/InputField';
 import Button from '../../sections/Button/Button';
-
+import { useHistory } from 'react-router-dom';
 import { useField } from '../../hooks/useInputField';
 import vectorPassword from "../../../assets/NewPassword/NewPassword.png";
 
 const NewPasswordForm = ({UserEmail}) => {
-
+  const navigate = useHistory();
   const password = useField({type: "password"});
   const confirmPassword = useField({type: "password"});
   
-  function onSubmit(e){
+  async function onSubmit(e){
     /* Function Submit del Botón, obtenemos los values de nuestros inputs y los añadimos al objeto */
     e.preventDefault();
     const Submit = {
       password: password.value,
       confirmPassword: confirmPassword.value 
     }
-    console.log(Submit);
+    await axios.post(`${API_URL}/pass/change/${window.localStorage.getItem('token')}`, Submit);
+    navigate.push('/home');
   }
   
   return (

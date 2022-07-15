@@ -2,20 +2,43 @@ import { Route } from 'react-router-dom'
 import React from 'react';
 import Home from './Home/home';
 import './App.css';
-
 import LandingPage from './components/pages/LandingPage/LandingPage.jsx';
 import Login from "./components/pages/Login/Login";
 import Register from "./components/pages/Register/Register";
 import RecoveryPassword from "./components/pages/RecoveryPassword/RecoveryPassword";
 import NewPassword from "./components/pages/NewPassword/NewPassword";
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import AdminPanel from './components/AdminPanel/AdminPanel';
+import LoginAdmin from './components/pages/LoginAdmin/LoginAdmin';
+import PrivateRouteForNotAdmin from './components/PrivateRoutes/PrivateRouteForNotAdmin/PrivateRouteForNotAdmin';
+import PrivateRouteForLogged from './components/PrivateRoutes/PrivateRouteForLogged/PrivateRouteForLogged';
+import PrivateRouteForNotLogged from './components/PrivateRoutes/PrivateRouteForNotLogged/PrivateRouteForNotLogged';
 
-function makePrivate(ruta, ruta_a_redirigir, componente_a_renderizar){
+function makePrivateForVisitors(route, route_to_redirect, component_to_render){
   return (
-    <Route path={ruta}>
-      <PrivateRoute redirect={ruta_a_redirigir}>
-        {componente_a_renderizar}
-      </PrivateRoute>
+    <Route path={route}>
+      <PrivateRouteForNotLogged redirect={route_to_redirect}>
+        {component_to_render}
+      </PrivateRouteForNotLogged>
+    </Route>
+  )
+}
+
+function makePrivateForLoggedUsers(route, route_to_redirect, component_to_render){
+  return (
+  <Route path={route}>
+      <PrivateRouteForLogged redirect={route_to_redirect}>
+        {component_to_render}
+      </PrivateRouteForLogged>
+  </Route>
+  )
+}
+
+function makePrivateForNotAdmins(route, route_to_redirect, component_to_render){
+  return (
+    <Route path={route}>
+      <PrivateRouteForNotAdmin redirect={route_to_redirect}>
+        {component_to_render}
+      </PrivateRouteForNotAdmin>
     </Route>
   )
 }
@@ -25,10 +48,12 @@ function App() {
     <div className="App">
       <Route exact path='/' component={LandingPage} />
       <Route path='/home' component={Home} />
-      <Route path='/login' component={Login} />
-      <Route path='/register' component={Register} />
-      {makePrivate('/new-password', '/login', <NewPassword/>)}
-      {makePrivate('/recovery-password', '/login', <RecoveryPassword/>)}
+      <Route path='/loginAdmin' component={LoginAdmin}/>
+      {makePrivateForLoggedUsers('/login', '/home', <Login/>)}
+      {makePrivateForLoggedUsers('/register', '/home', <Register/>)}
+      {makePrivateForNotAdmins('/adminPanel', '/loginAdmin', <AdminPanel/>)}
+      {makePrivateForVisitors('/new-password', '/login', <NewPassword/>)}
+      <Route path='/recovery-password' component={RecoveryPassword}/>
     </div>
   );
 }

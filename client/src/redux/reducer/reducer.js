@@ -6,10 +6,12 @@ import { FILTER_TRIPS_BY_ORIGIN } from '../actions/getTripsByOrigin.js';
 import { FILTER_TRIPS_BY_DATE } from '../actions/getTripsByDate.js';
 import { FILTER_TRIPS_BY_CAPACITY } from '../actions/getTripsByCapacity.js';
 import { GET_SEARCH_FOR_DESTINATION } from '../actions/getSearch.js';
+import { GET_USERS_FROM_DB } from '../actions/getUsersFromDatabase.js';
 
 const initialState = {
     trips: [], // trips variables
-    fixedTrips: [] //trips fijos
+    fixedTrips: [], //trips fijos
+    users: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -21,6 +23,12 @@ const rootReducer = (state = initialState, action) => {
                 fixedTrips: action.payload,
             }
         
+        case GET_USERS_FROM_DB:
+            return {
+                ...state,
+                users: action.payload
+            }
+            
         case FILTER_TRIPS_BY_ORIGIN: 
             if(action.payload === 'Origen'){
                 return {

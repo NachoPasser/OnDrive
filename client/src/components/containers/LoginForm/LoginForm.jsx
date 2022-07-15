@@ -2,6 +2,7 @@ import React from 'react';
 import styles from "./LoginForm.module.css";
 import { useField } from '../../hooks/useInputField';
 import { Link, useHistory } from 'react-router-dom';
+import { API_URL } from '../../../config/enviroment';
 import jwtDecode from 'jwt-decode';
 import GoogleBtn from '../../GoogleBtn/GoogleBtn';
 import axios from 'axios'
@@ -31,7 +32,7 @@ const LoginForm = () => {
       password: password.value 
     }
 
-    await axios.post('http://localhost:3001/auth/login', Submit)
+    await axios.post(`${API_URL}/auth/login`, Submit)
     .then(datos => {
       window.localStorage.setItem('token', datos.data.token)
     })

@@ -29,7 +29,7 @@ const logUser = async (req, res) => {
           }
       })
     }
-    
+
     if(!user){
       res.status(400).json({error: 'Email o contraseña incorrecta.'})
     }
@@ -43,7 +43,7 @@ const logUser = async (req, res) => {
 const checkUserIsLogged = async (req, res) => {
     let token = req.headers['authorization']
     token = token.split(' ')[1]
-    if (token) {
+    if (token !== 'null') {
         jwt.verify(token, SECRET_KEY, (err, decoded) => {      
           if (err) {
             return res.json({ message: 'Token inválida.' });    
@@ -58,9 +58,6 @@ const checkUserIsLogged = async (req, res) => {
     }
 }
 
-const getUserByToken = async (req, res) => {
-}
-
 const getUsers = async (req, res) => {
   User.findAll()
   .then(u => res.json(u))
@@ -70,7 +67,6 @@ const getUsers = async (req, res) => {
 module.exports = {
     registerUser,
     getUsers,
-    getUserByToken,
     logUser,
     checkUserIsLogged
 }

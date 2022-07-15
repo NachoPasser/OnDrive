@@ -2,33 +2,29 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import { useField } from '../../hooks/useInputField';
 import styles from "./RecoveryPasswordForm.module.css";
-
+import axios from 'axios'
 import InputField from '../../sections/InputField/InputField';
 import Button from '../../sections/Button/Button';
-;
+import { API_URL } from '../../../config/enviroment';
 
 const RecoveryPasswordForm = () => {
   const navigate = useHistory();
 
   const email = useField({type: "text"});
   
-  function onSubmit(e){
+  async function onSubmit(e){
     /* Function Submit del Botón, obtenemos los values de nuestros inputs y los añadimos al objeto */
     e.preventDefault();
     const Submit = {
       email: email.value,
     }
-    console.log(Submit);
+    await axios.post(`${API_URL}/pass`, Submit);
+    navigate.push("/login");
   }
 
-  /* Funciones de prueba, solo para comprobar las rutas*/
+
   const registerPage = () => {
-    onSubmit();
     navigate.push("/register");
-  }
-
-  const newPasswordPage = () => {
-    navigate.push("/new-password");
   }
 
   return (
@@ -42,7 +38,7 @@ const RecoveryPasswordForm = () => {
         placeholder={"Ingresa tu email"}
       />
       <span className={styles.BackHome}>Quiero <Link to='/login'>volver al inicio</Link></span>
-      <Button title={"ENVIAR"} type={"primary"} size={"lg"} width={"Full"} onClick={newPasswordPage}/>
+      <Button title={"ENVIAR"} type={"primary"} size={"lg"} width={"Full"} onClick={onSubmit}/>
       <div className={styles.DividerText}>
         <span href="/">¿No tienes un usuario?</span>
       </div>

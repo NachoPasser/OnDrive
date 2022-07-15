@@ -1,0 +1,80 @@
+.MainContainer{
+  width: 100%;
+}
+
+.MainContainer, .ContainerLogin, .ImageContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ContainerLogin{
+  width: 100%;
+  height: 100vh;
+  gap: 10px;
+}
+
+
+/* Styles for Container Image */
+.ImageContainer{
+  width: 100%;
+  height: 20%;
+  background-color: var(--clear-color);
+}
+
+.Image{
+  height: 100%;
+}
+
+.LogoDesktop{
+  display: none;
+  width: 50%;
+}
+
+.Logo{
+  width: 50%;
+}
+
+.Text{
+  color: var(--font-title-color);
+  font-size: 1.5rem;
+  text-align: center;
+  display: none;
+}
+
+
+/* Media queries for mid-size devices (Tablet) */
+@media screen
+and (min-device-width: 768px) 
+and (max-device-width: 1024px) {
+  .ContainerLogin{
+  }
+}
+
+/* Media queries for large-size devices (Laptop & Desktop) */
+@media screen
+and (min-device-width: 1200px) {
+  .ContainerLogin{
+    flex-direction: row;
+    width: 75%;
+    gap: 70px;
+  }
+
+  .ImageContainer{
+    background: transparent;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .LogoDesktop {
+    display: block;
+  }
+
+  .Text {
+    display: block;
+  }
+
+  .Logo{
+    display: none;
+  }
+}

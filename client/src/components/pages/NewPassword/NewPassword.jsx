@@ -14,7 +14,7 @@ const NewPassword = () => {
         <img className={styles.LogoDesktop} src={logo} alt="logo-onDrive" />
         <p className={styles.Text}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
       </div>
-      <NewPasswordForm UserEmail={"maxsolfar@gmail.com"}/>
+      <NewPasswordForm/>
       </section>
     </section>
   )

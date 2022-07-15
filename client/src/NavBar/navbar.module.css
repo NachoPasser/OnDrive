@@ -85,3 +85,19 @@
     background-color: white;
     color: #00A3FE;
 }
+
+.logout{
+    background-color: rgb(31, 32, 33);
+    border-radius: 8px;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.logout:hover {
+    background-color: white;
+    color: rgb(31, 32, 33);
+}
