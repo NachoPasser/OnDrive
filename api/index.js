@@ -1,4 +1,4 @@
-const server = require("./src/app.js");
+const { server } = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const { initAdmin } = require("./src/Models/utils/Admin");
 
