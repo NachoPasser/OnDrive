@@ -3,12 +3,8 @@ import { Link } from 'react-router-dom';
 // import { BsStarFill } from 'react-icons/bs'
 import styles from './HomeCardProvisional.module.css'
 import Carousel from 'react-bootstrap/Carousel';
-import car from '../../../assets/HomeCard/Toyota-Corolla-2001.jpg'
-import salta from '../../../assets/HomeCard/L_134003_salta001.jpg'
-import cordoba from '../../../assets/HomeCard/WhatsApp-Image-2021-09-06-at-15.14.27-800x400.jpeg'
 
-const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin, destination }) => {
-    const album = [car, salta, cordoba]
+const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin, destination, album }) => {
     start_date = start_date.slice(0, 10)
     finish_date = finish_date.slice(0, 10)
     return (

@@ -7,11 +7,13 @@ import { FILTER_TRIPS_BY_DATE } from '../actions/getTripsByDate.js';
 import { FILTER_TRIPS_BY_CAPACITY } from '../actions/getTripsByCapacity.js';
 import { GET_SEARCH_FOR_DESTINATION } from '../actions/getSearch.js';
 import { GET_USERS_FROM_DB } from '../actions/getUsersFromDatabase.js';
+import { GET_TRIP_BY_ID } from '../actions/getTripById.js'
 
 const initialState = {
     trips: [], // trips variables
     fixedTrips: [], //trips fijos
-    users: []
+    users: [],
+    tripById: {},
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -88,6 +90,12 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 trips: [...sortedAlphabetically]
             }
+
+            case GET_TRIP_BY_ID:
+                return{
+                    ...state,
+                    tripById: action.payload,
+                    }
 
         default:
             return state
