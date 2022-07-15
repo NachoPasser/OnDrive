@@ -35,6 +35,7 @@ export default function NavBar() {
             <div className={style.buttons}>
                 <NavLink className={style.login} exact to="/login">Login</NavLink>
                 <NavLink className={style.register} exact to="/register">Register</NavLink>
+                <button className={style.logout} onClick={() => window.localStorage.clear()}>Logout</button>
             </div>
             <div className={style.items}>
                 <li className={style.li}>

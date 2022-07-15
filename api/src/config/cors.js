@@ -1,7 +1,7 @@
 //host que pueden realizar peticiones
 const ALLOWED_ORIGINS = [
   "https://on-drive.vercel.app",
-  /https:\/\/on-drive-.*-.vercel.app/,
+  /https:\/\/on-drive-.*-.*.vercel.app/,
   /http:\/\/localhost:([0-9]{4})/,
 ];
 

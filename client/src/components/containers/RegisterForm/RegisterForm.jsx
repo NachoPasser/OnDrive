@@ -7,6 +7,7 @@ import GoogleBtn from "../../GoogleBtn/GoogleBtn";
 import jwtDecode from 'jwt-decode'
 import styles from "./RegisterForm.module.css";
 import axios from 'axios'
+import {API_URL} from "../../../config/enviroment";
 
 const RegisterForm = () => {
   const history = useHistory()
@@ -18,7 +19,7 @@ const RegisterForm = () => {
   
   async function handleGoogleResponse(response){
     const {email, given_name: name, family_name: last_name} = jwtDecode(response.credential)
-    await axios.post('http://localhost:3001/auth/register', {email, name, last_name})
+    await axios.post(`${API_URL}/auth/register`, {email, name, last_name})
     .then(datos => {
       window.localStorage.setItem('token', datos.data.token)
     })
@@ -37,7 +38,7 @@ const RegisterForm = () => {
       confirmPassword: confirmPassword.value,
     }
 
-    await axios.post('http://localhost:3001/auth/register', Submit)
+    await axios.post(`${API_URL}/auth/register`, Submit)
     .then(datos => {
       window.localStorage.setItem('token', datos.data.token)
     })
@@ -100,7 +101,6 @@ const RegisterForm = () => {
         <hr/>
       </div>
       <GoogleBtn handleResponse={handleGoogleResponse}></GoogleBtn>
-      {/* <div id='btnGoogle'></div> */}
       {/* <Button title={"Regístrate con Google"} type={"secondary"} size={"md"} width={"SemiFull"} icon={"google"} onClick={"Lo que venga de Google"}/> */}
 
     </section>
