@@ -16,7 +16,7 @@ const LoginForm = () => {
   
   async function handleGoogleResponse(response){
     const {email} = jwtDecode(response.credential)
-    await axios.post('http://localhost:3001/auth/login', {email})
+    await axios.post(`${API_URL}/auth/login`, {email})
     .then(datos => {
       window.localStorage.setItem('token', datos.data.token)
     })

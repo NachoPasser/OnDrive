@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from '../../assets/NavBar/on-logox0.5.png'
+import { API_URL } from "../../config/enviroment";
 import style from './navbar.module.css'
 
 export default function NavBar() {
@@ -8,7 +9,7 @@ export default function NavBar() {
     //handlers
     const handleClick = (e) => {
         e.preventDefault();
-        window.location = "http://localhost:3000/home"
+        window.location = `${API_URL}/home`
     }
 
 
