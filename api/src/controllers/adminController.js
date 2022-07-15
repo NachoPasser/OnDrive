@@ -41,7 +41,7 @@ const checkUserIsAdmin = async (req, res) => {
   let token = req.headers['authorization']
   token = token.split(' ')[1]
   
-  if (token === 'null') {
+  if (token !== 'null') {
       jwt.verify(token, SECRET_KEY, (err, decoded) => {      
         if (err) {
           return res.json({ message: 'Token inválida.' });    
