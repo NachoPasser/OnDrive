@@ -5,26 +5,33 @@ const { Trip } = require("../Models/Trip");
 const { Admin } = require("../Models/Admin");
 const { Car } = require("../Models/Car");
 const { Fuel } = require("../Models/Fuel");
+const { DataTypes } = require("sequelize");
 
 //relations:
 
 //un driver pertenece a un usuario(es decir primero debe ser usuario para ser driver)
 //un usario tiene un driver(no necesariamente).
 Driver.belongsTo(User);
-User.hasOne(Driver);
+User.hasOne(Driver, {
+  foreignKey: {
+    name: "user_id",
+    allowNull: false,
+    type: DataTypes.UUID,
+  },
+});
 
 //un driver tiene muchos autos
 //un auto pertenece a un driver
-Driver.hasMany(Car);
+Driver.hasMany(Car, { foreignKey: "driver_id" });
 Car.belongsTo(Driver);
 
 //un driver tiene muchos viajes y un viaje pertenece a un driver
-Driver.hasMany(Trip);
+Driver.hasMany(Trip, { foreignKey: "driver_id" });
 Trip.belongsTo(Driver);
 
 //un usuario(pasajero) tiene muchos viajes
 //y un viaje puede pertenecer a muchos pasajeros
-User.hasMany(Trip);
+User.belongsToMany(Trip, { through: "users_trips" });
 Trip.belongsToMany(User, { through: "users_trips" });
 
 //exporto todo los modelos por si se utilizan en otros archivos
