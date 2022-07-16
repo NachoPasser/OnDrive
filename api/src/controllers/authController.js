@@ -1,6 +1,6 @@
 const { User } = require("../Models/User");
 const jwt = require("jsonwebtoken");
-const { findUserByEmail } = require("../Models/utils/User.js");
+const { findUserByEmail } = require("../Models/utils/Finders.js");
 const { SECRET_KEY } = process.env;
 
 const registerUser = async (req, res) => {
@@ -12,7 +12,9 @@ const registerUser = async (req, res) => {
     const user = { email, password, name, last_name };
     dbUser = await User.create(user); // meter solo id de usuario a token
   }
-  const token = jwt.sign({ id: dbUser.id }, SECRET_KEY, { expiresIn: "1h" });
+  const token = jwt.sign({ id: dbUser.user_id }, SECRET_KEY, {
+    expiresIn: "1h",
+  });
   res.json({ token });
 };
 
@@ -37,7 +39,9 @@ const logUser = async (req, res) => {
   if (!user) {
     res.status(400).json({ error: "incorrect email or password" });
   } else {
-    const token = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: "1h" });
+    const token = jwt.sign({ id: user.user_id }, SECRET_KEY, {
+      expiresIn: "1h",
+    });
     res.json({ token });
   }
 };
