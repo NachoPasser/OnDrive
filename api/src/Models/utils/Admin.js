@@ -1,5 +1,5 @@
 const { Admin } = require("../../Models/Admin"); //admin model
-const { findUserByEmail } = require("./User");
+const { findUserByEmail } = require("./Finders");
 
 //PARA AGREGAR UN NUEVO ADMIN A LA TABLA(NO UTILIZAR)
 async function createAdmin({ username, password }) {
@@ -18,7 +18,7 @@ async function createAdmin({ username, password }) {
         };
   } catch (e) {
     return {
-      msg: "error on create admin: " + e.message,
+      msg: "error on create admin - " + e.message,
     };
   }
 }
@@ -30,7 +30,7 @@ async function verifyAdmin({ username, password }) {
     if (admin === null) return false;
     return true;
   } catch (e) {
-    return { msg: "Error verify admin: " + e.message };
+    return { msg: "error verify admin - " + e.message };
   }
 }
 
@@ -43,7 +43,7 @@ async function administrator() {
     });
     console.log(msg);
   } catch (e) {
-    console.error("error initialization admin: " + e.message);
+    console.error("error initialization admin - " + e.message);
   }
 }
 
@@ -53,9 +53,9 @@ async function setBanStatus(status = false, userEmail) {
     const foundUser = await findUserByEmail(userEmail); //busco el user a banear/desbanear
     await foundUser.update({ ban_status: status }); //actualizo el ban status
     await foundUser.save(); //guardo en la database
-    return "updated ban status to: " + status;
+    return "updated ban status to = " + status;
   } catch (e) {
-    return "error set ban status: " + e.message;
+    return "error set ban status - " + e.message;
   }
 }
 
