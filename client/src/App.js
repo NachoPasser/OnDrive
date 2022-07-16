@@ -13,8 +13,10 @@ import PrivateRouteForNotAdmin from './components/PrivateRoutes/PrivateRouteForN
 import PrivateRouteForLogged from './components/PrivateRoutes/PrivateRouteForLogged/PrivateRouteForLogged';
 import PrivateRouteForNotLogged from './components/PrivateRoutes/PrivateRouteForNotLogged/PrivateRouteForNotLogged';
 import CardDetail from './components/CardDetail/CardDetail.jsx'
+import HomePassengers from "./components/Home/homePassengers.jsx"
+import HomeDrivers from "./components/Home/homeDrivers.jsx"
 
-function makePrivateForVisitors(route, route_to_redirect, component_to_render){
+function makePrivateForVisitors(route, route_to_redirect, component_to_render) {
   return (
     <Route path={route}>
       <PrivateRouteForNotLogged redirect={route_to_redirect}>
@@ -24,17 +26,17 @@ function makePrivateForVisitors(route, route_to_redirect, component_to_render){
   )
 }
 
-function makePrivateForLoggedUsers(route, route_to_redirect, component_to_render){
+function makePrivateForLoggedUsers(route, route_to_redirect, component_to_render) {
   return (
-  <Route path={route}>
+    <Route path={route}>
       <PrivateRouteForLogged redirect={route_to_redirect}>
         {component_to_render}
       </PrivateRouteForLogged>
-  </Route>
+    </Route>
   )
 }
 
-function makePrivateForNotAdmins(route, route_to_redirect, component_to_render){
+function makePrivateForNotAdmins(route, route_to_redirect, component_to_render) {
   return (
     <Route path={route}>
       <PrivateRouteForNotAdmin redirect={route_to_redirect}>
@@ -48,14 +50,16 @@ function App() {
   return (
     <div className="App">
       <Route exact path='/' component={LandingPage} />
-      <Route path='/home' component={Home} />
-      <Route path='/loginAdmin' component={LoginAdmin}/>
-      {makePrivateForLoggedUsers('/login', '/home', <Login/>)}
-      {makePrivateForLoggedUsers('/register', '/home', <Register/>)}
-      {makePrivateForNotAdmins('/adminPanel', '/loginAdmin', <AdminPanel/>)}
-      {makePrivateForVisitors('/new-password', '/login', <NewPassword/>)}
-      <Route path='/recovery-password' component={RecoveryPassword}/>
+      <Route exact path='/home' component={Home} />
+      <Route path='/loginAdmin' component={LoginAdmin} />
+      {makePrivateForLoggedUsers('/login', '/home', <Login />)}
+      {makePrivateForLoggedUsers('/register', '/home', <Register />)}
+      {makePrivateForNotAdmins('/adminPanel', '/loginAdmin', <AdminPanel />)}
+      {makePrivateForVisitors('/new-password', '/login', <NewPassword />)}
+      <Route path='/recovery-password' component={RecoveryPassword} />
       <Route path='/trip/:id' component={CardDetail} />
+      <Route path='/home-passengers' component={HomePassengers} />
+      <Route path='/home-drivers' component={HomeDrivers} />
     </div>
   );
 }

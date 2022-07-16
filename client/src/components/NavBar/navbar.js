@@ -17,20 +17,20 @@ export default function NavBar() {
                 <NavLink className={style.register} exact to="/register">Register</NavLink>
                 <button className={style.logout} onClick={() => window.localStorage.clear()}>Logout</button>
             </div>
-            {/* <div className={style.items}>
+            <div className={style.items}>
                 <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/features">Item 4</NavLink>
+                    <NavLink className={style.navLink} exact to="/home-passengers">Passengers</NavLink>
                 </li>
                 <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/pricing">Item 3</NavLink>
+                    <NavLink className={style.navLink} exact to="/home-drivers">Drivers</NavLink>
                 </li>
-                <li className={style.li}>
+                {/* <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/community">Item 2</NavLink>
                 </li>
                 <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/support">Item 1</NavLink>
-                </li>
-            </div> */}
+                </li> */}
+            </div>
         </ul>
     )
 }
