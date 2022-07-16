@@ -4,7 +4,7 @@ const { conn } = require("../database/db");
 const Driver = conn.define(
   "driver",
   {
-    id: {
+    driver_id: {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
