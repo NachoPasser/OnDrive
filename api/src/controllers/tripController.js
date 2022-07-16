@@ -5,7 +5,7 @@ const tripHistory = async (req, res) => {
     .then((data) => {
       return data.map((trip) => {
         return {
-          id: trip.id,
+          id: trip.trip_id,
           start_date: trip.start_date,
           finish_date: trip.finish_date,
           origin: trip.origin,
@@ -18,7 +18,7 @@ const tripHistory = async (req, res) => {
       console.log(err);
     });
   let response = [...existTrip];
-  response = response.filter((trip) => trip.id == req.params.id);
+  response = response.filter((trip) => trip.trip_id == req.params.id);
 
   if (response.length > 0) res.json(response);
   else res.status(404).json({ message: "Trip not found" });
@@ -38,7 +38,7 @@ const getTrips = async (req, res) => {
     .then((data) => {
       data = data.map((trip) => {
         return {
-          id: trip.id,
+          id: trip.trip_id,
           start_date: trip.start_date,
           finish_date: trip.finish_date,
           origin: trip.origin,
