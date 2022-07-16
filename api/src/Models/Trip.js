@@ -4,7 +4,7 @@ const { conn } = require("../database/db");
 const Trip = conn.define(
   "trip",
   {
-    id: {
+    trip_id: {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
