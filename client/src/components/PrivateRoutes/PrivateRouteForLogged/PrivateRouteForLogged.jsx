@@ -8,7 +8,7 @@ const PrivateRouteForLogged = ({ children, redirect }) => {
     const [message, setMessage] = useState('')
     
     useEffect(() => {
-        axios.get(`${API_URL}/auth/verify`, {headers: {
+        axios.get(`${API_URL}/auth/verifyLogin`, {headers: {
             Authorization: `Bearer ${token}`
         }}).then(res => {
             setMessage(res.data.message)

@@ -8,7 +8,7 @@ const PrivateRouteForNotLogged = ({ children, redirect }) => {
     const [message, setMessage] = useState('')
     
     useEffect(() => {
-        axios.get(`${API_URL}/auth/verify`, {headers: {
+        axios.get(`${API_URL}/auth/verifyLogin`, {headers: {
             Authorization: `Bearer ${token}`
         }}).then(res => {
             console.log(res.data.message)
@@ -20,7 +20,7 @@ const PrivateRouteForNotLogged = ({ children, redirect }) => {
     return(
         <div>
             {message
-            ? message === 'El usuario está logueado.' ? children : <Redirect to={redirect}/>
+            ? message === 'The user logged in' ? children : <Redirect to={redirect}/>
             : null}
         </div>
     )

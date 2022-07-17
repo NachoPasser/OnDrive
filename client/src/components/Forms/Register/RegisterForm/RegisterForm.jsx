@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import InputField from "../../../Sections/InputField/InputField";
 import Button from "../../../Sections/Button/Button";
 import { useHistory } from "react-router-dom";
@@ -8,14 +8,16 @@ import jwtDecode from 'jwt-decode'
 import styles from "./RegisterForm.module.css";
 import axios from 'axios'
 import {API_URL} from "../../../../config/enviroment";
+import { Link } from "react-router-dom";
 
 const RegisterForm = () => {
   const history = useHistory()
-  const email = useField({type: "text"});
-  const name = useField({type: "text"});
-  const lastName = useField({type: "text"});
-  const password = useField({type: "password"});
-  const confirmPassword = useField({type: "password"});
+  const email = useField({type: "text", field: 'email'});
+  const name = useField({type: "text", field: 'name'});
+  const lastName = useField({type: "text", field: 'last_name'});
+  const password = useField({type: "password", field: 'password'});
+  const confirmPassword = useField({type: "password", field: 'confirm_password'});
+  const [disabled, setDisable] = useState(true)
   
   async function handleGoogleResponse(response){
     const {email, given_name: name, family_name: last_name} = jwtDecode(response.credential)
@@ -37,14 +39,32 @@ const RegisterForm = () => {
       password: password.value,
       confirmPassword: confirmPassword.value,
     }
-
-    await axios.post(`${API_URL}/auth/register`, Submit)
-    .then(datos => {
-      window.localStorage.setItem('token', datos.data.token)
-    })
-    .catch(/TO DO/)
-    history.push('/home')
+    try{
+      const data = await axios.post(`${API_URL}/auth/register`, Submit)
+      window.localStorage.setItem('token', data.data.token)
+      history.push('/home')
+    } catch(e){
+      email.setError(e.response.data.error)
+    }
   }
+
+  useEffect(() => {
+    let form = [email, password, name, lastName, confirmPassword]
+    let disable = false
+    
+    for(const field of form){
+      if(!field.value) disable = true
+      if(field.error) disable = true
+    }
+
+    if(password.value !== confirmPassword.value){
+      confirmPassword.setError('La contraseña actual no es igual a la ingresada anteriormente.' )
+      disable = true
+    }
+    
+    setDisable(disable)
+
+  }, [email, password, name, lastName, confirmPassword])
 
   return (
     <section className={styles.RegisterFormContainer}>
@@ -76,7 +96,7 @@ const RegisterForm = () => {
       <InputField
         {...password}
         icon={"password"}
-        label={"Password"}
+        label={"Contraseña"}
         name={"password"}
         placeholder={"Ingresa tu password"}
       />
@@ -84,7 +104,7 @@ const RegisterForm = () => {
       <InputField
         {...confirmPassword}
         icon={"password"}
-        label={"Confirmar Password"}
+        label={"Confirmar contraseña"}
         name={"confirmPassword"}
         placeholder={"Vuelve a escribir tu password"}
       />
@@ -94,7 +114,7 @@ const RegisterForm = () => {
         Acepto los términos y condiciones
       </label>
 
-      <Button title={"REGISTRARME"} type={"primary"} size={"lg"} width={"Full"} onClick={onSubmit}/>
+      <Button disabled={disabled} title={"REGISTRARME"} type={"primary"} size={"lg"} width={"Full"} onClick={onSubmit}/>
       <div className={styles.DividerText}>
         <hr/>
         <span href="/">o regístrate con</span>
@@ -102,7 +122,7 @@ const RegisterForm = () => {
       </div>
       <GoogleBtn handleResponse={handleGoogleResponse}></GoogleBtn>
       {/* <Button title={"Regístrate con Google"} type={"secondary"} size={"md"} width={"SemiFull"} icon={"google"} onClick={"Lo que venga de Google"}/> */}
-
+      <span className={styles.OldAccount}>Estoy registrado, <Link to='/login'>Loguearme</Link></span>
     </section>
   );
 };

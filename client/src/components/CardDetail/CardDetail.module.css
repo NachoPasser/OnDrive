@@ -5,6 +5,7 @@
     position: relative;
     justify-content: center;
     color: #3FFC64;
+    z-index: -1;
 }
 .titleY{
     color: var(--primary-color);
@@ -15,6 +16,7 @@
 .propsDetail{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    color: white;
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 2%;
@@ -48,6 +50,7 @@
 }
 .linkDriver{
     display: grid;
+    color: white;
     grid-template-columns: repeat(3, 1fr);
     background-color: var(--grey-color);
     width: 1262px;

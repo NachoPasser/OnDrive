@@ -11,7 +11,7 @@ const router = require("express").Router();
 
 router.post("/register", registerUser);
 router.post("/login", loginUser);
-router.get("/verify", checkUserIsLogged);
+router.get("/verifyLogin", checkUserIsLogged);
 router.get("/users", getUsers);
 router.get("/profile/:id", getUserById);
 router.post("/register-driver", registerDriver);

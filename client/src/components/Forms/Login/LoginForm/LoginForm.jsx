@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "./LoginForm.module.css";
 import { useField } from '../../../../hooks/useInputField';
 import { Link, useHistory } from 'react-router-dom';
@@ -13,6 +13,7 @@ const LoginForm = () => {
   const history = useHistory()
   const email = useField({type: "text"});
   const password = useField({type: "password"});
+  const [disabled, setDisable] = useState(true)
   
   async function handleGoogleResponse(response){
     const {email} = jwtDecode(response.credential)
@@ -24,6 +25,16 @@ const LoginForm = () => {
     history.push('/home')
   }
 
+  useEffect(() => {
+
+    if(email.value && password.value){
+      setDisable(false)
+    } else{
+      setDisable(true)
+    }
+
+  }, [email, password])
+
   async function onSubmit(e){
     /* Function Submit del Botón, obtenemos los values de nuestros inputs y los añadimos al objeto */
     e.preventDefault();
@@ -32,12 +43,14 @@ const LoginForm = () => {
       password: password.value 
     }
 
-    await axios.post(`${API_URL}/auth/login`, Submit)
-    .then(datos => {
+    try{
+      const datos = await axios.post(`${API_URL}/auth/login`, Submit)
       window.localStorage.setItem('token', datos.data.token)
-    })
-    .catch(/TO DO/)
-    history.push('/home')
+      history.push('/home')
+    } catch(e){
+      email.setError(e.response.data.error)
+      password.setError(e.response.data.error)
+    }
   }
 
   return (
@@ -47,19 +60,19 @@ const LoginForm = () => {
       <InputField 
         {...email}
         icon={"email"}
-        label={"Usuario o Correo Electrónico"}
+        label={"Mail"}
         name={"email"}
         placeholder={"Ingresa tu email"}
       />
       <InputField 
         {...password}
         icon={"password"}
-        label={"Password"}
+        label={"Contraseña"}
         name={"password"}
         placeholder={"Ingresa tu password"}
       />
-      <Link to='/recovery-password' className={styles.ForgotPassword} >¿Olvidaste tu password?</Link>
-      <Button title={"INICIAR SESIÓN"} type={"primary"} size={"lg"} width={"Full"} onClick={onSubmit}/>
+      <Link to='/recovery-password' className={styles.ForgotPassword} >¿Olvidaste tu contraseña?</Link>
+      <Button disabled={disabled} title={"INICIAR SESIÓN"} type={"primary"} size={"lg"} width={"Full"} onClick={onSubmit}/>
       <div className={styles.DividerText}>
         <hr/>
         <span href="/">o inicia sesión con</span>
