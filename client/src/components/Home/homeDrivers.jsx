@@ -22,6 +22,7 @@ import SearchBar from "../SearchBar/searchbar";
 import NavBar from "../NavBar/navbar.js";
 import Fecha from "../Filters/filterByDate.jsx";
 import Paging from "../Paging/Paging.jsx";
+import Map from "../Map/map.jsx"
 
 //paginado
 //loader
@@ -29,7 +30,6 @@ import Paging from "../Paging/Paging.jsx";
 
 
 export default function Home() {
-
     //dispatch
     const dispatch = useDispatch()
 
@@ -79,15 +79,15 @@ export default function Home() {
 
     return (
         <div className={style.containerAll}>
-            <NavBar/>
+            <NavBar />
             <div className={style.divisor}>
                 <div className={style.homeIzquierda}>
                     <img id={style.logoBuscaTuRuta} src={buscarTuRuta} alt='No se encontró la imagen.' />
                     <div className={style.boxSearchAndFilters}>
                         <div className={style.buscador}>
-                            <img id={style.logoUbicacion} src={ubicacion} alt='No se encontró la imagen.'/>
+                            <img id={style.logoUbicacion} src={ubicacion} alt='No se encontró la imagen.' />
                             <FilterByOrigin filters={filters} setFilters={setFilters} />
-                            <img id={style.logoDestino} src={destino} alt='No se encontró la imagen.'/>
+                            <img id={style.logoDestino} src={destino} alt='No se encontró la imagen.' />
                             <FilterByDestination filters={filters} setFilters={setFilters} />
                             <button className={style.buttonSent} onClick={() => handleBtn()}> <img id={style.sent} src={sent} alt='No se encontró la imagen.' /> </button>
                         </div>
@@ -134,7 +134,7 @@ export default function Home() {
                     <Paging style={style} setNumber={setNumberOfPage} max={maxNumberOfPages} actualPage={numberOfPage} />
                 </div>
                 <div className={style.homeDerecha}>
-                    {/* <img id={style.maps} src={mapa}></img> */}
+                    <Map />
                 </div>
             </div>
         </div>

@@ -6,7 +6,6 @@
     background-color: #212734;
     
     /* fijar navbar*/
-    position: fixed;
     top: 0;
     height: 65px;
     width: 100%
@@ -46,9 +45,7 @@
 }
 
 .buttons {
-    position: absolute;
-    right: 1%;
-    top: 6px;
+    float: right;
 }
 
 .login {
@@ -71,6 +68,7 @@
 
 
 .register {
+    margin-right: 10px;
     background-color: #00A3FE;
     border-radius: 8px;
     color: white;
