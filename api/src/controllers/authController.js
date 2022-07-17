@@ -69,10 +69,10 @@ const checkUserIsLogged = async (req, res) => {
     if (token !== "null") {
       jwt.verify(token, SECRET_KEY, (err, decoded) => {
         return err
-          ? res.status(401).json({ error: "Invalid Token" })
+          ? res.json({ message: "Invalid Token" })
           : res.json({ message: "The user logged in" });
       });
-    } else res.status(417).json({ error: "Token not provided" });
+    } else res.json({ message: "Token not provided" });
   } catch (e) {
     res.status(400).json({ error: `Server error: ${e.message}` });
   }
