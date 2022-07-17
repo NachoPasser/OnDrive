@@ -27,7 +27,7 @@ const registerUser = async (req, res) => {
 
     res.status(201).json({ token }); //return token JWT
   } catch (e) {
-    res.status(400).json({ error: `Server error: ${e.message}` });
+    res.status(400).json({ error: `${e.message}` });
   }
 };
 
@@ -57,7 +57,7 @@ const loginUser = async (req, res) => {
     res.json({ token }); //return token JWT
   } catch (e) {
     console.log(e);
-    res.status(400).json({ error: `Server error: ${e.message}` });
+    res.status(400).json({ error: `${e.message}` });
   }
 };
 
@@ -74,7 +74,7 @@ const checkUserIsLogged = async (req, res) => {
       });
     } else res.json({ message: "Token not provided" });
   } catch (e) {
-    res.status(400).json({ error: `Server error: ${e.message}` });
+    res.status(400).json({ error: `${e.message}` });
   }
 };
 
@@ -83,7 +83,7 @@ const getUsers = async (req, res) => {
     const users = await findAllUsers();
     res.json(users);
   } catch (e) {
-    res.status(400).json({ error: `Server error: ${e.message}` });
+    res.status(400).json({ error: `${e.message}` });
   }
 };
 
@@ -93,7 +93,7 @@ const getUserById = async (req, res) => {
     const users = await findUserById({ user_id: id, driver: true });
     res.json(users);
   } catch (e) {
-    res.status(400).json({ error: `Server error: ${e.message}` });
+    res.status(400).json({ error: `${e.message}` });
   }
 };
 
@@ -111,7 +111,7 @@ const purchaseTrip = async (req, res) => {
     const trip = await assingTrip({ user_id, trip_id });
     res.json({ trip_purchased: trip });
   } catch (e) {
-    res.status(400).json({ error: `Server error: ${e.message}` });
+    res.status(400).json({ error: `${e.message}` });
   }
 };
 
