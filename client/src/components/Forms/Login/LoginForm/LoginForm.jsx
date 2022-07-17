@@ -14,15 +14,17 @@ const LoginForm = () => {
   const email = useField({type: "text"});
   const password = useField({type: "password"});
   const [disabled, setDisable] = useState(true)
+  const [hidden, setHidden] = useState(true)
   
   async function handleGoogleResponse(response){
     const {email} = jwtDecode(response.credential)
-    await axios.post(`${API_URL}/auth/login`, {email})
-    .then(datos => {
+    try{
+      const datos = await axios.post(`${API_URL}/auth/login`, {email})
       window.localStorage.setItem('token', datos.data.token)
-    })
-    .catch(/TO DO/)
-    history.push('/home')
+      history.push('/home')
+    } catch(e){
+      setHidden(false)
+    }
   }
 
   useEffect(() => {
@@ -79,6 +81,7 @@ const LoginForm = () => {
         <hr/>
       </div>
       <GoogleBtn handleResponse={handleGoogleResponse}></GoogleBtn>
+      <h4 hidden={hidden} style={{color: 'white'}}>No existe un usuario registrado con ese mail.</h4>
       {/* <Button title={"Loguéate con Google"} type={"secondary"} size={"md"} width={"SemiFull"} icon={"google"}/> */}
       <span className={styles.NewAccount}>No estoy registrado, <Link to='/register'>Crear una Cuenta</Link></span>
 

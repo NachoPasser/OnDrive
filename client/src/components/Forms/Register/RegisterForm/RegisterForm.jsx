@@ -18,15 +18,17 @@ const RegisterForm = () => {
   const password = useField({type: "password", field: 'password'});
   const confirmPassword = useField({type: "password", field: 'confirm_password'});
   const [disabled, setDisable] = useState(true)
-  
+  const [hidden, setHidden] = useState(true)
+
   async function handleGoogleResponse(response){
     const {email, given_name: name, family_name: last_name} = jwtDecode(response.credential)
-    await axios.post(`${API_URL}/auth/register`, {email, name, last_name})
-    .then(datos => {
-      window.localStorage.setItem('token', datos.data.token)
-    })
-    .catch(/TO DO/)
-    history.push('/home')
+    try{
+      const data = await axios.post(`${API_URL}/auth/register`,  {email, name, last_name})
+      window.localStorage.setItem('token', data.data.token)
+      history.push('/home')
+    } catch(e){
+      setHidden(false)
+    }
   }
 
   async function onSubmit(e){
@@ -121,6 +123,7 @@ const RegisterForm = () => {
         <hr/>
       </div>
       <GoogleBtn handleResponse={handleGoogleResponse}></GoogleBtn>
+      <h4 hidden={hidden} style={{color: 'white'}}>Ya existe un usuario registrado con ese mail.</h4>
       {/* <Button title={"Regístrate con Google"} type={"secondary"} size={"md"} width={"SemiFull"} icon={"google"} onClick={"Lo que venga de Google"}/> */}
       <span className={styles.OldAccount}>Estoy registrado, <Link to='/login'>Loguearme</Link></span>
     </section>
