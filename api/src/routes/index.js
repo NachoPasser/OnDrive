@@ -11,5 +11,6 @@ router.use('/api', require('./users.js'));
 router.use('/auth', require('./auth.js'));
 router.use('/admin', require('./admin.js'));
 router.use('/pass', require('./pass.js'));
+router.use('/fuels', require('./fuels.js'));
 
 module.exports = router;

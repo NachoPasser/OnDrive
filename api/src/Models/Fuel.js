@@ -4,18 +4,18 @@ const { conn } = require("../database/db");
 const Fuel = conn.define(
   "fuel",
   {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncremental: true,
-      primaryKey: true,
-    },
+    // id: {
+    //   type: DataTypes.INTEGER,
+    //   autoIncremental: true,
+    //   primaryKey: true,
+    // },
     Year: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     Month: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     Gasoil: {
       type: DataTypes.DECIMAL,
@@ -31,6 +31,10 @@ const Fuel = conn.define(
     },
     Euro: {
       type: DataTypes.DECIMAL,
+      allowNull: true,
+    },
+    Table: {
+      type: DataTypes.TEXT,
       allowNull: true,
     },
   },
