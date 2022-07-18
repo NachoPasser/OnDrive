@@ -7,6 +7,7 @@ async function findUserByEmail(email) {
       throw new Error(
         `an email is needed to search for the user, email(${email})`
       );
+    
     const user = await User.findOne({
       where: { email },
       attributes: { exclude: "password" },
@@ -24,7 +25,7 @@ async function findUserById({ user_id = null, driver = false, model = false }) {
   try {
     if (!user_id) throw new Error(`findUserById required property missing(id)`);
     const user = await User.findByPk(user_id, {
-      attributes: { exclude: "password" },
+      // attributes: { exclude: "password" },
       include: driver
         ? [
             {
@@ -43,7 +44,7 @@ async function findUserById({ user_id = null, driver = false, model = false }) {
     if (!user) throw new Error(`user ${user_id} not found`);
     return model ? user : JSON.parse(JSON.stringify(user, null, 2));
   } catch (e) {
-    throw new Error(`${e.message}`);
+    throw new Error(`${e}`);
   }
 }
 

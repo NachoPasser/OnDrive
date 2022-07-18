@@ -9,54 +9,34 @@ import RecoveryPassword from "./components/Forms/RecoveryPassword/RecoveryPasswo
 import NewPassword from "./components/Forms/NewPassword/NewPassword";
 import LoginAdmin from './components/Forms/LoginAdmin/LoginAdmin';
 import AdminPanel from './components/AdminPanel/AdminPanel'
-import PrivateRouteForNotAdmin from './components/PrivateRoutes/PrivateRouteForNotAdmin/PrivateRouteForNotAdmin';
-import PrivateRouteForLogged from './components/PrivateRoutes/PrivateRouteForLogged/PrivateRouteForLogged';
-import PrivateRouteForNotLogged from './components/PrivateRoutes/PrivateRouteForNotLogged/PrivateRouteForNotLogged';
+import PrivateRoute from './components/PrivateRoutes/PrivateRoute'
 import CardDetail from './components/CardDetail/CardDetail.jsx'
 import HomePassengers from "./components/Home/homePassengers.jsx"
 import HomeDrivers from "./components/Home/homeDrivers.jsx"
 
-function makePrivateForVisitors(route, route_to_redirect, component_to_render) {
+function makePrivate( admin = false, visitor = false, pageUser = false, googleUser = false, route, route_to_redirect, component_to_render) {
+  console.log(visitor)
   return (
     <Route path={route}>
-      <PrivateRouteForNotLogged redirect={route_to_redirect}>
+      <PrivateRoute admin={admin} visitor={visitor} pageUser={pageUser} googleUser={googleUser} redirect={route_to_redirect}>
         {component_to_render}
-      </PrivateRouteForNotLogged>
-    </Route>
-  )
-}
-
-function makePrivateForLoggedUsers(route, route_to_redirect, component_to_render) {
-  return (
-    <Route path={route}>
-      <PrivateRouteForLogged redirect={route_to_redirect}>
-        {component_to_render}
-      </PrivateRouteForLogged>
-    </Route>
-  )
-}
-
-function makePrivateForNotAdmins(route, route_to_redirect, component_to_render) {
-  return (
-    <Route path={route}>
-      <PrivateRouteForNotAdmin redirect={route_to_redirect}>
-        {component_to_render}
-      </PrivateRouteForNotAdmin>
+      </PrivateRoute>
     </Route>
   )
 }
 
 function App() {
+  
   return (
     <div className="App">
       <Route exact path='/' component={LandingPage} />
       <Route exact path='/home' component={Home} />
       <Route path='/loginAdmin' component={LoginAdmin} />
-      {makePrivateForLoggedUsers('/login', '/home', <Login />)}
-      {makePrivateForLoggedUsers('/register', '/home', <Register />)}
-      {makePrivateForNotAdmins('/adminPanel', '/loginAdmin', <AdminPanel />)}
-      {makePrivateForVisitors('/new-password', '/login', <NewPassword />)}
-      <Route path='/recovery-password' component={RecoveryPassword} />
+      {makePrivate(undefined, true, undefined, undefined, '/login', '/home', <Login />)}
+      {makePrivate(undefined, true, undefined, undefined, '/register', '/home', <Register />)}
+      {makePrivate(true, undefined, undefined, undefined, '/adminPanel', '/loginAdmin', <AdminPanel />)}
+      {makePrivate(true, undefined, true, undefined, '/new-password', '/login', <NewPassword />)}
+      {makePrivate(true, true, true, undefined, '/recovery-password', '/home', <RecoveryPassword/>)}
       <Route path='/trip/:id' component={CardDetail} />
       <Route path='/home-passengers' component={HomePassengers} />
       <Route path='/home-drivers' component={HomeDrivers} />

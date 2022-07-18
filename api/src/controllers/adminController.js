@@ -40,27 +40,27 @@ async function logAdmin(req, res) {
   }
 }
 
-const checkUserIsAdmin = async (req, res) => {
-  let token = req.headers["authorization"];
-  token = token.split(" ")[1];
+// const checkUserIsAdmin = async (req, res) => {
+//   let token = req.headers["authorization"];
+//   token = token.split(" ")[1];
 
-  if (token !== "null") {
-    jwt.verify(token, SECRET_KEY, (err, decoded) => {
-      if (err) {
-        return res.json({ message: "Token inválida." });
-      } else {
-        if (decoded.hasOwnProperty("isAdmin")) {
-          return res.json({ message: "El usuario es administrador." });
-        } else {
-          return res.json({ message: "El usuario no es administrador." });
-        }
-      }
-    });
-  } else {
-    res.json({
-      message: "Token no proveída.",
-    });
-  }
-};
+//   if (token !== "null") {
+//     jwt.verify(token, SECRET_KEY, (err, decoded) => {
+//       if (err) {
+//         return res.status(401).json({ message: "Invalid Token." });
+//       } else {
+//         if (decoded.hasOwnProperty("isAdmin")) {
+//           return res.status(202).json({ message: "The user is allowed." });
+//         } else {
+//           return res.status(403).json({ message: "The user is not allowed." });
+//         }
+//       }
+//     });
+//   } else {
+//     res.status(40).json({
+//       message: "Token not provided.",
+//     });
+//   }
+// };
 
-module.exports = { banUser, unbanUser, logAdmin, checkUserIsAdmin };
+module.exports = { banUser, unbanUser, logAdmin};
