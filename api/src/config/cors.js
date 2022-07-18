@@ -16,6 +16,7 @@ const OPTIONS = {
     "Content-Type",
     "Accept",
     "Authorization",
+    "case",
   ],
 };
 
