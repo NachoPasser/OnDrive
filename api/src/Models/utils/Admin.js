@@ -1,5 +1,5 @@
 const { Admin } = require("../../Models/Admin"); //admin model
-const { findUserByEmail } = require("./Finders");
+const { User } = require('../../Models/User');
 
 //PARA AGREGAR UN NUEVO ADMIN A LA TABLA(NO UTILIZAR)
 async function createAdmin({ username, password }) {
@@ -50,7 +50,9 @@ async function administrator() {
 //FUNCION PARA BANEAR / DESBANEAR USUARIOS POR EMAIL
 async function setBanStatus(status = false, userEmail) {
   try {
-    const foundUser = await findUserByEmail(userEmail); //busco el user a banear/desbanear
+    const foundUser = await User.findOne({
+      where: { email: userEmail },
+    }); //busco el user a banear/desbanear
     await foundUser.update({ ban_status: status }); //actualizo el ban status
     await foundUser.save(); //guardo en la database
     return "updated ban status to = " + status;

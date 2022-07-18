@@ -6,7 +6,7 @@ import iconGoogleDark from "../../../assets/Buttons/icon-google-dark.png";
 import iconArrowRight from "../../../assets/Buttons/icon-arrow-right.png";
 import iconArrowRightDark from "../../../assets/Buttons/icon-arrow-right-dark.png";
 
-const Button = ({ title, type, size, width, onClick, icon }) => {
+const Button = ({ title, type, size, width, onClick, icon, disabled }) => {
   const buttonType = {
     primary: styles.PrimaryButton,
     secondary: styles.SecondaryButton,
@@ -28,7 +28,7 @@ const Button = ({ title, type, size, width, onClick, icon }) => {
 
   return (
     <section className={styles[width]}>
-      <button
+      <button disabled={disabled}
         className={`${styles.Button} ${buttonType[type]} ${buttonSize[size]}`}
         onClick={onClick}
       >
