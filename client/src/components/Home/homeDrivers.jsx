@@ -19,7 +19,7 @@ import FilterByCapacity from "../Filters/filterByCapacity.jsx";
 import { getTripsByDestination } from '../../redux/actions/getTripsByDestination.js'
 import { getTripsByOrigin } from "../../redux/actions/getTripsByOrigin";
 import SearchBar from "../SearchBar/searchbar";
-import NavBar from "../NavBar/navbar.js";
+import NavBar from "../NavBar/navbarDrivers.jsx";
 import Fecha from "../Filters/filterByDate.jsx";
 import Paging from "../Paging/Paging.jsx";
 import Map from "../Map/map.jsx"
