@@ -14,7 +14,6 @@ function CardDetail() {
     const {id} = useParams()
 	const dispatch = useDispatch();
 	const trip = useSelector((state) => state.tripById);
-    console.log(trip)
     
     
     useEffect(() => {

@@ -15,7 +15,6 @@ import HomePassengers from "./components/Home/homePassengers.jsx"
 import HomeDrivers from "./components/Home/homeDrivers.jsx"
 
 function makePrivate( admin = false, visitor = false, pageUser = false, googleUser = false, route, route_to_redirect, component_to_render) {
-  console.log(visitor)
   return (
     <Route path={route}>
       <PrivateRoute admin={admin} visitor={visitor} pageUser={pageUser} googleUser={googleUser} redirect={route_to_redirect}>
