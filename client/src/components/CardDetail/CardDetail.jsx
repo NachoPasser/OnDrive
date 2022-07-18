@@ -5,16 +5,13 @@ import { getTripById } from '../../redux/actions/getTripById';
 import Carousel from 'react-bootstrap/Carousel';
 import style from './CardDetail.module.css'
 import NavBar from '../NavBar/navbar';
+import { useParams } from 'react-router-dom';
 
 
 
-function CardDetail({
-	match: {
-		params: { id },
-	},
-}) {
+function CardDetail() {
 
-
+    const {id} = useParams()
 	const dispatch = useDispatch();
 	const trip = useSelector((state) => state.tripById);
     console.log(trip)
