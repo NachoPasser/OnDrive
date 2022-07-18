@@ -82,7 +82,7 @@ const RegisterForm = () => {
       <InputField
         {...name}
         icon={"user"}
-        label={"Nombres"}
+        label={"Nombre"}
         name={"name"}
         placeholder={"Ingresa tu nombre"}
       />
@@ -100,7 +100,7 @@ const RegisterForm = () => {
         icon={"password"}
         label={"Contraseña"}
         name={"password"}
-        placeholder={"Ingresa tu password"}
+        placeholder={"Ingresa tu contraseña"}
       />
 
       <InputField
@@ -108,13 +108,13 @@ const RegisterForm = () => {
         icon={"password"}
         label={"Confirmar contraseña"}
         name={"confirmPassword"}
-        placeholder={"Vuelve a escribir tu password"}
+        placeholder={"Vuelve a escribir tu contraseña"}
       />
  
-      <label className={styles.CheckBox} htmlFor="terms">
+      {/* <label className={styles.CheckBox} htmlFor="terms">
         <input type="checkbox" value="Accepted" name="terms" />
         Acepto los términos y condiciones
-      </label>
+      </label> */}
 
       <Button disabled={disabled} title={"REGISTRARME"} type={"primary"} size={"lg"} width={"Full"} onClick={onSubmit}/>
       <div className={styles.DividerText}>
