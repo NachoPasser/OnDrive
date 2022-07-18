@@ -1,0 +1,146 @@
+.containerAll {
+    /* width: 100%;
+    height: 100vh; */
+    overflow: hidden;
+}
+
+.divisor {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    gap: 50px;
+
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    /* height: 90vh; */
+}
+
+/* .homeIzquierda {
+    height: 90vh;
+}
+
+.homeDerecha {
+    height: min-content;
+} */
+
+#logoBuscaTuRuta {
+    margin-top: -10px;
+}
+
+.homecards {
+    margin-top: 20px;
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+}
+
+.containerFiltros {
+    height: 200px;
+    width: auto;
+}
+
+.filtrosAvanzados {
+    display: flex;
+    margin-right: 30px;
+    margin-top: 30px;
+}
+
+.filtroCapacidad {
+    margin-top: 25px;
+    position: absolute;
+    left: 35px;
+    top: 340px;
+}
+
+#h1 {
+    font-size: large;
+}
+
+#span1 {
+    color: white;
+}
+
+#span2 {
+    color: #00A3FE;
+}
+
+.filtros {
+    margin-top: 10px;
+    margin-left: 20px;
+    float: inline-start;
+}
+
+.boxSearchAndFilters {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    height: 320px;
+    width: 930px;
+
+    margin-top: 30px;
+    margin-left: 20px;
+    background: rgba(6, 6, 6, 0.2);
+    opacity: 0.9;
+    border: 1px solid #00A3FE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.buscador {
+    margin-left: 10px;
+    margin-top: 20px;
+    height: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.buttonSent {
+    cursor: pointer;
+    background-color: #ddbe3e;
+    border-radius: 8px;
+    margin-left: 20px;
+}
+
+#sent {
+    width: 25px;
+    right: 35px;
+}
+
+#logoUbicacion {
+    width: 25px;
+    right: 35px;
+    margin-right: 20px;
+}
+
+#logoDestino {
+    width: 25px;
+    right: 35px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#calendario {
+    position: absolute;
+    left: 42px;
+    bottom: 500px;
+}
+
+.searchbar {
+    position: absolute;
+    left: 42px;
+    bottom: 570px;
+}
+
+#btnSearchBar {
+    margin-left: 5px;
+    height: 32px;
+}

@@ -2,7 +2,7 @@
     position: absolute;
     top: 880px;
     right: 455px;
-    height: 50%;
+    height: min-content;
     width: 100%;
     color: white;
 }

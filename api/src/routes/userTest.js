@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {getTripsUsersFake, usersJson, getStaticUsers} = require('../controllers/usersJson.js');
+const {getTripsUsersFake, usersJson, getStaticUsers} = require('../controllers/usersController.js');
 
 router.get('/driver', getTripsUsersFake);
 router.get('/users', usersJson);

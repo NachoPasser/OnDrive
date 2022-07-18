@@ -1,0 +1,5 @@
+#columns{
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+}

@@ -1,11 +1,13 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
+const { conn } = require("../database/db");
 
-module.exports = (sequelize) => {
-  sequelize.define('driver', {
-    id: {
+const Driver = conn.define(
+  "driver",
+  {
+    driver_id: {
       type: DataTypes.UUID,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4
+      defaultValue: DataTypes.UUIDV4,
     },
     license: {
       type: DataTypes.STRING(45),
@@ -13,12 +15,15 @@ module.exports = (sequelize) => {
     },
     driving_permit: {
       type: DataTypes.STRING(45),
-      allowNull: false
+      allowNull: false,
     },
     rating: {
       type: DataTypes.DECIMAL(1),
     },
-  }, {
-    timestamps: false
-  });
-};
+  },
+  {
+    timestamps: false,
+  }
+);
+
+module.exports = { Driver };

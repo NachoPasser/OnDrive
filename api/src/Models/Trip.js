@@ -1,41 +1,46 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
+const { conn } = require("../database/db");
 
-module.exports = (sequelize) => {
-  sequelize.define('trip', {
-    id: {
+const Trip = conn.define(
+  "trip",
+  {
+    trip_id: {
       type: DataTypes.UUID,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4
+      defaultValue: DataTypes.UUIDV4,
     },
     start_date: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     finish_date: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     origin: {
       type: DataTypes.STRING(45),
-      allowNull: false
+      allowNull: false,
     },
     destination: {
       type: DataTypes.STRING(45),
-      allowNull: false
+      allowNull: false,
     },
     price: {
       type: DataTypes.STRING(45),
-      allowNull: false
+      allowNull: false,
     },
     distance: {
       type: DataTypes.DECIMAL(5),
-      allowNull: false
+      allowNull: false,
     },
     onCourse: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
-    }
-  }, {
-    timestamps: false
-  });
-};
+      allowNull: false,
+    },
+  },
+  {
+    timestamps: false,
+  }
+);
+
+module.exports = { Trip };

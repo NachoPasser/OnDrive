@@ -8,5 +8,8 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.use('/trip', require('./trip.js'));
 router.use('/api', require('./users.js'));
+router.use('/auth', require('./auth.js'));
+router.use('/admin', require('./admin.js'));
+router.use('/pass', require('./pass.js'));
 
 module.exports = router;
