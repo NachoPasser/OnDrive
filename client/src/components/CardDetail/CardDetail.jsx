@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector  } from 'react-redux';
 import { getTripById } from '../../redux/actions/getTripById';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import style from './CardDetail.module.css'
 import NavBar from '../NavBar/navbar';
@@ -19,7 +19,7 @@ function CardDetail({
 	const trip = useSelector((state) => state.tripById);
     console.log(trip)
     
-
+    
     useEffect(() => {
         dispatch(getTripById(id))
     },[dispatch, id]);
@@ -50,7 +50,7 @@ function CardDetail({
 					</div>
                     <div className={style.carruselDetail}>
                         <Carousel>
-                            {trip.album.map((e, i) => {
+                            {trip.hasOwnProperty('album') && trip.album.map((e, i) => {
                                 return (
                                     <Carousel.Item key={i}>
                                         <img className={style.imgn} src={e} alt="First slide" />
@@ -61,9 +61,9 @@ function CardDetail({
                     </div>
                 </div>
                 <h2 className={style.priceDetail}>Price: ${trip.price}</h2>
-                <Link>
+                {/* <Link> */}
                     <div className={style.linkDriver}>
-                        <p className={style.textDriver}>Driver:</p>
+                        <p className={style.textDriver}>Driver: ???</p>
                         <div className={style.box1}>
                             <div className={style.box2}>
                                 {/* <img scr={} alt='not found'/> */}
@@ -72,7 +72,7 @@ function CardDetail({
                         {/* <p>{trip.driver[arr[0]]} {trip.driver[arr[1]]}</p> */}
                         <p className={style.textDriver}>Rating: {trip.rating}</p>
                     </div>
-                </Link>
+                {/* </Link> */}
 				<div className={style.map}>
                     <h1>MAPA</h1>
                 </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import { useField } from '../../../../hooks/useInputField';
 import styles from "./RecoveryPasswordForm.module.css";
@@ -9,8 +9,8 @@ import { API_URL } from '../../../../config/enviroment';
 
 const RecoveryPasswordForm = () => {
   const navigate = useHistory();
-
-  const email = useField({type: "text"});
+  const [disabled, setDisabled] = useState(true)
+  const email = useField({type: "text", field: 'email'});
   
   async function onSubmit(e){
     /* Function Submit del Botón, obtenemos los values de nuestros inputs y los añadimos al objeto */
@@ -18,8 +18,13 @@ const RecoveryPasswordForm = () => {
     const Submit = {
       email: email.value,
     }
-    await axios.post(`${API_URL}/pass`, Submit);
-    navigate.push("/login");
+    
+    try{
+      await axios.post(`${API_URL}/pass`, Submit);
+      navigate.push("/login");
+    } catch(e){
+      email.setError(e.response.data.error)
+    }
   }
 
 
@@ -27,18 +32,26 @@ const RecoveryPasswordForm = () => {
     navigate.push("/register");
   }
 
+  useEffect(() => {
+    if(email.value && !email.error){
+      setDisabled(false)
+    } else{
+      setDisabled(true)
+    }
+  }, [email])
+
   return (
     <section className={styles.RecoveryFormContainer}>
-      <h2 className={styles.TitleRecovery}>Recuperar Password</h2>
+      <h2 className={styles.TitleRecovery}>Recuperar Contraseña</h2>
       <InputField
         {...email}
         icon={"email"}
-        label={"Correo Electrónico"}
+        label={"Mail"}
         name={"email"}
         placeholder={"Ingresa tu email"}
       />
       <span className={styles.BackHome}>Quiero <Link to='/login'>volver al inicio</Link></span>
-      <Button title={"ENVIAR"} type={"primary"} size={"lg"} width={"Full"} onClick={onSubmit}/>
+      <Button disabled={disabled} title={"ENVIAR"} type={"primary"} size={"lg"} width={"Full"} onClick={onSubmit}/>
       <div className={styles.DividerText}>
         <span href="/">¿No tienes un usuario?</span>
       </div>

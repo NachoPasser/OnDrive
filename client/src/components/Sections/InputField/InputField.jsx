@@ -5,7 +5,7 @@ import userIcon from "../../../assets/Forms/user-icon.png";
 import passwordIcon from "../../../assets/Forms/password-icon.png";
 import documentIcon from "../../../assets/Forms/document-icon.png";
 
-const InputField = ({ icon, value, label, name, placeholder, type, onChange, error  }) => {
+const InputField = ({ icon, value, label, name, placeholder, type, onChange, error }) => {
 
   const icons = {
     email: emailIcon,
@@ -28,7 +28,7 @@ const InputField = ({ icon, value, label, name, placeholder, type, onChange, err
           onChange={onChange}
         />
       </div>
-      {error && <span className={styles.ErrorInputField}>Escriba un email valido</span> }
+      {error && <span className={styles.ErrorInputField}>{error}</span> }
     </section>
   );
 };

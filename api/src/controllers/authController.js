@@ -17,9 +17,9 @@ const registerUser = async (req, res) => {
     const { email, password, name, last_name } = req.body;
     if (!email) throw new Error("mandatory data is missing");
     let user_id = await createUser({ email, password, name, last_name });
-
+  
     if (!user_id)
-      return res.json({ error: "there is already a user with that email" });
+      return res.status(409).json({ error: "Ya existe un usuario registrado con este mail." });
 
     const token = jwt.sign({ id: user_id }, SECRET_KEY, {
       expiresIn: "1h",
@@ -49,7 +49,7 @@ const loginUser = async (req, res) => {
     const [valid, user] = await isCorrectCredentials(email, password);
 
     if (!valid) {
-      return res.status(401).json({ error: "Incorrect Email or Password" });
+      return res.status(409).json({ error: "Mail o contraseña incorrecta." });
     }
     const token = jwt.sign({ id: user.user_id }, SECRET_KEY, {
       expiresIn: "1h",
@@ -77,7 +77,7 @@ const checkUserIsLogged = async (req, res) => {
     res.status(400).json({ error: `${e.message}` });
   }
 };
-
+  
 const getUsers = async (req, res) => {
   try {
     const users = await findAllUsers();
@@ -122,6 +122,5 @@ module.exports = {
   registerDriver,
   loginUser,
   checkUserIsLogged,
-
   purchaseTrip,
 };
