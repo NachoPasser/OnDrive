@@ -1,0 +1,39 @@
+.header{
+    background-color: royalblue;
+}
+
+.body{
+    background-color: grey;
+}
+
+.header, .body{
+    color: black;
+}
+input{
+    width: 200px;
+}
+button{
+    width: 208px;
+}
+
+.valid{
+    border: 1px solid greenyellow;
+}
+.error{
+    border: 1px solid red;
+}
+.leyenda-error{
+    color: red;
+    margin: 0px;
+    padding: 0px;
+}
+.go{
+    color: orange;
+}
+.notgo{
+    color: gray;
+    background-color: rgb(38, 35, 50);
+}
+/* button{
+    background-color: rgb(100, 60, 100);
+} */

@@ -20,10 +20,11 @@ import {
 } from '@react-google-maps/api'
 import { useRef, useState } from 'react'
 //prueba
-import usePlacesAutocomplete, {
-    getGeocode,
-    getLatLng,
-} from "use-places-autocomplete";
+// import usePlacesAutocomplete, {
+//     getGeocode,
+//     getLatLng,
+// } from "use-places-autocomplete";
+import Comparador from './FuelComponents/18-Comparador';
 
 const center = { lat: -34.60376, lng: -58.38162 }
 
@@ -78,6 +79,7 @@ export default function Map() {
     }
 
     return (
+        <div>
         <Flex
             position='relative'
             flexDirection='column'
@@ -117,8 +119,8 @@ export default function Map() {
                 shadow='base'
                 minW='container.md'
                 zIndex='1'
-            >
-                <HStack spacing={2} justifyContent='space-between'>
+            >{/*PARA MODIFICAR EL ANCHO DEL BOX DE CALCULOS, VER WIDTH -> */}
+                <HStack spacing={2} justifyContent='space-between' width="909px">
                     <Box flexGrow={1}>
                         <Autocomplete>
                             <Input type='text' placeholder='Origin' ref={originRef} />
@@ -158,7 +160,12 @@ export default function Map() {
                         }}
                     />
                 </HStack>
+            <div>
+                
+                <Comparador distance={distance}/>
+            </div>
             </Box>
         </Flex>
+        </div>
     )
 }
