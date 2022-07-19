@@ -19,7 +19,7 @@ import FilterByCapacity from "../Filters/filterByCapacity.jsx";
 import { getTripsByDestination } from '../../redux/actions/getTripsByDestination.js'
 import { getTripsByOrigin } from "../../redux/actions/getTripsByOrigin";
 import SearchBar from "../SearchBar/searchbar";
-import NavBar from "../NavBar/navbar.js";
+import NavBar from "../NavBar/navbarPassengers.jsx";
 import Fecha from "../Filters/filterByDate.jsx";
 import Paging from "../Paging/Paging.jsx";
 import Map from "../Map/map.jsx"
@@ -94,10 +94,10 @@ export default function Home() {
                         <div className={style.containerFiltros}>
                             <div className={style.filtrosAvanzados}>
                                 <SortByRating style={style.filtros} sorters={sorters} setSorters={setSorters} />
-                                <SortAlphabetically style={style.filtros} sorters={sorters} setSorters={setSorters} />
+                                {/* <SortAlphabetically style={style.filtros} sorters={sorters} setSorters={setSorters} /> */}
                                 <FilterByCapacity style={style.filtros} />
                             </div>
-                            <SearchBar style={style} />
+                            {/* <SearchBar style={style} /> */}
                             <button id={style.calendario} onClick={renderCalendar}>
                                 Filtrar por fecha de partida
                             </button>
