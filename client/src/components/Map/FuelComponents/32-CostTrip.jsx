@@ -45,7 +45,7 @@ export default function CostTrip({distance, unicFuel}){
             </select>
             </>}
             {litres && <>
-            <b style={{"color": "blue"}}> {parseFloat(total.toFixed(2))}</b> litros por cada 100 km.
+            <b style={{"color": "rgb(50, 200, 200)"}}> {parseFloat(total.toFixed(2))}</b> litros por cada 100 km.
             </>}
             {!litres && <>
             <b style={{"color": "magenta"}}> {parseFloat(total.toFixed(2))}</b> kilómetros por litro.
