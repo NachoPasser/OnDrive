@@ -82,9 +82,9 @@ const RegisterForm = () => {
       <InputField
         {...name}
         icon={"user"}
-        label={"Nombre"}
+        label={"Nombres"}
         name={"name"}
-        placeholder={"Ingresa tu nombre"}
+        placeholder={"Ingresa tu/s nombre/s"}
       />
 
       <InputField
@@ -92,7 +92,7 @@ const RegisterForm = () => {
         icon={"user"}
         label={"Apellidos"}
         name={"lastName"}
-        placeholder={"Ingresa tus apellidos"}
+        placeholder={"Ingresa tu/s apellido/s"}
       />
 
       <InputField

@@ -88,7 +88,7 @@ const verifyUser = async (req, res) => {
         return res.status(200).send('Genial')
     }
   } catch(e){
-    console.log(e)
+    // console.log(e)
     res.status(500).json(e)
   }
 }
@@ -129,66 +129,6 @@ const purchaseTrip = async (req, res) => {
     res.status(400).json({ error: `${e.message}` });
   }
 };
-
-// const checkUserIsLoggedWithGoogle = async (req, res) => {
-  //   try {
-//     let token = req.headers["authorization"];
-//     token = token.split(" ")[1];
-
-//     if (token !== "null") {
-//       jwt.verify(token, SECRET_KEY, async (err, decoded) => {
-//         if(err) return res.status(401).json({ message: "Invalid Token." })
-//         else{
-//           const user = await findUserById({user_id: decoded.id})
-//           if(!user.password){
-//             return res.status(202).json({ message: 'The user is allowed.'})
-//           } else{
-//             return res.status(403).json({ message: "Page users not allowed." });
-//           }
-//         }
-//       });
-//     } else res.status(404).json({ message: "Token not provided." });
-//   } catch (e) {
-//     res.status(400).json({ error: `${e.message}` });
-//   }
-// }
-
-// const checkUserIsLogged = async (req, res) => {
-  //   try {
-    //     let token = req.headers["authorization"];
-//     token = token.split(" ")[1];
-//     if (token !== "null") {
-  //       jwt.verify(token, SECRET_KEY, async (err, decoded) => {
-//         if(err) return res.status(401).json({ message: "Invalid Token." })
-//         else{
-//           const user = await findUserById({user_id: decoded.id})
-//           if(!user.password){
-  //             return res.status(403).json({ message: 'Google users not allowed'})
-  //           } else{
-    //             return res.status(202).json({ message: "The user is allowed." });
-    //           }
-    //         }
-    //       });
-    //     } else res.status(404).json({ message: "Token not provided." });
-//   } catch (e) {
-//     res.status(400).json({ error: `${e.message}` });
-//   }
-// };
-
-// const checkUserIsNotLogged = async(req, res) => {
-//   try {
-//     let token = req.headers["authorization"];
-//     token = token.split(" ")[1];
-//     if (token !== "null") {
-//       jwt.verify(token, SECRET_KEY, async (err, decoded) => {
-//         if(err) return res.status(401).json({ message: "Invalid Token." })
-//         else return res.status(202).json({ message: "The user is allowed." });
-//       });
-//     } else res.status(404).json({ message: "Token not provided." });
-//   } catch (e) {
-//     res.status(400).json({ error: `${e.message}` });
-//   }
-// }
 
 module.exports = {
   registerUser,
