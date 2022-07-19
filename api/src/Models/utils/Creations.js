@@ -71,6 +71,7 @@ async function createTripAsDriver(user_id, trip = {}) {
   }
 }
 
+//ASIGNAR VIAJE A UN PASAJERO
 async function assingTrip({ user_id = null, trip_id = null }) {
   try {
     if (!user_id || !trip_id) throw new Error("user id or trip id missing");
