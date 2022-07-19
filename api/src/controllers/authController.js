@@ -119,9 +119,11 @@ const getUsers = async (req, res) => {
 
 const getUserById = async (req, res) => {
   try {
-    const { id } = req.params;
-    const users = await findUserById({ user_id: id, driver: true });
-    res.json(users);
+    const { decoded, id } = req.body
+    const user = id
+    ? await findUserById({ user_id: id, driver: true })
+    : await findUserById({ user_id: decoded.id, driver: true });
+    res.json(user);
   } catch (e) {
     res.status(400).json({ error: `${e.message}` });
   }
