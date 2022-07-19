@@ -38,7 +38,7 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 userById: action.payload
             }
-        
+
         case FILTER_TRIPS: 
             let filteredTrips = state.fixedTrips
             let {origin, destination, capacity, date} = action.payload
