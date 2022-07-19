@@ -46,7 +46,7 @@ const RecoveryPasswordForm = () => {
       <InputField
         {...email}
         icon={"email"}
-        label={"Mail"}
+        label={"Correo Electrónico"}
         name={"email"}
         placeholder={"Ingresa tu email"}
       />

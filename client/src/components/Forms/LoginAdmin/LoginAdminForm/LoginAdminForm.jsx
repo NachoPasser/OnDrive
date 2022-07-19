@@ -46,7 +46,7 @@ const LoginAdminForm= () => {
   return (
     <section className={styles.LoginFormContainer}>
 
-      <h2 className={styles.TitleLogin}>Loguéate</h2>
+      <h2 className={styles.TitleLogin}>Loguéate como Admin</h2>
       <InputField 
         {...username}
         icon={"user"}

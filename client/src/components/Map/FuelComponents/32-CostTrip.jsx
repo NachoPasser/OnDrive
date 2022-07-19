@@ -2,9 +2,9 @@ import { useState } from "react";
 import './tabla.css';
 
 export default function CostTrip({distance, unicFuel}){
-
-    distance=parseFloat(distance.slice(0,distance.length-2))
-    console.log(distance)
+    // console.log("distance", distance)
+    distance=parseFloat(distance.split(",").join(""))
+    // console.log(distance)
     
     let[litres, setLitres]= useState(true)
     let [l, setL] = useState({int: 0, dec: 0})
@@ -45,7 +45,7 @@ export default function CostTrip({distance, unicFuel}){
             </select>
             </>}
             {litres && <>
-            <b style={{"color": "blue"}}> {parseFloat(total.toFixed(2))}</b> litros por cada 100 km.
+            <b style={{"color": "rgb(50, 200, 200)"}}> {parseFloat(total.toFixed(2))}</b> litros por cada 100 km.
             </>}
             {!litres && <>
             <b style={{"color": "magenta"}}> {parseFloat(total.toFixed(2))}</b> kilómetros por litro.

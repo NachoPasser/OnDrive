@@ -17,6 +17,7 @@ const OPTIONS = {
     "Accept",
     "Authorization",
     "case",
+    "id"
   ],
 };
 

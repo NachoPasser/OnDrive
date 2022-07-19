@@ -18,7 +18,9 @@ const Driver = conn.define(
       allowNull: false,
     },
     rating: {
-      type: DataTypes.DECIMAL(1),
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
     },
   },
   {

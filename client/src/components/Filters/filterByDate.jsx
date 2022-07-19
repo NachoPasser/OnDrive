@@ -4,10 +4,10 @@ import './CalendarStyles/calend.css';
 import { useDispatch, useSelector } from "react-redux";
 import sumarDias, { Ascensora } from "./AuxiliarJS/orderDates";
 import { getTrips } from "../../redux/actions/getTrips";
-import { getTripsByDate } from "../../redux/actions/getTripsByDate";
+import { getFilteredTrips } from "../../redux/actions/getFilteredTrips";
 
 export default function Fecha() {
-
+    const filters = useSelector(state => state.filters)
     let trips = useSelector(state => state.trips)
     let fixedTrips = useSelector(state => state.fixedTrips)
     const dispatch = useDispatch()
@@ -37,9 +37,13 @@ export default function Fecha() {
     return (
         <div>
             <Calendar onChange={onChange} value={value} minDate={new Date(prev)} maxDate={new Date(away)} />
+            <button id="btnQuitar" onClick={() => dispatch(getFilteredTrips({...filters, date: 'Fecha'}))}>Quitar filtro de fecha</button>
             <div id="divBuscar">
                 {value && <>Viajes con salida el día</>} {value && value.toLocaleDateString()}
-                <button id="btnBuscar" onClick={() => dispatch(getTripsByDate(value))}>Buscar</button>
+                <button id="btnBuscar" onClick={() => {
+                    let payload = {...filters, date: value}
+                    dispatch(getFilteredTrips(payload))
+                    }}>Buscar</button>
             </div>
         </div >
     )

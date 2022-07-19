@@ -94,10 +94,10 @@ export default function Home() {
                         <div className={style.containerFiltros}>
                             <div className={style.filtrosAvanzados}>
                                 <SortByRating style={style.filtros} sorters={sorters} setSorters={setSorters} />
-                                <SortAlphabetically style={style.filtros} sorters={sorters} setSorters={setSorters} />
+                                {/* <SortAlphabetically style={style.filtros} sorters={sorters} setSorters={setSorters} /> */}
                                 <FilterByCapacity style={style.filtros} />
                             </div>
-                            <SearchBar style={style} />
+                            {/* <SearchBar style={style} /> */}
                             <button id={style.calendario} onClick={renderCalendar}>
                                 Filtrar por fecha de partida
                             </button>

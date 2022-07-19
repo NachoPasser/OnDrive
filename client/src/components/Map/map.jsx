@@ -111,11 +111,12 @@ export default function Map() {
                 position="fixed"
                 left={1000}
                 top={580}
-
+                border={"3px solid wheat"}
                 p={4}
                 borderRadius='lg'
                 m={4}
-                bgColor='white'
+                bgColor='#252C38;'
+                color='wheat'
                 shadow='base'
                 minW='container.md'
                 zIndex='1'
@@ -123,13 +124,13 @@ export default function Map() {
                 <HStack spacing={2} justifyContent='space-between' width="909px">
                     <Box flexGrow={1}>
                         <Autocomplete>
-                            <Input type='text' placeholder='Origin' ref={originRef} />
+                            <Input width="365px"  type='text' placeholder='Origin' ref={originRef} />
                         </Autocomplete>
                     </Box>
                     <Box flexGrow={1}>
                         <Autocomplete>
                             <Input
-                                type='text'
+                                type='text' width="365px"
                                 placeholder='Destination'
                                 ref={destiantionRef}
                             />
@@ -148,8 +149,8 @@ export default function Map() {
                     </ButtonGroup>
                 </HStack>
                 <HStack spacing={4} mt={4} justifyContent='space-between'>
-                    <Text>Distance: {distance} </Text>
-                    <Text>Duration: {duration} </Text>
+                    <div><Text>Distance: {distance} </Text></div>
+                    <div><Text>Duration: {duration} </Text></div>
                     <IconButton
                         aria-label='center back'
                         icon={<FaLocationArrow />}
@@ -160,8 +161,7 @@ export default function Map() {
                         }}
                     />
                 </HStack>
-            <div>
-                
+            <div style={{'backgroundColor':'#252C38', 'color':'wheat'}}>
                 <Comparador distance={distance}/>
             </div>
             </Box>

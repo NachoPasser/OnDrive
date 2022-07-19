@@ -10,11 +10,11 @@ const Car = conn.define(
       defaultValue: DataTypes.UUIDV4,
     },
     type: {
-      type: DataTypes.STRING(25),
+      type: DataTypes.STRING(40),
       allowNull: false,
     },
     model: {
-      type: DataTypes.STRING(25),
+      type: DataTypes.STRING(40),
       allowNull: false,
     },
     year: {
@@ -28,6 +28,10 @@ const Car = conn.define(
     license_plate: {
       type: DataTypes.STRING(20),
       allowNull: false,
+    },
+    img: {
+      type: DataTypes.STRING(200),
+      allowNull: true, // para evitar errores
     },
     fuel: {
       type: DataTypes.STRING,

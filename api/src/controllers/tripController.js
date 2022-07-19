@@ -1,5 +1,6 @@
 const { Trip } = require("../Models/Trip");
 const { createTripAsDriver } = require("../Models/utils/Creations");
+const { findAllTrips, findTripById } = require("../Models/utils/Finders");
 
 const postTrip = async (req, res) => {
   try {
@@ -7,32 +8,28 @@ const postTrip = async (req, res) => {
     const publishedTrip = await createTripAsDriver(user_id, trip);
     res.status(201).json(publishedTrip);
   } catch (e) {
-    res.status(400).json({ error: `Server error: ${e.message}` });
+    res.status(400).json({ error: `${e.message}` });
   }
 };
 
 const getTrips = async (req, res) => {
-  const trips = Trip.findAll({
-    where: {
-      onCourse: true,
-    },
-  })
-    .then((data) => {
-      data = data.map((trip) => {
-        return {
-          id: trip.trip_id,
-          start_date: trip.start_date,
-          finish_date: trip.finish_date,
-          origin: trip.origin,
-          destination: trip.destination,
-          price: trip.price,
-        };
-      });
-      res.json(data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  try {
+    const trips = await findAllTrips();
+    return res.json(trips);
+  } catch (e) {
+    res.status(400).json({ error: `${e.message}` });
+  }
+};
+
+const getTripById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const trip = await findTripById({ trip_id: id });
+    res.json(trip);
+  } catch (e) {
+    //response error
+    res.status(400).json({ error: `${e.message}` });
+  }
 };
 
 const tripHistory = async (req, res) => {
@@ -63,4 +60,5 @@ module.exports = {
   tripHistory,
   postTrip,
   getTrips,
+  getTripById,
 };

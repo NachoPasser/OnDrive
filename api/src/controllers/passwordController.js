@@ -1,17 +1,19 @@
 const nodemailer = require("nodemailer");
-const {User} = require("../Models/User");
-const { isCorrectCredentials }  = require("../Models/utils/Confirmer");
+const { User } = require("../Models/User");
+const bcrypt = require("bcrypt");
+const { isCorrectCredentials } = require("../Models/utils/Confirmer");
 const { SECRET_KEY } = process.env;
 const jwt = require("jsonwebtoken");
 
 const recoverPassword = async (req, res) => {
   const { email } = req.body;
-  try{
-    
-    const [valid, user] = await isCorrectCredentials(email);
-  
-    if(!valid) {
-      return res.status(409).json({ error: "No existe un usuario registrado con ese mail." });
+  try {
+    const user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      return res
+        .status(409)
+        .json({ error: "No existe un usuario registrado con ese mail." });
     }
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -36,8 +38,7 @@ const recoverPassword = async (req, res) => {
       }
     });
     res.send("Email enviado");
-    
-  } catch(e){
+  } catch (e) {
     res.status(400).json({ error: `${e.message}` });
   }
 };
@@ -61,7 +62,8 @@ const changePass = async (req, res) => {
   if (!user) {
     return res.status(400).send("Usuario no encontrado");
   }
-  user.password = password;
+  const passwordHash = await bcrypt.hash(password, 10);
+  user.password = passwordHash;
   await user.save();
   res.send("Contraseña cambiada");
 };

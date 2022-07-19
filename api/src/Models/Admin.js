@@ -15,7 +15,7 @@ const Admin = conn.define(
       unique: true,
     },
     password: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.STRING(100),
       allowNull: false,
     },
   },

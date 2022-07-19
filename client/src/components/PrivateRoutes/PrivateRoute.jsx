@@ -29,7 +29,7 @@ const PrivateRoute = ({ admin, visitor, pageUser, googleUser, children, redirect
                     case: 'admin'
                 }}).then(res => {
                      message.admin= res.data.message //The user is allowed.
-                }).catch((res) => console.log(res))
+                }).catch((res) => 'No es un admin')
             } //solo pasa si el usuario tiene token valido y no tiene definida una contraseña.
 
             if(visitor){
@@ -37,7 +37,7 @@ const PrivateRoute = ({ admin, visitor, pageUser, googleUser, children, redirect
                     Authorization: `Bearer ${token}`,
                     case: 'visitor'
                 }}).then(res => {
-                    console.log('Hola!')
+                    'No es un visitante'
                 }).catch(() => {
                     message.visitor = 'The user is allowed.'
                 })
@@ -49,7 +49,7 @@ const PrivateRoute = ({ admin, visitor, pageUser, googleUser, children, redirect
                     case: 'pageUser'
                 }}).then(res => {
                     message.pageUser = res.data.message
-                }).catch((res) => console.log(res))
+                }).catch((res) => 'No es un usuario de pagina')
             } //solo pasa si el usuario tiene token valido.
     
             if(googleUser){
@@ -58,11 +58,10 @@ const PrivateRoute = ({ admin, visitor, pageUser, googleUser, children, redirect
                     case: 'googleUser'
                 }}).then(res => {
                     message.googleUser = res.data.message
-                }).catch((res) => console.log(res))
+                }).catch((res) => 'No es un usuario de google')
             } //solo pasa si el usuario tiene un token valido y no tiene contraseña definida.
             
         Promise.allSettled([a, b, c, d]).then(() => {
-            console.log(message)
             setMessage(message)
             setAnalized(true)
         })
