@@ -21,16 +21,10 @@ const getTrips = async (req, res) => {
   }
 };
 
-//   opcional
-//id?driver=true
 const getTripById = async (req, res) => {
   try {
     const { id } = req.params;
-    const { driver } = req.query;
-    const trip = await findTripById({
-      trip_id: id,
-      includeDriver: driver === "true",
-    });
+    const trip = await findTripById({ trip_id: id });
     res.json(trip);
   } catch (e) {
     //response error
