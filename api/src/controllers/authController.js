@@ -101,9 +101,10 @@ const verifyUser = async (req, res) => {
       default:
         return res.status(200).send("Genial");
     }
-  } catch (e) {
-    console.log(e);
-    res.status(500).json(e);
+
+  } catch(e){
+    // console.log(e)
+    res.status(500).json(e)
   }
 };
 
