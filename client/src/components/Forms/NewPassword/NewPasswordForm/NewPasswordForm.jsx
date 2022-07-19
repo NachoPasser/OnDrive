@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { useField } from '../../../../hooks/useInputField';
 import vectorPassword from "../../../../assets/NewPassword/NewPassword.png";
 
-const NewPasswordForm = ({UserEmail}) => {
+const NewPasswordForm = () => {
   const navigate = useHistory();
   const password = useField({type: "password", field: 'password'});
   const confirmPassword = useField({type: "password", field:'confirm_password'});
@@ -47,21 +47,21 @@ const NewPasswordForm = ({UserEmail}) => {
       <img className={styles.NewPasswordImage} src={vectorPassword} alt="vector-new-password" />
       <div className={styles.UserName}>
         <span>usuario:</span>
-        <span>{UserEmail}</span>
+        <span></span>
       </div>
       <InputField
         {...password}
         icon={"password"}
         label={"Nueva Contraseña"}
         name={"password"}
-        placeholder={"Ingresa tu nuevo password"}
+        placeholder={"Ingresa tu nueva contraseña"}
       />
       <InputField
         {...confirmPassword}
         icon={"password"}
         label={"Confirmar Nueva Contraseña"}
         name={"password"}
-        placeholder={"Ingresa tu nuevo password"}
+        placeholder={"Vuelve a escribir tu nueva contraseña"}
       />
       <Button disabled={disabled} title={"CONFIRMAR"} type={"primary"} size={"lg"} width={"Full"} onClick={(e)=>onSubmit(e)}/>
 
