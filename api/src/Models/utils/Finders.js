@@ -7,7 +7,7 @@ async function findUserByEmail(email) {
       throw new Error(
         `an email is needed to search for the user, email(${email})`
       );
-    
+
     const user = await User.findOne({
       where: { email },
       attributes: { exclude: "password" },
@@ -74,10 +74,24 @@ async function findDriverById({ driver_id = null, model = false }) {
   }
 }
 
-async function findTripById({ trip_id = null, model = false }) {
+async function findTripById({
+  trip_id = null,
+  model = false,
+  includeDriver = false,
+}) {
   try {
     if (!trip_id) throw new Error("need the trip id to find it");
-    const trip = await Trip.findByPk(trip_id);
+    const trip = includeDriver
+      ? await Trip.findByPk(trip_id, {
+          include: [
+            {
+              model: Driver,
+              attributes: { exclude: "driver_id" },
+              include: [{ model: Car, attributes: { exclude: "driver_id" } }],
+            },
+          ],
+        })
+      : await Trip.findByPk(trip_id);
     if (!trip) throw new Error(`trip ${trip_id} not found.`);
     return model ? trip : JSON.parse(JSON.stringify(trip, null, 2));
   } catch (e) {
@@ -85,10 +99,19 @@ async function findTripById({ trip_id = null, model = false }) {
   }
 }
 
-async function findAllUsers() {
+async function findAllTrips(arrayModel = false) {
   try {
-    const users = await User.findAll();
-    return users;
+    const trips = await Trip.findAll();
+    return arrayModel ? trips : JSON.parse(JSON.stringify(trips, null, 2));
+  } catch (e) {
+    throw new Error(`${e.message}`);
+  }
+}
+
+async function findAllUsers(arrayModel = false) {
+  try {
+    const users = await User.findAll({ attributes: { exclude: "password" } });
+    return arrayModel ? users : JSON.parse(JSON.stringify(users, null, 2));
   } catch (e) {
     throw new Error(`${e.message}`);
   }
@@ -99,5 +122,6 @@ module.exports = {
   findUserById,
   findDriverById,
   findAllUsers,
+  findAllTrips,
   findTripById,
 };
