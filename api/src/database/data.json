@@ -1,0 +1,353 @@
+{
+  "combinationsB": [
+    "BA",
+    "CA",
+    "CH",
+    "CT",
+    "CR",
+    "ER",
+    "FO",
+    "JY",
+    "LP",
+    "LR",
+    "MZ",
+    "MI",
+    "NQN",
+    "RN",
+    "SA",
+    "SJ",
+    "SL",
+    "SC",
+    "SF",
+    "SE",
+    "TF",
+    "Tu"
+  ],
+  "combinationsA": [
+    "CA1",
+    "CA2",
+    "CA3",
+    "CB1",
+    "CC1",
+    "CD1",
+    "CE1",
+    "CF0",
+    "CG1"
+  ],
+  "numbers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "letters": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J"
+  ],
+  "last_names": [
+    "Gonzalez",
+    "Rodriguez",
+    "Lopez",
+    "Martinez",
+    "Fernandez",
+    "Gomez",
+    "Diaz",
+    "Passerini",
+    "Cerutti",
+    "Vidal"
+  ],
+  "names": [
+    "Beatriz",
+    "Rodrigo",
+    "Pedro",
+    "Juan",
+    "Ignacio",
+    "Ismael",
+    "Mariana",
+    "Horacio",
+    "Juana",
+    "Vicente"
+  ],
+  "fakeCars": [
+    {
+      "type": "SUV",
+      "model": "Byd Han",
+      "year": 2022,
+      "fuel": "Gasoil",
+      "color": "Rojo",
+      "img": "https://image.made-in-china.com/318f0j00PQIGUdYfjHkT/BYDHANEV02-mp4.jpg"
+    },
+    {
+      "type": "SUV",
+      "model": "Mustang Mach E Premium",
+      "year": 2022,
+      "fuel": "Gasoil",
+      "color": "Azul",
+      "img": "https://i.blogs.es/f066d5/mustang-mach-e/1366_2000.jpg"
+    },
+    {
+      "type": "Sedan",
+      "model": "Chevrolet Cruze",
+      "year": 2012,
+      "fuel": "Gasoil",
+      "color": "Blanco",
+      "img": "https://3.bp.blogspot.com/-Nes9MUiFWac/WbhXwJjXtvI/AAAAAAAAImA/G9n31czfXgAt4M8Y5VlwMKOxlDfbIRMcACLcBGAs/s1600/20170912_135453.jpg"
+    },
+    {
+      "type": "Sedan",
+      "model": "Citroën C4 Lounge",
+      "year": 2016,
+      "fuel": "Super",
+      "color": "Gris",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_609973-MLA49281675502_032022-O.jpg"
+    },
+    {
+      "type": "Sedan",
+      "model": "Toyota Corolla",
+      "year": 2015,
+      "fuel": "Gasoi",
+      "color": "Verde",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_633143-MLA49892263850_052022-F.jpg"
+    },
+    {
+      "type": "Hatchback",
+      "model": "Hyundai I20 N",
+      "year": 2022,
+      "fuel": "Euro",
+      "color": "Blanco",
+      "img": "https://w0.peakpx.com/wallpaper/769/415/HD-wallpaper-hyundai-hyundai-i20-n-line-hyundai-i20.jpg"
+    },
+    {
+      "type": "Hatchback",
+      "model": "Skoda Octavia VRS",
+      "year": 2022,
+      "fuel": "Premium",
+      "color": "Verde",
+      "img": "https://www.muycomputer.com/wp-content/uploads/2018/12/20181118_130756.jpg"
+    },
+    {
+      "type": "Coupe",
+      "model": "Audi RS3 Sportback",
+      "year": 2022,
+      "fuel": "Euro",
+      "color": "Amarillo",
+      "img": "https://i.pinimg.com/originals/7d/a7/a8/7da7a8927f1cb1f0df27ad4460365dfe.png"
+    },
+    {
+      "type": "Coupe",
+      "model": "BMW M4 Coupe",
+      "year": 2022,
+      "fuel": "Gasoil",
+      "color": "Naranja",
+      "img": "https://www.tuningblog.eu/wp-content/uploads/2021/12/BMW-M4-F82-Fire-Orange-Stage-2-Kit-M3-E92-GTS-7.jpg"
+    },
+    {
+      "type": "Pick Up",
+      "model": "Toyota Hilux",
+      "year": 2022,
+      "fuel": "Gasoil",
+      "color": "Negro",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/2018_Toyota_Hilux_Invincible_X_D-4d_4WD_2.4_Front.jpg/800px-2018_Toyota_Hilux_Invincible_X_D-4d_4WD_2.4_Front.jpg"
+    },
+    {
+      "type": "Pick Up",
+      "model": "Jeep Gladiator",
+      "year": 2022,
+      "fuel": "Super",
+      "color": "Rojo",
+      "img": "https://cdn.motor1.com/images/mgl/G4k1b/s3/critica-jeep-gladiator-rubicon.jpg"
+    },
+    {
+      "type": "Pick Up",
+      "model": "Ford Ranger",
+      "year": 2022,
+      "fuel": "Euro",
+      "color": "Blanco",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI8i1RCBjzfQHhnj8oisX3RDqKfqwduI81YA&usqp=CAU"
+    },
+    {
+      "type": "Pick Up",
+      "model": "Mitsubishi L200",
+      "year": 2022,
+      "fuel": "Gasoil",
+      "color": "Azul",
+      "img": "https://cdn.motor1.com/images/mgl/ZbP93/s3/en-el-garage-de-autoblog-mitsubishi-l200-2019.jpg"
+    },
+    {
+      "type": "MPV",
+      "model": "Opel Nuevo Zafira",
+      "year": 2017,
+      "fuel": "Gasoil",
+      "color": "Gris",
+      "img": "https://www.deruedas.com.ar/images/autos/Chevrolet-Zafira-2008/472/472900_2_im.jpg?edit=3"
+    },
+    {
+      "type": "MPV",
+      "model": "Citroën C4",
+      "year": 2017,
+      "fuel": "Gasoil",
+      "color": "Azul",
+      "img": "https://i.blogs.es/f066d5/mustang-mach-e/1366_2000.jpg"
+    },
+    {
+      "type": "MPV",
+      "model": "Citroën Grand C4",
+      "year": 2017,
+      "fuel": "Euro",
+      "color": "Blanco",
+      "img": "https://imganuncios.mitula.net/medium/citroen_c4_2013_nafta_citroen_c4_1_6_x_pack_look_6300067656765337049.jpg"
+    },
+    {
+      "type": "MPV",
+      "model": "Toyota Verso 442",
+      "year": 2017,
+      "fuel": "Super",
+      "color": "Rojo",
+      "img": "https://prod.pictures.autoscout24.net/listing-images/2d4fae78-c5a5-4afc-8f31-f56d6bd171c4_65250e6e-2c9c-4306-a854-5f4ee8965412.jpg/250x188.webp"
+    },
+    {
+      "type": "MPV",
+      "model": "Mercedes Clase B 258",
+      "year": 2017,
+      "fuel": "Gasoil",
+      "color": "Blanco",
+      "img": "https://http2.mlstatic.com/D_NQ_NP_842630-MLA49397046432_032022-O.jpg"
+    },
+    {
+      "type": "MPV",
+      "model": "BMW Serie 2 Active Tourer 204",
+      "year": 2017,
+      "fuel": "Gasoil",
+      "color": "Azul",
+      "img": "https://www.km77.com/images/medium/5/2/3/9/mediana-1.345239.jpg"
+    },
+    {
+      "type": "MPV",
+      "model": "BMW Serie 2 Gran Tourer 145",
+      "year": 2017,
+      "fuel": "Gasoil",
+      "color": "Rojo",
+      "img": "https://cloud.leparking.fr/2022/05/23/03/02/bmw-serie-2-gran-tourer-2015-bmw-2-series-2-0td-218d-se-150bhp-gran-tourer-5d-rouge_8510862646.jpg"
+    },
+    {
+      "type": "MPV",
+      "model": "Nissan Evalia 107",
+      "year": 2017,
+      "fuel": "Gasoil",
+      "color": "Negro",
+      "img": "https://img.remediosdigitales.com/ecba61/nissan-20evalia-20-2-/240_240.jpg"
+    },
+    {
+      "type": "MPV",
+      "model": "Fiat 500L Living 11",
+      "year": 2017,
+      "fuel": "Gasoil",
+      "color": "Rojo",
+      "img": "http://www.revistadelmotor.es/wp-content/uploads/2016/05/IMG_2556-1024x684.jpg"
+    },
+    {
+      "type": "MPV",
+      "model": "SsangYong XLV 24",
+      "year": 2017,
+      "fuel": "Gasoil",
+      "color": "Blanco",
+      "img": "https://www.autonocion.com/wp-content/uploads/2016/06/Prueba-SsangYong-XLV-33.jpg"
+    }
+  ],
+  "fakeTrips": [
+    {
+      "start_date": "2022-07-19 09:00:00",
+      "finish_date": "2022-07-19 18:00:00",
+      "origin": "San Juan",
+      "origin_img": "https://sisanjuan.gob.ar/media/k2/items/cache/9032d69f4b59d829e0f8ee59e90ffb6e_L.jpg?t=20190923_174621",
+      "destination": "Cordoba",
+      "destination_img": "https://www.lavoz.com.ar/resizer/8SBKGmC11P7Xp1z4QAgHFVU2A3I=/1023x682/smart/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/MYVHKZRCYNGLNCPPT76W7NJ5RY.jfif",
+      "price": 5560,
+      "distance": 580
+    },
+    {
+      "start_date": "2022-07-19 09:00:00",
+      "finish_date": "2022-07-19 18:00:00",
+      "origin": "Cordoba",
+      "origin_img": "https://www.lavoz.com.ar/resizer/8SBKGmC11P7Xp1z4QAgHFVU2A3I=/1023x682/smart/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/MYVHKZRCYNGLNCPPT76W7NJ5RY.jfif",
+      "destination": "San Juan",
+      "destination_img": "https://sisanjuan.gob.ar/media/k2/items/cache/9032d69f4b59d829e0f8ee59e90ffb6e_L.jpg?t=20190923_174621",
+      "price": 5560,
+      "distance": 580
+    },
+    {
+      "start_date": "2022-07-25 10:00:00",
+      "finish_date": "2022-07-26 16:00:00",
+      "origin": "Buenos Aires",
+      "origin_img": "https://estaticos-cdn.elperiodico.com/clip/80ccbd4a-9d52-4b2a-b2b3-e9c254b3447c_alta-libre-aspect-ratio_default_0.jpg",
+      "destination": "Cordoba",
+      "destination_img": "https://www.lavoz.com.ar/resizer/8SBKGmC11P7Xp1z4QAgHFVU2A3I=/1023x682/smart/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/MYVHKZRCYNGLNCPPT76W7NJ5RY.jfif",
+      "price": 8908.8,
+      "distance": 696
+    },
+    {
+      "start_date": "2022-07-25 10:00:00",
+      "finish_date": "2022-07-25 17:00:00",
+      "origin": "Buenos Aires",
+      "origin_img": "https://estaticos-cdn.elperiodico.com/clip/80ccbd4a-9d52-4b2a-b2b3-e9c254b3447c_alta-libre-aspect-ratio_default_0.jpg",
+      "destination": "Cordoba",
+      "destination_img": "https://www.lavoz.com.ar/resizer/8SBKGmC11P7Xp1z4QAgHFVU2A3I=/1023x682/smart/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/MYVHKZRCYNGLNCPPT76W7NJ5RY.jfif",
+      "price": 8908.8,
+      "distance": 696
+    },
+    {
+      "start_date": "2022-07-26 12:00:00",
+      "finish_date": "2022-07-26 23:59:00",
+      "origin": "Buenos Aires",
+      "origin_img": "https://estaticos-cdn.elperiodico.com/clip/80ccbd4a-9d52-4b2a-b2b3-e9c254b3447c_alta-libre-aspect-ratio_default_0.jpg",
+      "destination": "Mendoza",
+      "destination_img": "https://blogapi.uber.com/wp-content/uploads/2019/05/Plaza-General-San-Mart%C3%ADn.png",
+      "price": 13440,
+      "distance": 1050
+    },
+    {
+      "start_date": "2022-07-26 13:00:00",
+      "finish_date": "2022-07-26 16:20:00",
+      "origin": "Rosario",
+      "origin_img": "https://media.lacapital.com.ar/p/534b1a947ce7c6e9543b68acb9a4c1ca/adjuntos/203/imagenes/028/758/0028758025/73061934jpg.jpghttps://media.lacapital.com.ar/p/534b1a947ce7c6e9543b68acb9a4c1ca/adjuntos/203/imagenes/028/758/0028758025/73061934jpg.jpg",
+      "destination": "Buenos Aires",
+      "destination_img": "https://estaticos-cdn.elperiodico.com/clip/80ccbd4a-9d52-4b2a-b2b3-e9c254b3447c_alta-libre-aspect-ratio_default_0.jpg",
+      "price": 3800,
+      "distance": 300
+    },
+    {
+      "start_date": "2022-07-28 16:00:00",
+      "finish_date": "2022-07-28 20:20:00",
+      "origin": "Buenos Aires",
+      "origin_img": "https://estaticos-cdn.elperiodico.com/clip/80ccbd4a-9d52-4b2a-b2b3-e9c254b3447c_alta-libre-aspect-ratio_default_0.jpg",
+      "destination": "Rosario",
+      "destination_img": "https://media.lacapital.com.ar/p/534b1a947ce7c6e9543b68acb9a4c1ca/adjuntos/203/imagenes/028/758/0028758025/73061934jpg.jpghttps://media.lacapital.com.ar/p/534b1a947ce7c6e9543b68acb9a4c1ca/adjuntos/203/imagenes/028/758/0028758025/73061934jpg.jpg",
+      "price": 3800,
+      "distance": 300
+    },
+    {
+      "start_date": "2022-07-28 15:00:00",
+      "finish_date": "2022-07-29 19:00:00",
+      "origin": "Jujuy",
+      "origin_img": "https://blog2.alquilerargentina.com/wp-content/uploads/2021/05/conociendo-san-salvador-de-jujuy-portada.jpg",
+      "destination": "Mendoza",
+      "destination_img": "https://blogapi.uber.com/wp-content/uploads/2019/05/Plaza-General-San-Mart%C3%ADn.png",
+      "price": 15580,
+      "distance": 1259
+    }
+  ]
+}
