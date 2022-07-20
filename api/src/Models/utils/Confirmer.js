@@ -25,7 +25,7 @@ async function isCorrectCredentials(email = null, password = null) {
 
     if (!user || !user.getDataValue("password")) return [false, null];
 
-    const valid = bcrypt.compare(password, user.getDataValue("password"));
+    const valid = await bcrypt.compare(password, user.getDataValue("password"));
 
     return valid ? [true, user] : [false, null];
   } catch (e) {
