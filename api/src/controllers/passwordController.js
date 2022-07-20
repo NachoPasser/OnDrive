@@ -1,5 +1,4 @@
 const nodemailer = require("nodemailer");
-const { User } = require("../Models/User");
 const { findUserById, findUserByEmail } = require("../Models/utils/Finders");
 const {
   generateRecoveryCode,
