@@ -18,10 +18,9 @@ const registerUser = async (req, res) => {
     const { email, password, name, last_name } = req.body;
     if (!email) throw new Error("Se necesita el email obligatoriamente");
 
-    const passwordHash = await bcrypt.hash(password, 10); //hash password
-    let user_id = await createUser({
+    var user_id = await createUser({
       email,
-      password: passwordHash,
+      password: !password ? password : await bcrypt.hash(password, 10),
       name,
       last_name,
     });
