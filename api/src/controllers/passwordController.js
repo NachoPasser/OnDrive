@@ -34,7 +34,7 @@ const recoverPassword = async (req, res) => {
     user.set({ recovery: hashCode });
     await user.save();
 
-    timeout = resetCode({ user, mins: 2 }); //permitir nuevo codigo en 5 mins
+    timeout = resetCode({ user, mins: 5 }); //permitir nuevo codigo en 5 mins
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
