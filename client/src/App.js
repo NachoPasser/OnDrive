@@ -14,6 +14,8 @@ import CardDetail from './components/CardDetail/CardDetail.jsx'
 import HomePassengers from "./components/Home/homePassengers.jsx"
 import HomeDrivers from "./components/Home/homeDrivers.jsx"
 import Profile from './components/Profile/Profile';
+import AddCar from './components/Forms/AddCar/AddCar';
+
 function makePrivate( admin = false, visitor = false, pageUser = false, googleUser = false, route, route_to_redirect, component_to_render) {
   return (
     <Route path={route}>
@@ -40,6 +42,7 @@ function App() {
       {makePrivate(true, undefined, undefined, undefined, '/adminPanel', '/loginAdmin', <AdminPanel />)}
       {makePrivate(true, undefined, true, true, '/trip/:id', '/login', <CardDetail/>)}
       {makePrivate(undefined, undefined, true, true, '/profile', '/home', <Profile/>)}
+      {makePrivate(undefined, undefined, true, true, '/addCar', '/login', <AddCar/>)}
     </div>
   );
 }

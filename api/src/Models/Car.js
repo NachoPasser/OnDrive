@@ -9,6 +9,10 @@ const Car = conn.define(
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
+    brand: {
+      type: DataTypes.STRING(45),
+      allowNull: false,
+    },
     type: {
       type: DataTypes.STRING(40),
       allowNull: false,

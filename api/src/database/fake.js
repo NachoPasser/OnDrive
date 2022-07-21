@@ -121,6 +121,7 @@ async function loadFakeDrivers() {
 
 async function loadFakeCarsToDrivers() {
   try {
+    const brand = ["ford", "chevrolet", "toyota", "honda"]
     let drivers = await Driver.findAll();
     let car = null;
     let is2016 = false;
@@ -128,6 +129,7 @@ async function loadFakeCarsToDrivers() {
       carInfo = fakeCars[Math.floor(Math.random() * fakeCars.length)];
       car = await Car.create({
         license_plate: generetaLicensePlate(is2016),
+        brand: brand[Math.floor(Math.random() * brand.length)],
         ...carInfo,
       });
       await d.addCar(car);

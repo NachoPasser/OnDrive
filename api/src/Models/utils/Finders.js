@@ -29,7 +29,7 @@ async function findUserById({ user_id = null, driver = false, model = false }) {
         ? [
             {
               model: Driver,
-              attributes: { exclude: ["user_id", "userUserId", "driver_id"] },
+              attributes: { exclude: ["user_id", "userUserId"] },
               include: [{ model: Trip }, { model: Car }],
             },
             {
@@ -39,7 +39,6 @@ async function findUserById({ user_id = null, driver = false, model = false }) {
           ]
         : { model: Trip, attributes: { exclude: "users_trips" } },
     });
-
     if (!user) throw new Error(`user ${user_id} not found`);
     return model ? user : JSON.parse(JSON.stringify(user, null, 2));
   } catch (e) {
