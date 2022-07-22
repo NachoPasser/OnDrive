@@ -40,6 +40,7 @@ function App() {
       {makePrivate(true, undefined, undefined, undefined, '/adminPanel', '/loginAdmin', <AdminPanel />)}
       {makePrivate(true, undefined, true, true, '/trip/:id', '/login', <CardDetail/>)}
       {makePrivate(undefined, undefined, true, true, '/profile', '/home', <Profile/>)}
+      {/* <Route exact path='/profile' component={Profile} /> */}
     </div>
   );
 }

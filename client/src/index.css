@@ -9,12 +9,10 @@
   --clear-color: #f1f2f6;
   /* Fonts */
 
-  --font-title-color: #c8c8c8;
+  --font-title-color: #a7a1a1;
   --font-title-yellow-color: #fed428;
   --font-dark-color: rgba(33, 39, 52, .8);
-}
 
-* {
   box-sizing: border-box;
   font-size: 100%;
 }
