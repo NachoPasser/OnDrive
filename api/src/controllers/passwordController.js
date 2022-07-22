@@ -9,8 +9,6 @@ const bcrypt = require("bcrypt");
 const { SECRET_KEY } = process.env;
 const jwt = require("jsonwebtoken");
 
-let timeout = null;
-
 const recoverPassword = async (req, res) => {
   const { email } = req.body;
   try {
@@ -33,7 +31,7 @@ const recoverPassword = async (req, res) => {
     user.set({ recovery: hashCode });
     await user.save();
 
-    timeout = resetCode({ user, mins: 5 }); //permitir nuevo codigo en 5 mins
+    resetCode({ user, mins: 5}); //permitir nuevo codigo en 5 mins
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -98,7 +96,7 @@ const verifyRecoveryCode = async (req, res) => {
     if (!code || !email)
       return res.status(400).json({ error: "Faltan datos(Email o Codigo)" });
     // validar codigo con el de la db
-    const [valid, id] = await compareRecoveryCode({ email, code, timeout });
+    const [valid, id] = await compareRecoveryCode({ email, code });
     if (!valid)
       return res.status(400).json({ error: "Codigo invalido o caducado" });
 

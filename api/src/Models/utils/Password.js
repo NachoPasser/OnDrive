@@ -3,6 +3,8 @@ const { findUserByEmail } = require("./Finders");
 const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const letters = "abcdefghijklmnopqrstuvwyz";
 
+const CODE_STORAGE = [];
+
 function generateRecoveryCode() {
   let code = "";
   for (let i = 0; i < 6; i++) {
@@ -23,14 +25,10 @@ function resetCode({ user = null, mins = 5 }) {
     await user.save();
   }, ms);
 
-  return timeout;
+  CODE_STORAGE.push({ email: user.email, timeout });
 }
 
-async function compareRecoveryCode({
-  email = null,
-  code = null,
-  timeout = null,
-}) {
+async function compareRecoveryCode({ email = null, code = null }) {
   try {
     const regExp = /[A-Z][0-9][A-Z][0-9][A-Z][0-9]/g;
     if (!regExp.test(code)) throw new Error("Codigo invalido");
@@ -44,7 +42,11 @@ async function compareRecoveryCode({
     const valid = await bcrypt.compare(code, user["recovery"]);
     //si coincide limpio el codigo
     if (valid) {
-      clearTimeout(timeout); //elimino el countdown
+      let position = CODE_STORAGE.findIndex((item) => item.email === email);
+      clearTimeout(CODE_STORAGE[position].timeout); //elimino el countdown
+
+      CODE_STORAGE.splice(position, 1);
+
       user.set({
         recovery: null,
       });
