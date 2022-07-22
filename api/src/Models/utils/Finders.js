@@ -1,17 +1,29 @@
 const { models } = require("../../database/relations");
 const { User, Driver, Trip, Car } = models;
 
-async function findUserByEmail(email) {
+async function findUserByEmail({
+  email = null,
+  model = false,
+  include_code = false,
+  include_password = false,
+}) {
   try {
     if (!email)
       throw new Error(`El Mail es necesario para realizar la busqueda`);
 
     const user = await User.findOne({
       where: { email },
-      attributes: { exclude: "password" },
+      attributes:
+        !include_code && !include_password
+          ? { exclude: ["password", "recovery_code"] }
+          : include_code && !include_password
+          ? { exclude: "password" }
+          : !include_code && include_password
+          ? { exclude: "recovery_code" }
+          : {},
     });
     if (!user) return null;
-    return JSON.parse(JSON.stringify(user, null, 2));
+    return model ? user : JSON.parse(JSON.stringify(user, null, 2));
   } catch (e) {
     throw new Error(`Error al intentar recuperar el usuario via Mail`);
   }

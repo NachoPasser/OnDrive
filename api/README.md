@@ -2,15 +2,19 @@
 
 ## 🕵️‍♂️​ API
 
-##### Ultima vez: 17/07/22
+##### Ultima vez: 19/07/22
 
 **Rutas**:
 
-**`/trip`**
-**`/auth`**
-**`/admin`**
-**`/pass`**
-**`/api`** 🧪(experimental / falsa)
+**`/trip`** Obtener informacion de viajes y crearlos.
+
+**`/auth`** Obtener informacion sobre los usuarios(Driver & Users), verificar identidad, comprar viajes(vincularlos), etc.
+
+**`/admin`** Acciones del administrador.
+
+**`/pass`** Cambio / Recuperacion de password.
+
+**`/api`** 🧪(experimental / falsa) API estatica que devuelve datos falsos (en un futuro se eliminara).
 
 ## **Endpoints**:
 
@@ -20,7 +24,7 @@
 
 ## **`/trip`**
 
-- **`GET`** `/` 🟡 - Obtiene la informacion de todos los viajes.
+**`GET`** `/` 🟡 - Obtiene la informacion de todos los viajes.
 
 ```javascript
 //envolver dentro de un try catch 😄
@@ -28,7 +32,7 @@ const response = await axios.get(`${API_URL}/trip`);
 console.log(response.data);
 ```
 
-- **`GET`** `/:id` 🟢 - Obtener informacion de un viaje mediante **id**
+**`GET`** `/:id` 🟢 - Obtener informacion de un viaje mediante **id**
 
 ```javascript
 //envolver dentro de un try catch 😄
@@ -38,7 +42,7 @@ const response = await axios.get(
 console.log(response.data);
 ```
 
-- **`POST`** `/` 🟢 - Crear un viaje enviando un **objeto** con informacion.
+**`POST`** `/` 🟢 - Crear un viaje enviando un **objeto** con informacion.
 
 ```javascript
 //objeto de ejemplo
@@ -73,12 +77,29 @@ const response = await axios.get(`${API_URL}/auth/users`);
 console.log(response.data);
 ```
 
-- **`GET`** `/profile/:id` 🟢 - Obtiene toda la informacion de un usuario mediante **id**.
+- **`GET`** `/profile` 🟢 - Obtiene toda la informacion de un usuario mediante **id** o el **token(JWT)** enviado por cabecera .
 
 ```javascript
 //envolver dentro de un try catch 😄
+const token = localStorage.getItem("token");
+// O si conocemos el id
 const exampleId = "297c42e5-c3d6-4ac8-8663-8b3a7edb18b1";
-const response = await axios.get(`${API_URL}/auth/profile/${exampleId}`);
+
+//con token
+const response = await axios.get(`${API_URL}/auth/profile`, {
+  headers: {
+    Authorization: `bearer ${token}`,
+  },
+});
+
+console.log(response.data);
+//si conozco el id
+const response = await axios.get(`${API_URL}/auth/profile`, {
+  headers: {
+    id: exampleId,
+  },
+});
+
 console.log(response.data);
 ```
 
@@ -97,7 +118,7 @@ const response = await axios.post(`${API_URL}/auth/register`, information);
 console.log(response.data); //token
 ```
 
-- **`POST`** `/register-driver` 🟢 - Registra un conductor a partir de un **objeto** con el **id** del usuario y sus **datos** de conductor.
+**`POST`** `/register-driver` 🟢 - Registra un conductor a partir de un **objeto** con el **id** del usuario y sus **datos** de conductor.
 
 ```javascript
 //envolver dentro de un try catch 😄
@@ -117,7 +138,7 @@ const response = await axios.post(
 console.log(response.data);
 ```
 
-- **`POST`** `/login` 🟢 - Valida las **credenciales** de un usuario y retorna un **token** de autenticacion si son correctas.
+**`POST`** `/login` 🟢 - Valida las **credenciales** de un usuario y retorna un **token** de autenticacion si son correctas.
 
 ```javascript
 const credentials = {
@@ -129,7 +150,7 @@ const response = await axios.post(`${API_URL}/auth/login`, credentials);
 console.log(response.data); //token
 ```
 
-- **`POST`** `/purchase-trip` 🟢 - Asigna un viaje a un usuario mediante un objeto con el **id** del usuario y el **id** del viaje
+**`POST`** `/purchase-trip` 🟢 - Asigna un viaje a un usuario mediante un objeto con el **id** del usuario y el **id** del viaje
 
 ```javascript
 const purchase = {
@@ -143,9 +164,11 @@ console.log(response.data);
 
 ## **`/admin`**
 
-- **`GET`** `/verify` 🟢 - Verifica que si es un administrador
-- **`POST`** `/login` 🟢 - Verifica las `credenciales` de un administrador y retorna un `Token` de autenticacion si asi es.
-- **`PUT`** `/ban` 🟢 - Establece el `Ban Status` de un usuario a true mediante un objeto con el email
+**`GET`** `/verify` 🟢 - Verifica que si es un administrador
+
+**`POST`** `/login` 🟢 - Verifica las `credenciales` de un administrador y retorna un `Token` de autenticacion si asi es.
+
+**`PUT`** `/ban` 🟢 - Establece el `Ban Status` de un usuario a true mediante un objeto con el email
 
 ```javascript
 const data = {
@@ -156,7 +179,7 @@ const response = await axios.put(`${API_URL}/admin/ban`, data);
 console.log(response.data);
 ```
 
-- **`PUT`** `/unban` 🟢 - Establece el `Ban Status` de un usuario a false mediante un objeto con el email
+**`PUT`** `/unban` 🟢 - Establece el `Ban Status` de un usuario a false mediante un objeto con el email
 
 ```javascript
 const data = {
@@ -169,5 +192,8 @@ console.log(response.data);
 
 ## **`/pass`**
 
-- **`POST`** `/` 🟢 - Recibe un **objeto** un email y envia un mensaje al email del usuario encontrado con su **password**.
-- **`POST`** `/change/:token` 🟢 - Cambia la **password** del usuario mediante un **objeto** con la nueva password y enviando el **Token** de autenticacion por parametro.
+**`POST`** `/` 🟢 - Recibe un **objeto** con un email y envia un mensaje al email del usuario encontrado con un **codigo de recuperacion**, el cual caduca en **5 minutos**.
+
+**`POST`** `/verify-code` 🟢 - Recibe un **objeto** con un **codigo de recuperacion** y un **email**, valida que el **codigo** pertenzca al usuario y que no este vencido, de ser asi se le concede un **token** de acceso, para poder ingresar a la pagina y cambiar su password.
+
+**`POST`** `/change/:token` 🟢 - Cambia la **password** del usuario mediante un **objeto** con la nueva password y enviando el **Token** de autenticacion por parametro.

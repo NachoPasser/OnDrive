@@ -31,6 +31,11 @@ const User = conn.define(
       allowNull: false,
       defaultValue: false,
     },
+    recovery: {
+      type: DataTypes.STRING(100),
+      allowNull: true,
+      defaultValue: null,
+    },
   },
   {
     timestamps: false,
