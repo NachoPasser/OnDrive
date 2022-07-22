@@ -4,7 +4,7 @@ const {
   generateRecoveryCode,
   compareRecoveryCode,
   resetCode,
-} = require("../Models/utils/Password");
+} = require("../Models/utils/Recovery");
 const bcrypt = require("bcrypt");
 const { SECRET_KEY } = process.env;
 const jwt = require("jsonwebtoken");
