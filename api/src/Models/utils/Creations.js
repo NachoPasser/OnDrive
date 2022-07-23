@@ -13,7 +13,7 @@ async function createUser(userData = {}) {
       where: { email: userData?.email },
       defaults: userData,
     });
-    return created ? user.getDataValue("user_id") : null;
+    return created ? await user.getDataValue("user_id") : null;
   } catch (e) {
     throw new Error(`${e.message}`);
   }
