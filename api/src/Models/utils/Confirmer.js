@@ -24,16 +24,13 @@ async function isCorrectCredentials(email = null, password = null) {
     const user = await User.findOne({ where: { email } });
 
     if (!user) return [false, null];
-    
-    if(user.getDataValue("password")){
-      const valid = bcrypt.compare(password, user.getDataValue("password"));
-      return valid ? [true, user] : [false, null];
-    } else{
-      return [true, user]
-    }
+    const passwordHashed = user.password;
 
+    if (!passwordHashed) return [true, user];
+
+    const valid = await bcrypt.compare(password, passwordHashed);
+    return valid ? [true, user] : [false, null];
   } catch (e) {
-    console.log(e);
     throw new Error("Error al comprobar credenciales");
   }
 }
