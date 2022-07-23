@@ -1,0 +1,10 @@
+#pasajero{
+   display: flex;
+   flex-direction: column;
+   color: white
+}
+
+#viajes{
+    display: flex;
+
+}
