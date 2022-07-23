@@ -22,7 +22,7 @@ const checkUser = async (req, res, next) => {
 
 const getIdFromToken = async (req, res, next) => {
   try{
-    let id = req.headers["id"];
+    let id = req.headers["user_id"];
     
     if(id){
       req.body = {...req.body, id}

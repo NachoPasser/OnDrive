@@ -9,6 +9,11 @@ const Trip = conn.define(
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
+    rating: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+      defaultValue: 0,
+    },
     start_date: {
       type: DataTypes.DATE,
       allowNull: false,
