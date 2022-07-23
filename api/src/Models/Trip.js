@@ -10,32 +10,41 @@ const Trip = conn.define(
       defaultValue: DataTypes.UUIDV4,
     },
     start_date: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     finish_date: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     origin: {
       type: DataTypes.STRING(45),
       allowNull: false,
     },
+    origin_img: {
+      type: DataTypes.STRING(300),
+      allowNull: true,
+    },
     destination: {
       type: DataTypes.STRING(45),
       allowNull: false,
     },
+    destination_img: {
+      type: DataTypes.STRING(300),
+      allowNull: true,
+    },
     price: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
     distance: {
-      type: DataTypes.DECIMAL(5),
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
-    onCourse: {
+    isAvailable: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: true,
     },
   },
   {

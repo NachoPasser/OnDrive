@@ -33,10 +33,6 @@ const Fuel = conn.define(
       type: DataTypes.DECIMAL,
       allowNull: true,
     },
-    Table: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
   },
   {
     timeStamps: false,

@@ -25,7 +25,7 @@ User.hasOne(Driver, {
 //un driver tiene muchos autos
 //un auto pertenece a un driver
 Driver.hasMany(Car, { foreignKey: "driver_id" });
-Car.belongsTo(Driver);
+Car.belongsTo(Driver, { foreignKey: "driver_id" });
 
 //un driver tiene muchos viajes y un viaje pertenece a un driver
 Driver.hasMany(Trip, { foreignKey: "driver_id" });

@@ -14,9 +14,9 @@ import CardDetail from './components/CardDetail/CardDetail.jsx'
 import HomePassengers from "./components/Home/homePassengers.jsx"
 import HomeDrivers from "./components/Home/homeDrivers.jsx"
 import MercadoPago from "./components/MercadoPago/mp.jsx"
+import Profile from './components/Profile/Profile';
+function makePrivate( admin = false, visitor = false, pageUser = false, googleUser = false, route, route_to_redirect, component_to_render) {
 
-function makePrivate(admin = false, visitor = false, pageUser = false, googleUser = false, route, route_to_redirect, component_to_render) {
-  console.log(visitor)
   return (
     <Route path={route}>
       <PrivateRoute admin={admin} visitor={visitor} pageUser={pageUser} googleUser={googleUser} redirect={route_to_redirect}>
@@ -31,17 +31,19 @@ function App() {
   return (
     <div className="App">
       <Route exact path='/' component={LandingPage} />
-      <Route exact path='/home' component={Home} />
-      <Route path='/loginAdmin' component={LoginAdmin} />
-      {makePrivate(undefined, true, undefined, undefined, '/login', '/home', <Login />)}
+      {makePrivate(true, true, undefined, undefined, '/home', '/home-passengers', <Home/>)}
+      {makePrivate(true, undefined, true, true, '/home-passengers', '/home', <HomePassengers/>)}
+      {makePrivate(true, undefined, true, true, '/home-drivers', '/home', <HomeDrivers/>)}
       {makePrivate(undefined, true, undefined, undefined, '/register', '/home', <Register />)}
+      {makePrivate(undefined, true, undefined, undefined, '/login', '/home', <Login />)}
+      {makePrivate(undefined, undefined, true, undefined, '/new-password', '/login', <NewPassword />)}
+      {makePrivate(undefined, true, true, undefined, '/recovery-password', '/home', <RecoveryPassword/>)}
+      {makePrivate(true, true, undefined, undefined, '/loginAdmin', '/home-passenger', <LoginAdmin/>)}
       {makePrivate(true, undefined, undefined, undefined, '/adminPanel', '/loginAdmin', <AdminPanel />)}
-      {makePrivate(true, undefined, true, undefined, '/new-password', '/login', <NewPassword />)}
-      {makePrivate(true, true, true, undefined, '/recovery-password', '/home', <RecoveryPassword />)}
-      <Route path='/trip/:id' component={CardDetail} />
-      <Route path='/home-passengers' component={HomePassengers} />
-      <Route path='/home-drivers' component={HomeDrivers} />
       <Route path='/checkout' component={MercadoPago} />
+      {makePrivate(true, undefined, true, true, '/trip/:id', '/login', <CardDetail/>)}
+      {makePrivate(undefined, undefined, true, true, '/profile', '/home', <Profile/>)}
+      {/* <Route exact path='/profile' component={Profile} /> */}
     </div>
   );
 }

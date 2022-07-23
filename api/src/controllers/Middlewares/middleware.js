@@ -29,7 +29,6 @@ const getIdFromToken = async (req, res, next) => {
     if (id) {
       req.body = { ...req.body, id }
       return next()
-    }
 
     let token = req.headers["authorization"];
     token = token.split(" ")[1];
@@ -46,9 +45,4 @@ const getIdFromToken = async (req, res, next) => {
   } catch (e) {
     console.log(e)
   }
-}
-
-module.exports = {
-  checkUser,
-  getIdFromToken
 }

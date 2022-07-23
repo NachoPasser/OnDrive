@@ -2,9 +2,10 @@ const {
   tripHistory,
   postTrip,
   getTrips,
+  getTripById,
 } = require("../controllers/tripController.js");
 
-const { getTripById } = require("../controllers/usersController.js");
+// const { getTripById } = require("../controllers/usersController.js");
 const router = require("express").Router();
 
 // router.get('/:id', tripHistory);

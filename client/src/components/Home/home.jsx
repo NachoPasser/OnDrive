@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import HomeCard from "../Sections/HomeCard/HomeCard.jsx";
 import style from './home.module.css'
 import { getTrips } from "../../redux/actions/getTrips";
+import { getFilteredTrips } from "../../redux/actions/getFilteredTrips.js";
 
 //estilos
 import ubicacion from "../../assets/Home/ubicacion.png"
@@ -11,23 +11,17 @@ import sent from "../../assets/Home/sent.png"
 import buscarTuRuta from "../../assets/Home/busca-tu-ruta.png"
 
 //componentes
+import HomeCard from "../Sections/HomeCard/HomeCard.jsx";
 import FilterByDestination from "../Filters/filterByDestination";
 import FilterByOrigin from "../Filters/filterByOrigin";
 import SortAlphabetically from "../Sorts/sortAlphabetically";
 import SortByRating from "../Sorts/sortByRating";
 import FilterByCapacity from "../Filters/filterByCapacity.jsx";
-import { getTripsByDestination } from '../../redux/actions/getTripsByDestination.js'
-import { getTripsByOrigin } from "../../redux/actions/getTripsByOrigin";
 import SearchBar from "../SearchBar/searchbar";
 import NavBar from "../NavBar/navbar.js";
 import Fecha from "../Filters/filterByDate.jsx";
 import Paging from "../Paging/Paging.jsx";
 import Map from "../Map/map.jsx"
-
-//paginado
-//loader
-//errores
-
 
 export default function Home() {
     //dispatch
@@ -35,6 +29,7 @@ export default function Home() {
 
     //estados globales
     const trips = useSelector(state => state.trips)
+    const storeFilters = useSelector(state => state.filters)
 
     //estados locales
     const [calendar, setCalendar] = useState(false)
@@ -43,17 +38,20 @@ export default function Home() {
         filterOrg: '',
         filterDest: ''
     })
+
     const [sorters, setSorters] = useState({
         sortRating: '',
         sortAlphabetically: ''
     })
-
+    
+    //paginado
     const [numberOfPage, setNumberOfPage] = useState(1)
     let maxNumberOfPages = 0
     const cardsPerPage = 3
 
     if (trips.length > 0) maxNumberOfPages = Math.ceil(trips.length / cardsPerPage)
 
+    //useEffects
     useEffect(() => {
         dispatch(getTrips());
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66,9 +64,8 @@ export default function Home() {
     //handlers
     async function handleBtn() {
         console.log(filters) //ej {filterOrg: 'Salta', filterDest: 'Tucumán'}
-        dispatch(getTripsByOrigin(filters.filterOrg))
-        dispatch(getTripsByDestination(filters.filterDest))
-
+        console.log(storeFilters)
+        dispatch(getFilteredTrips({...storeFilters, origin: filters.filterOrg, destination: filters.filterDest}))
     }
 
     function renderCalendar() {

@@ -4,10 +4,8 @@ const { User, Driver, Trip, Car } = models;
 async function findUserByEmail(email) {
   try {
     if (!email)
-      throw new Error(
-        `an email is needed to search for the user, email(${email})`
-      );
-    
+      throw new Error(`El Mail es necesario para realizar la busqueda`);
+
     const user = await User.findOne({
       where: { email },
       attributes: { exclude: "password" },
@@ -15,7 +13,7 @@ async function findUserByEmail(email) {
     if (!user) return null;
     return JSON.parse(JSON.stringify(user, null, 2));
   } catch (e) {
-    throw new Error(`${e.message}`);
+    throw new Error(`Error al intentar recuperar el usuario via Mail`);
   }
 }
 
@@ -23,7 +21,8 @@ async function findUserByEmail(email) {
 // model nos permite obtener el modelo de sequelize;
 async function findUserById({ user_id = null, driver = false, model = false }) {
   try {
-    if (!user_id) throw new Error(`findUserById required property missing(id)`);
+    if (!user_id)
+      throw new Error(`Se necesita el ID del usuario para encontrarlo`);
     const user = await User.findByPk(user_id, {
       // attributes: { exclude: "password" },
       include: driver
@@ -44,7 +43,7 @@ async function findUserById({ user_id = null, driver = false, model = false }) {
     if (!user) throw new Error(`user ${user_id} not found`);
     return model ? user : JSON.parse(JSON.stringify(user, null, 2));
   } catch (e) {
-    throw new Error(`${e}`);
+    throw new Error(`Error al intetar recuperar el usuario`);
   }
 }
 
@@ -52,7 +51,7 @@ async function findUserById({ user_id = null, driver = false, model = false }) {
 async function findDriverById({ driver_id = null, model = false }) {
   try {
     if (!driver_id)
-      throw new Error(`find driver by id required property missing(id)`);
+      throw new Error(`Se requiere el ID del conductor para encontrarlo`);
     const driver = await Driver.findByPk(driver_id, {
       include: [
         { model: User, attributes: { exclude: "password" } },
@@ -70,27 +69,40 @@ async function findDriverById({ driver_id = null, model = false }) {
     if (!driver) throw new Error(`driver ${driver_id} not found`);
     return model ? driver : JSON.parse(JSON.stringify(driver, null, 2));
   } catch (e) {
-    throw new Error(`${e.message}`);
+    throw new Error(`Error al intentar recuperar el conductor`);
   }
 }
 
 async function findTripById({ trip_id = null, model = false }) {
   try {
-    if (!trip_id) throw new Error("need the trip id to find it");
-    const trip = await Trip.findByPk(trip_id);
-    if (!trip) throw new Error(`trip ${trip_id} not found.`);
+    if (!trip_id)
+      throw new Error("Se necesita el ID del viaje para encontrarlo");
+    const trip = await Trip.findByPk(trip_id, {
+      include: User,
+      attributes: { exclude: ["password", "users_trips"] },
+    });
+    if (!trip) throw new Error(`Viaje no encontrado`);
     return model ? trip : JSON.parse(JSON.stringify(trip, null, 2));
   } catch (e) {
     throw new Error(`${e.message}`);
   }
 }
 
-async function findAllUsers() {
+async function findAllTrips(arrayModel = false) {
   try {
-    const users = await User.findAll();
-    return users;
+    const trips = await Trip.findAll();
+    return arrayModel ? trips : JSON.parse(JSON.stringify(trips, null, 2));
   } catch (e) {
-    throw new Error(`${e.message}`);
+    throw new Error(`Error al recuperar los viajes`);
+  }
+}
+
+async function findAllUsers(arrayModel = false) {
+  try {
+    const users = await User.findAll({ attributes: { exclude: "password" } });
+    return arrayModel ? users : JSON.parse(JSON.stringify(users, null, 2));
+  } catch (e) {
+    throw new Error(`Error al recuperar los usuarios`);
   }
 }
 
@@ -99,5 +111,6 @@ module.exports = {
   findUserById,
   findDriverById,
   findAllUsers,
+  findAllTrips,
   findTripById,
 };

@@ -1,6 +1,7 @@
 const { models } = require("../../database/relations");
 const { findUserById } = require("./Finders");
 const { Driver, User, Car, Trip } = models;
+const bcrypt = require("bcrypt");
 
 //verificar si es driver respuesta Array[boolean,Model]
 async function isADriver(user_id) {
@@ -20,12 +21,21 @@ async function isADriver(user_id) {
 async function isCorrectCredentials(email = null, password = null) {
   try {
     if (!email) throw new Error("invalid credentials, missing email");
-    const user = !password
-      ? await User.findOne({ where: { email } })
-      : await User.findOne({ where: { email, password } });
+    const user = await User.findOne({ where: { email } });
+
     if (!user) return [false, null];
-    return [true, user];
-  } catch (e) {}
+    
+    if(user.getDataValue("password")){
+      const valid = bcrypt.compare(password, user.getDataValue("password"));
+      return valid ? [true, user] : [false, null];
+    } else{
+      return [true, user]
+    }
+
+  } catch (e) {
+    console.log(e);
+    throw new Error("Error al comprobar credenciales");
+  }
 }
 
 //verifica si un usuario puede comprar un viaje
