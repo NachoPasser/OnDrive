@@ -18,7 +18,7 @@ const registerUser = async (req, res) => {
     const { email, password, name, last_name } = req.body;
     if (!email) throw new Error("mandatory data is missing");
     let user_id = await createUser({ email, password, name, last_name });
-  
+
     if (!user_id)
       return res.status(409).json({ error: "Ya existe un usuario registrado con este mail." });
 
@@ -64,30 +64,30 @@ const loginUser = async (req, res) => {
 
 
 const verifyUser = async (req, res) => {
-  const {caso, decoded} = req.body
+  const { caso, decoded } = req.body
   let user = null
-  if(res.status > 400) return res.send('') 
-  try{
-    switch(caso){
+  if (res.status > 400) return res.send('')
+  try {
+    switch (caso) {
       case 'googleUser':
-          user = await findUserById({user_id: decoded.id})
-          if(!user.password) return res.status(202).json({ message: 'The user is allowed.'})
-          else return res.status(403).json({ message: "Page users not allowed." });
-  
+        user = await findUserById({ user_id: decoded.id })
+        if (!user.password) return res.status(202).json({ message: 'The user is allowed.' })
+        else return res.status(403).json({ message: "Page users not allowed." });
+
       case 'pageUser':
-        if(!decoded.hasOwnProperty('id')) return res.status(400).json('No soy un usuario común.')
-        user = await findUserById({user_id: decoded.id})
-        if(!user.password) return res.status(403).json({ message: 'Google users not allowed.'})
+        if (!decoded.hasOwnProperty('id')) return res.status(400).json('No soy un usuario común.')
+        user = await findUserById({ user_id: decoded.id })
+        if (!user.password) return res.status(403).json({ message: 'Google users not allowed.' })
         else return res.status(202).json({ message: 'The user is allowed.' });
-      
+
       case 'admin':
         if (decoded.hasOwnProperty("isAdmin")) return res.status(202).json({ message: "The user is allowed." });
         else return res.status(403).json({ message: "The user is not allowed." });
-      
+
       default:
         return res.status(200).send('Genial')
     }
-  } catch(e){
+  } catch (e) {
     console.log(e)
     res.status(500).json(e)
   }
@@ -104,9 +104,11 @@ const getUsers = async (req, res) => {
 
 const getUserById = async (req, res) => {
   try {
-    const { id } = req.params;
-    const users = await findUserById({ user_id: id, driver: true });
-    res.json(users);
+    const { decoded, id } = req.body
+    const user = id
+      ? await findUserById({ user_id: id, driver: true })
+      : await findUserById({ user_id: decoded.id, driver: true });
+    res.json(user);
   } catch (e) {
     res.status(400).json({ error: `${e.message}` });
   }
@@ -116,12 +118,12 @@ const purchaseTrip = async (req, res) => {
   try {
     const { user_id, trip_id } = req.body;
     if (!user_id || !trip_id)
-    throw new Error("crucial data is missing(user id or trip id)");
+      throw new Error("crucial data is missing(user id or trip id)");
     const canBuy = await isFitToBuy(user_id, trip_id);
     if (!canBuy)
-    return res
-    .status(401)
-    .json({ error: "you are not authorized to buy this trip" });
+      return res
+        .status(401)
+        .json({ error: "you are not authorized to buy this trip" });
     //vincular viaje
     const trip = await assingTrip({ user_id, trip_id });
     res.json({ trip_purchased: trip });
@@ -131,7 +133,7 @@ const purchaseTrip = async (req, res) => {
 };
 
 // const checkUserIsLoggedWithGoogle = async (req, res) => {
-  //   try {
+//   try {
 //     let token = req.headers["authorization"];
 //     token = token.split(" ")[1];
 
@@ -154,22 +156,22 @@ const purchaseTrip = async (req, res) => {
 // }
 
 // const checkUserIsLogged = async (req, res) => {
-  //   try {
-    //     let token = req.headers["authorization"];
+//   try {
+//     let token = req.headers["authorization"];
 //     token = token.split(" ")[1];
 //     if (token !== "null") {
-  //       jwt.verify(token, SECRET_KEY, async (err, decoded) => {
+//       jwt.verify(token, SECRET_KEY, async (err, decoded) => {
 //         if(err) return res.status(401).json({ message: "Invalid Token." })
 //         else{
 //           const user = await findUserById({user_id: decoded.id})
 //           if(!user.password){
-  //             return res.status(403).json({ message: 'Google users not allowed'})
-  //           } else{
-    //             return res.status(202).json({ message: "The user is allowed." });
-    //           }
-    //         }
-    //       });
-    //     } else res.status(404).json({ message: "Token not provided." });
+//             return res.status(403).json({ message: 'Google users not allowed'})
+//           } else{
+//             return res.status(202).json({ message: "The user is allowed." });
+//           }
+//         }
+//       });
+//     } else res.status(404).json({ message: "Token not provided." });
 //   } catch (e) {
 //     res.status(400).json({ error: `${e.message}` });
 //   }

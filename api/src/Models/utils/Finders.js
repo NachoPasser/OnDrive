@@ -30,7 +30,7 @@ async function findUserById({ user_id = null, driver = false, model = false }) {
         ? [
             {
               model: Driver,
-              attributes: { exclude: ["user_id", "userUserId", "driver_id"] },
+              attributes: { exclude: ["user_id", "userUserId"] },
               include: [{ model: Trip }, { model: Car }],
             },
             {

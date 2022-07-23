@@ -6,6 +6,8 @@ const { Admin } = require("../Models/Admin");
 const { Car } = require("../Models/Car");
 const { Fuel } = require("../Models/Fuel");
 const { DataTypes } = require("sequelize");
+const { Order } = require("../Models/Order")
+const { OrderDetail } = require("../Models/OrderDetail")
 
 //relations:
 
@@ -42,7 +44,19 @@ Trip.belongsToMany(User, {
   timestamps: false,
 });
 
+//un usuario(pasajero) puede tener varias ordenes(compras)
+//pero una orden solo puede pertenecer a un usuario
+User.hasMany(Order)
+Order.belongsTo(User)
+
+//una orden tiene un detalle de compra
+Order.hasMany(OrderDetail)
+//un viaje tiene un detalle de compra
+//y un detalle pertenece a un viaje
+Trip.hasMany(OrderDetail)
+OrderDetail.belongsTo(Trip)
+
 //exporto todo los modelos por si se utilizan en otros archivos
 module.exports = {
-  models: { User, Driver, Trip, Admin, Fuel, Car },
+  models: { User, Driver, Trip, Admin, Fuel, Car, Order, OrderDetail },
 };

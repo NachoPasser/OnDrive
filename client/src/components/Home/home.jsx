@@ -85,7 +85,7 @@ export default function Home() {
                     <img id={style.logoBuscaTuRuta} src={buscarTuRuta} alt='No se encontró la imagen.' />
                     <div className={style.boxSearchAndFilters}>
                         <div className={style.buscador}>
-                            <img id={style.logoUbicacion} src={ubicacion} alt='No se encontró la imagen.' />
+                            {/* <img id={style.logoUbicacion} src={ubicacion} alt='No se encontró la imagen.' /> */}
                             <FilterByOrigin filters={filters} setFilters={setFilters} />
                             <img id={style.logoDestino} src={destino} alt='No se encontró la imagen.' />
                             <FilterByDestination filters={filters} setFilters={setFilters} />
@@ -94,10 +94,8 @@ export default function Home() {
                         <div className={style.containerFiltros}>
                             <div className={style.filtrosAvanzados}>
                                 <SortByRating style={style.filtros} sorters={sorters} setSorters={setSorters} />
-                                <SortAlphabetically style={style.filtros} sorters={sorters} setSorters={setSorters} />
                                 <FilterByCapacity style={style.filtros} />
                             </div>
-                            <SearchBar style={style} />
                             <button id={style.calendario} onClick={renderCalendar}>
                                 Filtrar por fecha de partida
                             </button>

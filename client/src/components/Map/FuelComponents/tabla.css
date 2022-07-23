@@ -12,9 +12,9 @@
 input{
     width: 200px;
 }
-button{
+/* button{
     width: 208px;
-}
+} */
 
 .valid{
     border: 1px solid greenyellow;

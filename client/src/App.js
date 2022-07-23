@@ -13,8 +13,9 @@ import PrivateRoute from './components/PrivateRoutes/PrivateRoute'
 import CardDetail from './components/CardDetail/CardDetail.jsx'
 import HomePassengers from "./components/Home/homePassengers.jsx"
 import HomeDrivers from "./components/Home/homeDrivers.jsx"
+import MercadoPago from "./components/MercadoPago/mp.jsx"
 
-function makePrivate( admin = false, visitor = false, pageUser = false, googleUser = false, route, route_to_redirect, component_to_render) {
+function makePrivate(admin = false, visitor = false, pageUser = false, googleUser = false, route, route_to_redirect, component_to_render) {
   console.log(visitor)
   return (
     <Route path={route}>
@@ -26,7 +27,7 @@ function makePrivate( admin = false, visitor = false, pageUser = false, googleUs
 }
 
 function App() {
-  
+
   return (
     <div className="App">
       <Route exact path='/' component={LandingPage} />
@@ -36,10 +37,11 @@ function App() {
       {makePrivate(undefined, true, undefined, undefined, '/register', '/home', <Register />)}
       {makePrivate(true, undefined, undefined, undefined, '/adminPanel', '/loginAdmin', <AdminPanel />)}
       {makePrivate(true, undefined, true, undefined, '/new-password', '/login', <NewPassword />)}
-      {makePrivate(true, true, true, undefined, '/recovery-password', '/home', <RecoveryPassword/>)}
+      {makePrivate(true, true, true, undefined, '/recovery-password', '/home', <RecoveryPassword />)}
       <Route path='/trip/:id' component={CardDetail} />
       <Route path='/home-passengers' component={HomePassengers} />
       <Route path='/home-drivers' component={HomeDrivers} />
+      <Route path='/checkout' component={MercadoPago} />
     </div>
   );
 }

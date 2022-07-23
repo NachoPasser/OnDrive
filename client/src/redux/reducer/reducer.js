@@ -9,13 +9,14 @@ import { GET_SEARCH_FOR_DESTINATION } from '../actions/getSearch.js';
 import { GET_USERS_FROM_DB } from '../actions/getUsersFromDatabase.js';
 import { GET_TRIP_BY_ID } from '../actions/getTripById.js'
 import { GET_FUELTABLE } from '../actions/getfuels.js';
+import { GET_USER_BY_ID } from '../actions/getUserById.js';
 
 const initialState = {
     trips: [], // trips variables
     fixedTrips: [], //trips fijos
     users: [],
     tripById: {},
-
+    userById: {},
     prices: [], //of fuels
 }
 
@@ -105,6 +106,11 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 prices: [action.payload] //Va encerrado con corchetes
             };
+        case GET_USER_BY_ID:
+            return {
+                ...state,
+                userById: action.payload
+            }
 
         default:
             return state
