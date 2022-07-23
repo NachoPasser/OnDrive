@@ -1,4 +1,5 @@
 const { models } = require("../../database/relations");
+const { Review } = require("../Review");
 const { User, Driver, Trip, Car } = models;
 
 async function findUserByEmail({
@@ -41,15 +42,16 @@ async function findUserById({ user_id = null, driver = false, model = false }) {
         ? [
             {
               model: Driver,
-              attributes: { exclude: ["user_id", "userUserId", "driver_id"] },
-              include: [{ model: Trip }, { model: Car }],
+              attributes: { exclude: ["user_id", "userUserId"] },
+              include: [{ model: Trip, include: [{model: Review}]}, { model: Car }],
             },
             {
               model: Trip,
+              include: [{model: Review}],
               attributes: { exclude: "users_trips" },
             },
           ]
-        : { model: Trip, attributes: { exclude: "users_trips" } },
+        : { model: Trip, include: [{model: Review}], attributes: { exclude: "users_trips" } },
     });
 
     if (!user) throw new Error(`user ${user_id} not found`);
@@ -90,8 +92,7 @@ async function findTripById({ trip_id = null, model = false }) {
     if (!trip_id)
       throw new Error("Se necesita el ID del viaje para encontrarlo");
     const trip = await Trip.findByPk(trip_id, {
-      include: User,
-      attributes: { exclude: ["password", "users_trips"] },
+      include: [{model: User, attributes: { exclude: ["password", "users_trips"] }}, Review],
     });
     if (!trip) throw new Error(`Viaje no encontrado`);
     return model ? trip : JSON.parse(JSON.stringify(trip, null, 2));
@@ -111,10 +112,28 @@ async function findAllTrips(arrayModel = false) {
 
 async function findAllUsers(arrayModel = false) {
   try {
-    const users = await User.findAll({ attributes: { exclude: "password" } });
+    const users = await User.findAll({ attributes: { exclude: "password" }, include: [{model: Driver, include: [{model: Trip, include: [Review]}]}] });
     return arrayModel ? users : JSON.parse(JSON.stringify(users, null, 2));
   } catch (e) {
     throw new Error(`Error al recuperar los usuarios`);
+  }
+}
+
+async function findReview(user_id, trip_id, model = false){
+  try {
+    const review = await Review.findOne({where: {user_id, trip_id}});
+    return model ? review : JSON.parse(JSON.stringify(review, null, 2))
+  } catch (e) {
+    throw new Error(`Error: ${e.message}`);
+  }
+}
+
+async function findAllReviews(user_id){
+  try {
+    const review = await Review.findAll({where: {user_id}});
+    return JSON.parse(JSON.stringify(review, null, 2))
+  } catch (e) {
+    throw new Error(`Error: ${e.message}`);
   }
 }
 
@@ -125,4 +144,6 @@ module.exports = {
   findAllUsers,
   findAllTrips,
   findTripById,
+  findReview,
+  findAllReviews
 };
