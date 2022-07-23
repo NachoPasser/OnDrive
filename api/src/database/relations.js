@@ -5,6 +5,9 @@ const { Trip } = require("../Models/Trip");
 const { Admin } = require("../Models/Admin");
 const { Car } = require("../Models/Car");
 const { Fuel } = require("../Models/Fuel");
+//MODELOS DE MERCADOPAGO
+const { Order } = require("../Models/Order");
+const { OrderDetail } = require("../Models/OrderDetail");
 const { DataTypes } = require("sequelize");
 
 //relations:
@@ -42,7 +45,21 @@ Trip.belongsToMany(User, {
   timestamps: false,
 });
 
+//RELACIONES PARA MODELOS DE MERCADOPAGO:
+
+//un usuario(pasajero) puede tener varias ordenes(compras)
+User.hasMany(Order)
+//pero cada orden solo puede pertenecer a un usuario
+Order.belongsTo(User)
+
+//una orden puede tener varios detalle de compra
+Order.hasMany(OrderDetail)
+//un viaje tiene varios detalles de compra
+Trip.hasMany(OrderDetail)
+//y un detalle pertenece a un viaje
+OrderDetail.belongsTo(Trip)
+
 //exporto todo los modelos por si se utilizan en otros archivos
 module.exports = {
-  models: { User, Driver, Trip, Admin, Fuel, Car },
+  models: { User, Driver, Trip, Admin, Fuel, Car, Order, OrderDetail },
 };

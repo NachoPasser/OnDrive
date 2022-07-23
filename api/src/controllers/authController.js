@@ -56,7 +56,7 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     const [valid, user] = await isCorrectCredentials(email, password);
-    
+
     if (!valid) {
       return res.status(409).json({ error: "Mail o contraseña incorrecta." });
     }

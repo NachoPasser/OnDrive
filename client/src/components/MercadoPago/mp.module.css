@@ -1,0 +1,48 @@
+.products {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border: 1px solid rgb(209, 203, 200);
+    height: max-content;
+    width: 300px;
+    background-color: rgb(209, 203, 200);
+    margin: auto;
+    /* margin: 25px;
+    display: inline-block; */
+}
+
+.gridContainer {
+    text-align: center;
+    font-size: x-large;
+}
+
+.ul {
+    list-style-type: none;
+    padding-right: 40px;
+}
+
+.form1 {
+    width: 300px;
+    margin: auto;
+    margin-bottom: 100px;
+    background-color: rgb(209, 203, 200);
+    padding-bottom: 10px;
+    /* border-radius: 5px;
+    /* display: flex; */
+    vertical-align: bottom;
+
+    /* align-items: center; */
+    justify-content: center;
+    /* align-content: center; */
+}
+
+/*
+    test    func
+123 si      al medio horizontal pagar normal
+12  si      igual que 123
+23  si      al medio en horizontal pagar ocupa vertical 100
+13  si      a la izquierda en horizontal
+
+2   si      igual que 23
+3   si      como 123 pero a la izquierda
+1   si      
+*/

@@ -12,5 +12,6 @@ router.use('/auth', require('./auth.js'));
 router.use('/admin', require('./admin.js'));
 router.use('/pass', require('./pass.js'));
 router.use('/fuels', require('./fuels.js'));
+router.use('/mercadopago', require('./pago.js'));
 
 module.exports = router;

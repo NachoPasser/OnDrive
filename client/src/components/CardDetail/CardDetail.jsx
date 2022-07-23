@@ -6,7 +6,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import style from './CardDetail.module.css'
 import NavBar from '../NavBar/navbar';
 import { useParams } from 'react-router-dom';
-
+import MercadoPago from "../MercadoPago/loaderMP.js";
 
 
 function CardDetail() {
@@ -20,12 +20,17 @@ function CardDetail() {
         dispatch(getTripById(id))
     },[dispatch, id]);
 
+    let start;
+    let finish;
     let arr = [];
     if(Object.keys(trip).length){
         for(let prop in trip.driver){
             arr.push(prop);
         };
+        start= new Date(trip.start_date) 
+        finish= new Date(trip.finish_date)
     };
+
     console.log(arr);
 
 	return (
@@ -39,8 +44,10 @@ function CardDetail() {
                 </div>
                 <div className={style.propsDetail}>
 					<div className={style.textDetail}>
-						<h2 className={style.h2Det}>Start date: {trip.start_date}</h2>
-						<h2 className={style.h2Det}>Finish date: {trip.finish_date}</h2>
+						{ start && finish && <>
+                        <h2 className={style.h2Det}>Start date: {start.toLocaleDateString()}</h2>
+						<h2 className={style.h2Det}>Finish date: {finish.toLocaleDateString()}</h2>
+                        </>}
 						<h2 className={style.h2Det}>Capacity: {trip.capacity}</h2>
                         <h2 className={style.h2Det}>Car: {trip.marca}</h2>
 					</div>
@@ -73,6 +80,10 @@ function CardDetail() {
                     <h1>MAPA</h1>
                 </div>
 			</div>
+            {Object.keys(trip).length ?
+                <div> <MercadoPago idTrip={id} start={trip.start_date} finish={trip.finish_date} price={trip.price} origin={trip.origin} destination={trip.destination} /> </div>
+                : <div>Cargando...</div>
+            }
 		</div>
 	);
 };
