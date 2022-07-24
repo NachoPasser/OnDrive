@@ -1,21 +1,21 @@
 const { DataTypes } = require("sequelize");
 const { conn } = require("../database/db");
 
-const Driver = conn.define(
-  "driver",
+const Review = conn.define(
+  "review",
   {
-    driver_id: {
+    review_id: {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
-    license: {
-      type: DataTypes.STRING(45),
+    rating: {
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
-    driving_permit: {
-      type: DataTypes.STRING(45),
-      allowNull: false,
+    comment: {
+      type: DataTypes.TEXT,
+      allowNull: true,
     },
   },
   {
@@ -23,4 +23,4 @@ const Driver = conn.define(
   }
 );
 
-module.exports = { Driver };
+module.exports = { Review };

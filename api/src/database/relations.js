@@ -5,9 +5,13 @@ const { Trip } = require("../Models/Trip");
 const { Admin } = require("../Models/Admin");
 const { Car } = require("../Models/Car");
 const { Fuel } = require("../Models/Fuel");
+
 //MODELOS DE MERCADOPAGO
 const { Order } = require("../Models/Order");
 const { OrderDetail } = require("../Models/OrderDetail");
+
+const { Review } = require('../Models/Review')
+
 const { DataTypes } = require("sequelize");
 
 //relations:
@@ -22,6 +26,16 @@ User.hasOne(Driver, {
     type: DataTypes.UUID,
   },
 });
+
+//una review pertenece a un viaje (es decir primero debe existir un viaje para que haya una review)
+//un viaje tiene muchas reviews
+Trip.hasMany(Review, { foreignKey: 'trip_id'})
+Review.belongsTo(Trip, { foreignKey: 'trip_id'})
+
+//una review pertenece a un usuario (es decir primero debe existir un usuario para que haya una review)
+//un usuario tiene muchas reviews
+User.hasMany(Review, {foreignKey: 'user_id'})
+Review.belongsTo(User, {foreignKey: 'user_id'})
 
 //un driver tiene muchos autos
 //un auto pertenece a un driver

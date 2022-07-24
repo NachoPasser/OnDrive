@@ -36,11 +36,10 @@ function App() {
       {makePrivate(undefined, true, undefined, undefined, '/login', '/home', <Login />)}
       {makePrivate(undefined, undefined, true, undefined, '/new-password', '/login', <NewPassword />)}
       {makePrivate(undefined, true, true, undefined, '/recovery-password', '/home', <RecoveryPassword/>)}
-      {makePrivate(true, true, undefined, undefined, '/loginAdmin', '/home-passenger', <LoginAdmin/>)}
+      {makePrivate(undefined, true, undefined, undefined, '/loginAdmin', '/home-passengers', <LoginAdmin/>)}
       {makePrivate(true, undefined, undefined, undefined, '/adminPanel', '/loginAdmin', <AdminPanel />)}
       {makePrivate(true, undefined, true, true, '/trip/:id', '/login', <CardDetail/>)}
       {makePrivate(undefined, undefined, true, true, '/profile', '/home', <Profile/>)}
-      {/* <Route exact path='/profile' component={Profile} /> */}
     </div>
   );
 }
