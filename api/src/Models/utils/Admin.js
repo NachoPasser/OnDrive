@@ -34,10 +34,7 @@ async function verifyAdmin({ username, password }) {
     if (admin === null) return false;
 
     //check password
-    const valid = await bcrypt.compare(
-      password,
-      admin.getDataValue("password")
-    );
+    const valid = await bcrypt.compare(password, admin.getDataValue("password"));
 
     return valid; //(true or false)
   } catch (e) {

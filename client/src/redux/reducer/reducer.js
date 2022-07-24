@@ -7,6 +7,7 @@ import { GET_TRIP_BY_ID } from '../actions/getTripById.js'
 import { GET_FUELTABLE } from '../actions/getfuels.js';
 import { FILTER_TRIPS } from '../actions/getFilteredTrips.js';
 import { GET_USER_BY_ID } from '../actions/getUserById.js';
+import { GET_ALL_REVIEWS } from '../actions/getAllTripReviews.js';
 
 const initialState = {
     trips: [], // trips variables
@@ -15,7 +16,8 @@ const initialState = {
     users: [],
     tripById: {},
     prices: [], //of fuels
-    userById: {}
+    userById: {},
+    reviews: null
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -37,6 +39,12 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userById: action.payload
+            }
+
+        case GET_ALL_REVIEWS:
+            return {
+                ...state,
+                reviews: action.payload
             }
 
         case FILTER_TRIPS: 

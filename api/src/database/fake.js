@@ -73,7 +73,6 @@ async function createFakeUser({ age, name, last_name, email, password }) {
       email = generateEmail({ name, age, last_name }); //regenero nuevo email
       await createFakeUser({ age, name, last_name, email, password }); //vuelvo a crear
     }
-    console.log(`usuario con ${email} creado`);
   } catch (e) {
     console.error("error al crear uno de los usuarios falsos: ", e);
   }
@@ -91,7 +90,6 @@ async function loadFakeUsers() {
       last_name = last_names[Math.floor(Math.random() * last_names.length)];
       email = generateEmail(name, age, last_name);
       password = `${name}${last_name}2022`;
-      console.log(password);
 
       //create user;
       user = { age, name, last_name, email, password };
@@ -112,7 +110,6 @@ async function loadFakeDrivers() {
     for (let u of users) {
       let [license, driving_permit] = generateLicenseAndPermit();
       await createDriver(u.user_id, { license, driving_permit });
-      console.log(`${u.getDataValue("email")} ahora es un conductor`);
     }
   } catch (e) {
     console.error("error al crear conductores falsos: ", e);
@@ -133,9 +130,6 @@ async function loadFakeCarsToDrivers() {
         ...carInfo,
       });
       await d.addCar(car);
-      console.log(
-        "Auto agregado al conductor (" + d.getDataValue("driver_id") + ")"
-      );
       is2016 = !is2016;
     }
   } catch (e) {
@@ -150,9 +144,6 @@ async function loadFakeTrips() {
       let user_id = d.getDataValue("user_id");
       let tripFake = fakeTrips[Math.floor(Math.random() * fakeTrips.length)];
       let tripCreated = await createTripAsDriver(user_id, tripFake);
-      console.log(
-        `viaje ${tripCreated.origin} -> ${tripCreated.destination}, creado.`
-      );
     }
   } catch (e) {
     console.error("error al crear viajes falsos", e);
@@ -161,21 +152,9 @@ async function loadFakeTrips() {
 
 async function loadFakeDatabase() {
   try {
-    console.log("--------------------------------------------------");
-    console.log("CARGANDO USUARIOS FALSOS...                       ");
-    console.log("--------------------------------------------------");
     await loadFakeUsers();
-    console.log("--------------------------------------------------");
-    console.log("CONVIRTIENDO ALGUNOS USUARIOS A CONDUCTORES...    ");
-    console.log("--------------------------------------------------");
     await loadFakeDrivers();
-    console.log("--------------------------------------------------");
-    console.log("AGREGANDO AUTOS FALSOS A CONDUCTORES...           ");
-    console.log("--------------------------------------------------");
     await loadFakeCarsToDrivers();
-    console.log("--------------------------------------------------");
-    console.log("PUBLICANDO VIAJES FALSOS...                       ");
-    console.log("--------------------------------------------------");
     await loadFakeTrips();
   } catch (e) {
     console.error("error al iniciar datos falsos: ", e);

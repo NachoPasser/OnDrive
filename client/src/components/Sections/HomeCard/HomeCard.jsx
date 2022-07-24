@@ -15,6 +15,7 @@ const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin
     }
     start_date = start_date.slice(0, 10)
     finish_date = finish_date.slice(0, 10)
+    const pruebaVotos = 15;
     return (
         <div className={styles.comp_card}>
             <div className={styles.card}>
@@ -44,7 +45,22 @@ const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin
                         </div>
                     </div>
                     <div className={styles.cardstars}>
-                        <p>Rating: {rating}</p>
+                        <div>
+                            {[...Array(5)].map((star, i) => {
+                            const ratingValue = i + 1;
+                            return (
+                                <FaStar
+                                className={styles.star}
+                                color={ratingValue <= Math.floor(rating) ? "#fed428" : "#a7a1a1"}
+                                size={15}
+                                />
+                            )
+                            }
+                            )}
+                        </div>
+                        <div>
+                            <p className={styles.rating}>{rating}/5 - {pruebaVotos} Votos</p>
+                        </div>
                     </div>
                 </div>
             </div>

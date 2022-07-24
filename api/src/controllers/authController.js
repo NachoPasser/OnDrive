@@ -18,10 +18,9 @@ const registerUser = async (req, res) => {
     const { email, password, name, last_name } = req.body;
     if (!email) throw new Error("Se necesita el email obligatoriamente");
 
-    const passwordHash = await bcrypt.hash(password, 10); //hash password
-    let user_id = await createUser({
+    var user_id = await createUser({
       email,
-      password: passwordHash,
+      password: !password ? null : await bcrypt.hash(password, 10),
       name,
       last_name,
     });
@@ -57,7 +56,7 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     const [valid, user] = await isCorrectCredentials(email, password);
-
+    
     if (!valid) {
       return res.status(409).json({ error: "Mail o contraseña incorrecta." });
     }
@@ -101,10 +100,9 @@ const verifyUser = async (req, res) => {
       default:
         return res.status(200).send("Genial");
     }
-
-  } catch(e){
+  } catch (e) {
     // console.log(e)
-    res.status(500).json(e)
+    res.status(500).json(e);
   }
 };
 
@@ -119,10 +117,10 @@ const getUsers = async (req, res) => {
 
 const getUserById = async (req, res) => {
   try {
-    const { decoded, id } = req.body
+    const { decoded, id } = req.body;
     const user = id
-    ? await findUserById({ user_id: id, driver: true })
-    : await findUserById({ user_id: decoded.id, driver: true });
+      ? await findUserById({ user_id: id, driver: true })
+      : await findUserById({ user_id: decoded.id, driver: true });
     res.json(user);
   } catch (e) {
     res.status(400).json({ error: `${e.message}` });
