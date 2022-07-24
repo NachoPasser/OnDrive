@@ -1,10 +1,18 @@
-import React from "react";
-import { Link } from 'react-router-dom';
+import React, {useState} from "react";
 // import { BsStarFill } from 'react-icons/bs'
 import styles from './HomeCardProvisional.module.css'
 import Carousel from 'react-bootstrap/Carousel';
+import CardDetail from "../../CardDetail/CardDetail";
+import Spinner from 'react-bootstrap/Spinner'
 
 const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin, destination, album }) => {
+    const [fullscreen, setFullscreen] = useState(true);
+    const [show, setShow] = useState(false);
+
+    function handleShow(breakpoint) {
+        setFullscreen(breakpoint);
+        setShow(true);
+    }
     start_date = start_date.slice(0, 10)
     finish_date = finish_date.slice(0, 10)
     return (
@@ -16,9 +24,7 @@ const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin
                                 {album.map((e, i) => {
                                     return (
                                         <Carousel.Item key={i}>
-                                            <Link to={`/trip/${id}`}>
                                             <img className={styles.imgn} src={e} alt="First slide" />
-                                            </Link>
                                         </Carousel.Item>
                                     )
                                 })}
@@ -41,6 +47,10 @@ const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin
                         <p>Rating: {rating}</p>
                     </div>
                 </div>
+            </div>
+            <div>
+                <button className={styles.button} onClick={() => handleShow(true)}>dsds</button>
+                {show ? <CardDetail id={id} show={show} fullscreen={fullscreen} setShow={setShow} /> : null}
             </div>
         </div>
     );

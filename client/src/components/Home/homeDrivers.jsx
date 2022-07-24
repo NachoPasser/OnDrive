@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import HomeCard from "../Sections/HomeCard/HomeCard.jsx";
 import style from './home.module.css'
 import { getTrips } from "../../redux/actions/getTrips";
+import axios from "axios";
 
 //estilos
 import ubicacion from "../../assets/Home/ubicacion.png"
@@ -29,13 +30,17 @@ import Map from "../Map/map.jsx"
 //errores
 
 
-export default function Home() {
+export default async function Home() {
     //dispatch
     const dispatch = useDispatch()
 
     //estados globales
-    const trips = useSelector(state => state.trips)
-
+    var trips = useSelector(state => state.trips)
+    const photo = trips.destination
+    const url = `https://pixabay.com/api/?key=28753279-24de938890d9cb0cd0088f9ae&q=${photo}&image_type=photo`
+    const img = await axios.get(url)
+    trips = {...trips, photo: img.data.hits}
+    //const photo = img.data.hits[0].webformatURL;
     //estados locales
     const [calendar, setCalendar] = useState(false)
 
@@ -116,7 +121,7 @@ export default function Home() {
                                             <HomeCard
                                                 key={trip.id}
                                                 id={trip.id}
-                                                album={trip.album}
+                                                album={trip.img.data.hits}
                                                 rating={trip.rating}
                                                 capacity={trip.capacity}
                                                 start_date={trip.start_date}

@@ -15,6 +15,9 @@ import HomePassengers from "./components/Home/homePassengers.jsx"
 import HomeDrivers from "./components/Home/homeDrivers.jsx"
 import Profile from './components/Profile/Profile';
 import AddCar from './components/Forms/AddCar/AddCar';
+import TermsAndConditions from './components/Terminos/Terminos';
+import PublicTrip from './components/Forms/PublicTrip/PublicTrip';
+import UserToDriver from './components/Forms/UserToDriver/UserToDriver';
 
 function makePrivate( admin = false, visitor = false, pageUser = false, googleUser = false, route, route_to_redirect, component_to_render) {
   return (
@@ -43,6 +46,9 @@ function App() {
       {makePrivate(true, undefined, true, true, '/trip/:id', '/login', <CardDetail/>)}
       {makePrivate(undefined, undefined, true, true, '/profile', '/home', <Profile/>)}
       {makePrivate(undefined, undefined, true, true, '/addCar', '/login', <AddCar/>)}
+      {makePrivate(true, true, true, true, '/terms&condicions', null, <TermsAndConditions/>)}
+      {makePrivate(undefined, undefined, true, true, '/public', '/home', <PublicTrip/>)}
+      {makePrivate(undefined, undefined, true, true, '/driver', '/home', <UserToDriver/>)}
     </div>
   );
 }

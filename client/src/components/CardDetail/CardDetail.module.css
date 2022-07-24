@@ -4,7 +4,7 @@
     font-style: normal;
     position: relative;
     justify-content: center;
-    color: #3FFC64;
+    color: #000000;
     z-index: -1;
 }
 .titleY{
@@ -16,7 +16,7 @@
 .propsDetail{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    color: white;
+    color: var(--primary-color);
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 2%;
@@ -48,9 +48,14 @@
     color: var(--clear-color);
     padding: 3%;
 }
+
+.myModal
+{
+    background-color: rgba(100, 96, 96, 0.23);
+}
 .linkDriver{
     display: grid;
-    color: white;
+    color: rgb(0, 0, 0);
     grid-template-columns: repeat(3, 1fr);
     background-color: var(--grey-color);
     width: 1262px;
@@ -67,7 +72,7 @@
     height: 70px;
     width: 70px;
     border-radius: 50%;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
 }
 .box2{
     overflow: hidden;
