@@ -67,17 +67,10 @@ const recoverPassword = async (req, res) => {
 
 const changePass = async (req, res) => {
   try {
-    const { token } = req.params;
-    let id = 0;
-    jwt.verify(token, SECRET_KEY, (err, decoded) => {
-      if (err) {
-        return res.status(401).json({ message: "Token inválida." });
-      } else {
-        id = decoded.id;
-      }
-    });
-    const { password } = req.body;
-    const user = await findUserById({ user_id: id, model: true });
+    const { user_id, decoded, password } = req.body;
+    const user = user_id
+    ? await findUserById({ user_id, model: true })
+    : await findUserById({ user_id: decoded.id, model: true })
     if (!user) {
       return res.status(404).send("Usuario no encontrado");
     }
@@ -86,6 +79,7 @@ const changePass = async (req, res) => {
     await user.save();
     res.json({ message: "Contraseña cambiada" });
   } catch (e) {
+    console.log(e)
     res.status(500).json({ error: "Error al cambiar la contraseña" });
   }
 };

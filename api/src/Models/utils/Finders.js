@@ -1,7 +1,8 @@
 const { models } = require("../../database/relations");
 const { Review } = require("../Review");
 const { User, Driver, Trip, Car } = models;
-
+const axios = require('axios')
+const {API_IMG} = process.env
 async function findUserByEmail({
   email = null,
   model = false,
@@ -44,6 +45,7 @@ async function findUserById({ user_id = null, driver = false, model = false }) {
               model: Driver,
               attributes: { exclude: ["user_id", "userUserId"] },
               include: [{ model: Trip, include: [{model: Review}]}, { model: Car }],
+
             },
             {
               model: Trip,
@@ -53,7 +55,6 @@ async function findUserById({ user_id = null, driver = false, model = false }) {
           ]
         : { model: Trip, include: [{model: Review}], attributes: { exclude: "users_trips" } },
     });
-
     if (!user) throw new Error(`user ${user_id} not found`);
     return model ? user : JSON.parse(JSON.stringify(user, null, 2));
   } catch (e) {
@@ -137,6 +138,34 @@ async function findAllReviews(user_id){
   }
 }
 
+async function findPhotos(destination){
+  try{
+      const search = await axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?fields=formatted_address,place_id&input=${destination}&inputtype=textquery&key=${API_IMG}`)
+      const place_id = search.data.candidates[0].place_id
+      // console.log(search.data)
+      // console.log('-----------------------------------------------------------------')
+      // console.log(place_id)
+      const searchPhotos = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?fields=formatted_address%2Cphoto&place_id=${place_id}&key=${API_IMG}`)
+      // console.log('-----------------------------------------------------------------')
+      // console.log(searchPhotos.data)
+      // console.log('-----------------------------------------------------------------')
+      const photos = searchPhotos.data.result.photos
+      // console.log(photos)
+      const arrayImg = []
+      if(photos !== undefined){
+        for(let i=0; i<3; i++){
+          arrayImg.push(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photos[i].photo_reference}&key=${API_IMG}`)
+        }
+      } else{
+        arrayImg.push(/AÑADIR URL PARA IMAGEN NO ENCONTRADA/) 
+      }
+      return arrayImg
+  } catch (e) {
+    console.log(e)
+    throw new Error(`Error: ${e.message}`);
+  }
+}
+
 module.exports = {
   findUserByEmail,
   findUserById,
@@ -145,5 +174,6 @@ module.exports = {
   findAllTrips,
   findTripById,
   findReview,
-  findAllReviews
+  findAllReviews,
+  findPhotos
 };

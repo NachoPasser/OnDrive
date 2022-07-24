@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import HomeCard from "../Sections/HomeCard/HomeCard.jsx";
 import style from './home.module.css'
 import { getTrips } from "../../redux/actions/getTrips";
+import { getFilteredTrips } from "../../redux/actions/getFilteredTrips.js";
 
 //estilos
 import ubicacion from "../../assets/Home/ubicacion.png"
@@ -13,12 +14,8 @@ import buscarTuRuta from "../../assets/Home/busca-tu-ruta.png"
 //componentes
 import FilterByDestination from "../Filters/filterByDestination";
 import FilterByOrigin from "../Filters/filterByOrigin";
-import SortAlphabetically from "../Sorts/sortAlphabetically";
 import SortByRating from "../Sorts/sortByRating";
 import FilterByCapacity from "../Filters/filterByCapacity.jsx";
-import { getTripsByDestination } from '../../redux/actions/getTripsByDestination.js'
-import { getTripsByOrigin } from "../../redux/actions/getTripsByOrigin";
-import SearchBar from "../SearchBar/searchbar";
 import NavBar from "../NavBar/navbarDrivers.jsx";
 import Fecha from "../Filters/filterByDate.jsx";
 import Paging from "../Paging/Paging.jsx";
@@ -34,8 +31,8 @@ export default function Home() {
     const dispatch = useDispatch()
 
     //estados globales
-    const trips = useSelector(state => state.trips)
-
+    var trips = useSelector(state => state.trips)
+    const storeFilters = useSelector(state => state.filters)
     //estados locales
     const [calendar, setCalendar] = useState(false)
 
@@ -65,10 +62,7 @@ export default function Home() {
 
     //handlers
     async function handleBtn() {
-        console.log(filters) //ej {filterOrg: 'Salta', filterDest: 'Tucumán'}
-        dispatch(getTripsByOrigin(filters.filterOrg))
-        dispatch(getTripsByDestination(filters.filterDest))
-
+        dispatch(getFilteredTrips({...storeFilters, origin: filters.filterOrg, destination: filters.filterDest}))
     }
 
     function renderCalendar() {

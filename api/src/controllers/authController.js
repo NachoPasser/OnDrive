@@ -42,8 +42,10 @@ const registerUser = async (req, res) => {
 
 async function registerDriver(req, res) {
   try {
-    const { user_id, driver } = req.body;
-    const driver_id = await createDriver(user_id, driver);
+    const { user_id, decoded, driver } = req.body;
+    const driver_id = user_id
+    ? await createDriver(user_id, driver)
+    : await createDriver(decoded.id, driver)
     if (!driver_id) throw new Error("Algo salio mal al crear el conductor");
     res.status(201).json({ driver_id });
   } catch (e) {
@@ -117,9 +119,9 @@ const getUsers = async (req, res) => {
 
 const getUserById = async (req, res) => {
   try {
-    const { decoded, id } = req.body;
-    const user = id
-      ? await findUserById({ user_id: id, driver: true })
+    const { decoded, user_id } = req.body;
+    const user = user_id
+      ? await findUserById({ user_id, driver: true })
       : await findUserById({ user_id: decoded.id, driver: true });
     res.json(user);
   } catch (e) {

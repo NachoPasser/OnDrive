@@ -15,7 +15,7 @@ router.post("/login", loginUser);
 router.get('/verify', checkUser, verifyUser)
 router.get("/users", getUsers);
 router.get("/profile", getIdFromToken, getUserById);
-router.post("/register-driver", registerDriver);
+router.post("/register-driver", getIdFromToken, registerDriver);
 router.post("/purchase-trip", purchaseTrip);
 
 module.exports = router;
