@@ -112,10 +112,10 @@ export default function Home() {
                                     (numberOfPage - 1) * cardsPerPage + cardsPerPage
                                 ).map(trip => {
                                     return (
-                                        <div className={style.cards} key={trip.id}>
+                                        <div className={style.cards} key={trip.trip_id}>
                                             <HomeCard
-                                                key={trip.id}
-                                                id={trip.id}
+                                                key={trip.trip_id}
+                                                id={trip.trip_id}
                                                 album={trip.album}
                                                 rating={trip.rating}
                                                 capacity={trip.capacity}
