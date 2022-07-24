@@ -144,9 +144,7 @@ async function loadFakeTrips() {
       let user_id = d.getDataValue("user_id");
       let tripFake = fakeTrips[Math.floor(Math.random() * fakeTrips.length)];
       const nameDestination = tripFake.destination;
-      console.log(nameDestination)
       const search = await axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?fields=formatted_address,place_id&input=${nameDestination}&inputtype=textquery&key=${API_IMG}`)
-      console.log('COMO', search.data)
       const place_id = search.data.candidates[0].place_id
       const searchPhotos = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?fields=formatted_address%2Cphoto&place_id=${place_id}&key=${API_IMG}`)
       const photos = searchPhotos.data.result.photos
