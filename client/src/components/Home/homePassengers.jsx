@@ -114,8 +114,8 @@ export default function Home() {
                                     return (
                                         <div className={style.cards} key={trip.id}>
                                             <HomeCard
-                                                key={trip.id}
-                                                id={trip.id}
+                                                key={trip.trip_id}
+                                                id={trip.trip_id}
                                                 album={trip.album}
                                                 rating={trip.rating}
                                                 capacity={trip.capacity}

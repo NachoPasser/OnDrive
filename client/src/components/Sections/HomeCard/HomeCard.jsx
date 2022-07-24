@@ -9,6 +9,7 @@ const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin
     start_date = start_date.slice(0, 10)
     finish_date = finish_date.slice(0, 10)
     const pruebaVotos = 15;
+    console.log(id)
     return (
         <div className={styles.comp_card}>
             <div className={styles.card}>
