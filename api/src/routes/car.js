@@ -1,4 +1,4 @@
-const {addCar, getCars} = require('../controllers/carController');
+const {addCar, getCars} = require('../controllers/CarController');
 const router = require('express').Router();
 const { getIdFromToken } = require("../controllers/Middlewares/middleware.js");
 
