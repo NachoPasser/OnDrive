@@ -4,7 +4,7 @@ const { isADriver } = require("./Confirmer");
 const { findUserById, findTripById, findReview } = require("./Finders");
 
 //models
-const { User, Driver, Trip } = models;
+const { User, Driver, Trip, Car } = models;
 
 async function createUser(userData = {}) {
   try {
@@ -15,6 +15,25 @@ async function createUser(userData = {}) {
       defaults: userData,
     });
     return created ? await user.getDataValue("user_id") : null;
+  } catch (e) {
+    throw new Error(`${e.message}`);
+  }
+}
+
+async function createCar(driver_id, car = {}) {
+  try {
+    if (!driver_id || !car || typeof car !== "object")
+      throw new Error("car missing properties");
+    const driver = await Driver.findByPk(driver_id);
+    if (!driver) throw new Error(`driver ${driver_id} not found`);
+    const [carCreated, created] = await Car.findOrCreate({
+      where: {
+        driver_id,
+        license_plate: car.license_plate,
+      },
+      defaults: car,
+    });
+    return created ? carCreated.getDataValue("car_id") : null;
   } catch (e) {
     throw new Error(`${e.message}`);
   }
@@ -124,4 +143,4 @@ async function assingTrip({ user_id = null, trip_id = null }) {
   }
 }
 
-module.exports = { createUser, createTripAsDriver, createDriver, assingTrip, createReview, updateReview };
+module.exports = { createUser, createTripAsDriver, createDriver, createCar, assingTrip, createReview, updateReview };

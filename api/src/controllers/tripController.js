@@ -1,10 +1,10 @@
 const { createTripAsDriver, createReview, updateReview } = require("../Models/utils/Creations");
-const { findAllTrips, findTripById, findReview, findAllReviews} = require("../Models/utils/Finders");
+const { findAllTrips, findTripById, findReview, findAllReviews, findPhotos} = require("../Models/utils/Finders");
 
 const postTrip = async (req, res) => {
   try {
-    const { user_id, trip } = req.body;
-    const publishedTrip = await createTripAsDriver(user_id, trip);
+    const { user_id, decoded, trip } = req.body;
+    const publishedTrip = await createTripAsDriver(user_id ? user_id : decoded.id, trip)
     res.status(201).json(publishedTrip);
   } catch (e) {
     res.status(400).json({ error: `${e.message}` });
@@ -30,6 +30,17 @@ const getTripById = async (req, res) => {
     res.status(400).json({ error: `${e.message}` });
   }
 };
+
+const getPhotosFromDestination = async (req, res) => {
+  try {
+    const destination = req.headers['destination']
+    const photos = await findPhotos(destination);
+    res.json(photos);
+  } catch (e) {
+    //response error
+    res.status(400).json({ error: `${e.message}` });
+  }
+}
 
 //---------------------TODO LO DE ABAJO ES PARA RESEÑAS------------------------
 const reviewTrip = async (req, res) => {
@@ -127,5 +138,6 @@ module.exports = {
   updateReviewTrip,
   updateGeneralTripReview,
   getTripReview,
-  getAllTripsReviews
+  getAllTripsReviews,
+  getPhotosFromDestination
 };

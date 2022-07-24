@@ -22,10 +22,10 @@ const checkUser = async (req, res, next) => {
 
 const getIdFromToken = async (req, res, next) => {
   try{
-    let id = req.headers["user_id"];
+    let user_id = req.headers["user_id"];
     
-    if(id){
-      req.body = {...req.body, id}
+    if(user_id){
+      req.body = {...req.body, user_id}
       return next()
     }
 
@@ -36,7 +36,7 @@ const getIdFromToken = async (req, res, next) => {
       jwt.verify(token, SECRET_KEY, async (err, decoded) => {
         if(err) next(res.status(401).json({ message: "Invalid Token." }))
         else{
-          req.body = {...req.body, id, decoded}
+          req.body = {...req.body, user_id, decoded}
           next()
         }
       });

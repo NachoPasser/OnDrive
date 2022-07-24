@@ -120,6 +120,7 @@ async function loadFakeDrivers() {
 
 async function loadFakeCarsToDrivers() {
   try {
+    const brand = ["ford", "chevrolet", "toyota", "honda"]
     let drivers = await Driver.findAll();
     let car = null;
     let is2016 = false;
@@ -127,6 +128,7 @@ async function loadFakeCarsToDrivers() {
       carInfo = fakeCars[Math.floor(Math.random() * fakeCars.length)];
       car = await Car.create({
         license_plate: generetaLicensePlate(is2016),
+        brand: brand[Math.floor(Math.random() * brand.length)],
         ...carInfo,
       });
       await d.addCar(car);
@@ -143,18 +145,19 @@ async function loadFakeTrips() {
     for (let d of drivers) {
       let user_id = d.getDataValue("user_id");
       let tripFake = fakeTrips[Math.floor(Math.random() * fakeTrips.length)];
-      const nameDestination = tripFake.destination;
-      const search = await axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?fields=formatted_address,place_id&input=${nameDestination}&inputtype=textquery&key=${API_IMG}`)
-      const place_id = search.data.candidates[0].place_id
-      const searchPhotos = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?fields=formatted_address%2Cphoto&place_id=${place_id}&key=${API_IMG}`)
-      const photos = searchPhotos.data.result.photos
-      const arrayImg = []
-      for(let i=0; i<3; i++){
-        arrayImg.push(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photos[i].photo_reference}&key=${API_IMG}`)
-      }
-      tripFake['album'] = arrayImg
-      tripFake['capacity'] = Math.floor(Math.random() * (5 - 1) + 1)
-      tripFake['rating'] = Math.floor(Math.random() * 5)
+      //LO COMENTO PORQUE YA LO USE PARA CREAR VIAJES CON LOS NUEVOS DATOS, ESTA TODO EN data.json
+      // const nameDestination = tripFake.destination;
+      // const search = await axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?fields=formatted_address,place_id&input=${nameDestination}&inputtype=textquery&key=${API_IMG}`)
+      // const place_id = search.data.candidates[0].place_id
+      // const searchPhotos = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?fields=formatted_address%2Cphoto&place_id=${place_id}&key=${API_IMG}`)
+      // const photos = searchPhotos.data.result.photos
+      // const arrayImg = []
+      // for(let i=0; i<3; i++){
+      //   arrayImg.push(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photos[i].photo_reference}&key=${API_IMG}`)
+      // }
+      // tripFake['album'] = arrayImg
+      // tripFake['capacity'] = Math.floor(Math.random() * (5 - 1) + 1)
+      // tripFake['rating'] = Math.floor(Math.random() * 5)
       let tripCreated = await createTripAsDriver(user_id, tripFake);
     }
   } catch (e) {

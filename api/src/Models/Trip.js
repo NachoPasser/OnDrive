@@ -20,19 +20,19 @@ const Trip = conn.define(
       defaultValue: 1
     },
     start_date: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     finish_date: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     origin: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     destination: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     album: {

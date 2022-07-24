@@ -6,16 +6,18 @@ const {
   updateReviewTrip,
   getTripReview,
   getAllTripsReviews,
-  updateGeneralTripReview
+  updateGeneralTripReview,
+  getPhotosFromDestination
 } = require("../controllers/tripController.js");
 
-// const { getTripById } = require("../controllers/usersController.js");
+const { getIdFromToken } = require('../controllers/Middlewares/middleware');
 const router = require("express").Router();
 
 // router.get('/:id', tripHistory);
 router.get("/:id", getTripById);
 router.get("/", getTrips);
-router.post("/", postTrip);
+router.get('/photo/get', getPhotosFromDestination)
+router.post("/", getIdFromToken, postTrip);
 router.post('/review', reviewTrip);
 router.put('/review', updateReviewTrip);
 router.put('/generalReview', updateGeneralTripReview);
