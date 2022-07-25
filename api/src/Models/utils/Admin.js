@@ -1,6 +1,7 @@
 const { Admin } = require("../../Models/Admin"); //admin model
 const { User } = require("../../Models/User");
 const bcrypt = require("bcrypt");
+const { Driver } = require("../Driver");
 
 //PARA AGREGAR UN NUEVO ADMIN A LA TABLA(NO UTILIZAR)
 async function createAdmin({ username, password }) {
@@ -34,7 +35,10 @@ async function verifyAdmin({ username, password }) {
     if (admin === null) return false;
 
     //check password
-    const valid = await bcrypt.compare(password, admin.getDataValue("password"));
+    const valid = await bcrypt.compare(
+      password,
+      admin.getDataValue("password")
+    );
 
     return valid; //(true or false)
   } catch (e) {
@@ -57,13 +61,21 @@ async function administrator() {
 }
 
 //FUNCION PARA BANEAR / DESBANEAR USUARIOS POR EMAIL
-async function setBanStatus(status = false, userEmail) {
+async function setBanStatus(status = false, userEmail, type = "ban_status") {
   try {
     const foundUser = await User.findOne({
       where: { email: userEmail },
+      include: Driver,
     }); //busco el user a banear/desbanear
-    await foundUser.update({ ban_status: status }); //actualizo el ban status
-    await foundUser.save(); //guardo en la database
+    if (type === "ban_publish") {
+      const driver = foundUser.driver;
+      console.log(driver);
+      await driver.update({ [type]: status });
+      await driver.save();
+    } else {
+      await foundUser.update({ [type]: status }); //actualizo el ban status
+      await foundUser.save();
+    } //guardo en la database
     return "updated ban status to = " + status;
   } catch (e) {
     return "error set ban status - " + e.message;
