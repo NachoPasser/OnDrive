@@ -18,13 +18,31 @@ import { changeInput } from '../../../redux/actions/changeInput.js';
 import MapCalculator from './mapCalculator';
 
 export default function PublicTrip({origin, destination, price, distance}) {
+    
+    let distanceFloat= distance!==''? parseFloat(distance.split(",").join("")):0
+    // console.log(distanceFloat, distance)
+
+    const [orig, setOrig] = useState()
+    const [dest, setDest] = useState()
+    const [pric, setPric] = useState()
+    const [disc, setDisc] = useState(0)
+    // console.log(orig, dest, pric, disc)
 
     let initPoint
     let finishPoint
-    if(Object.keys(origin).length) {
-        initPoint= origin.current.value
-        finishPoint= origin.current.value
+    if(origin.current && typeof origin.current==="object" && origin.current.value !== orig) {
+        initPoint= origin['current']['value']
+        setOrig(initPoint)
+        // console.log("orig", orig)
     }
+    if(destination.current && typeof destination.current==="object" && destination.current.value !== dest) {
+        finishPoint= destination['current']['value']
+        setDest(finishPoint)
+        // console.log("dest", dest)
+    }
+    if(price !== pric) setPric(price); 
+    if(distanceFloat !== disc) setDisc(distanceFloat);
+
 
     const [infoTrip, setInfoTrip] = useState({
         capacity: '',
@@ -33,7 +51,7 @@ export default function PublicTrip({origin, destination, price, distance}) {
     });
 
     function deshabilitar(){
-        if(!infoTrip.capacity || !infoTrip.start_date || !infoTrip.finish_date || !price) return true
+        if(!infoTrip.capacity|| !infoTrip.start_date|| !infoTrip.finish_date|| !orig|| !dest|| !disc|| !pric) return true
         return false
     }
 
@@ -47,28 +65,32 @@ export default function PublicTrip({origin, destination, price, distance}) {
             [e.target.name]: e.target.value
         })
     }
-    
+
     const handleSubmit= function(e){
         e.preventDefault()
-        console.log("infoTrip desde submit", infoTrip)
         //LO COMENTO Y NO LO USO PARA NO CONSUMIR LA API DE GOOGLE QUE TIENE USO LIMITADO MEPA
         // const photos = await axios.get(`${API_URL}/trip/photo/get`, {headers: {
         // 'destination': infoTrip.destination
         // }})
 
         //Nota: no se puede usar async y await desde el front, al menos no desde acá,
-        //sino que hay que crear actions y estados de reducers que se encarguen de realizar 
+        //sino que hay que crear actions y estados de reducers que se encarguen de realizar
         //llamados usando axios y guardar datos.
 
         const tripToSave = {
             ...infoTrip, //CAPACIDAD DISPONIBLE Y FECHAS
-            initPoint, //ORIGEN
-            finishPoint, //DESTINO
-            price, //PRECIO
-            distance, //DISTANCIA
+            orig,
+            dest,
+            disc,
+            pric,
+            // initPoint, //ORIGEN
+            // finishPoint, //DESTINO
+            // price, //PRECIO
+            // distance, //DISTANCIA
             // rating: 0,
             // album: [img1, img2, img3]
-        } 
+        }
+        console.log("infoTrip desde submit", tripToSave)
         // axios.post(`${API_URL}/trip`,{trip: tripToSave}, {headers: {
         //     Authorization: `Bearer ${window.localStorage.getItem('token')}`
         // }})
@@ -96,7 +118,7 @@ export default function PublicTrip({origin, destination, price, distance}) {
                     value={infoTrip.finish_date}
                     onChange={handleChange}
                 />
-                <InputField 
+                <InputField
                     label="Capacidad"
                     name="capacity"
                     type="number"

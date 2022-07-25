@@ -41,9 +41,10 @@ export default function MapCalculator() {
     const [directionsResponse, setDirectionsResponse] = useState(null)
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
+    // console.log(distance)
 
     const [price, setPrice] = useState()
-    if(price) console.log('price desde 46', price)
+    // if(price) console.log('price desde 46', price)
 
     /** @type React.MutableRefObject<HTMLInputElement> */
     const originRef = useRef()
@@ -86,10 +87,10 @@ export default function MapCalculator() {
     return (
         <div>
         <Flex
-            // position='relatives'
+            position='relative'
             flexDirection='column'
             alignItems='center'
-            h='100%'
+            height='150vh'
             w='100vw'
         >
             <Box position='relative' left={10} top={10} h='40%' w='90%'>
@@ -132,8 +133,8 @@ export default function MapCalculator() {
             <br></br>
             <h1>Publicar viaje</h1>
                 <HStack spacing={4} mt={4} justifyContent='space-between'>
-                    <div><Text style={{ 'fontSize': '21px'}} color={distance ? "yellowgreen": 'rgb(165,165,165)'}>Distance: {distance} </Text></div>
-                    <div><Text style={{ 'fontSize': '21px'}} color={duration ? "yellowgreen": 'rgb(165,165,165)'}>Duration: {duration} </Text></div>
+                    <div><Text style={{ 'fontSize': '21px'}} color={distance ? "yellowgreen": 'rgb(165,165,165)'}>Distancia: {distance} </Text></div>
+                    <div><Text style={{ 'fontSize': '21px'}} color={duration ? "yellowgreen": 'rgb(165,165,165)'}>Duración: {duration} </Text></div>
                     <IconButton
                         aria-label='center back'
                         icon={<FaLocationArrow />}
@@ -172,13 +173,16 @@ export default function MapCalculator() {
                     </Box>
 
                     <ButtonGroup>
-                        <Button colorScheme='pink' type='submit' onClick={calculateRoute}>
-                            Calculate Route
+                        <Button colorScheme='pink' type='submit' onClick={calculateRoute}
+                            margin='16px -2px auto -1px' borderRadius='6px' color="rgb(40,40,40)"
+                            backgroundColor="rgb(230,230,230)">
+                            Calcular ruta
                         </Button>
                         <IconButton
-                            aria-label='center back'
-                            icon={<FaTimes />}
-                            onClick={clearRoute}
+                            aria-label='center back' padding='2px'
+                            icon={<FaTimes />} borderRadius='6px'
+                            onClick={clearRoute} backgroundColor='red'
+                            height='30px' margin='16px auto auto 0px' 
                         />
                     </ButtonGroup>
                 </HStack>
@@ -186,7 +190,8 @@ export default function MapCalculator() {
                 <PublicTrip origin={originRef && originRef} 
                 destination={destiantionRef && destiantionRef} 
                 price={price && price} 
-                distance={distance && distance}/>
+                distance={distance && distance}
+                />
             </div>
             </Box>
         </Flex>

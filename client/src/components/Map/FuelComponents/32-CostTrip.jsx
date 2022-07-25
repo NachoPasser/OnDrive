@@ -3,7 +3,16 @@ import './tabla.css';
 
 export default function CostTrip({distance, unicFuel, price, setPrice}){
     // console.log("distance", distance)
-    distance=parseFloat(distance.split(",").join(""))
+
+    if(distance.slice(distance.length-2,distance.length)=='mi'){
+        distance= parseFloat(distance.split(",").join(""))
+        distance= distance *1.609344
+    }
+    
+    if(distance.slice(distance.length-2,distance.length)=='km'){
+        distance= parseFloat(distance.split(",").join(""))
+    }
+
     // console.log(distance)
     
     let[litres, setLitres]= useState(true)
