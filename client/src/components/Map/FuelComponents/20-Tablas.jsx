@@ -7,7 +7,7 @@ import Selection from "./23-Selection";
 import './tabla.css';
 const axios= require("axios").default;
 
-export default function Tabla({distance}){
+export default function Tabla({distance, price, setPrice}){
     
     let result=""
     let array= useSelector(state=> state.prices)
@@ -78,7 +78,7 @@ export default function Tabla({distance}){
                 </button>
             }<br></br><br></br>
             {!show && fuels.length > 0 && tabla.length > 0 && result!== "" && typeof result !== "object" && result !=="Empty" && 
-                <Selection fuels={fuels} tabla={tabla} distance={distance} />
+                <Selection fuels={fuels} tabla={tabla} distance={distance} price={price} setPrice={setPrice}/>
             }
             {show &&
                 <table>

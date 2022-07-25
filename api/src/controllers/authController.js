@@ -11,6 +11,8 @@ const {
 } = require("../Models/utils/Creations");
 
 const jwt = require("jsonwebtoken");
+const { Driver } = require("../Models/Driver");
+const { User } = require("../Models/User");
 const { SECRET_KEY } = process.env;
 
 const registerUser = async (req, res) => {
@@ -76,7 +78,7 @@ const loginUser = async (req, res) => {
 const verifyUser = async (req, res) => {
   const { decoded } = req.body;
   try {
-    res.json({ type: decoded.type, id:decoded.id });
+    res.json({ type: decoded.type, id: decoded.id });
   } catch (e) {
     res.status(498).json({ type: "visitor" });
   }
@@ -121,6 +123,26 @@ const purchaseTrip = async (req, res) => {
   }
 };
 
+const getDriver = async (req, res) => {
+
+  const { token } = req.body
+
+  let driver = await Driver.findOne({
+    where: {
+      driver_id: token
+    }
+  })
+  let user_id = driver.dataValues.user_id
+  let user = await User.findOne({
+    where: {
+      user_id,
+    }
+  })
+  let object = user.dataValues
+  let objectWithoutPass = { ...object, password: null }
+  return res.json(objectWithoutPass)
+}
+
 module.exports = {
   registerUser,
   getUsers,
@@ -129,4 +151,5 @@ module.exports = {
   loginUser,
   purchaseTrip,
   verifyUser,
+  getDriver
 };

@@ -35,6 +35,9 @@ export default function NavBar() {
                 <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/home-passengers">Pasajero</NavLink>
                 </li>
+                <li className={style.li}>
+                    <NavLink className={style.navLink} exact to="/public">Crear viaje</NavLink>
+                </li>
                 {/* <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/home">Volver al home general</NavLink>
                 </li> */}s

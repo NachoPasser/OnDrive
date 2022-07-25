@@ -2,7 +2,7 @@ import { useState } from "react"
 import CostTrip from "./32-CostTrip";
 import './tabla.css';
 
-export default function Prices({prices, fuels, distance}){
+export default function Prices({prices, fuels, distance, price, setPrice}){
 
     let [render, setRender] = useState([])
     // console.log(prices, fuels)
@@ -31,7 +31,7 @@ export default function Prices({prices, fuels, distance}){
                     <>{render[0]} = {render[1]}</> : <br/> 
             }
             </div>
-            <CostTrip unicFuel={render} distance={distance}/>
+            <CostTrip unicFuel={render} distance={distance} price={price} setPrice={setPrice}/>
         </div>
     )
 }

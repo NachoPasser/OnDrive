@@ -1,6 +1,6 @@
 import Prices from "./24-Prices"
 
-export default function Selection({fuels, tabla, distance}) {
+export default function Selection({fuels, tabla, distance, price, setPrice}) {
 
     let selected = []
     function select(t) {
@@ -24,7 +24,7 @@ export default function Selection({fuels, tabla, distance}) {
 
     return (
         <div>
-            <Prices prices={objeto} fuels={fuels} distance={distance} />
+            <Prices prices={objeto} fuels={fuels} distance={distance} price={price} setPrice={setPrice}/>
         </div>
     )
 }

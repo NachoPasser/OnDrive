@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './tabla.css';
 
-export default function CostTrip({distance, unicFuel}){
+export default function CostTrip({distance, unicFuel, price, setPrice}){
     // console.log("distance", distance)
     distance=parseFloat(distance.split(",").join(""))
     // console.log(distance)
@@ -11,10 +11,12 @@ export default function CostTrip({distance, unicFuel}){
     let [result, setResult] = useState()
     let total= l.int+ l.dec
 
+    if(result) setPrice(parseFloat(result.toFixed(2)))
+
     function execute(){
         // console.log( unicFuel )
-        litres? setResult(((total* distance)/ 100)* parseInt(unicFuel[1])):
-        setResult((distance/ total)* parseInt(unicFuel[1]))
+        litres? setResult(((total* distance)/ 100)* parseFloat(unicFuel[1])):
+        setResult((distance/ total)* parseFloat(unicFuel[1]))
     }
 
     function change() {

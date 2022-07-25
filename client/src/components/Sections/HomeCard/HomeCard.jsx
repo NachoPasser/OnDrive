@@ -50,7 +50,7 @@ const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin
                             {[...Array(5)].map((star, i) => {
                             const ratingValue = i + 1;
                             return (
-                                <FaStar
+                                <FaStar key={i}
                                 className={styles.star}
                                 color={ratingValue <= Math.floor(rating) ? "#fed428" : "#a7a1a1"}
                                 size={15}

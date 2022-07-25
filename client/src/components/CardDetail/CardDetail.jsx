@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector  } from 'react-redux';
 import { getTripById } from '../../redux/actions/getTripById';
+// import { getUserById } from '../../redux/actions/getUserById';
 import Modal from 'react-bootstrap/Modal';
 import Carousel from 'react-bootstrap/Carousel';
 import style from './CardDetail.module.css'
 import Spinner from 'react-bootstrap/Spinner';
+import { getDriverById } from '../../redux/actions/getDriverById';
 
 
 function CardDetail({id, show, fullscreen, setShow}) {
@@ -14,6 +16,15 @@ function CardDetail({id, show, fullscreen, setShow}) {
     useEffect(() => {
         dispatch(getTripById(id))
     },[dispatch, id]);
+    if(Object.keys(trip).length) console.log(trip)
+
+    const driver = useSelector((state)=> state.driverById)
+    if (Object.keys(trip).length && !Object.keys(driver).length){
+        dispatch(getDriverById(trip['driver_id']))
+    }
+
+    if(Object.keys(driver).length) console.log(driver)
+
     return (
         <>
             <Modal contentClassName={style.myModal} show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
@@ -51,7 +62,7 @@ function CardDetail({id, show, fullscreen, setShow}) {
                             <h2 className={style.priceDetail}>Price: ${trip.price}</h2>
                             {/* <Link> */}
                                 <div className={style.linkDriver}>
-                                    <p className={style.textDriver}>Driver: ???</p>
+                                    <p className={style.textDriver}>Driver: {Object.keys(driver).length && driver.name +' ' +driver.last_name}</p>
                                     <div className={style.box1}>
                                         <div className={style.box2}>
                                             {/* <img scr={} alt='not found'/> */}
