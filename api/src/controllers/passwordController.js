@@ -31,7 +31,7 @@ const recoverPassword = async (req, res) => {
     user.set({ recovery: hashCode });
     await user.save();
 
-    resetCode({ user, mins: 5}); //permitir nuevo codigo en 5 mins
+    resetCode({ user, mins: 5 }); //permitir nuevo codigo en 5 mins
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -69,8 +69,8 @@ const changePass = async (req, res) => {
   try {
     const { user_id, decoded, password } = req.body;
     const user = user_id
-    ? await findUserById({ user_id, model: true })
-    : await findUserById({ user_id: decoded.id, model: true })
+      ? await findUserById({ user_id, model: true })
+      : await findUserById({ user_id: decoded.id, model: true });
     if (!user) {
       return res.status(404).send("Usuario no encontrado");
     }
@@ -79,7 +79,7 @@ const changePass = async (req, res) => {
     await user.save();
     res.json({ message: "Contraseña cambiada" });
   } catch (e) {
-    console.log(e)
+    console.log(e);
     res.status(500).json({ error: "Error al cambiar la contraseña" });
   }
 };
@@ -95,7 +95,7 @@ const verifyRecoveryCode = async (req, res) => {
       return res.status(400).json({ error: "Codigo invalido o caducado" });
 
     //devolver token de acceso si es valido
-    const token = jwt.sign({ id }, SECRET_KEY, {
+    const token = jwt.sign({ id, type: "pageUser" }, SECRET_KEY, {
       expiresIn: "1h",
     });
 

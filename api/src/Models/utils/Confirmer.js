@@ -26,10 +26,10 @@ async function isCorrectCredentials(email = null, password = null) {
     if (!user) return [false, null];
     const passwordHashed = user.password;
 
-    if (!passwordHashed) return [true, user];
+    if (!passwordHashed) return [true, user, "googleUser"];
 
     const valid = await bcrypt.compare(password, passwordHashed);
-    return valid ? [true, user] : [false, null];
+    return valid ? [true, user, "pageUser"] : [false, null];
   } catch (e) {
     throw new Error("Error al comprobar credenciales");
   }

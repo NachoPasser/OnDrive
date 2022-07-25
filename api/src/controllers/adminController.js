@@ -32,7 +32,7 @@ async function logAdmin(req, res) {
       return res
         .status(400)
         .json({ error: "Usuario o contraseña incorrecta." });
-    const token = jwt.sign({ isAdmin: true }, SECRET_KEY, { expiresIn: "1h" });
+    const token = jwt.sign({ type: "admin" }, SECRET_KEY, { expiresIn: "1h" });
     res.json({ token });
   } catch (e) {
     res.send({ msg: "Error: " + e.message });
