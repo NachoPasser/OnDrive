@@ -10,21 +10,6 @@ import style from "./Profile.module.css";
 import './Profile.css'
 export default function Profile() {
     const dispatch = useDispatch()
-    
-    const getRating = () => { //este metodo lo utilizo para obtener el rating actual del conductor
-      let rating = 0;
-      let reviews = 0;
-      for (const trip of user.driver.trips) { //recorro los viajes en los que el usuario conducio
-          if(trip.rating !== 0){ //si el viaje tiene un rating
-            rating += trip.rating //lo sumo a la suma total
-            reviews++; //sumo +1 a la cantidad de reviews
-          }
-        }
-      
-     return reviews > 0 ? rating / reviews : 0 
-     //si existe al menos una reseña devuelvo suma de ratings / cantidad de reseñas, si no devuelvo 0 
-     //(esto es asi porque sino puede ocurrir 0 / 0 que rompe todo)
-    }
 
     const reviews = useSelector(state => state.reviews) //obtengo todas las reviews que realizo el usuario
     const user = useSelector(state => state.userById) //obtengo el perfil del usuario
@@ -71,7 +56,7 @@ export default function Profile() {
               user.trips.map((t, i) => { //recorro los viajes del usuario y voy renderizandolos en ese div junto a Review
               return <div id="viajes">
                         <span>{t.origin} - {t.destination}</span>
-                        <Review user_id={user.user_id} trip_id={t.trip_id} actualRating={reviews[i]?.rating} actualComment={reviews[i]?.comment } />
+                        <Review user_id={user.user_id} trip_id={t.trip_id} driver_id={t.driver_id} actualRating={reviews[i]?.rating} actualComment={reviews[i]?.comment } />
                     </div>
               })} 
               </div> 
@@ -83,7 +68,7 @@ export default function Profile() {
           <h1>Como conductor</h1>
           <span>licencia: {user.driver.license}</span>
           <span>permiso de conducir: {user.driver.driving_permit}</span>
-          <span>rating: {getRating()} ⭐</span>
+          <span>rating: {user.driver.rating} ⭐</span>
           <h3>Autos</h3>
           {//LINEA 77: lo escribo aca porque arriba no puedo, en esa linea ejecuto getRating, definido en linea 10
           user.driver.cars.map(c => { //Recorro los autos del conductor y voy renderizandolos en ese div
