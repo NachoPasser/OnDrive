@@ -17,6 +17,11 @@ const Driver = conn.define(
       type: DataTypes.STRING(45),
       allowNull: false,
     },
+    rating: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+      defaultValue: 0,
+    },
   },
   {
     timestamps: false,

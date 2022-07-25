@@ -4,7 +4,7 @@ import axios from 'axios'
 import { API_URL } from '../../../config/enviroment';
 import './Review.css'
 
-function Review({user_id, trip_id, actualRating, actualComment}) { //actualRating y actualComment me traen el rating y comentario actual de la reseña
+function Review({user_id, trip_id, driver_id, actualRating, actualComment}) { //actualRating y actualComment me traen el rating y comentario actual de la reseña
     const [rating, setRating] = useState(0)
     const [comment, setComment] = useState('')
     useEffect(() => {
@@ -23,6 +23,7 @@ function Review({user_id, trip_id, actualRating, actualComment}) { //actualRatin
           await axios.post(`${API_URL}/trip/review`, {user_id, trip_id, review: {rating: rating, comment: comment}})
         }
         await axios.put(`${API_URL}/trip/generalReview`, {trip_id}) 
+        await axios.put(`${API_URL}/trip/review/driver`, {driver_id})
         //generalReview: actualiza el rating del viaje considerando todas las reviews sumadas a ese viaje hasta el momento
       } catch (e) {
         console.log(e)
