@@ -21,9 +21,9 @@
     right: 15px;
 }
 #divBtn{
-    position: absolute;
+    position: relative;
     width: fit-content;
-    right: 5cm;
+    right: 0;
     top: 0px;
 }
 

@@ -6,14 +6,19 @@ const {
   registerDriver,
   purchaseTrip,
   verifyUser,
+  verifyBanStatus,
   getDriverById,
 } = require("../controllers/authController.js");
-const { checkUser, getIdFromToken } = require("../controllers/Middlewares/middleware.js");
+const {
+  checkUser,
+  getIdFromToken,
+} = require("../controllers/Middlewares/middleware.js");
 const router = require("express").Router();
 
 router.post("/register", registerUser);
 router.post("/login", loginUser);
-router.get('/verify', checkUser, verifyUser)
+router.get("/verify", checkUser, verifyUser);
+router.get("/verify/status", checkUser, verifyBanStatus);
 router.get('/driver', getDriverById)
 router.get("/users", getUsers);
 router.get("/profile", getIdFromToken, getUserById);

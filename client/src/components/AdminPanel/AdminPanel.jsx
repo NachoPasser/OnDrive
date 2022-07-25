@@ -16,7 +16,9 @@ export default function AdminPanel() {
     <div>
         <div id={s.columns}>
             <h1>Direccion email</h1>
-            <h1>Status</h1>
+            <h1>Global</h1>
+            <h1>Publicar</h1>
+            <h1>Comprar</h1>
         </div>
         <div>
         {users.length
@@ -25,6 +27,8 @@ export default function AdminPanel() {
             key={u.id}
             email={u.email}
             ban_status={u.ban_status}
+            ban_publish={u.driver ? u.driver.publish : false}
+            ban_purchase={u.ban_purchase}
             />)
         : <h1 style={{color: 'white'}}>No hay usuarios cargados.</h1>
         }
