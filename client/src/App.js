@@ -20,16 +20,6 @@ import PublicTrip from "./components/Forms/PublicTrip/PublicTrip";
 import UserToDriver from "./components/Forms/UserToDriver/UserToDriver";
 import MapCalculator from "./components/Forms/PublicTrip/mapCalculator";
 
-// function makePrivate( admin = false, visitor = false, pageUser = false, googleUser = false, route, route_to_redirect, component_to_render) {
-//   return (
-//     <Route path={route}>
-//       <PrivateRoute admin={admin} visitor={visitor} pageUser={pageUser} googleUser={googleUser} redirect={route_to_redirect}>
-//         {component_to_render}
-//       </PrivateRoute>
-//     </Route>
-//   )
-// }
-
 function makePrivate(
   allowed = [],
   route,
@@ -44,7 +34,6 @@ function makePrivate(
     </Route>
   );
 }
-
 
 function App() {
   return (

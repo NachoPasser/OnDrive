@@ -1,5 +1,4 @@
 const { models } = require("../../database/relations");
-const { Review } = require("../Review");
 const { isADriver } = require("./Confirmer");
 const { findUserById, findTripById, findReview } = require("./Finders");
 
@@ -91,39 +90,7 @@ async function createTripAsDriver(user_id, trip = {}) {
   }
 }
 
-async function createReview({user_id = null, trip_id = null, review = {}}){
-  try {
-    if (!trip_id || !user_id) throw new Error("trip id or user id missing");
 
-    if (!review || typeof review !== "object")
-      throw new Error(`review missing properties`);
-    
-    const trip = await Trip.findByPk(trip_id)
-    if (!trip) throw new Error("trip id invalid or does not exist");
-    const reviewCreated = await Review.create({user_id, trip_id, rating: review.rating, comment: review.comment}, {include: [{model: Trip}, {model:User}]})
-    await trip.addReview(reviewCreated)
-    return JSON.parse(JSON.stringify(trip, null, 2))
-  } catch (e) {
-    throw new Error(`${e.message}`);
-  }
-}
-
-async function updateReview({trip_id = null, user_id = null, review = {}}){
-  try {
-    if (!user_id || !trip_id) throw new Error("trip id or user id missing");
-
-    if (!review || typeof review !== "object")
-      throw new Error(`review missing properties`);
-    
-    const reviewCreated = await findReview(user_id, trip_id, true)
-    reviewCreated.update({rating: review.rating, comment: review.comment})
-    reviewCreated.save()
-    // await trip.addReview(reviewCreated)
-    return JSON.parse(JSON.stringify(reviewCreated, null, 2))
-  } catch (e) {
-    throw new Error(`${e.message}`);
-  }
-}
 
 //ASIGNAR VIAJE A UN PASAJERO
 async function assingTrip({ user_id = null, trip_id = null }) {
@@ -143,4 +110,4 @@ async function assingTrip({ user_id = null, trip_id = null }) {
   }
 }
 
-module.exports = { createUser, createTripAsDriver, createDriver, createCar, assingTrip, createReview, updateReview };
+module.exports = { createUser, createTripAsDriver, createDriver, createCar, assingTrip};

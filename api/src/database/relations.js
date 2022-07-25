@@ -55,5 +55,5 @@ Trip.belongsToMany(User, {
 
 //exporto todo los modelos por si se utilizan en otros archivos
 module.exports = {
-  models: { User, Driver, Trip, Admin, Fuel, Car },
+  models: { User, Driver, Trip, Admin, Fuel, Car, Review},
 };

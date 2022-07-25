@@ -1,4 +1,4 @@
-const { findAllUsers, findUserById } = require("../Models/utils/Finders");
+const { findAllUsers, findUserById, findDriverById } = require("../Models/utils/Finders");
 const bcrypt = require("bcrypt");
 const {
   isCorrectCredentials,
@@ -84,6 +84,21 @@ const verifyUser = async (req, res) => {
   }
 };
 
+const verifyBanStatus = async (req, res) => {
+  const { decoded } = req.body;
+  try {
+    const user = await findUserById({ user_id: decoded.id, driver: true });
+
+    const status = user.ban_status;
+    const status_purchase = user.ban_purchase;
+    const status_publish = user.driver ? user.driver.ban_publish : false;
+
+    res.json({ type: decoded.type, id: decoded.id, status, status_purchase, status_publish });
+  } catch (e) {
+    res.status(498).json({ type: "visitor" });
+  }
+};
+
 const getUsers = async (req, res) => {
   try {
     const users = await findAllUsers();
@@ -104,6 +119,16 @@ const getUserById = async (req, res) => {
     res.status(400).json({ error: `${e.message}` });
   }
 };
+
+const getDriverById = async (req, res) => {
+  try {
+    const { driver_id } = req.headers['user_id']
+    const driver = findDriverById({ driver_id })
+    res.json(driver);
+  } catch (e) {
+    res.status(400).json({ error: `${e.message}` });
+  }
+}
 
 const purchaseTrip = async (req, res) => {
   try {
@@ -147,9 +172,11 @@ module.exports = {
   registerUser,
   getUsers,
   getUserById,
+  getDriverById,
   registerDriver,
   loginUser,
   purchaseTrip,
   verifyUser,
-  getDriver
+  getDriver,
+  verifyBanStatus,
 };

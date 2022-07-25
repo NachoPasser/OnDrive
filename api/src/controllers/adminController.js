@@ -4,8 +4,8 @@ const { SECRET_KEY } = process.env;
 
 async function banUser(req, res) {
   try {
-    const { ban_email } = req.body;
-    const msg = await setBanStatus(true, ban_email);
+    const { ban_email, type } = req.body;
+    const msg = await setBanStatus(true, ban_email, type);
     res.json({ msg });
   } catch (e) {
     res.status(400);
@@ -15,8 +15,8 @@ async function banUser(req, res) {
 
 async function unbanUser(req, res) {
   try {
-    const { unban_email } = req.body;
-    const msg = await setBanStatus(false, unban_email);
+    const { unban_email, type } = req.body;
+    const msg = await setBanStatus(false, unban_email, type);
     res.json({ msg });
   } catch (e) {
     res.status(400);
