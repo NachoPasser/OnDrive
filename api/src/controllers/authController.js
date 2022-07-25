@@ -30,7 +30,8 @@ const registerUser = async (req, res) => {
         .status(409)
         .json({ error: "Ya existe un usuario registrado con este mail." });
 
-    const token = jwt.sign({ id: user_id }, SECRET_KEY, {
+    const type = password ? "pageUser" : "googleUser";
+    const token = jwt.sign({ id: user_id, type }, SECRET_KEY, {
       expiresIn: "1h",
     });
 
@@ -44,8 +45,8 @@ async function registerDriver(req, res) {
   try {
     const { user_id, decoded, driver } = req.body;
     const driver_id = user_id
-    ? await createDriver(user_id, driver)
-    : await createDriver(decoded.id, driver)
+      ? await createDriver(user_id, driver)
+      : await createDriver(decoded.id, driver);
     if (!driver_id) throw new Error("Algo salio mal al crear el conductor");
     res.status(201).json({ driver_id });
   } catch (e) {
@@ -57,12 +58,12 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const [valid, user] = await isCorrectCredentials(email, password);
-    
+    const [valid, user, type] = await isCorrectCredentials(email, password);
+
     if (!valid) {
       return res.status(409).json({ error: "Mail o contraseña incorrecta." });
     }
-    const token = jwt.sign({ id: user.user_id }, SECRET_KEY, {
+    const token = jwt.sign({ id: user.user_id, type }, SECRET_KEY, {
       expiresIn: "1h",
     });
     res.json({ token }); //return token JWT
@@ -73,38 +74,11 @@ const loginUser = async (req, res) => {
 };
 
 const verifyUser = async (req, res) => {
-  const { caso, decoded } = req.body;
-  let user = null;
-  if (res.status > 400) return res.send("");
+  const { decoded } = req.body;
   try {
-    switch (caso) {
-      case "googleUser":
-        user = await findUserById({ user_id: decoded.id });
-        if (!user.password)
-          return res.status(202).json({ message: "The user is allowed." });
-        else
-          return res.status(403).json({ message: "Page users not allowed." });
-
-      case "pageUser":
-        if (!decoded.hasOwnProperty("id"))
-          return res.status(400).json("No soy un usuario común.");
-        user = await findUserById({ user_id: decoded.id });
-        if (!user.password)
-          return res.status(403).json({ message: "Google users not allowed." });
-        else return res.status(202).json({ message: "The user is allowed." });
-
-      case "admin":
-        if (decoded.hasOwnProperty("isAdmin"))
-          return res.status(202).json({ message: "The user is allowed." });
-        else
-          return res.status(403).json({ message: "The user is not allowed." });
-
-      default:
-        return res.status(200).send("Genial");
-    }
+    res.json({ type: decoded.type, id:decoded.id });
   } catch (e) {
-    // console.log(e)
-    res.status(500).json(e);
+    res.status(498).json({ type: "visitor" });
   }
 };
 

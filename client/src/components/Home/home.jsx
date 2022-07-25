@@ -20,6 +20,7 @@ import NavBar from "../NavBar/navbar.js";
 import Fecha from "../Filters/filterByDate.jsx";
 import Paging from "../Paging/Paging.jsx";
 import Map from "../Map/map.jsx"
+import { useAuthorized } from "../../hooks/useAuthorized";
 
 export default function Home() {
     //dispatch
