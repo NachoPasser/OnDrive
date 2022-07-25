@@ -7,6 +7,7 @@ const {
   purchaseTrip,
   verifyUser,
   verifyBanStatus,
+  getDriverById,
 } = require("../controllers/authController.js");
 const {
   checkUser,
@@ -18,6 +19,7 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.get("/verify", checkUser, verifyUser);
 router.get("/verify/status", checkUser, verifyBanStatus);
+router.get('/driver', getDriverById)
 router.get("/users", getUsers);
 router.get("/profile", getIdFromToken, getUserById);
 router.post("/register-driver", getIdFromToken, registerDriver);

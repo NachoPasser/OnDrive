@@ -1,4 +1,4 @@
-const { findAllUsers, findUserById } = require("../Models/utils/Finders");
+const { findAllUsers, findUserById, findDriverById } = require("../Models/utils/Finders");
 const bcrypt = require("bcrypt");
 const {
   isCorrectCredentials,
@@ -118,6 +118,16 @@ const getUserById = async (req, res) => {
   }
 };
 
+const getDriverById = async (req, res) => {
+  try {
+    const { driver_id } = req.headers['user_id']
+    const driver = findDriverById({driver_id})
+    res.json(driver);
+  } catch (e) {
+    res.status(400).json({ error: `${e.message}` });
+  }
+}
+
 const purchaseTrip = async (req, res) => {
   try {
     const { user_id, trip_id } = req.body;
@@ -140,6 +150,7 @@ module.exports = {
   registerUser,
   getUsers,
   getUserById,
+  getDriverById,
   registerDriver,
   loginUser,
   purchaseTrip,

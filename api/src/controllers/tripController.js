@@ -1,5 +1,6 @@
-const { createTripAsDriver, createReview, updateReview } = require("../Models/utils/Creations");
-const { findAllTrips, findTripById, findReview, findAllReviews, findPhotos} = require("../Models/utils/Finders");
+const { createTripAsDriver } = require("../Models/utils/Creations");
+const {createReview, updateReview, updateDriverRating} = require('../Models/utils/Review')
+const { findAllTrips, findTripById, findReview, findAllReviews, findPhotos, findDriverById} = require("../Models/utils/Finders");
 
 const postTrip = async (req, res) => {
   try {
@@ -97,7 +98,7 @@ const updateGeneralTripReview = async (req, res) => {
         initialValue
       );
     }
-    trip.update({rating: sumOfRatings/reviews.length}) //actualizo el rating del viaje
+    trip.update({rating: (sumOfRatings/reviews.length).toFixed(1)}) //actualizo el rating del viaje
     trip.save()
     res.json(trip)
   } catch(e){
@@ -105,29 +106,19 @@ const updateGeneralTripReview = async (req, res) => {
   }
 }
 
-// const tripHistory = async (req, res) => {
-//   let existTrip = await Trip.findAll()
-//     .then((data) => {
-//       return data.map((trip) => {
-//         return {
-//           id: trip.trip_id,
-//           start_date: trip.start_date,
-//           finish_date: trip.finish_date,
-//           origin: trip.origin,
-//           destination: trip.destination,
-//           price: trip.price,
-//         };
-//       });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-//   let response = [...existTrip];
-//   response = response.filter((trip) => trip.trip_id == req.params.id);
-
-//   if (response.length > 0) res.json(response);
-//   else res.status(404).json({ message: "Trip not found" });
-// };
+const updateDriverReview = async (req, res) => {
+  try{
+    const {driver_id} = req.body
+    const driver = await findDriverById({driver_id, model:true})
+    console.log(driver)
+    const newRating = await updateDriverRating({driver})
+    await driver.update({rating: newRating})
+    await driver.save()
+    res.json(driver)
+  } catch(e){
+    res.status(400).json({ error: `${e.message}` });
+  }
+}
 
 module.exports = {
   // tripHistory,
@@ -137,6 +128,7 @@ module.exports = {
   reviewTrip,
   updateReviewTrip,
   updateGeneralTripReview,
+  updateDriverReview,
   getTripReview,
   getAllTripsReviews,
   getPhotosFromDestination
