@@ -1,39 +1,40 @@
 .MainContainer{
   width: 100%;
-}
-.MainContainer, .ImageContainer{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .LogoDesktop{
-  display: none;
-  width: 30%;
-  margin-top: 7%;
-  margin-bottom: 2%;
-}
-.middleImg{
-  display: none;
   width: 100%;
+  margin-top: 2%;
 }
+
 .TextContainer{
-  width: 40%;
+ 
+  width: 60%;
   align-items: center;
 }
 .TextContainer2{
   align-items: center;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 .Text{
   color: var(--font-title-color);
-  font-size: 1.5rem;
+  font-size: 20px;
+  text-align: center;
+  display: none;
+}
+.witheText{
+  color: var(--font-title-color);
+  font-size: 18px;
   text-align: center;
   display: none;
 }
 .yellowText{
   color: var(--font-title-yellow-color);
-  font-size: 1.5rem;
+  font-size: 18px;
   text-align: center;
   display: none;
 }
@@ -60,6 +61,9 @@ and (min-device-width: 1200px) {
 }
 
 .Text {
+  display: block;
+}
+.witheText {
   display: block;
 }
 .yellowText {
