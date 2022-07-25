@@ -17,6 +17,16 @@ const Driver = conn.define(
       type: DataTypes.STRING(45),
       allowNull: false,
     },
+    ban_publish: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    rating: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+      defaultValue: 0,
+    },
   },
   {
     timestamps: false,

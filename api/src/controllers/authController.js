@@ -76,7 +76,22 @@ const loginUser = async (req, res) => {
 const verifyUser = async (req, res) => {
   const { decoded } = req.body;
   try {
-    res.json({ type: decoded.type, id:decoded.id });
+    res.json({ type: decoded.type, id: decoded.id });
+  } catch (e) {
+    res.status(498).json({ type: "visitor" });
+  }
+};
+
+const verifyBanStatus = async (req, res) => {
+  const { decoded } = req.body;
+  try {
+    const user = await findUserById({ user_id: decoded.id, driver: true });
+
+    const status = user.ban_status;
+    const status_purchase = user.ban_purchase;
+    const status_publish = user.driver ? user.driver.ban_publish : false;
+
+    res.json({ type: decoded.type, id: decoded.id, status, status_purchase, status_publish});
   } catch (e) {
     res.status(498).json({ type: "visitor" });
   }
@@ -129,4 +144,5 @@ module.exports = {
   loginUser,
   purchaseTrip,
   verifyUser,
+  verifyBanStatus,
 };
