@@ -16,11 +16,11 @@ export function validateField(value, field) {
         break;
     case 'name':
         if(!value) error = 'Nombre requerido.'
-        else if(!/^[A-Z][A-Za-z]{1,15} ?[A-Z]?[A-Za-z]{1,15}$/.test(value)) error = 'El nombre debe estar capitalizado y contener solo letras.'
+        else if(!/^[A-Z][a-z]{1,15} ?[A-Z]?[a-z]{1,15}$/.test(value)) error = 'El nombre debe estar capitalizado y contener solo letras.'
         break;
     case 'last_name':
         if(!value) error = 'Apellido requerido.'
-        else if(!/^[A-Z][A-Za-z]{1,34}$/.test(value)) error = 'El apellido debe estar capitalizado y contener solo letras.'
+        else if(!/^[A-Z][a-z]{1,34} ?[A-Z]?[a-z]{1,34}$/.test(value)) error = 'El apellido debe estar capitalizado y contener solo letras.'
         break;
     default:
         break;
