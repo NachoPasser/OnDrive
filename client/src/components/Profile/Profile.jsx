@@ -67,7 +67,8 @@ export default function Profile() {
         ? <div id="pasajero">
           <h1>Como conductor</h1>
           <span>licencia: {user.driver.license}</span>
-          <span>permiso de conducir: {user.driver.driving_permit}</span>
+          <span>compañía de seguros: {user.driver.car_insurance}</span>
+          <span>DNI: {user.driver.DNI}</span>
           <span>rating: {user.driver.rating} ⭐</span>
           <h3>Autos</h3>
           {//LINEA 77: lo escribo aca porque arriba no puedo, en esa linea ejecuto getRating, definido en linea 10
