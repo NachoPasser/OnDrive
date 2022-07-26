@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import ban_img from "../../../assets/Buttons/banned_permise.png";
+import allow_img from "../../../assets/Buttons/allow_permise.png";
 import s from "./User.module.css";
 import { API_URL } from "../../../config/enviroment";
 
@@ -34,21 +36,43 @@ export default function User({
   };
 
   return (
-    <div style={{ position: "relative" }}>
-      <div className={s.columns}>
-        <span id={s.email}>{email}</span>
-      </div>
-      <div id={s.divBtn}>
-        <button onClick={handleBanStatus} name="ban_status">
-          {banned ? "Desbanear" : "Banear"}
-        </button>
-        <button onClick={handleBanStatus} name="ban_publish">
-          {bannedPublish ? "Desbanear" : "Banear"}
-        </button>
-        <button onClick={handleBanStatus} name="ban_purchase">
-          {bannedPurchase ? "Desbanear" : "Banear"}
-        </button>
-      </div>
-    </div>
+    <>
+      <span id={s.email} className={s.item}>
+        {email}
+      </span>
+      <button
+        onClick={handleBanStatus}
+        name="ban_status"
+        className={`${s.item} ${s.item_btn}`}
+      >
+        <img
+          src={banned ? ban_img : allow_img}
+          alt={banned ? "Desbanear" : "Banear"}
+          name="ban_status"
+        />
+      </button>
+      <button
+        onClick={handleBanStatus}
+        name="ban_publish"
+        className={`${s.item} ${s.item_btn}`}
+      >
+        <img
+          src={bannedPublish ? ban_img : allow_img}
+          alt={bannedPublish ? "Desbanear" : "Banear"}
+          name="ban_publish"
+        />
+      </button>
+      <button
+        onClick={handleBanStatus}
+        name="ban_purchase"
+        className={`${s.item} ${s.item_btn}`}
+      >
+        <img
+          src={bannedPurchase ? ban_img : allow_img}
+          alt={bannedPurchase ? "Desbanear" : "Banear"}
+          name="ban_purchase"
+        />
+      </button>
+    </>
   );
 }
