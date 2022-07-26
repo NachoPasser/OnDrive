@@ -49,7 +49,7 @@ async function updateDriverRating({driver = null}){
             reviews++; //sumo +1 a la cantidad de reviews
             }
       }
-      return (rating / reviews).toFixed(1)
+      return [(rating / reviews).toFixed(1), reviews]
     } catch (e) {
       throw new Error(`${e.message}`);
     }

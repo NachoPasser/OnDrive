@@ -4,7 +4,6 @@ const {
   getUsers,
   getUserById,
   registerDriver,
-  purchaseTrip,
   verifyUser,
   verifyBanStatus,
   getDriverById,
@@ -23,6 +22,5 @@ router.get('/driver', getDriverById)
 router.get("/users", getUsers);
 router.get("/profile", getIdFromToken, getUserById);
 router.post("/register-driver", getIdFromToken, registerDriver);
-router.post("/purchase-trip", purchaseTrip);
 
 module.exports = router;
