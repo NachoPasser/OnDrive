@@ -12,6 +12,7 @@ const getBanStatus = (token) => {
 };
 
 export function useBan() {
+  const [error, setError] = useState(false);
   const [globalBan, setGlobalBan] = useState(false);
   const [verifying, setVerifying] = useState(true);
   const [token] = useState(localStorage.getItem("token"));
@@ -22,9 +23,17 @@ export function useBan() {
       .then((res) => {
         setGlobalBan(res.data.status);
         setVerifying(false);
+        setError(false);
       })
-      .catch(() => setVerifying(false));
+      .catch((e) => {
+        console.log(e)
+        if (e.response?.data?.type === "visitor") setVerifying(false);
+        else {
+          setVerifying(false);
+          setError(true);
+        }
+      });
   }, [token]);
 
-  return { globalBan, verifying };
+  return { globalBan, verifying, error };
 }
