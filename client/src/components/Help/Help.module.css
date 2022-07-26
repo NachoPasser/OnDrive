@@ -1,0 +1,17 @@
+.liLogo {
+    display: flex;
+}
+.navLink {
+    display: block;
+    background-color: #212734;
+    color: #FED428;
+    padding: 18px 16px;
+    text-decoration: none;
+}
+.navLink:hover {
+    background-color: #111;
+}
+.logo {
+    max-width: 100%;
+    max-height: 100%;
+}

@@ -67,7 +67,8 @@ export default function Profile() {
         ? <div id="pasajero">
           <h1>Como conductor</h1>
           <span>licencia: {user.driver.license}</span>
-          <span>permiso de conducir: {user.driver.driving_permit}</span>
+          <span>compañía de seguros: {user.driver.car_insurance}</span>
+          <span>DNI: {user.driver.DNI}</span>
           <span>rating: {user.driver.rating} ⭐</span>
           <h3>Autos</h3>
           {//LINEA 77: lo escribo aca porque arriba no puedo, en esa linea ejecuto getRating, definido en linea 10
@@ -82,9 +83,9 @@ export default function Profile() {
             return t.reviews.map(r => { //Recorro todas las RESEÑAS del viaje en el que estamos parados (ya que un mismo viaje puede tener muchas reseñas)
               return <div>
                     <span>{t.origin} - {t.destination} </span>
-                    <span>rating: {r.rating} ⭐ </span>
-                    <span>comentario: {r.comment}</span>
-                   </div>
+                    <span>Calificación: {r.rating} ⭐ </span>
+                    <span>Comentario: {r.comment}</span>
+                  </div>
             })
           })}
         </div>

@@ -15,7 +15,7 @@ export default function SortByRating({ style, sorters, setSorters}) {
     return (
         <div>
             <select className={style} onChange={handleSelectOrder} value={sorters.sortRating}>
-                <option value="Orden">Rating</option>
+                <option value="Orden">Calificación</option>
                 <option value="ASC">Peores conductores</option>
                 <option value="DSC">Mejores conductores</option>
             </select>

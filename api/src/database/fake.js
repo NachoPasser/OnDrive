@@ -34,14 +34,15 @@ function generateEmail(name, age, last_name) {
   return email;
 }
 
-function generateLicenseAndPermit() {
-  let license = combinationsA[Math.floor(Math.random() * combinationsA.length)];
-  let permit =
-    license +
-    "-" +
-    combinationsB[Math.floor(Math.random() * combinationsB.length)];
+function generateDriverData() {
+  let company = ["Federación Patronal", "Caja Seguros", "Seguros Rivadavia", "Sancor", "San Cristóbal", "Segunda C.S.L."][
+    Math.floor(Math.random() * 6)
+  ];
+  let license = Math.floor(10000000 + Math.random() * 90000000)
+  let DNI = Math.floor(10000000 + Math.random() * 90000000)
+  let car_insurance = company
 
-  return [license, permit];
+  return [license, car_insurance, DNI];
 }
 
 //patente
@@ -110,8 +111,8 @@ async function loadFakeDrivers() {
 
     //convertir a la mitad de los usuarios en drivers
     for (let u of users) {
-      let [license, driving_permit] = generateLicenseAndPermit();
-      await createDriver(u.user_id, { license, driving_permit });
+      let [license, car_insurance, DNI] = generateDriverData();
+      await createDriver(u.user_id, { license, car_insurance, DNI });
     }
   } catch (e) {
     console.error("error al crear conductores falsos: ", e);

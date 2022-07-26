@@ -13,7 +13,7 @@ const Driver = conn.define(
       type: DataTypes.STRING(45),
       allowNull: false,
     },
-    driving_permit: {
+    car_insurance: {
       type: DataTypes.STRING(45),
       allowNull: false,
     },
@@ -28,6 +28,10 @@ const Driver = conn.define(
       allowNull: false,
       defaultValue: 0,
     },
+    DNI: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    }
   },
   {
     timestamps: false,

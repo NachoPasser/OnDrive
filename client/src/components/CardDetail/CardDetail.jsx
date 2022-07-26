@@ -42,10 +42,10 @@ function CardDetail({id, show, fullscreen, setShow}) {
                             </div>
                             <div className={style.propsDetail}>
                                 <div className={style.textDetail}>
-                                    <h2 className={style.h2Det}>Start date: {trip.start_date}</h2>
-                                    <h2 className={style.h2Det}>Finish date: {trip.finish_date}</h2>
-                                    <h2 className={style.h2Det}>Capacity: {trip.capacity}</h2>
-                                    <h2 className={style.h2Det}>Car: {trip.marca}</h2>
+                                    <h2 className={style.h2Det}>Salida: {trip.start_date}</h2>
+                                    <h2 className={style.h2Det}>Regreso: {trip.finish_date}</h2>
+                                    <h2 className={style.h2Det}>Capacidad: {trip.capacity}</h2>
+                                    <h2 className={style.h2Det}>Auto: {trip.marca}</h2>
                                 </div>
                                 <div className={style.carruselDetail}>
                                     <Carousel>
@@ -59,22 +59,19 @@ function CardDetail({id, show, fullscreen, setShow}) {
                                     </Carousel>
                                 </div>
                             </div>
-                            <h2 className={style.priceDetail}>Price: ${trip.price}</h2>
+                            <h2 className={style.priceDetail}>Precio: ${trip.price}</h2>
                             {/* <Link> */}
                                 <div className={style.linkDriver}>
-                                    <p className={style.textDriver}>Driver: {Object.keys(driver).length && driver.name +' ' +driver.last_name}</p>
+                                    <p className={style.textDriver}>Conductor: {Object.keys(driver).length && driver.name +' ' +driver.last_name}</p>
                                     <div className={style.box1}>
                                         <div className={style.box2}>
                                             {/* <img scr={} alt='not found'/> */}
                                         </div>
                                     </div>
                                     {/* <p>{trip.driver[arr[0]]} {trip.driver[arr[1]]}</p> */}
-                                    <p className={style.textDriver}>Rating: {trip.rating}</p>
+                                    <p className={style.textDriver}>Clasificación: {trip.rating}</p>
                                 </div>
                             {/* </Link> */}
-                            <div className={style.map}>
-                                <h1>MAPA</h1>
-                            </div>
                         </div>
                     </div> :
                     <Spinner animation="grow" />
