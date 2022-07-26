@@ -130,7 +130,7 @@ const getDriverById = async (req, res) => {
 
 const purchaseTrip = async (req, res) => {
   try {
-    const { user_id, trip_id } = req.body;
+    const { user_id, trip_id, capacity} = req.body;
     if (!user_id || !trip_id)
       throw new Error("Faltan datos del viaje o del usuario");
     const canBuy = await isFitToBuy(user_id, trip_id);
@@ -139,7 +139,7 @@ const purchaseTrip = async (req, res) => {
         .status(401)
         .json({ error: "No estas autorizado para comprar este viaje" });
     //vincular viaje
-    const trip = await assingTrip({ user_id, trip_id });
+    const trip = await assingTrip({ user_id, trip_id, capacity });
     res.json({ trip_purchased: trip });
   } catch (e) {
     res.status(400).json({ error: `${e.message}` });

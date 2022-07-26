@@ -55,8 +55,8 @@ export default function Profile() {
               //Si la reseña no existe, ya que el usuario aún no lo reseño, entonces devuelven undefined (esto es importante en Review)
               user.trips.map((t, i) => { //recorro los viajes del usuario y voy renderizandolos en ese div junto a Review
               return <div id="viajes">
-                        <span>{t.origin} - {t.destination}</span>
-                        <Review user_id={user.user_id} trip_id={t.trip_id} driver_id={t.driver_id} actualRating={reviews[i]?.rating} actualComment={reviews[i]?.comment } />
+                        <span>{t.origin} - {t.destination} </span>
+                        {t.isAvailable ? <button onClick={() => 'cancelar viaje'}>CANCELAR</button> : <Review user_id={user.user_id} trip_id={t.trip_id} driver_id={t.driver_id} actualRating={reviews[i]?.rating} actualComment={reviews[i]?.comment }/>}
                     </div>
               })} 
               </div> 
