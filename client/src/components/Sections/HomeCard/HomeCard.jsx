@@ -34,7 +34,7 @@ const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin
                         </div>
                     </div>
                 <div className={styles.cardtext}>
-                    <p className={styles.titlec}>{origin} a {destination}</p>
+                    <p className={styles.titlec}> De {origin} a {destination}</p>
                     <div className={styles.otherText}>
                         <p>Salida: {start_date}</p>
                         <p>Regreso: {finish_date}</p>
