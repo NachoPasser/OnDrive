@@ -6,12 +6,9 @@ const {
   registerDriver,
   purchaseTrip,
   verifyUser,
-<<<<<<< HEAD
   getDriver,
-=======
   verifyBanStatus,
   getDriverById,
->>>>>>> 8437fe422302b0562b9a975aa27cdc10535ef780
 } = require("../controllers/authController.js");
 const {
   checkUser,

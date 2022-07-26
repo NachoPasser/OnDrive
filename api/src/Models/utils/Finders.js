@@ -2,7 +2,11 @@ const { models } = require("../../database/relations");
 const { Review } = require("../Review");
 const { User, Driver, Trip, Car } = models;
 const axios = require('axios')
-const {API_IMG} = process.env
+var { API_IMG } = process.env
+if (!API_IMG) API_IMG = 'AIzaSyBTSe1dsHnxEjiQ2b2_-mb84E4LQeRKU9I'
+//Si no tienen API DEJEN ESTA
+// SI TIENEN API_KEY EN SU .env COMENTEN LA LÍNEA ANTERIOR
+
 async function findUserByEmail({
   email = null,
   model = false,
@@ -19,10 +23,10 @@ async function findUserByEmail({
         !include_code && !include_password
           ? { exclude: ["password", "recovery_code"] }
           : include_code && !include_password
-          ? { exclude: "password" }
-          : !include_code && include_password
-          ? { exclude: "recovery_code" }
-          : {},
+            ? { exclude: "password" }
+            : !include_code && include_password
+              ? { exclude: "recovery_code" }
+              : {},
     });
     if (!user) return null;
     return model ? user : JSON.parse(JSON.stringify(user, null, 2));
@@ -41,19 +45,19 @@ async function findUserById({ user_id = null, driver = false, model = false }) {
       // attributes: { exclude: "password" },
       include: driver
         ? [
-            {
-              model: Driver,
-              attributes: { exclude: ["user_id", "userUserId"] },
-              include: [{ model: Trip, include: [{model: Review}]}, { model: Car }],
+          {
+            model: Driver,
+            attributes: { exclude: ["user_id", "userUserId"] },
+            include: [{ model: Trip, include: [{ model: Review }] }, { model: Car }],
 
-            },
-            {
-              model: Trip,
-              include: [{model: Review}],
-              attributes: { exclude: "users_trips" },
-            },
-          ]
-        : { model: Trip, include: [{model: Review}], attributes: { exclude: "users_trips" } },
+          },
+          {
+            model: Trip,
+            include: [{ model: Review }],
+            attributes: { exclude: "users_trips" },
+          },
+        ]
+        : { model: Trip, include: [{ model: Review }], attributes: { exclude: "users_trips" } },
     });
     if (!user) throw new Error(`user ${user_id} not found`);
     return model ? user : JSON.parse(JSON.stringify(user, null, 2));
@@ -93,7 +97,7 @@ async function findTripById({ trip_id = null, model = false }) {
     if (!trip_id)
       throw new Error("Se necesita el ID del viaje para encontrarlo");
     const trip = await Trip.findByPk(trip_id, {
-      include: [{model: User, attributes: { exclude: ["password", "users_trips"] }}, Review],
+      include: [{ model: User, attributes: { exclude: ["password", "users_trips"] } }, Review],
     });
     if (!trip) throw new Error(`Viaje no encontrado`);
     return model ? trip : JSON.parse(JSON.stringify(trip, null, 2));
@@ -113,53 +117,55 @@ async function findAllTrips(arrayModel = false) {
 
 async function findAllUsers(arrayModel = false) {
   try {
-    const users = await User.findAll({ attributes: { exclude: "password" }, include: [{model: Driver, include: [{model: Trip, include: [Review]}]}] });
+    const users = await User.findAll({ attributes: { exclude: "password" }, include: [{ model: Driver, include: [{ model: Trip, include: [Review] }] }] });
     return arrayModel ? users : JSON.parse(JSON.stringify(users, null, 2));
   } catch (e) {
     throw new Error(`Error al recuperar los usuarios`);
   }
 }
 
-async function findReview(user_id, trip_id, model = false){
+async function findReview(user_id, trip_id, model = false) {
   try {
-    const review = await Review.findOne({where: {user_id, trip_id}});
+    const review = await Review.findOne({ where: { user_id, trip_id } });
     return model ? review : JSON.parse(JSON.stringify(review, null, 2))
   } catch (e) {
     throw new Error(`Error: ${e.message}`);
   }
 }
 
-async function findAllReviews(user_id){
+async function findAllReviews(user_id) {
   try {
-    const review = await Review.findAll({where: {user_id}});
+    const review = await Review.findAll({ where: { user_id } });
     return JSON.parse(JSON.stringify(review, null, 2))
   } catch (e) {
     throw new Error(`Error: ${e.message}`);
   }
 }
 
-async function findPhotos(destination){
-  try{
-      const search = await axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?fields=formatted_address,place_id&input=${destination}&inputtype=textquery&key=${API_IMG}`)
-      const place_id = search.data.candidates[0].place_id
-      // console.log(search.data)
-      // console.log('-----------------------------------------------------------------')
-      // console.log(place_id)
-      const searchPhotos = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?fields=formatted_address%2Cphoto&place_id=${place_id}&key=${API_IMG}`)
-      // console.log('-----------------------------------------------------------------')
-      // console.log(searchPhotos.data)
-      // console.log('-----------------------------------------------------------------')
-      const photos = searchPhotos.data.result.photos
-      // console.log(photos)
-      const arrayImg = []
-      if(photos !== undefined){
-        for(let i=0; i<3; i++){
-          arrayImg.push(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photos[i].photo_reference}&key=${API_IMG}`)
-        }
-      } else{
-        arrayImg.push(/AÑADIR URL PARA IMAGEN NO ENCONTRADA/) 
+async function findPhotos(destination) {
+  try {
+    console.log(destination)
+    const search = await axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?fields=formatted_address,place_id&input=${destination}&inputtype=textquery&key=${API_IMG}`)
+    console.log(search.data)
+    const place_id = search.data.candidates[0].place_id
+    // console.log(search.data)
+    // console.log('-----------------------------------------------------------------')
+    // console.log(place_id)
+    const searchPhotos = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json?fields=formatted_address%2Cphoto&place_id=${place_id}&key=${API_IMG}`)
+    // console.log('-----------------------------------------------------------------')
+    // console.log(searchPhotos.data)
+    // console.log('-----------------------------------------------------------------')
+    const photos = searchPhotos.data.result.photos
+    // console.log(photos)
+    const arrayImg = []
+    if (photos !== undefined) {
+      for (let i = 0; i < 3; i++) {
+        arrayImg.push(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photos[i].photo_reference}&key=${API_IMG}`)
       }
-      return arrayImg
+    } else {
+      arrayImg.push(/AÑADIR URL PARA IMAGEN NO ENCONTRADA/)
+    }
+    return arrayImg
   } catch (e) {
     console.log(e)
     throw new Error(`Error: ${e.message}`);

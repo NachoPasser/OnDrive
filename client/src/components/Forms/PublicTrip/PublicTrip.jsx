@@ -2,20 +2,20 @@ import { useRef, useState } from 'react';
 import axios from 'axios';
 import InputField from '../../Sections/InputField/InputField';
 import { API_URL } from '../../../config/enviroment';
-import img1 from '../../../assets/HomeCard/L_134003_salta001.jpg'
-import img2 from '../../../assets/HomeCard/Toyota-Corolla-2001.jpg'
-import img3 from '../../../assets/HomeCard/WhatsApp-Image-2021-09-06-at-15.14.27-800x400.jpeg'
+// import img1 from '../../../assets/HomeCard/L_134003_salta001.jpg'
+// import img2 from '../../../assets/HomeCard/Toyota-Corolla-2001.jpg'
+// import img3 from '../../../assets/HomeCard/WhatsApp-Image-2021-09-06-at-15.14.27-800x400.jpeg'
 import './formtrip.css';
 
-import Autocomplete from "react-google-autocomplete";
-import Origin from './Origin';
-import Destiny from './Destiny';
-import Map from '../../Map/map';
-// import { Autocomplete } from '@react-google-maps/api';
-import { Input, PinInputField } from '@chakra-ui/react';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeInput } from '../../../redux/actions/changeInput.js';
-import MapCalculator from './mapCalculator';
+// import Autocomplete from "react-google-autocomplete";
+// import Origin from './Origin';
+// import Destiny from './Destiny';
+// import Map from '../../Map/map';
+// // import { Autocomplete } from '@react-google-maps/api';
+// import { Input, PinInputField } from '@chakra-ui/react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { changeInput } from '../../../redux/actions/changeInput.js';
+// import MapCalculator from './mapCalculator';
 
 export default function PublicTrip({origin, destination, price, distance}) {
     
@@ -66,36 +66,39 @@ export default function PublicTrip({origin, destination, price, distance}) {
         })
     }
 
+    
+
     const handleSubmit= function(e){
         e.preventDefault()
         //LO COMENTO Y NO LO USO PARA NO CONSUMIR LA API DE GOOGLE QUE TIENE USO LIMITADO MEPA
-        // const photos = await axios.get(`${API_URL}/trip/photo/get`, {headers: {
-        // 'destination': infoTrip.destination
-        // }})
+        console.log(infoTrip.dest)
+        const photos = axios.get(`${API_URL}/trip/photo/get`, {headers: {
+        'destination': dest
+        }}).then(resp=>{ 
+            console.log(resp.data[1]) 
+            console.log(resp.data[2])
+            console.log(resp.data)
+            
+            const tripToSave = {
+                ...infoTrip, //CAPACIDAD DISPONIBLE Y FECHAS
+                origin: orig,
+                destination: dest,
+                price: pric,
+                distance: disc,
+                // isAvailable: true, 
+                // driver_id
+                // rating: 0,
+                album: [resp.data[1], resp.data[2]]
+            }
+            console.log("infoTrip desde submit", tripToSave)
 
-        //Nota: no se puede usar async y await desde el front, al menos no desde acá,
-        //sino que hay que crear actions y estados de reducers que se encarguen de realizar
-        //llamados usando axios y guardar datos.
+            axios.post(`${API_URL}/trip`,{trip: tripToSave}, {headers: {
+                Authorization: `Bearer ${window.localStorage.getItem('token')}`
+            }})
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err));
 
-        const tripToSave = {
-            ...infoTrip, //CAPACIDAD DISPONIBLE Y FECHAS
-            orig,
-            dest,
-            disc,
-            pric,
-            // initPoint, //ORIGEN
-            // finishPoint, //DESTINO
-            // price, //PRECIO
-            // distance, //DISTANCIA
-            // rating: 0,
-            // album: [img1, img2, img3]
-        }
-        console.log("infoTrip desde submit", tripToSave)
-        // axios.post(`${API_URL}/trip`,{trip: tripToSave}, {headers: {
-        //     Authorization: `Bearer ${window.localStorage.getItem('token')}`
-        // }})
-        // .then(res => console.log(res.data))
-        // .catch(err => console.log(err));
+        })
     }
 
     return (
