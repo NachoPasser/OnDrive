@@ -5,7 +5,7 @@ export function validateField(value, field) {
   switch(field){
     case 'email':
         if(!value) error = 'Email requerido.'
-        else if(!/^([\da-z_.-]+)@([\da-z.-]+)\.([a-z.]{3})$/.test(value)) error = 'El email introducido es invalido.'
+        else if(!/^([\da-zÀ-ÿ_.-]+)@([\da-z.-]+)\.([a-z.]{3})$/.test(value)) error = 'El email introducido es invalido.'
         break;
     case 'password':
         if(!value) error = 'Contraseña requerida.'
@@ -16,12 +16,23 @@ export function validateField(value, field) {
         break;
     case 'name':
         if(!value) error = 'Nombre requerido.'
-        else if(!/^[A-Z][a-z]{1,15} ?[A-Z]?[a-z]{1,15}$/.test(value)) error = 'El nombre debe estar capitalizado y contener solo letras.'
+        else if(!/^[A-ZÀ-ÿ][a-zÀ-ÿ]{1,15} ?[A-ZÀ-ÿ]?[a-zÀ-ÿ]{1,15}$/.test(value)) error = 'El nombre debe estar capitalizado y contener solo letras.'
         break;
     case 'last_name':
         if(!value) error = 'Apellido requerido.'
-        else if(!/^[A-Z][a-z]{1,34} ?[A-Z]?[a-z]{1,34}$/.test(value)) error = 'El apellido debe estar capitalizado y contener solo letras.'
+        else if(!/^[A-ZÀ-ÿ][a-zÀ-ÿ]{1,34} ?[A-ZÀ-ÿ][a-zÀ-ÿ]{1,34}$/.test(value)) error = 'El apellido debe estar capitalizado y contener solo letras.'
         break;
+    case 'license':
+        if(!value) error = 'Numero de licencia requerido.'
+        else if(!/^[0-9]{7,8}$/.test(value)) error = 'El numero de licencia introducido es invalido.'
+        break;
+    case 'car_insurance':
+        if(!value) error = 'Nombre de compañia de seguro requerido.'
+        else if(!/^[A-ZÀ-ÿ][a-zÀ-ÿ\.]{1,15} ?[A-Za-zÀ-ÿ\.]{0,15}$/.test(value)) error = 'El nombre debe estar capitalizado y contener solo letras.'
+        break;
+    case 'DNI':
+        if(!value) error = 'Numero de DNI requerido.'
+        else if(!/^[0-9]{7,8}$/.test(value)) error = 'El numero de DNI introducido es invalido'
     default:
         break;
     }
