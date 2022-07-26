@@ -64,9 +64,9 @@ export default function Comparador({distance, price, setPrice}){
             }
             {comp_prices.state && prices.length > 0 && prices[0].length && typeof prices[0][0] === "object" &&
             <div>
-                <Prices price={price} setPrice={setPrice} prices={comp_prices.costs} fuels={comp_prices.oils} distance={distance}/>
+                <Prices  prices={comp_prices.costs} fuels={comp_prices.oils} distance={distance}/>
             </div>
-            }
+            }{/*price={price} setPrice={setPrice}*/}
             <div> 
                 { !reload === renderTabla && <Tabla distance={distance} price={price} setPrice={setPrice}/>}
             </div>

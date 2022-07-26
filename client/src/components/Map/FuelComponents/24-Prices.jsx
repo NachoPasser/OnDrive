@@ -32,7 +32,8 @@ export default function Prices({prices, fuels, distance, price, setPrice}){
                     <>{render[0]} = {render[1]}</> : <br />
                 }
             </div>
-            <CostTrip unicFuel={render} distance={distance} price={price} setPrice={setPrice}/>
+            <CostTrip unicFuel={render} distance={distance} price={price} setPrice={setPrice} />
+            {/*  */}
         </div>
     )
 }

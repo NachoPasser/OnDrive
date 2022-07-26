@@ -4,17 +4,17 @@ import { API_URL } from "../../../config/enviroment";
 import { getFuelTable } from "../../../redux/actions/getfuels";
 import Entablador from "./22-Entablador";
 import Selection from "./23-Selection";
-import style from './tabla.module.css'
+import style from './tabla.module.css';
 const axios = require("axios").default;
 
-export default function Tabla({ distance, price, setPrice }) {
+export default function Tabla({ distance, setPrice, price }) {
 
     let result = ""
     let array = useSelector(state => state.prices)
     if (array.length && array[0] !== "Empty") result = array[0]
-    // console.log(result.length)
+    console.log(result)
     let dispatch = useDispatch()
-
+    
     useEffect(() => a())
     function a() { if (result.length < 200) dispatch(getFuelTable(true)) }
 
@@ -71,15 +71,16 @@ export default function Tabla({ distance, price, setPrice }) {
     return (
         <div>
             {!show && !tabla.length && "Cargando últimos precios"}
-            {!show && !submited && <div className={style.Tablas}></div>}
+            {!show && !submited && <div className='Tablas'></div>}
             {submited &&
                 <button className={style.stat} onClick={render}>
                     {show ? "Ocultar " : "Mostrar "} precios del combustible
                 </button>
             }<br></br><br></br>
             {!show && fuels.length > 0 && tabla.length > 0 && result!== "" && typeof result !== "object" && result !=="Empty" && 
-                <Selection fuels={fuels} tabla={tabla} distance={distance} price={price} setPrice={setPrice}/>
+                <Selection fuels={fuels} tabla={tabla} distance={distance}  price={price} setPrice={setPrice} />
             }
+            {/* */}
             {show &&
                 <table>
                     <tbody>

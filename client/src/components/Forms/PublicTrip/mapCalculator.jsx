@@ -22,6 +22,7 @@ import {
 import { useRef, useState } from 'react'
 import Comparador from '../../Map/FuelComponents/18-Comparador'
 import PublicTrip from './PublicTrip'
+import NavBarDrivers from '../../NavBar/navbarDrivers'
 //prueba
 // import usePlacesAutocomplete, {
 //     getGeocode,
@@ -86,6 +87,7 @@ export default function MapCalculator() {
 
     return (
         <div>
+        <NavBarDrivers publicar={false} passenger={false}/>
         <Flex
             position='relative'
             flexDirection='column'

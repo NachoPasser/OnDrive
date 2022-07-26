@@ -11,6 +11,7 @@ import './formtrip.css';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import style from './PublicTrip.module.css'
+import NavBarDrivers from '../../NavBar/navbarDrivers.jsx';
 
 
 // import Autocomplete from "react-google-autocomplete";
@@ -66,6 +67,7 @@ export default function PublicTrip({origin, destination, price, distance}) {
     });
 
     function deshabilitar(){
+    return false
         if(!infoTrip.capacity|| !infoTrip.start_date|| !infoTrip.finish_date|| !orig|| !dest|| !disc|| !pric) return true
         return false
     }
@@ -115,7 +117,6 @@ export default function PublicTrip({origin, destination, price, distance}) {
     }
 
     return (<>
-        
         {
             ban.publish ? <Popup
                 trigger={<button className={style.buttonMsg}> Abrir mensaje </button>}
@@ -153,6 +154,7 @@ export default function PublicTrip({origin, destination, price, distance}) {
             </Popup>
                 :
         <div>
+        {/* <NavBarDrivers publicar={false} passenger={false}/> */}
             <form onSubmit= {(e)=>handleSubmit(e)} method="post" action=''>
 
                 <InputField
@@ -188,11 +190,11 @@ export default function PublicTrip({origin, destination, price, distance}) {
                     onChange={handleChange}
                 />
                 {/* <InputField //ADJUNTADA EN EL MODELO CAR
-                    label="Matrícula"
+                    label="Hora"
                     name="car"
                     type="text"
-                    icon="document"
-                    value={infoTrip.car}
+                    icon='document'
+                    value={infoTrip.time}
                     onChange={handleChange}
                 /> */}
                 <input id='subm' type="submit" disabled={deshabilitar()}/>
