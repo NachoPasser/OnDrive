@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import logo from '../../assets/NavBar/on-logox0.5.png'
 import style from './navbar.module.css'
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export default function NavBar() {
     const history = useHistory()
@@ -9,6 +11,13 @@ export default function NavBar() {
         e.preventDefault();
         window.location.reload()
     }
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => {
+        setShow(false)
+        history.push('/home')
+    };
+    const handleShow = () => setShow(true);
 
     return (
         <ul className={style.nav}>
@@ -22,7 +31,7 @@ export default function NavBar() {
                 <NavLink className={style.register} exact to="/register">Register</NavLink> */}
                 <button className={style.logout} onClick={() => {
                     window.localStorage.clear()
-                    history.push('/home')
+                    handleShow()
                     }}>Cerrar sesión</button>
             </div>
             <div className={style.items}>
@@ -35,6 +44,17 @@ export default function NavBar() {
                 <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/home-passengers">Pasajero</NavLink>
                 </li>
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                    <Modal.Title>Salir</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Estás seguro salir?</Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="warning" onClick={handleClose}>
+                        Salir
+                    </Button>
+                    </Modal.Footer>
+                </Modal>
                 {/* <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/home">Volver al home general</NavLink>
                 </li> */}s

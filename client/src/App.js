@@ -18,6 +18,7 @@ import AddCar from "./components/Forms/AddCar/AddCar";
 import TermsAndConditions from "./components/Terminos/Terminos";
 import PublicTrip from "./components/Forms/PublicTrip/PublicTrip";
 import UserToDriver from "./components/Forms/UserToDriver/UserToDriver";
+import SelectCar from './components/Sections/SelectCars/SelectCars.jsx'
 
 function makePrivate(
   allowed = [],
@@ -83,6 +84,7 @@ function App() {
         "/home",
         <UserToDriver />
       )}
+      {makePrivate(["driverUser"], "/selectCar", "/home", <SelectCar />)}
     </div>
   );
 }

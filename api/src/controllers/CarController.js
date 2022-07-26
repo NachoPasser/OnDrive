@@ -18,14 +18,20 @@ const addCar = async(req, res) => {
     }
 }
 
-const getCars = async(req, res) => {
-    const cars = await Car.findAll({
-        include: Driver
-    });
-    res.json(cars);
-}
+const getCarsById = async (req, res) => {
+    try {
+        const { decoded, user_id } = req.body;
+        const user = user_id
+            ? await findUserById({ user_id, driver: true })
+            : await findUserById({ user_id: decoded.id, driver: true });
+        console.log(user);
+        res.json(user.driver.cars);
+    } catch (e) {
+        res.status(400).json({ error: `${e.message}` });
+    }
+};
 
 module.exports = {
     addCar,
-    getCars
+    getCarsById
 }

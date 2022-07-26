@@ -9,7 +9,29 @@ import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 import styles from './AddCar.module.css';
 
+
+function ControlFeedback(input) {
+    const marcas = ['Toyota', 'Honda', 'Chevrolet', 'Ford', 'Nissan', 'Hyundai', 'Kia', 'Mazda', 'Mercedes-Benz', 'BMW', 'Audi', 'Volkswagen', 'Renault', 'Peugeot', 'Citroen', 'Seat', 'Opel', 'Suzuki', 'Mitsubishi', 'Daihatsu', 'Fiat', 'Volvo', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche']
+    const reg = new RegExp('^[A-Z]{3}-[0-9]{3}$');
+    const regYear = new RegExp('^(20|[1-2][0-9]){2}$');
+    let errors = {};
+    if(!reg.test(input.license_plate)) errors.license_plate = 'Debe ingresar una placa valida';
+    if(!regYear.test(input.year)) errors.year = 'Debe ingresar un año valido';
+    if(!marcas.includes(input.brand)) errors.brand = 'Debe ingresar un marca válido';
+    if(!input.brand) errors.brand = 'Debe ingresar una marca';
+    if(!input.model) errors.model = 'Debe ingresar un modelo';
+    if(!input.year) errors.year = 'Debe ingresar un año';
+    if(!input.license_plate) errors.license_plate = 'Debe ingresar una placa';
+    if(!input.color) errors.color = 'Debe ingresar un color';
+    if(!input.fuel) errors.fuel = 'Debe ingresar un tipo de combustible';
+    if(!input.type) errors.type = 'Debe ingresar un tipo de vehiculo';
+    
+    return errors;
+}
+
+
 function AddCar() {
+    const [errors, setErrors] = useState({});
     const [validated, setValidated] = useState(false);
     const [car, setCar] = useState({
         model: "",
@@ -21,8 +43,13 @@ function AddCar() {
         img: "",
         brand: "",
     });
+
     const handleChange = (event) => {
         setCar({ ...car, [event.target.name]: event.target.value });
+        setErrors(ControlFeedback({
+            ...car,
+            [event.target.name]: event.target.value
+        }));
     }
     
     const handleSubmit = async(event) => {
@@ -31,6 +58,7 @@ function AddCar() {
             event.preventDefault();
             event.stopPropagation();
         }
+        console.log(car.img)
         event.preventDefault();
         await axios.post(`${API_URL}/cars`, {car}, {headers: {
             Authorization: `Bearer ${window.localStorage.getItem('token')}`
@@ -41,7 +69,6 @@ function AddCar() {
     return (
         <div className={styles.formulario}>
             <Card>
-      {/* <Card.Header as="h5">Featured</Card.Header> */}
             <Card.Body>
                 <Card.Title>Formulario para registrar vehículo</Card.Title>
                 <br/>
@@ -54,13 +81,11 @@ function AddCar() {
                         required
                         name='model'
                         type="text"
-                        placeholder="AA-000"
+                        placeholder="308"
                         defaultValue=""
                     />
                     <Form.Control.Feedback>Se ve bien!</Form.Control.Feedback>
-                    <Form.Control.Feedback type="invalid">
-                        Este campo no puede ester vacío.
-                    </Form.Control.Feedback>
+                    {errors.model && <Form.Text className='text-danger'>{errors.model}</Form.Text>}
                     </Form.Group>
                     <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
                     <Form.Label>Marca</Form.Label>
@@ -68,13 +93,13 @@ function AddCar() {
                         required
                         name='brand'
                         type="text"
-                        placeholder="Toyota..."
+                        placeholder="Peugeot"
                         defaultValue=""
                     />
                     <Form.Control.Feedback>Se ve bien!</Form.Control.Feedback>
-                    <Form.Control.Feedback type="invalid">
-                        Este campo no puede ester vacío.
+                    <Form.Control.Feedback type="invalid" tooltip>
                     </Form.Control.Feedback>
+                        {errors.brand && <Form.Text className="text-danger">{errors.brand}</Form.Text>}
                     </Form.Group>
                     <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
                     <Form.Label>Tipo de coche</Form.Label>
@@ -86,10 +111,8 @@ function AddCar() {
                         aria-describedby="inputGroupPrepend"
                         required
                         />
-                        <Form.Control.Feedback type="invalid">
-                        Este campo no puede ester vacío.
-                        </Form.Control.Feedback>
                     </InputGroup>
+                        {errors.type && <Form.Text className="text-danger">{errors.type}</Form.Text>}
                     </Form.Group>
                     <br/><br/><br/><br/>
                 {/* </Row>
@@ -100,27 +123,25 @@ function AddCar() {
                     <Form.Control.Feedback type="invalid">
                         Este campo no puede ester vacío.
                     </Form.Control.Feedback>
+                    {errors.year && <Form.Text className="text-danger">{errors.year}</Form.Text>}
                     </Form.Group>
                     <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
                     <Form.Label>Color</Form.Label>
-                    <Form.Control type="text" placeholder="Rojo" name='color' required />
-                    <Form.Control.Feedback type="invalid">
-                        Este campo no puede ester vacío.
-                    </Form.Control.Feedback>
+                    <Form.Control type="text" placeholder="Gris" name='color' required />
+                    {errors.color && <Form.Text className="text-danger">{errors.color}</Form.Text>}
                     </Form.Group>
                     <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
-                    <Form.Label>Fuel</Form.Label>
-                    <Form.Control type="text" placeholder="Gas" name='fuel' required />
-                    <Form.Control.Feedback type="invalid">
-                        Este campo no puede ester vacío.
-                    </Form.Control.Feedback>
+                    <Form.Label>Combustible</Form.Label>
+                    <Form.Control type="text" placeholder="Gasoil" name='fuel' required />
+                    {errors.fuel && <Form.Text className="text-danger">{errors.fuel}</Form.Text>}
                     </Form.Group>
                     <Form.Group as={Col} md="6" onChange={(e) => handleChange(e)}>
                     <Form.Label>Matrícula</Form.Label>
-                    <Form.Control type="text" placeholder="Gas" name='license_plate' required />
+                    <Form.Control type="text" placeholder="AAA-000" name='license_plate' required />
                     <Form.Control.Feedback type="invalid">
                         Este campo no puede ester vacío.
                     </Form.Control.Feedback>
+                    {errors.license_plate && <Form.Text className="text-danger">{errors.license_plate}</Form.Text>}
                     </Form.Group>
                 </Row>
                 <Form.Group controlId="formFile" className="mb-3" onChange={(e) => handleChange(e)}>

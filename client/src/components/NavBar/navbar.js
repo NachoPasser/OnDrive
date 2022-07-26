@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from '../../assets/NavBar/on-logox0.5.png'
-import style from './navbar.module.css'
+import style from './navbar.module.css';
 
 export default function NavBar() {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return (
         <ul className={style.nav}>
@@ -17,6 +21,7 @@ export default function NavBar() {
                 <NavLink className={style.register} exact to="/register">Registrarse</NavLink>
             </div>
             <div className={style.items}>
+            
                 {/* <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/home-passengers">Passengers</NavLink>
                 </li>
