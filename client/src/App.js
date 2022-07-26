@@ -18,6 +18,8 @@ import AddCar from "./components/Forms/AddCar/AddCar";
 import TermsAndConditions from "./components/Terminos/Terminos";
 import PublicTrip from "./components/Forms/PublicTrip/PublicTrip";
 import UserToDriver from "./components/Forms/UserToDriver/UserToDriver";
+import Help from "./components/Help/Help";
+import AboutUs from "./components/AboutUs/AboutUs";
 
 function makePrivate(
   allowed = [],
@@ -39,6 +41,8 @@ function App() {
     <div className="App">
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/terms&conditions" component={TermsAndConditions} />
+      <Route exact path="/help" component={Help} />
+      <Route exact path="/aboutUs" component={AboutUs} />
       {makePrivate(["admin", "visitor"], "/home", "/home-passengers", <Home />)}
       {makePrivate(
         ["admin", "pageUser", "googleUser"],

@@ -1,16 +1,12 @@
 import React from "react";
 import logo from "../../assets/Logo/onDrive-logo.png";
+import { NavLink } from "react-router-dom";
 
 import style from "./Help.module.css";
 
 export default function Help(){
     return(
         <div>
-            <li className={style.liLogo}>
-                <NavLink className={style.navLink} exact to="/home" onClick={(e) => handleClick(e)}>
-                    <img className={style.logo} src={logo} alt='No se encontró la imagen.' />
-                </NavLink>
-            </li>
             <div>
                 <h1>Equipo de soporte</h1>
                 <img src={logo} alt="logo-onDrive" />
