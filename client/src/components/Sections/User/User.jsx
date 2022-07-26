@@ -32,7 +32,6 @@ export default function User({
         [`${status ? "ban" : "unban"}_email`]: email,
         type: name,
       })
-      .then((res) => alert(res.data.msg));
   };
 
   return (
