@@ -2,12 +2,10 @@ const { findAllUsers, findUserById, findDriverById } = require("../Models/utils/
 const bcrypt = require("bcrypt");
 const {
   isCorrectCredentials,
-  isFitToBuy,
 } = require("../Models/utils/Confirmer");
 const {
   createUser,
   createDriver,
-  assingTrip,
 } = require("../Models/utils/Creations");
 
 const jwt = require("jsonwebtoken");
@@ -130,6 +128,7 @@ const getDriverById = async (req, res) => {
   }
 }
 
+<<<<<<< HEAD
 const purchaseTrip = async (req, res) => {
   try {
     const { user_id, trip_id } = req.body;
@@ -168,6 +167,8 @@ const getDriver = async (req, res) => {
   return res.json(objectWithoutPass)
 }
 
+=======
+>>>>>>> bec0947a2b49296034601608dbe22ee0b481f5b1
 module.exports = {
   registerUser,
   getUsers,
@@ -175,7 +176,6 @@ module.exports = {
   getDriverById,
   registerDriver,
   loginUser,
-  purchaseTrip,
   verifyUser,
   getDriver,
   verifyBanStatus,

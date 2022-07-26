@@ -1,5 +1,5 @@
 const { models } = require("../../database/relations");
-const { findReview } = require("./Finders");
+const { findReview, findTripById } = require("./Finders");
 //models
 const { User, Trip, Driver, Review } = models;
 
@@ -42,14 +42,17 @@ async function updateDriverRating({driver = null}){
       if (!driver) throw new Error("driver missing");
       let rating = 0;
       let reviews = 0;
-      console.log(driver)
+      let tripsReviewed = 0;
+      // console.log(driver)
       for (const trip of driver.trips) { //recorro los viajes en los que el usuario conducio
-            if(trip.rating !== 0){ //si el viaje tiene un rating
-            rating += trip.rating //lo sumo a la suma total
-            reviews++; //sumo +1 a la cantidad de reviews
+            let tripWithReviews = await findTripById({trip_id: trip.dataValues.trip_id})
+            if(tripWithReviews.rating !== 0){ //si el viaje tiene un rating
+            rating += tripWithReviews.rating //lo sumo a la suma total
+            reviews+= tripWithReviews.reviews.length; //sumo +1 a la cantidad de reviews
+            tripsReviewed++;
             }
       }
-      return (rating / reviews).toFixed(1)
+      return [(rating / tripsReviewed).toFixed(1), reviews]
     } catch (e) {
       throw new Error(`${e.message}`);
     }

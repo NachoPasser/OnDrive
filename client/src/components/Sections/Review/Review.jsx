@@ -7,6 +7,7 @@ import './Review.css'
 function Review({user_id, trip_id, driver_id, actualRating, actualComment}) { //actualRating y actualComment me traen el rating y comentario actual de la reseña
     const [rating, setRating] = useState(0)
     const [comment, setComment] = useState('')
+    const [updated, setUpdated] = useState(false)
     useEffect(() => {
       //ACLARACION: Pregunto si son undefined ya que si el usuario no reseño el viaje entonces actualRating y actualComment son undefined
       if(actualRating !== undefined) setRating(actualRating)
@@ -17,9 +18,10 @@ function Review({user_id, trip_id, driver_id, actualRating, actualComment}) { //
 
     const handleSubmit = async () => {
       try {
-        if(actualRating !== undefined){ //si la review existe entonces la actualizo, sino, la creo
+        if(actualRating !== undefined || updated){ //si la review existe entonces la actualizo, sino, la creo
           await axios.put(`${API_URL}/trip/review`, {user_id, trip_id, review: {rating: rating, comment: comment}})
         } else{
+          setUpdated(true)
           await axios.post(`${API_URL}/trip/review`, {user_id, trip_id, review: {rating: rating, comment: comment}})
         }
         await axios.put(`${API_URL}/trip/generalReview`, {trip_id}) 

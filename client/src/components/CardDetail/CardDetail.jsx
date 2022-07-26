@@ -14,7 +14,7 @@ function CardDetail({ id, show, fullscreen, setShow }) {
     const dispatch = useDispatch();
     const trip = useSelector((state) => state.tripById);
     const driver_id = trip.driver_id
-
+    const driver = useSelector(state => state.driverById)
 
     useEffect(() => {
         dispatch(getTripById(id))
@@ -24,8 +24,10 @@ function CardDetail({ id, show, fullscreen, setShow }) {
         dispatch(getDriverById(driver_id))
     }, [driver_id])
 
-    const driver = useSelector(state => state.driverById)
-    console.log(driver)
+    useEffect(() => {
+        console.log(trip)
+    }, [trip])
+
     return (
         <>
             <Modal contentClassName={style.myModal} show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
@@ -33,8 +35,7 @@ function CardDetail({ id, show, fullscreen, setShow }) {
                     <Modal.Title>Modal</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                {  Object.keys(trip).length !== 0 ?
-                    <div>
+                    {Object.keys(trip).length > 0 && Object.keys(driver).length > 0 ?
                         <div className={style.backdet}>
                             <div className={style.titleDetail}>
                                 <h1 className={style.titleY}>{trip.origin} </h1>
@@ -78,7 +79,6 @@ function CardDetail({ id, show, fullscreen, setShow }) {
                                     <p className={style.textDriver}>Rating: {driver.rating}</p>
                                 </div>
                             </div>
-                        </div>
                         </div>
                         :
                         <Spinner animation="grow" />

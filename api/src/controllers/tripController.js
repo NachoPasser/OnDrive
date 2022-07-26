@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 const { createTripAsDriver } = require("../Models/utils/Creations");
 const { createReview, updateReview, updateDriverRating } = require('../Models/utils/Review')
 const { findAllTrips, findTripById, findReview, findAllReviews, findPhotos, findDriverById } = require("../Models/utils/Finders");
 
+=======
+const { createTripAsDriver, assingTrip } = require("../Models/utils/Creations");
+const {createReview, updateReview, updateDriverRating} = require('../Models/utils/Review')
+const { findAllTrips, findTripById, findReview, findAllReviews, findPhotos, findDriverById} = require("../Models/utils/Finders");
+const {isFitToBuy} = require('../Models/utils/Confirmer')
+>>>>>>> bec0947a2b49296034601608dbe22ee0b481f5b1
 const postTrip = async (req, res) => {
   try {
     const { user_id, decoded, trip } = req.body;
@@ -39,6 +46,42 @@ const getPhotosFromDestination = async (req, res) => {
     res.json(photos);
   } catch (e) {
     //response error
+    res.status(400).json({ error: `${e.message}` });
+  }
+}
+
+const purchaseTrip = async (req, res) => {
+  try {
+    const { user_id, trip_id, capacity} = req.body;
+    if (!user_id || !trip_id)
+      throw new Error("Faltan datos del viaje o del usuario");
+    const canBuy = await isFitToBuy(user_id, trip_id);
+    if (!canBuy)
+      return res
+        .status(401)
+        .json({ error: "No estas autorizado para comprar este viaje" });
+    //vincular viaje
+    const trip = await assingTrip({ user_id, trip_id, capacity });
+    res.json({ trip_purchased: trip });
+  } catch (e) {
+    res.status(400).json({ error: `${e.message}` });
+  }
+};
+
+const returnPurchase = async (req, res) => {
+  try {
+    const { user_id, trip_id, capacity} = req.body;
+    if (!user_id || !trip_id)
+      throw new Error("Faltan datos del viaje o del usuario");
+    const canBuy = await isFitToBuy(user_id, trip_id);
+    if (!canBuy)
+      return res
+        .status(401)
+        .json({ error: "No estas autorizado para comprar este viaje" });
+    //vincular viaje
+    const trip = await assingTrip({ user_id, trip_id, capacity });
+    res.json({ trip_purchased: trip });
+  } catch (e) {
     res.status(400).json({ error: `${e.message}` });
   }
 }
@@ -107,12 +150,20 @@ const updateGeneralTripReview = async (req, res) => {
 }
 
 const updateDriverReview = async (req, res) => {
+<<<<<<< HEAD
   try {
     const { driver_id } = req.body
     const driver = await findDriverById({ driver_id, model: true })
     console.log(driver)
     const newRating = await updateDriverRating({ driver })
     await driver.update({ rating: newRating })
+=======
+  try{
+    const {driver_id} = req.body
+    const driver = await findDriverById({driver_id, model:true})
+    const [newRating, amountReviews] = await updateDriverRating({driver})
+    await driver.update({rating: newRating, amountReviews})
+>>>>>>> bec0947a2b49296034601608dbe22ee0b481f5b1
     await driver.save()
     res.json(driver)
   } catch (e) {
@@ -125,6 +176,7 @@ module.exports = {
   postTrip,
   getTrips,
   getTripById,
+  purchaseTrip,
   reviewTrip,
   updateReviewTrip,
   updateGeneralTripReview,

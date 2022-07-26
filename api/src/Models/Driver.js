@@ -17,7 +17,6 @@ const Driver = conn.define(
       type: DataTypes.STRING(45),
       allowNull: false,
     },
-
     ban_publish: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -27,6 +26,11 @@ const Driver = conn.define(
       type: DataTypes.FLOAT,
       allowNull: false,
       defaultValue: 0,
+    },
+    amountReviews: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
     },
     DNI: {
       type: DataTypes.INTEGER,
