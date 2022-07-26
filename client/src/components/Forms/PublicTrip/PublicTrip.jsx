@@ -22,6 +22,13 @@ export default function PublicTrip({origin, destination, price, distance}) {
     let distanceFloat= distance!==''? parseFloat(distance.split(",").join("")):0
     // console.log(distanceFloat, distance)
 
+    const [errors,  setErrors] = useState({
+        tooLowerStartDate: false,
+        tooLowerFinishDate: false,
+        wrongCapacity: false,
+    })
+    console.log(errors)
+
     const [orig, setOrig] = useState()
     const [dest, setDest] = useState()
     const [pric, setPric] = useState()
@@ -65,8 +72,6 @@ export default function PublicTrip({origin, destination, price, distance}) {
             [e.target.name]: e.target.value
         })
     }
-
-    
 
     const handleSubmit= function(e){
         e.preventDefault()

@@ -14,6 +14,9 @@ const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin
         setFullscreen(breakpoint);
         setShow(true);
     }
+
+    if(origin.split(",").length > 1)origin= origin.split(',').slice(0,1)
+    if(destination.split(",").length > 1)destination= destination.split(',').slice(0,1)
     
     const pruebaVotos = 15;
     return (
