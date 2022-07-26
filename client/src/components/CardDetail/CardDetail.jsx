@@ -22,7 +22,7 @@ function CardDetail({id, show, fullscreen, setShow}) {
     if (Object.keys(trip).length && !Object.keys(driver).length){
         dispatch(getDriverById(trip['driver_id']))
     }
-
+    
     if(Object.keys(driver).length) console.log(driver)
 
     return (
@@ -32,7 +32,7 @@ function CardDetail({id, show, fullscreen, setShow}) {
                     <Modal.Title>Modal</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                {  trip.length !== 0 ?
+                {  Object.keys(trip).length !== 0 ?
                     <div>
                         <div className={style.backdet}>
                             <div className={style.titleDetail}>
