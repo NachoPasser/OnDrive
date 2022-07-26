@@ -87,7 +87,7 @@ export default function MapCalculator() {
 
     return (
         <div>
-        <NavBarDrivers publicar={false} passenger={false}/>
+        <NavBarDrivers create={false} passenger={false}/>
         <Flex
             position='relative'
             flexDirection='column'
