@@ -1,14 +1,25 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import logo from '../../assets/NavBar/on-logox0.5.png'
 import style from './navbar.module.css'
 
-export default function NavBar() {
+
+export default function NavBarDrivers() {
+
     const history = useHistory()
+
     const handleClick = (e) => {
         e.preventDefault();
         window.location.reload()
     }
+
+    const handleLogOut = () => {
+        window.localStorage.clear()
+        history.push('/home')
+    }
+
+
 
     return (
         <ul className={style.nav}>
@@ -18,26 +29,18 @@ export default function NavBar() {
                 </NavLink>
             </li>
             <div className={style.buttons}>
-                {/* <NavLink className={style.login} exact to="/login">Login</NavLink>
-                <NavLink className={style.register} exact to="/register">Register</NavLink> */}
-                <button className={style.logout} onClick={() => {
-                    window.localStorage.clear()
-                    history.push('/home')
-                    }}>Cerrar sesión</button>
+                <button className={style.logout} onClick={() => handleLogOut()}>Cerrar sesión</button>
             </div>
             <div className={style.items}>
                 <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/recovery-password">Recuperar contraseña</NavLink>
-                </li>
-                <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/new-password">Cambiar contraseña</NavLink>
-                </li>
-                <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/home-passengers">Pasajero</NavLink>
                 </li>
-                {/* <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/home">Volver al home general</NavLink>
-                </li> */}s
+                <li className={style.li}>
+                    <NavLink className={style.navLink} exact to="/profile">Perfil</NavLink>
+                </li>
+                <li className={style.li}>
+                    <NavLink className={style.navLink} exact to="/public">Publicar viaje</NavLink>
+                </li>
                 <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/help">Ayuda</NavLink>
                 </li>

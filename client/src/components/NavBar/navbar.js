@@ -17,12 +17,6 @@ export default function NavBar() {
                 <NavLink className={style.register} exact to="/register">Registrarse</NavLink>
             </div>
             <div className={style.items}>
-                {/* <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/home-passengers">Passengers</NavLink>
-                </li>
-                <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/home-drivers">Drivers</NavLink>
-                </li> */}
                 <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/help">Ayuda</NavLink>
                 </li>
