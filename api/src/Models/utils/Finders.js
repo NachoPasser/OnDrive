@@ -3,9 +3,6 @@ const { Review } = require("../Review");
 const { User, Driver, Trip, Car } = models;
 const axios = require('axios')
 var { API_IMG } = process.env
-if (!API_IMG) API_IMG = 'AIzaSyBTSe1dsHnxEjiQ2b2_-mb84E4LQeRKU9I'
-//Si no tienen API DEJEN ESTA
-// SI TIENEN API_KEY EN SU .env COMENTEN LA LÍNEA ANTERIOR
 
 async function findUserByEmail({
   email = null,
