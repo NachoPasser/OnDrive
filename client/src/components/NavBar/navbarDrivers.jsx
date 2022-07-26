@@ -41,12 +41,12 @@ export default function NavBar() {
                 {/* <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/home">Volver al home general</NavLink>
                 </li> */}s
-                {/* <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/community">Item 2</NavLink>
+                <li className={style.li}>
+                    <NavLink className={style.navLink} exact to="/help">Ayuda</NavLink>
                 </li>
                 <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/support">Item 1</NavLink>
-                </li> */}
+                    <NavLink className={style.navLink} exact to="/aboutUs">Nosotros</NavLink>
+                </li>
             </div>
         </ul>
     )

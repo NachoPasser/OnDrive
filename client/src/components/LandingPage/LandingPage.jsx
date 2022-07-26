@@ -3,29 +3,34 @@ import Button from "../Sections/Button/Button";
 import { Link } from "react-router-dom";
 import styles from "./LandingPage.module.css";
 
-import logo from "../../assets/Logo/onDrive-logo.png";
-import dptoImg from "../../assets/Landing/edificios y sombras.png"
+import logo from "../../assets/Landing/edificios y sombras.png";
+
 
 const LandingPage = () => {
     return(
         <div className={styles.MainContainer}>
-            <div className={styles.LogoDesktop}>
-                <img src={logo} alt="logo-onDrive" />
+            <div className={styles.backgroundimag}>
+                <div>
+                    <img src={logo} alt="logo-onDrive" className={styles.LogoDesktop} />
+                </div>
             </div>
             <div className={styles.TextContainer}>
                 <p className={styles.Text}>
-                    We work to improve the way of traveling around the country. Our goal is to connect Drivers and Passengers with the same destination. So they can accompany each other and reduce costs.
+                    Trabajamos para mejorar la forma de viajar por el país. Nuestro objetivo es conectar a Conductores y Pasajeros con un mismo destino, para que puedan acompañarse y reducir gastos. Gracias al uso de vehiculos compartidos, ayudamos al medio ambiente disminuyendo la emision de C02.
+                </p>
+                <p className={styles.Text}>
+                    Por otro lado, ofrecemos la posibilidad a nuestros usuarios de calcular los gastos en combustible, en caso que decidan realizar un viaje por su cuenta, indicando origen, destino, tipo de combustible y consumo de su vehiculo. Mostramos asi tambien un mapa con la mejor ruta posible.
                 </p>
             </div>
             <div className={styles.linkDecoration}>
-                <Link to="/home">
-                    <Button title={"Ir a App"} type={"primary"} size={"lg"} width={"100%"}/>
+                <Link to="/home" className={styles.linkDecoration}>
+                    <Button title={"Ir a App"} type={"primary"} size={"md"} width={"100%"}/>
                 </Link>
             </div>
             <div className={styles.nothing}></div>
             <div className={styles.TextContainer2}>
-                <p className={styles.yellowText}>developed by</p>
-                <p className={styles.Text}>HENRY STUDENTS</p>
+                <p className={styles.yellowText}>desarrollado por</p>
+                <p className={styles.witheText}>HENRYS</p>
             </div>
         </div>
     )
