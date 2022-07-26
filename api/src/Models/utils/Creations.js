@@ -93,9 +93,9 @@ async function createTripAsDriver(user_id, trip = {}) {
 
 
 //ASIGNAR VIAJE A UN PASAJERO
-async function assingTrip({ user_id = null, trip_id = null }) {
+async function assingTrip({ user_id = null, trip_id = null, capacity = null}) {
   try {
-    if (!user_id || !trip_id) throw new Error("user id or trip id missing");
+    if (!user_id || !trip_id || !capacity) throw new Error("user id or trip id or capacity missing");
     //buscar usuario
     const user = await findUserById({ user_id, model: true });
     if (!user) throw new Error("user id invalid or does not exist");
@@ -103,6 +103,9 @@ async function assingTrip({ user_id = null, trip_id = null }) {
     const trip = await findTripById({ trip_id, model: true });
     if (!trip) throw new Error("trip id invalid or does not exist");
     //vincularlos
+    let newCapacity = trip.getDataValue('capacity') - capacity
+    trip.update({capacity: newCapacity, isAvailable: !newCapacity ? false : true})
+    trip.save()
     await user.addTrip(trip);
     return JSON.parse(JSON.stringify(trip, null, 2));
   } catch (e) {

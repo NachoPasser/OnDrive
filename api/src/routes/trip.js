@@ -2,6 +2,7 @@ const {
   postTrip,
   getTrips,
   getTripById,
+  purchaseTrip,
   reviewTrip,
   updateReviewTrip,
   getTripReview,
@@ -19,6 +20,7 @@ router.get("/:id", getTripById);
 router.get("/", getTrips);
 router.get('/photo/get', getPhotosFromDestination)
 router.post("/", getIdFromToken, postTrip);
+router.post("/purchase-trip", purchaseTrip);
 router.post('/review', reviewTrip);
 router.put('/review', updateReviewTrip);
 router.put('/review/driver', updateDriverReview)
