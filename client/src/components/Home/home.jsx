@@ -110,7 +110,7 @@ export default function Home() {
                                                 key={trip.trip_id}
                                                 id={trip.trip_id}
                                                 album={trip.album}
-                                                rating={trip.rating}
+                                                //rating={trip.rating}
                                                 capacity={trip.capacity}
                                                 start_date={trip.start_date}
                                                 finish_date={trip.finish_date}
