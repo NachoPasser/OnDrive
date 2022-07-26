@@ -83,9 +83,9 @@ export default function Profile() {
             return t.reviews.map(r => { //Recorro todas las RESEÑAS del viaje en el que estamos parados (ya que un mismo viaje puede tener muchas reseñas)
               return <div>
                     <span>{t.origin} - {t.destination} </span>
-                    <span>rating: {r.rating} ⭐ </span>
-                    <span>comentario: {r.comment}</span>
-                   </div>
+                    <span>Calificación: {r.rating} ⭐ </span>
+                    <span>Comentario: {r.comment}</span>
+                  </div>
             })
           })}
         </div>

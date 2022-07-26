@@ -34,15 +34,15 @@ const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin
                         </div>
                     </div>
                 <div className={styles.cardtext}>
-                    <p className={styles.titlec}>{origin} to {destination}</p>
+                    <p className={styles.titlec}> De {origin} a {destination}</p>
                     <div className={styles.otherText}>
-                        <p>Start date: {start_date}</p>
-                        <p>Finish date: {finish_date}</p>
-                        <p>Capacity: {capacity}</p>
+                        <p>Salida: {start_date}</p>
+                        <p>Regreso: {finish_date}</p>
+                        <p>Capacidad: {capacity}</p>
                     </div>
                     <div className={styles.UL}>
                         <div className={styles.pricebox}>
-                            <p className={styles.titleprice}>U$ {price} </p>
+                            <p className={styles.titleprice}>AR$ {price} </p>
                         </div>
                     </div>
                     <div className={styles.cardstars}>

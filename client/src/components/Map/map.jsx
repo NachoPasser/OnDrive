@@ -139,7 +139,7 @@ export default function Map() {
 
                     <ButtonGroup>
                         <Button colorScheme='pink' type='submit' onClick={calculateRoute}>
-                            Calculate Route
+                            Calcule su ruta
                         </Button>
                         <IconButton
                             aria-label='center back'
@@ -149,8 +149,8 @@ export default function Map() {
                     </ButtonGroup>
                 </HStack>
                 <HStack spacing={4} mt={4} justifyContent='space-between'>
-                    <div><Text>Distance: {distance} </Text></div>
-                    <div><Text>Duration: {duration} </Text></div>
+                    <div><Text>Distancia: {distance} </Text></div>
+                    <div><Text>Duración: {duration} </Text></div>
                     <IconButton
                         aria-label='center back'
                         icon={<FaLocationArrow />}
