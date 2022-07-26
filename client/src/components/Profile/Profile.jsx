@@ -73,10 +73,10 @@ export default function Profile() {
           {user.driver.trips.length && user.driver.trips.map(t => { //Si el usuario hizo viajes como conductor entonces, recorro esos viajes
             return t.reviews.map(r => { //Recorro todas las RESEÑAS del viaje en el que estamos parados (ya que un mismo viaje puede tener muchas reseñas)
               return <div>
-                    <span>{t.origin} - {t.destination} </span>
-                    <span>Calificación: {r.rating} ⭐ </span>
-                    <span>Comentario: {r.comment}</span>
-                  </div>
+                <span>{t.origin} - {t.destination} </span>
+                <span>Calificación: {r.rating} ⭐ </span>
+                <span>Comentario: {r.comment}</span>
+              </div>
             })
           })}
         </div>
