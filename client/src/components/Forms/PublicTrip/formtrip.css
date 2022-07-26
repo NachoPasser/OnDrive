@@ -1,0 +1,14 @@
+.pac-container {
+    z-index: 1100 !important;
+}
+
+.autoinput {
+    width: 100%;
+    height: 48px;
+    border-radius: 7px;
+    z-index: 1100 !important;
+}
+
+.arrow {
+    font-weight: bold;
+}

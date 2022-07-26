@@ -14,9 +14,12 @@ const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destin
         setFullscreen(breakpoint);
         setShow(true);
     }
+
+    if(origin.split(",").length > 1)origin= origin.split(',').slice(0,1)
+    if(destination.split(",").length > 1)destination= destination.split(',').slice(0,1)
     //console.log(rating)
-    start_date = start_date.slice(0, 10)
-    finish_date = finish_date.slice(0, 10)
+    // start_date = start_date.slice(0, 10)
+    // finish_date = finish_date.slice(0, 10)
     const pruebaVotos = 15;
     return (
         <div className={styles.comp_card}>
@@ -37,8 +40,8 @@ const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destin
                 <div className={styles.cardtext}>
                     <p className={styles.titlec}> De {origin} a {destination}</p>
                     <div className={styles.otherText}>
-                        <p>Salida: {start_date}</p>
-                        <p>Regreso: {finish_date}</p>
+                        <p>Salida: {new Date(start_date).toLocaleDateString()}</p>
+                        <p>Regreso: {new Date(finish_date).toLocaleDateString()}</p>
                         <p>Capacidad: {capacity}</p>
                     </div>
                     <div className={styles.UL}>

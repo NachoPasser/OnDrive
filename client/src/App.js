@@ -18,6 +18,7 @@ import AddCar from "./components/Forms/AddCar/AddCar";
 import TermsAndConditions from "./components/Terminos/Terminos";
 import PublicTrip from "./components/Forms/PublicTrip/PublicTrip";
 import UserToDriver from "./components/Forms/UserToDriver/UserToDriver";
+import MapCalculator from "./components/Forms/PublicTrip/mapCalculator";
 import Help from "./components/Help/Help";
 import AboutUs from "./components/AboutUs/AboutUs";
 
@@ -80,7 +81,7 @@ function App() {
         <Profile />
       )}
       {makePrivate(["driverUser"], "/addCar", "/login", <AddCar />)}
-      {makePrivate(["driverUser", "admin"], "/public", "/home", <PublicTrip />)}
+      {makePrivate(["driverUser", "admin"], "/public", "/home", <MapCalculator />)}
       {makePrivate(
         ["pageUser", "googleUser"],
         "/driver",
