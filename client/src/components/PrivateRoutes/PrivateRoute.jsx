@@ -5,14 +5,14 @@ import Loader from "../Sections/Loader/Loader";
 import Error from "../Sections/Error/Error";
 
 const PrivateRoute = ({ allowed, children, redirect }) => {
-  const { globalBan, verifying, error } = useBan();
+  const { ban, verifying, error } = useBan();
   const { authorized, loading } = useAuthorized({ allowed });
 
   if (error) return <Error />;
 
   if (verifying) return <Loader />;
 
-  if (globalBan) return <Redirect to="/" />;
+  if (ban.global) return <Redirect to="/" />;
 
   if (loading) return <Loader />;
 
