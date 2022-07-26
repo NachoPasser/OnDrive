@@ -8,7 +8,8 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 import styles from './AddCar.module.css';
-
+import Modal from 'react-bootstrap/Modal';
+import { useHistory } from 'react-router-dom';
 
 function ControlFeedback(input) {
     const marcas = ['Toyota', 'Honda', 'Chevrolet', 'Ford', 'Nissan', 'Hyundai', 'Kia', 'Mazda', 'Mercedes-Benz', 'BMW', 'Audi', 'Volkswagen', 'Renault', 'Peugeot', 'Citroen', 'Seat', 'Opel', 'Suzuki', 'Mitsubishi', 'Daihatsu', 'Fiat', 'Volvo', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche', 'Jaguar', 'Jeep', 'Land Rover', 'Dodge', 'Lexus', 'Subaru', 'Maserati', 'Porsche']
@@ -31,7 +32,10 @@ function ControlFeedback(input) {
 
 
 function AddCar() {
+    const navigate = useHistory();
     const [errors, setErrors] = useState({});
+    const [show, setShow] = useState(false);
+
     const [validated, setValidated] = useState(false);
     const [car, setCar] = useState({
         model: "",
@@ -43,6 +47,15 @@ function AddCar() {
         img: "",
         brand: "",
     });
+
+    const handleCloseHome = () => {
+        setShow(false)
+        navigate.push('/home');
+    };
+    const handleClose = () => {
+        setShow(false)
+        navigate.push('/addCar');
+    };
 
     const handleChange = (event) => {
         setCar({ ...car, [event.target.name]: event.target.value });
@@ -62,7 +75,8 @@ function AddCar() {
         event.preventDefault();
         await axios.post(`${API_URL}/cars`, {car}, {headers: {
             Authorization: `Bearer ${window.localStorage.getItem('token')}`
-        }})
+        }}).then(res => setShow(true))
+        .catch(res => console.log(res))
 
         setValidated(true);
     };
@@ -73,7 +87,7 @@ function AddCar() {
                 <Card.Title>Formulario para registrar vehículo</Card.Title>
                 <br/>
                 <Card.Text>
-                <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                <Form validated={validated} onSubmit={handleSubmit}>
                 <Row className="mb-3">
                     <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
                     <Form.Label>Modelo</Form.Label>
@@ -162,6 +176,20 @@ function AddCar() {
                 </Card.Text>
             </Card.Body>
             </Card>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title>Asignado</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Coche creado con éxito!</Modal.Body>
+                <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Agregar otro
+                </Button>
+                <Button variant="primary" onClick={handleCloseHome}>
+                    Inicio
+                </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 }
