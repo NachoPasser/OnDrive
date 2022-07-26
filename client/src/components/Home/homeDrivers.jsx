@@ -16,7 +16,7 @@ import FilterByDestination from "../Filters/filterByDestination";
 import FilterByOrigin from "../Filters/filterByOrigin";
 import SortByRating from "../Sorts/sortByRating";
 import FilterByCapacity from "../Filters/filterByCapacity.jsx";
-import NavBar from "../NavBar/navbarDrivers.jsx";
+import NavBarDrivers from "../NavBar/navbarDrivers.jsx";
 import Fecha from "../Filters/filterByDate.jsx";
 import Paging from "../Paging/Paging.jsx";
 import Map from "../Map/map.jsx"
@@ -62,7 +62,7 @@ export default function Home() {
 
     //handlers
     async function handleBtn() {
-        dispatch(getFilteredTrips({...storeFilters, origin: filters.filterOrg, destination: filters.filterDest}))
+        dispatch(getFilteredTrips({ ...storeFilters, origin: filters.filterOrg, destination: filters.filterDest }))
     }
 
     function renderCalendar() {
@@ -71,9 +71,10 @@ export default function Home() {
     }
 
 
+
     return (
         <div className={style.containerAll}>
-            <NavBar />
+            <NavBarDrivers />
             <div className={style.divisor}>
                 <div className={style.homeIzquierda}>
                     <img id={style.logoBuscaTuRuta} src={buscarTuRuta} alt='No se encontró la imagen.' />

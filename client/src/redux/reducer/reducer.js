@@ -8,16 +8,18 @@ import { GET_FUELTABLE } from '../actions/getfuels.js';
 import { FILTER_TRIPS } from '../actions/getFilteredTrips.js';
 import { GET_USER_BY_ID } from '../actions/getUserById.js';
 import { GET_ALL_REVIEWS } from '../actions/getAllTripReviews.js';
+import { GET_DRIVER_BY_ID } from '../actions/getDriverById.js'
 
 const initialState = {
     trips: [], // trips variables
-    filters: {origin: 'Origen', destination: 'Destino', capacity: 'Capacidad', date: 'Fecha'},
+    filters: { origin: 'Origen', destination: 'Destino', capacity: 'Capacidad', date: 'Fecha' },
     fixedTrips: [], //trips fijos
     users: [],
     tripById: {},
     prices: [], //of fuels
     userById: {},
-    reviews: null
+    reviews: null,
+    driverById: {}
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -47,22 +49,22 @@ const rootReducer = (state = initialState, action) => {
                 reviews: action.payload
             }
 
-        case FILTER_TRIPS: 
+        case FILTER_TRIPS:
             let filteredTrips = state.fixedTrips
-            let {origin, destination, capacity, date} = action.payload
-            if(origin !== 'Origen'){ //origin es false o es un string
-                filteredTrips = filteredTrips.filter(t => t.origin.includes(origin)) 
+            let { origin, destination, capacity, date } = action.payload
+            if (origin !== 'Origen') { //origin es false o es un string
+                filteredTrips = filteredTrips.filter(t => t.origin.includes(origin))
             }
-        
-            if(destination !== 'Destino'){ //destination es false o es un string
-                filteredTrips = filteredTrips.filter(t => t.destination.includes(destination)) 
+
+            if (destination !== 'Destino') { //destination es false o es un string
+                filteredTrips = filteredTrips.filter(t => t.destination.includes(destination))
             }
-            
-            if(capacity !== 'Capacidad'){ //capacidad es false o es un numero
-                filteredTrips = filteredTrips.filter(t => t.capacity === Number(capacity)) 
+
+            if (capacity !== 'Capacidad') { //capacidad es false o es un numero
+                filteredTrips = filteredTrips.filter(t => t.capacity === Number(capacity))
             }
-        
-            if(date !== 'Fecha'){  //date es false o es un objeto Date
+
+            if (date !== 'Fecha') {  //date es false o es un objeto Date
                 filteredTrips = filteredTrips.filter((trip) => new Date(trip.start_date).toDateString() === date.toDateString())
             }
 
@@ -108,6 +110,11 @@ const rootReducer = (state = initialState, action) => {
                 prices: [action.payload] //Va encerrado con corchetes
             };
 
+        case GET_DRIVER_BY_ID:
+            return {
+                ...state,
+                driverById: action.payload
+            }
         default:
             return state
     }
