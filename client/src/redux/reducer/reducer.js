@@ -8,9 +8,7 @@ import { GET_FUELTABLE } from '../actions/getfuels.js';
 import { FILTER_TRIPS } from '../actions/getFilteredTrips.js';
 import { GET_USER_BY_ID } from '../actions/getUserById.js';
 import { GET_ALL_REVIEWS } from '../actions/getAllTripReviews.js';
-// import { GET_DRIVER } from '../actions/getDriverById.js';
-import { CHANGE_INPUT } from '../actions/changeInput.js';
-import { GET_DRIVER_BY_ID } from '../actions/getDriverById.js'
+import { GET_DRIVER_BY_ID } from '../actions/getDriverById.js';
 
 const initialState = {
     trips: [], // trips variables
@@ -21,8 +19,7 @@ const initialState = {
     prices: [], //of fuels
     userById: {},
     reviews: null,
-    driverById: {},
-    input: 0,
+    driverById: {}
 }
 
 const rootReducer = (state = initialState, action) => {

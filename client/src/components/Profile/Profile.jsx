@@ -28,7 +28,6 @@ export default function Profile() {
     <div id="all">
       <div classname={style.pasajero}>
         <NavBarProfile />
-        <h1>Como pasajero</h1>
         <div className={style.top} style={{ color: 'white' }}>
           <div className={style.userData}>
             <h1 className={style.name}>{user.name} {user.last_name}</h1>
@@ -38,6 +37,7 @@ export default function Profile() {
             <img src={photoDefault} alt="not found" className={style.imgprofile} />
           </div>
         </div>
+        <h1>Como pasajero</h1>
         {reviews && user.trips.length //Si reviews existe (ya que se inicializa en null)  y el usuario compro viajes entonces muestro los viajes junto a su reseña actual si la tienen:
           ? <div>
             <h3>Viajes comprados</h3>
@@ -47,11 +47,17 @@ export default function Profile() {
               user.trips.map((t, i) => { //recorro los viajes del usuario y voy renderizandolos en ese div junto a Review
                 return <div id="viajes">
                   <span>{t.origin} - {t.destination}</span>
-                  <Review user_id={user.user_id} trip_id={t.trip_id} driver_id={t.driver_id} actualRating={reviews[i]?.rating} actualComment={reviews[i]?.comment} />
+                  <Review 
+                    user_id={user.user_id}
+                    trip_id={t.trip_id}
+                    driver_id={t.driver_id}
+                    actualRating={reviews[i]?.rating}
+                    actualComment={reviews[i]?.comment}
+                   />
                 </div>
               })}
           </div>
-          : null //si reviews no existe entonces no muestro los viajes del usuario (necesito saber si hizo alguna reseña sí o sí)
+          : <p>No Tiene viajes Todavia</p> //si reviews no existe entonces no muestro los viajes del usuario (necesito saber si hizo alguna reseña sí o sí)
         }
       </div>
       {user.driver //si el usuario es conductor
@@ -74,13 +80,13 @@ export default function Profile() {
             return t.reviews.map(r => { //Recorro todas las RESEÑAS del viaje en el que estamos parados (ya que un mismo viaje puede tener muchas reseñas)
               return <div>
                     <span>{t.origin} - {t.destination} </span>
-                    <span>Calificación: {r.rating} ⭐ </span>
+                    <span>raiting: {r.rating} ⭐ </span>
                     <span>Comentario: {r.comment}</span>
                   </div>
-            })
-          })}
+                })
+              })}
+            </div>
+          : null}
         </div>
-        : null}
-    </div>
   )
 }

@@ -1,0 +1,25 @@
+.principalContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+.titleBox{
+    margin-top: 10%;
+}
+.titleP{
+    color: var(--primary-color);
+}
+.subtitleBox{
+    margin: 1%;
+}
+.subtitle{
+    color: var(--secondary-color);
+}
+.paragraphs{
+    width: 50%;
+}
+.text{
+    color: var(--clear-color);
+    font-size: larger;
+    text-align: center;
+}

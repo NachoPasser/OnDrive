@@ -145,9 +145,7 @@ async function findAllReviews(user_id) {
 
 async function findPhotos(destination) {
   try {
-    console.log(destination)
     const search = await axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?fields=formatted_address,place_id&input=${destination}&inputtype=textquery&key=${API_IMG}`)
-    console.log(search.data)
     const place_id = search.data.candidates[0].place_id
     // console.log(search.data)
     // console.log('-----------------------------------------------------------------')

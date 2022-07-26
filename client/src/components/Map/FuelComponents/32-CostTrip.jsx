@@ -22,7 +22,7 @@ export default function CostTrip({distance, unicFuel, price, setPrice}){
 
     if(result) setPrice(parseFloat(result.toFixed(2)))
 
-    function execute(){
+    function execute() {
         // console.log( unicFuel )
         litres? setResult(((total* distance)/ 100)* parseFloat(unicFuel[1])):
         setResult((distance/ total)* parseFloat(unicFuel[1]))

@@ -1,17 +1,39 @@
-.liLogo {
+.bigContainer{
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.navLink {
-    display: block;
-    background-color: #212734;
-    color: #FED428;
-    padding: 18px 16px;
-    text-decoration: none;
+.titleE{
+    display: flex;
+    margin: 4%;
+    align-items: center;
+    gap: 10px;
 }
-.navLink:hover {
-    background-color: #111;
+.titleTextY{
+    color: var(--primary-color);
 }
-.logo {
-    max-width: 100%;
-    max-height: 100%;
+.logo{
+    height: 90px;
+}
+.subTitleP{
+    color: var(--secondary-color);
+}
+.titleAns{
+    color: var(--primary-color);
+}
+.answer{
+    color: var(--clear-color);
+}
+.Answers{
+    width: 50%;
+}
+.subTitleEmail{
+    color: var(--secondary-color);
+}
+.email{
+    color: var(--secondary-color);
+    text-align: center;
+}
+.boxSubTitleEmail{
+    margin: 4%;
 }

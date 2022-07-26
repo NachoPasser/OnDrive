@@ -17,7 +17,6 @@ const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destin
 
     if(origin.split(",").length > 1)origin= origin.split(',').slice(0,1)
     if(destination.split(",").length > 1)destination= destination.split(',').slice(0,1)
-    
     //console.log(rating)
     // start_date = start_date.slice(0, 10)
     // finish_date = finish_date.slice(0, 10)
