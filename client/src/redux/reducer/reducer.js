@@ -109,22 +109,12 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 prices: [action.payload] //Va encerrado con corchetes
             };
-        // case GET_DRIVER:
-        //     return {
-        //         ...state,
-        //         driverById: action.payload
-        //     };
-        case CHANGE_INPUT:
-            return {
-                ...state,
-                input: action.payload
-            };
 
         case GET_DRIVER_BY_ID:
             return {
                 ...state,
                 driverById: action.payload
-            }
+            };
         default:
             return state
     }

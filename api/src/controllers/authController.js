@@ -128,47 +128,6 @@ const getDriverById = async (req, res) => {
   }
 }
 
-<<<<<<< HEAD
-const purchaseTrip = async (req, res) => {
-  try {
-    const { user_id, trip_id } = req.body;
-    if (!user_id || !trip_id)
-      throw new Error("Faltan datos del viaje o del usuario");
-    const canBuy = await isFitToBuy(user_id, trip_id);
-    if (!canBuy)
-      return res
-        .status(401)
-        .json({ error: "No estas autorizado para comprar este viaje" });
-    //vincular viaje
-    const trip = await assingTrip({ user_id, trip_id });
-    res.json({ trip_purchased: trip });
-  } catch (e) {
-    res.status(400).json({ error: `${e.message}` });
-  }
-};
-
-const getDriver = async (req, res) => {
-
-  const { token } = req.body
-
-  let driver = await Driver.findOne({
-    where: {
-      driver_id: token
-    }
-  })
-  let user_id = driver.dataValues.user_id
-  let user = await User.findOne({
-    where: {
-      user_id,
-    }
-  })
-  let object = user.dataValues
-  let objectWithoutPass = { ...object, password: null }
-  return res.json(objectWithoutPass)
-}
-
-=======
->>>>>>> bec0947a2b49296034601608dbe22ee0b481f5b1
 module.exports = {
   registerUser,
   getUsers,
@@ -177,6 +136,5 @@ module.exports = {
   registerDriver,
   loginUser,
   verifyUser,
-  getDriver,
   verifyBanStatus,
 };
