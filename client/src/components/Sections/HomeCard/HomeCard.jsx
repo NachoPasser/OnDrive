@@ -14,8 +14,7 @@ const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin
         setFullscreen(breakpoint);
         setShow(true);
     }
-    start_date = start_date.slice(0, 10)
-    finish_date = finish_date.slice(0, 10)
+    
     const pruebaVotos = 15;
     return (
         <div className={styles.comp_card}>
@@ -36,8 +35,8 @@ const HomeCard = ({ id, rating, price, capacity, start_date, finish_date, origin
                 <div className={styles.cardtext}>
                     <p className={styles.titlec}> De {origin} a {destination}</p>
                     <div className={styles.otherText}>
-                        <p>Salida: {start_date}</p>
-                        <p>Regreso: {finish_date}</p>
+                        <p>Salida: {new Date(start_date).toLocaleDateString()}</p>
+                        <p>Regreso: {new Date(finish_date).toLocaleDateString()}</p>
                         <p>Capacidad: {capacity}</p>
                     </div>
                     <div className={styles.UL}>

@@ -42,8 +42,8 @@ function CardDetail({id, show, fullscreen, setShow}) {
                             </div>
                             <div className={style.propsDetail}>
                                 <div className={style.textDetail}>
-                                    <h2 className={style.h2Det}>Salida: {trip.start_date}</h2>
-                                    <h2 className={style.h2Det}>Regreso: {trip.finish_date}</h2>
+                                    <h2 className={style.h2Det}>Salida: {new Date(trip.start_date).toLocaleDateString()}</h2>
+                                    <h2 className={style.h2Det}>Regreso: {new Date(trip.finish_date).toLocaleDateString()}</h2>
                                     <h2 className={style.h2Det}>Capacidad: {trip.capacity}</h2>
                                     <h2 className={style.h2Det}>Auto: {trip.marca}</h2>
                                 </div>
