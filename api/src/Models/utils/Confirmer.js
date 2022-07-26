@@ -20,18 +20,20 @@ async function isADriver(user_id) {
 //verificar credenciales
 async function isCorrectCredentials(email = null, password = null) {
   try {
-    if (!email) throw new Error("invalid credentials, missing email");
+    if (!email) throw new Error("Error al comprobar credenciales, falta mail");
     const user = await User.findOne({ where: { email } });
-
     if (!user) return [false, null];
     const passwordHashed = user.password;
 
+    if(password && !passwordHashed) {
+      throw new Error('Mail registrado con Google, logueese con Google.')
+    }
     if (!passwordHashed) return [true, user, "googleUser"];
 
     const valid = await bcrypt.compare(password, passwordHashed);
     return valid ? [true, user, "pageUser"] : [false, null];
   } catch (e) {
-    throw new Error("Error al comprobar credenciales");
+    throw new Error(e.message)
   }
 }
 
