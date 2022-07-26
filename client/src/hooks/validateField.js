@@ -20,7 +20,7 @@ export function validateField(value, field) {
         break;
     case 'last_name':
         if(!value) error = 'Apellido requerido.'
-        else if(!/^[A-ZÀ-ÿ][a-zÀ-ÿ]{1,34} ?[A-ZÀ-ÿ][a-zÀ-ÿ]{1,34}$/.test(value)) error = 'El apellido debe estar capitalizado y contener solo letras.'
+        else if(!/^[A-ZÀ-ÿ][a-zÀ-ÿ]{1,34} ?[A-ZÀ-ÿ]?[a-zÀ-ÿ]{1,34}$/.test(value)) error = 'El apellido debe estar capitalizado y contener solo letras.'
         break;
     case 'license':
         if(!value) error = 'Numero de licencia requerido.'
