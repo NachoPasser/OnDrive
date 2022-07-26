@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
+import { useBan } from '../../../hooks/useBan.js'
 import axios from 'axios';
 import InputField from '../../Sections/InputField/InputField';
 import { API_URL } from '../../../config/enviroment';
@@ -6,6 +7,11 @@ import { API_URL } from '../../../config/enviroment';
 // import img2 from '../../../assets/HomeCard/Toyota-Corolla-2001.jpg'
 // import img3 from '../../../assets/HomeCard/WhatsApp-Image-2021-09-06-at-15.14.27-800x400.jpeg'
 import './formtrip.css';
+//pop up
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import style from './PublicTrip.module.css'
+
 
 // import Autocomplete from "react-google-autocomplete";
 // import Origin from './Origin';
@@ -18,6 +24,8 @@ import './formtrip.css';
 // import MapCalculator from './mapCalculator';
 
 export default function PublicTrip({origin, destination, price, distance}) {
+    
+    const { ban, verifying, error } = useBan();
     
     let distanceFloat= distance!==''? parseFloat(distance.split(",").join("")):0
     // console.log(distanceFloat, distance)
@@ -106,7 +114,44 @@ export default function PublicTrip({origin, destination, price, distance}) {
         })
     }
 
-    return (
+    return (<>
+        
+        {
+            ban.publish ? <Popup
+                trigger={<button className={style.buttonMsg}> Abrir mensaje </button>}
+                modal
+                nested
+            >
+                {close => (
+                    <div className={style.modal}>
+                        <button className={style.close} onClick={close}>
+                            &times;
+                        </button>
+                        <div className={style.header}> ESTAS BANEADO </div>
+                        <div className={style.content}>
+                            {' '}
+                            No podes publicar viajes
+                        </div>
+                        <div className={style.actions}>
+                            <Popup
+                                position="top center"
+                                nested
+                            >
+                            </Popup>
+                            <button
+                                className={style.buttonClose}
+                                onClick={() => {
+                                    console.log('modal closed ');
+                                    close();
+                                }}
+                            >
+                                cerrar mensaje
+                            </button>
+                        </div>
+                    </div>
+                )}
+            </Popup>
+                :
         <div>
             <form onSubmit= {(e)=>handleSubmit(e)} method="post" action=''>
 
@@ -153,5 +198,7 @@ export default function PublicTrip({origin, destination, price, distance}) {
                 <input id='subm' type="submit" disabled={deshabilitar()}/>
             </form>
         </div>
+        }
+        </>
     )
 }

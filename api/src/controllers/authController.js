@@ -122,8 +122,8 @@ const getUserById = async (req, res) => {
 
 const getDriverById = async (req, res) => {
   try {
-    const { driver_id } = req.headers['user_id']
-    const driver = findDriverById({ driver_id })
+    const driver_id = req.headers['user_id']
+    const driver = await findDriverById({ driver_id })
     res.json(driver);
   } catch (e) {
     res.status(400).json({ error: `${e.message}` });

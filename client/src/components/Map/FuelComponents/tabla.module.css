@@ -1,39 +1,47 @@
-.header{
+.header {
     background-color: royalblue;
 }
 
-.body{
+.body {
     background-color: grey;
 }
 
-.header, .body{
+.header,
+.body {
     color: black;
 }
-input{
+
+input {
     width: 200px;
 }
-button{
+
+.button {
     width: 208px;
 }
 
-.valid{
+.valid {
     border: 1px solid greenyellow;
 }
-.error{
+
+.error {
     border: 1px solid red;
 }
-.leyenda-error{
+
+.leyendaError {
     color: red;
     margin: 0px;
     padding: 0px;
 }
-.go{
+
+.go {
     color: orange;
 }
-.notgo{
+
+.notgo {
     color: gray;
     background-color: rgb(38, 35, 50);
 }
+
 /* button{
     background-color: rgb(100, 60, 100);
 } */

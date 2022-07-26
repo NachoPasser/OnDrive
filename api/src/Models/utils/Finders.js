@@ -88,6 +88,7 @@ async function findDriverById({ driver_id = null, model = false }) {
     if (!driver) throw new Error(`driver ${driver_id} not found`);
     return model ? driver : JSON.parse(JSON.stringify(driver, null, 2));
   } catch (e) {
+    console.log(e)
     throw new Error(`Error al intentar recuperar el conductor`);
   }
 }

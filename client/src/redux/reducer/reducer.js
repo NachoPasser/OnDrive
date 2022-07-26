@@ -8,8 +8,9 @@ import { GET_FUELTABLE } from '../actions/getfuels.js';
 import { FILTER_TRIPS } from '../actions/getFilteredTrips.js';
 import { GET_USER_BY_ID } from '../actions/getUserById.js';
 import { GET_ALL_REVIEWS } from '../actions/getAllTripReviews.js';
-import { GET_DRIVER } from '../actions/getDriverById.js';
+// import { GET_DRIVER } from '../actions/getDriverById.js';
 import { CHANGE_INPUT } from '../actions/changeInput.js';
+import { GET_DRIVER_BY_ID } from '../actions/getDriverById.js'
 
 const initialState = {
     trips: [], // trips variables
@@ -111,17 +112,22 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 prices: [action.payload] //Va encerrado con corchetes
             };
-        case GET_DRIVER:
-            return {
-                ...state,
-                driverById: action.payload
-            };
+        // case GET_DRIVER:
+        //     return {
+        //         ...state,
+        //         driverById: action.payload
+        //     };
         case CHANGE_INPUT:
             return {
                 ...state,
                 input: action.payload
             };
 
+        case GET_DRIVER_BY_ID:
+            return {
+                ...state,
+                driverById: action.payload
+            }
         default:
             return state
     }
