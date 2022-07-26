@@ -1,57 +1,72 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import InputField from "../../Sections/InputField/InputField";
+import { useHistory } from 'react-router-dom';
 import { API_URL } from "../../../config/enviroment";
+import { useField } from "../../../hooks/useInputField";
+import Button from '../../Sections/Button/Button';
+import styles from './UserToDriver.module.css'
 
 export default function UserToDriver(){
-    const [driver, setDriver] = useState({
-        license: "",
-        driving_permit: "",
-        dni: "",
-    });
+    const history = useHistory()
+    const [disable, setDisable] = useState(true)
+    const license = useField({type: "text", field: 'license'});
+    const car_insurance = useField({type: "text", field: 'car_insurance'});
+    const DNI = useField({type: 'text', field: 'DNI'})
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(driver);
-        await axios.post(`${API_URL}/auth/register-driver`, {driver}, {headers: {
+        const Submit = {
+            license: license.value,
+            car_insurance: car_insurance.value,
+            DNI: DNI.value
+          }
+        console.log(Submit)
+        axios.post(`${API_URL}/auth/register-driver`, {driver: Submit}, {headers: {
             Authorization: `Bearer ${window.localStorage.getItem('token')}`
         }})
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err.response));
-    }
-    const handleChange = (e) => {
-        setDriver({
-            ...driver,
-            [e.target.name]: e.target.value
+        .then(res => {
+            console.log(res.data)
+            history.push('/addCar')
         })
+        .catch(err => console.log(err.response));
     }
+
+    useEffect(() => {
+        let form = [license, car_insurance, DNI]
+        let disable = false
+        
+        for(const field of form){
+        if(!field.value) disable = true
+        if(field.error) disable = true
+        }
+        
+        setDisable(disable)
+    
+      }, [license, car_insurance, DNI])
+
     return (
-        <div>
-            <h1>Registrar Conductor</h1>
-            <form onSubmit={handleSubmit}>
+        <section className={styles.LoginFormContainer}>
+            <h2 className={styles.TitleLogin} >Registrar Conductor</h2>
                 <InputField
+                    {...license}
                     label="Licencia"
                     name="license"
-                    type="text"
-                    value={driver.license}
-                    onChange={handleChange}
+                    placeholder={'Ingresa tu numero de licencia'}
                 />
                 <InputField
-                    label="Permiso de conducir"
-                    name="driving_permit"
-                    type="text"
-                    value={driver.driving_permit}
-                    onChange={handleChange}
+                    {...car_insurance}
+                    label="Seguro del auto"
+                    name="car_insurance"
+                    placeholder={'Ingresa el nombre de la compañia'}
                 />
                 <InputField
+                    {...DNI}
                     label="DNI"
-                    name="dni"
-                    type="text"
-                    value={driver.dni}
-                    onChange={handleChange}
+                    name="DNI"
+                    placeholder={'Ingresa tu DNI'}
                 />
-                <button type="submit">Registrar</button>
-            </form>
-        </div>
+                <Button disabled={disable} title={"CONVERTIRTE EN CONDUCTOR"} type={"primary"} size={"lg"} width={"Full"} onClick={handleSubmit}/>
+        </section>
     )
 }   

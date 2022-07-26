@@ -1,20 +1,20 @@
 import { Redirect } from "react-router-dom";
 import { useAuthorized } from "../../hooks/useAuthorized";
 import { useBan } from "../../hooks/useBan";
+import Loader from "../Sections/Loader/Loader";
+import Error from "../Sections/Error/Error";
 
 const PrivateRoute = ({ allowed, children, redirect }) => {
-  const { globalBan, verifying } = useBan();
+  const { globalBan, verifying, error } = useBan();
   const { authorized, loading } = useAuthorized({ allowed });
-  //false
-  if (verifying) return null;
+
+  if (error) return <Error />;
+
+  if (verifying) return <Loader />;
+
   if (globalBan) return <Redirect to="/" />;
 
-  if (loading)
-    return (
-      <h1 style={{ backgroundColor: "red", color: "white" }}>
-       ESTO SERIA EL LOADER
-      </h1>// ESTE H1 deberia ser un LOADER(SPINNER DE CARGA)
-    );
+  if (loading) return <Loader />;
 
   return (
     <div>{authorized ? children : <Redirect to={redirect}></Redirect>}</div>
