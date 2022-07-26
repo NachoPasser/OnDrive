@@ -1,11 +1,12 @@
-.top{
+.top {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin-top: 7%;
     margin-bottom: 3%;
     justify-items: center;
 }
-.profileImg{
+
+.profileImg {
     display: flex;
     background-color: var(--secondary-color);
     height: 150px;
@@ -15,24 +16,30 @@
     align-items: center;
 
 }
-.profileImg > .imgprofile{
+
+.profileImg>.imgprofile {
     height: 90%;
     width: 90%;
     border-radius: 50%;
-    
+
 }
-.name{
+
+.name {
     color: var(--primary-color);
 }
-.mail{
+
+.mail {
     color: var(--secondary-color);
 }
-.userData{
+
+.userData {
     grid-column: 2/2;
 }
+
 .liLogo {
     display: flex;
 }
+
 .navLink {
     display: block;
     background-color: #212734;
@@ -40,14 +47,17 @@
     padding: 18px 16px;
     text-decoration: none;
 }
+
 .navLink:hover {
     background-color: #111;
 }
+
 .logo {
     max-width: 100%;
     max-height: 100%;
 }
-.starsBox{
+
+.starsBox {
     display: flex;
     background-color: #b4b4b469;
     gap: 30px;
@@ -59,17 +69,39 @@
     border-radius: 20px;
     text-decoration: none;
 }
+
 .starsBox:hover {
     background-color: #b4b4b43a;
 }
-.rating{
+
+.rating {
     color: var(--primary-color);
     text-decoration: none;
 }
-.vots{
+
+.vots {
     display: flex;
     gap: 10px;
 }
-Link{
+
+Link {
     text-decoration: none;
 }
+
+span,
+h1 {
+    color: aliceblue;
+}
+
+h3 {
+    color: var(--primary-color);
+}
+
+#pasajero {
+    display: flex;
+    flex-direction: column;
+}
+
+/* #viajes{
+     display: flex;
+ } */

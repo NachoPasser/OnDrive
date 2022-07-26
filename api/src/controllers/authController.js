@@ -91,7 +91,7 @@ const verifyBanStatus = async (req, res) => {
     const status_purchase = user.ban_purchase;
     const status_publish = user.driver ? user.driver.ban_publish : false;
 
-    res.json({ type: decoded.type, id: decoded.id, status, status_purchase, status_publish});
+    res.json({ type: decoded.type, id: decoded.id, status, status_purchase, status_publish });
   } catch (e) {
     res.status(498).json({ type: "visitor" });
   }
@@ -120,8 +120,8 @@ const getUserById = async (req, res) => {
 
 const getDriverById = async (req, res) => {
   try {
-    const { driver_id } = req.headers['user_id']
-    const driver = findDriverById({driver_id})
+    const driver_id = req.headers['user_id']
+    const driver = await findDriverById({ driver_id })
     res.json(driver);
   } catch (e) {
     res.status(400).json({ error: `${e.message}` });
