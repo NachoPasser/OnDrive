@@ -101,7 +101,7 @@ export default function Map() {
                     }}
                     onLoad={map => setMap(map)}
                 >
-                    <Marker position={center} />
+                    {/* <Marker position={center} /> */}
                     {directionsResponse && (
                         <DirectionsRenderer directions={directionsResponse} />
                     )}
@@ -129,7 +129,7 @@ export default function Map() {
                     </Box>
                     <Box flexGrow={1}>
                         <Autocomplete>
-                            <Input
+                            <Input color="red"
                                 type='text' width="365px"
                                 placeholder='Destination'
                                 ref={destiantionRef}

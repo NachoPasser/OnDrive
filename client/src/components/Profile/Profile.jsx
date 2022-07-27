@@ -20,7 +20,7 @@ export default function Profile() {
     dispatch(getUserById(localStorage.getItem('token')))
     //despacho una accion que me devuelve el perfil del usuario
   }, [])
-  
+
   useEffect(() => {
     if (user.hasOwnProperty('name')) dispatch(getAllTripsReviews(user.user_id))
     //despacho una accion que me devuelve TODAS LAS RESEÑAS QUE HIZO EL USUARIO

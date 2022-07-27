@@ -9,6 +9,8 @@ const {
 } = require("../Models/utils/Creations");
 
 const jwt = require("jsonwebtoken");
+const { Driver } = require("../Models/Driver");
+const { User } = require("../Models/User");
 const { SECRET_KEY } = process.env;
 
 const registerUser = async (req, res) => {

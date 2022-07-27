@@ -37,11 +37,12 @@ export default function Home() {
         filterDest: ''
     })
 
+
     const [sorters, setSorters] = useState({
         sortRating: '',
         sortAlphabetically: ''
     })
-    
+
     //paginado
     const [numberOfPage, setNumberOfPage] = useState(1)
     let maxNumberOfPages = 0
@@ -61,7 +62,7 @@ export default function Home() {
 
     //handlers
     async function handleBtn() {
-        dispatch(getFilteredTrips({...storeFilters, origin: filters.filterOrg, destination: filters.filterDest}))
+        dispatch(getFilteredTrips({ ...storeFilters, origin: filters.filterOrg, destination: filters.filterDest }))
     }
 
     function renderCalendar() {
@@ -69,6 +70,10 @@ export default function Home() {
         else setCalendar(false)
     }
 
+    // const deshabilitar = () => {
+    //     if (filters.filterOrg.length > 0 && filters.filterDest.length > 0) return false
+    //     else return true
+    // }
 
     return (
         <div className={style.containerAll}>
@@ -82,7 +87,25 @@ export default function Home() {
                             <FilterByOrigin filters={filters} setFilters={setFilters} />
                             <img id={style.logoDestino} src={destino} alt='No se encontró la imagen.' />
                             <FilterByDestination filters={filters} setFilters={setFilters} />
-                            <button className={style.buttonSent} onClick={() => handleBtn()}> <img id={style.sent} src={sent} alt='No se encontró la imagen.' /> </button>
+                            {/* <button className={style.buttonSent} onClick={() => handleBtn()} disabled={true}>
+                                <img id={style.sent} src={sent} alt='No se encontró la imagen.' />
+                            </button> */}
+
+                            <div className={style.buttons}>
+                                {
+                                    filters.filterOrg.length > 0 || filters.filterDest.length > 0
+                                        ?
+                                        <a className={style.buttonSent} onClick={() => handleBtn()}>
+                                            <img id={style.sent} src={sent} alt='No se encontró la imagen.' />
+                                        </a>
+                                        :
+                                        <div>
+                                            <a className={style.buttonSentDisabled} href="#">
+                                                <img id={style.sentDisabled} src={sent} alt='No se encontró la imagen.' />
+                                            </a>
+                                        </div>
+                                }
+                            </div>
                         </div>
                         <div className={style.containerFiltros}>
                             <div className={style.filtrosAvanzados}>
