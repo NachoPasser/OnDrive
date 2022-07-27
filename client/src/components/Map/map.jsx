@@ -26,11 +26,13 @@ import { useRef, useState } from 'react'
 // } from "use-places-autocomplete";
 import Comparador from './FuelComponents/18-Comparador';
 
+const {GOOGLE_MAPS_API_KEY} = process.env
+// console.log(GOOGLE_MAPS_API_KEY)
 const center = { lat: -34.60376, lng: -58.38162 }
 
 export default function Map() {
     const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: "AIzaSyDDKqN7npMAhG-jYGX7TOz4waQth923OXc",
+        googleMapsApiKey: 'AIzaSyDDKqN7npMAhG-jYGX7TOz4waQth923OXc',// GOOGLE_MAPS_API_KEY, // 
         libraries: ['places'],
     })
 

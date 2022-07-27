@@ -31,11 +31,12 @@ import { Dates } from './Dates.jsx';
 // } from "use-places-autocomplete";
 // import Comparador from './FuelComponents/18-Comparador';
 
+const {GOOGLE_MAPS_API_KEY} = process.env
 const center = { lat: -34.60376, lng: -58.38162 }
 
 export default function MapCalculator() {
     const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: "AIzaSyDDKqN7npMAhG-jYGX7TOz4waQth923OXc",
+        googleMapsApiKey:"AIzaSyDDKqN7npMAhG-jYGX7TOz4waQth923OXc",// GOOGLE_MAPS_API_KEY,//
         libraries: ['places'],
     })
 

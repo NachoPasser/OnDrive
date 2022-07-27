@@ -31,7 +31,9 @@ import NavBarDrivers from '../../NavBar/navbarDrivers.jsx';
 export default function PublicTrip({origin, destination, price, distance, duration}) {
     
     const { ban, verifying, error } = useBan();
-    let distanceFloat= distance!==''? parseFloat(distance.split(",").join("")):0
+    
+    let distanceFloat
+    if(distance)distanceFloat= distance!==''? parseFloat(distance.split(",").join("")):0
     // console.log(distanceFloat, distance)
     // console.log(price)
     const [errors,  setErrors] = useState({
@@ -49,12 +51,12 @@ export default function PublicTrip({origin, destination, price, distance, durati
 
     let initPoint
     let finishPoint
-    if(origin.current && typeof origin.current==="object" && origin.current.value !== orig) {
+    if(origin && origin.current && typeof origin.current==="object" && origin.current.value !== orig) {
         initPoint= origin['current']['value']
         setOrig(initPoint)
         // console.log("orig", orig)
     }
-    if(destination.current && typeof destination.current==="object" && destination.current.value !== dest) {
+    if(destination && destination.current && typeof destination.current==="object" && destination.current.value !== dest) {
         finishPoint= destination['current']['value']
         setDest(finishPoint)
         // console.log("dest", dest)
@@ -70,7 +72,6 @@ export default function PublicTrip({origin, destination, price, distance, durati
     });
 
     function deshabilitar(){
-    return false
         if(!infoTrip.capacity|| !infoTrip.start_date|| !infoTrip.finish_date|| !orig|| !dest|| !disc|| !pric) return true
         return false
     }
