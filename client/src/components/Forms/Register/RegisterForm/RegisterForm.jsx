@@ -111,10 +111,10 @@ const RegisterForm = () => {
         placeholder={"Vuelve a escribir tu contraseña"}
       />
  
-      {/* <label className={styles.CheckBox} htmlFor="terms">
+      <label className={styles.CheckBox} htmlFor="terms">
         <input type="checkbox" value="Accepted" name="terms" />
-        Acepto los términos y condiciones
-      </label> */}
+        <Link to="/terms&conditions">Acepto los términos y condiciones</Link> 
+      </label>
 
       <Button disabled={disabled} title={"REGISTRARME"} type={"primary"} size={"lg"} width={"Full"} onClick={onSubmit}/>
       <div className={styles.DividerText}>

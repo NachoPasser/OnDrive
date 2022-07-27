@@ -6,34 +6,32 @@ import { getUserById } from '../../redux/actions/getUserById.js'
 
 import { API_URL } from "../../config/enviroment.js";
 
-export default function LoaderMP({ idTrip, price, origin, destination, start, finish }) {
+export default function LoaderMP({ user, idTrip, price, origin, destination, start, finish }) {
 
+    console.log(user)
+    console.log(origin)
     let startDate = new Date(start)
     let finishDate = new Date(finish)
 
     let s = startDate.toLocaleDateString()
     let f = finishDate.toLocaleDateString()
 
-    const dispatch = useDispatch()
-
-    const user = useSelector(state => state.userById)
-    useEffect(() => {
-        dispatch(getUserById(localStorage.getItem('token')))
-    }, [])
     const [datos, setDatos] = useState("")
+    const [comprobant, setComprobant] = useState(false)
 
     const productos = [{
         title: origin + " - " + destination,
         price
     }]
-    console.log(user)
     // let aux;
     // if(Object.keys(user).length){
     //     aux = user.id
     // }
+    let user_id = user.user_id
 
-    useEffect(() => {
-        const dataTrip = [productos, idTrip, user.user_id]
+    // useEffect(() => {
+    if (!comprobant) {
+        const dataTrip = [productos, idTrip, user_id]
         axios
             .post(`${API_URL}/mercadopago`, { dataTrip })
             .then((data) => {
@@ -41,7 +39,9 @@ export default function LoaderMP({ idTrip, price, origin, destination, start, fi
                 console.info('Contenido de data:', data)
             })
             .catch(err => console.error(err))
-    }, [user])
+        setComprobant(true)
+    }
+    // }, [])
 
     return (
         <div>

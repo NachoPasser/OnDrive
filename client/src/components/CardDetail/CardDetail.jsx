@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTripById } from '../../redux/actions/getTripById';
-// import { getUserById } from '../../redux/actions/getUserById';
+import { getUserById } from '../../redux/actions/getUserById';
 import Modal from 'react-bootstrap/Modal';
 import Carousel from 'react-bootstrap/Carousel';
 import style from './CardDetail.module.css'
@@ -12,10 +12,13 @@ import LoaderMP from '../MercadoPago/loaderMP';
 
 function CardDetail({ id, show, fullscreen, setShow }) {
 
+    const [comp, setComp] =useState(false)
+
     const dispatch = useDispatch();
     const trip = useSelector((state) => state.tripById);
     const driver_id = trip.driver_id
     const driver = useSelector(state => state.driverById)
+    const user = useSelector(state => state.userById)
 
     useEffect(() => {
         dispatch(getTripById(id))
@@ -28,6 +31,15 @@ function CardDetail({ id, show, fullscreen, setShow }) {
     useEffect(() => {
         console.log(trip)
     }, [trip])
+    
+    useEffect(() => {
+        dispatch(getUserById(localStorage.getItem('token')))
+    }, [])
+
+    if(!comp && Object.keys(trip).length && Object.keys(user).length && Object.keys(driver).length) setComp(true)
+
+    console.log(user)
+    console.log(trip)
 
     return (
         <>
@@ -84,12 +96,12 @@ function CardDetail({ id, show, fullscreen, setShow }) {
                         :
                         <Spinner animation="grow" />
                     }
+                    {comp ?
+                        <div> <LoaderMP user={user} idTrip={id} start={trip.start_date} finish={trip.finish_date} price={trip.price} origin={trip.origin} destination={trip.destination} /> </div>
+                        : <div>Cargando...</div>
+                    } 
                 </Modal.Body>
             </Modal>
-            {/* {Object.keys(trip).length ?
-                <div> <LoaderMP idTrip={id} start={trip.start_date} finish={trip.finish_date} price={trip.price} origin={trip.origin} destination={trip.destination} /> </div>
-                : <div>Cargando...</div>
-            } */}
         </>
     )
 }

@@ -129,11 +129,13 @@ export default function Home() {
                                 ).map(trip => {
                                     return (
                                         <div className={style.cards} key={trip.trip_id}>
-                                            <HomeCard
+
+                                            {trip.isAvailable ? <HomeCard
                                                 key={trip.trip_id}
                                                 id={trip.trip_id}
+                                                driver_id={trip.driver_id}
                                                 album={trip.album}
-                                                //rating={trip.rating}
+                                                rating={trip.rating}
                                                 capacity={trip.capacity}
                                                 start_date={trip.start_date}
                                                 finish_date={trip.finish_date}
@@ -141,6 +143,7 @@ export default function Home() {
                                                 destination={trip.destination}
                                                 price={trip.price}
                                             />
+                                            :null}
                                         </div>
                                     )
                                 })
