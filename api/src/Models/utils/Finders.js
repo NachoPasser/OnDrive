@@ -2,7 +2,8 @@ const { models } = require("../../database/relations");
 const { Review } = require("../Review");
 const { User, Driver, Trip, Car } = models;
 const axios = require('axios')
-const { API_IMG } = process.env
+var { API_IMG } = process.env
+
 async function findUserByEmail({
   email = null,
   model = false,

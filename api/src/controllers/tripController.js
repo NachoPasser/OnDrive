@@ -1,7 +1,7 @@
 const { createTripAsDriver, assingTrip } = require("../Models/utils/Creations");
-const {createReview, updateReview, updateDriverRating} = require('../Models/utils/Review')
-const { findAllTrips, findTripById, findReview, findAllReviews, findPhotos, findDriverById} = require("../Models/utils/Finders");
-const {isFitToBuy} = require('../Models/utils/Confirmer')
+const { createReview, updateReview, updateDriverRating } = require('../Models/utils/Review')
+const { findAllTrips, findTripById, findReview, findAllReviews, findPhotos, findDriverById } = require("../Models/utils/Finders");
+const { isFitToBuy } = require('../Models/utils/Confirmer')
 const postTrip = async (req, res) => {
   try {
     const { user_id, decoded, trip } = req.body;
@@ -45,7 +45,7 @@ const getPhotosFromDestination = async (req, res) => {
 
 const purchaseTrip = async (req, res) => {
   try {
-    const { user_id, trip_id, capacity} = req.body;
+    const { user_id, trip_id, capacity } = req.body;
     if (!user_id || !trip_id)
       throw new Error("Faltan datos del viaje o del usuario");
     const canBuy = await isFitToBuy(user_id, trip_id);
@@ -63,7 +63,7 @@ const purchaseTrip = async (req, res) => {
 
 const returnPurchase = async (req, res) => {
   try {
-    const { user_id, trip_id, capacity} = req.body;
+    const { user_id, trip_id, capacity } = req.body;
     if (!user_id || !trip_id)
       throw new Error("Faltan datos del viaje o del usuario");
     const canBuy = await isFitToBuy(user_id, trip_id);
@@ -81,10 +81,10 @@ const returnPurchase = async (req, res) => {
 
 //---------------------TODO LO DE ABAJO ES PARA RESEÑAS------------------------
 const reviewTrip = async (req, res) => {
-  try{
-    const {user_id, trip_id, review} = req.body
-    const trip = await createReview({user_id, trip_id, review})
-    res.json({trip_reviewed: trip})
+  try {
+    const { user_id, trip_id, review } = req.body
+    const trip = await createReview({ user_id, trip_id, review })
+    res.json({ trip_reviewed: trip })
   } catch (e) {
     res.status(400).json({ error: `${e.message}` });
   }
@@ -92,7 +92,7 @@ const reviewTrip = async (req, res) => {
 
 
 const getTripReview = async (req, res) => { //no lo estoy usando pero lo dejo acá por si acaso
-  try{
+  try {
     let user_id = req.headers['user_id']
     let trip_id = req.headers['trip_id']
     const new_review = await findReview(user_id, trip_id)
@@ -102,8 +102,8 @@ const getTripReview = async (req, res) => { //no lo estoy usando pero lo dejo ac
   }
 }
 
-const getAllTripsReviews = async(req, res) => {
-  try{
+const getAllTripsReviews = async (req, res) => {
+  try {
     let user_id = req.headers['user_id']
     const allReviews = await findAllReviews(user_id)
     res.json(allReviews)
@@ -113,44 +113,44 @@ const getAllTripsReviews = async(req, res) => {
 }
 
 const updateReviewTrip = async (req, res) => {
-  try{
-    const {user_id, trip_id, review} = req.body
-    const new_review = await updateReview({trip_id, user_id, review})
-    res.json({new_review})
+  try {
+    const { user_id, trip_id, review } = req.body
+    const new_review = await updateReview({ trip_id, user_id, review })
+    res.json({ new_review })
   } catch (e) {
     res.status(400).json({ error: `${e.message}` });
   }
 }
 
 const updateGeneralTripReview = async (req, res) => {
-  try{
-    const {trip_id} = req.body
-    const trip = await findTripById({trip_id, model:true})
+  try {
+    const { trip_id } = req.body
+    const trip = await findTripById({ trip_id, model: true })
     let reviews = JSON.parse(JSON.stringify(trip.getDataValue('reviews'), null, 2)) //obtengo reviews y lo paso a obj, con getDataValue porque trip es un objeto
     let sumOfRatings = reviews[0].rating //inicio la suma de Ratings con la primer review porque puede ser la unica
-    if(reviews.length > 1){
+    if (reviews.length > 1) {
       const initialValue = 0;
       sumOfRatings = reviews.reduce((previousValue, currentValue) => previousValue + currentValue.rating,
         initialValue
       );
     }
-    trip.update({rating: (sumOfRatings/reviews.length).toFixed(1)}) //actualizo el rating del viaje
+    trip.update({ rating: (sumOfRatings / reviews.length).toFixed(1) }) //actualizo el rating del viaje
     trip.save()
     res.json(trip)
-  } catch(e){
+  } catch (e) {
     res.status(400).json({ error: `${e.message}` });
   }
 }
 
 const updateDriverReview = async (req, res) => {
-  try{
-    const {driver_id} = req.body
-    const driver = await findDriverById({driver_id, model:true})
-    const [newRating, amountReviews] = await updateDriverRating({driver})
-    await driver.update({rating: newRating, amountReviews})
+  try {
+    const { driver_id } = req.body
+    const driver = await findDriverById({ driver_id, model: true })
+    const [newRating, amountReviews] = await updateDriverRating({ driver })
+    await driver.update({ rating: newRating, amountReviews })
     await driver.save()
     res.json(driver)
-  } catch(e){
+  } catch (e) {
     res.status(400).json({ error: `${e.message}` });
   }
 }

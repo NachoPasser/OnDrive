@@ -5,7 +5,7 @@ import logo from '../../assets/NavBar/on-logox0.5.png'
 import style from './navbar.module.css'
 
 
-export default function NavBarDrivers() {
+export default function NavBarDrivers({passenger= true, create= true}) {
 
     const history = useHistory()
 
@@ -32,21 +32,24 @@ export default function NavBarDrivers() {
                 <button className={style.logout} onClick={() => handleLogOut()}>Cerrar sesión</button>
             </div>
             <div className={style.items}>
+                { passenger &&
                 <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/home-passengers">Pasajero</NavLink>
-                </li>
-                <li className={style.li}>
+                </li>} 
+                <li className={style.li}> 
                     <NavLink className={style.navLink} exact to="/profile">Perfil</NavLink>
                 </li>
+                { create &&
                 <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/public">Publicar viaje</NavLink>
                 </li>
+                }
                 <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/help">Ayuda</NavLink>
-                </li>
+                </li>{
                 <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/aboutUs">Nosotros</NavLink>
-                </li>
+                </li>}
             </div>
         </ul>
     )

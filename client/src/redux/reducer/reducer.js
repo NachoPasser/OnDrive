@@ -8,7 +8,7 @@ import { GET_FUELTABLE } from '../actions/getfuels.js';
 import { FILTER_TRIPS } from '../actions/getFilteredTrips.js';
 import { GET_USER_BY_ID } from '../actions/getUserById.js';
 import { GET_ALL_REVIEWS } from '../actions/getAllTripReviews.js';
-import { GET_DRIVER_BY_ID } from '../actions/getDriverById.js'
+import { GET_DRIVER_BY_ID } from '../actions/getDriverById.js';
 
 const initialState = {
     trips: [], // trips variables
@@ -114,7 +114,7 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 driverById: action.payload
-            }
+            };
         default:
             return state
     }

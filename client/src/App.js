@@ -18,6 +18,7 @@ import AddCar from "./components/Forms/AddCar/AddCar";
 import TermsAndConditions from "./components/Terminos/Terminos";
 import PublicTrip from "./components/Forms/PublicTrip/PublicTrip";
 import UserToDriver from "./components/Forms/UserToDriver/UserToDriver";
+import MapCalculator from "./components/Forms/PublicTrip/mapCalculator";
 import Help from "./components/Help/Help";
 import AboutUs from "./components/AboutUs/AboutUs";
 import NotFound from "./components/NotFound/NotFound";
