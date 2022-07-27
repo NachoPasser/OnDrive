@@ -1,14 +1,25 @@
-import React, { useState } from "react";
-// import { BsStarFill } from 'react-icons/bs'
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styles from './HomeCardProvisional.module.css'
 import Carousel from 'react-bootstrap/Carousel';
 import CardDetail from "../../CardDetail/CardDetail";
-import Spinner from 'react-bootstrap/Spinner'
+// import Spinner from 'react-bootstrap/Spinner'
 import { FaStar } from "react-icons/fa";
+import { getDriverById } from "../../../redux/actions/getDriverById";
 
-const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destination, album }) => {
+const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destination, album, rating, driver_id }) => {
+
+    const dispatch = useDispatch();
+
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
+
+    const driverId = driver_id
+    const driver = useSelector(state => state.driverById)
+
+    useEffect(() => {
+        dispatch(getDriverById(driverId))
+    }, [driverId])
 
     function handleShow(breakpoint) {
         setFullscreen(breakpoint);
@@ -20,7 +31,6 @@ const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destin
     //console.log(rating)
     // start_date = start_date.slice(0, 10)
     // finish_date = finish_date.slice(0, 10)
-    const pruebaVotos = 15;
     return (
         <div className={styles.comp_card}>
             <div className={styles.card} onClick={() => handleShow(true)}>
@@ -40,8 +50,8 @@ const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destin
                 <div className={styles.cardtext}>
                     <p className={styles.titlec}> De {origin} a {destination}</p>
                     <div className={styles.otherText}>
-                        <p>Salida: {new Date(start_date).toLocaleDateString()}</p>
-                        <p>Regreso: {new Date(finish_date).toLocaleDateString()}</p>
+                        <p>Salida: {start_date}</p>
+                        <p>Llegada: {finish_date}</p>
                         <p>Capacidad: {capacity}</p>
                     </div>
                     <div className={styles.UL}>
@@ -49,7 +59,7 @@ const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destin
                             <p className={styles.titleprice}>AR$ {price} </p>
                         </div>
                     </div>
-                    {/* <div className={styles.cardstars}>
+                    <div className={styles.cardstars}>
                         <div>
                             {[...Array(5)].map((star, i) => {
                                 const ratingValue = i + 1;
@@ -64,9 +74,9 @@ const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destin
                             )}
                         </div>
                         <div>
-                            <p className={styles.rating}>{rating}/5 - {pruebaVotos} Votos</p>
+                            <p className={styles.rating}>{rating}/5 - {Object.keys(driver).length > 0 ? driver.amountReviews : null} Votos</p>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </div>
             <div>
