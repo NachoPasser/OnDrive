@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import React from "react";
 import Home from "./components/Home/home";
 import "./App.css";
@@ -21,6 +21,7 @@ import UserToDriver from "./components/Forms/UserToDriver/UserToDriver";
 import MapCalculator from "./components/Forms/PublicTrip/mapCalculator";
 import Help from "./components/Help/Help";
 import AboutUs from "./components/AboutUs/AboutUs";
+import NotFound from "./components/NotFound/NotFound";
 
 function makePrivate(
   allowed = [],
@@ -40,54 +41,67 @@ function makePrivate(
 function App() {
   return (
     <div className="App">
-      <Route exact path="/" component={LandingPage} />
-      <Route exact path="/terms&conditions" component={TermsAndConditions} />
-      <Route exact path="/help" component={Help} />
-      <Route exact path="/aboutUs" component={AboutUs} />
-      {makePrivate(["admin", "visitor"], "/home", "/home-passengers", <Home />)}
-      {makePrivate(
-        ["admin", "pageUser", "googleUser"],
-        "/home-passengers",
-        "/home",
-        <HomePassengers />
-      )}
-      {makePrivate(
-        ["admin", "driverUser"],
-        "/home-drivers",
-        "/home",
-        <HomeDrivers />
-      )}
-      {makePrivate(["visitor"], "/register", "/home", <Register />)}
-      {makePrivate(["visitor"], "/login", "/home", <Login />)}
-      {makePrivate(["pageUser"], "/new-password", "/login", <NewPassword />)}
-      {makePrivate(
-        ["visitor"],
-        "/recovery-password",
-        "/home",
-        <RecoveryPassword />
-      )}
-      {makePrivate(
-        ["visitor"],
-        "/loginAdmin",
-        "/home-passengers",
-        <LoginAdmin />
-      )}
-      {makePrivate(["admin"], "/adminPanel", "/loginAdmin", <AdminPanel />)}
-      {/* {makePrivate(true, undefined, true, true, '/trip/:id', '/login', <CardDetail/>)} */}
-      {makePrivate(
-        ["pageUser", "googleUser"],
-        "/profile",
-        "/home-passengers",
-        <Profile />
-      )}
-      {makePrivate(["driverUser"], "/addCar", "/login", <AddCar />)}
-      {makePrivate(["driverUser", "admin"], "/public", "/home", <MapCalculator />)}
-      {makePrivate(
-        ["pageUser", "googleUser"],
-        "/driver",
-        "/home",
-        <UserToDriver />
-      )}
+      <Switch>
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/terms&conditions" component={TermsAndConditions} />
+        <Route exact path="/help" component={Help} />
+        <Route exact path="/aboutUs" component={AboutUs} />
+        {makePrivate(
+          ["admin", "visitor"],
+          "/home",
+          "/home-passengers",
+          <Home />
+        )}
+        {makePrivate(
+          ["admin", "pageUser", "googleUser"],
+          "/home-passengers",
+          "/home",
+          <HomePassengers />
+        )}
+        {makePrivate(
+          ["admin", "driverUser"],
+          "/home-drivers",
+          "/home",
+          <HomeDrivers />
+        )}
+        {makePrivate(["visitor"], "/register", "/home", <Register />)}
+        {makePrivate(["visitor"], "/login", "/home", <Login />)}
+        {makePrivate(["pageUser"], "/new-password", "/login", <NewPassword />)}
+        {makePrivate(
+          ["visitor"],
+          "/recovery-password",
+          "/home",
+          <RecoveryPassword />
+        )}
+        {makePrivate(
+          ["visitor"],
+          "/loginAdmin",
+          "/home-passengers",
+          <LoginAdmin />
+        )}
+        {makePrivate(["admin"], "/adminPanel", "/loginAdmin", <AdminPanel />)}
+        {/* {makePrivate(true, undefined, true, true, '/trip/:id', '/login', <CardDetail/>)} */}
+        {makePrivate(
+          ["pageUser", "googleUser"],
+          "/profile",
+          "/home-passengers",
+          <Profile />
+        )}
+        {makePrivate(["driverUser"], "/addCar", "/login", <AddCar />)}
+        {makePrivate(
+          ["driverUser", "admin"],
+          "/public",
+          "/home",
+          <PublicTrip />
+        )}
+        {makePrivate(
+          ["pageUser", "googleUser"],
+          "/driver",
+          "/home",
+          <UserToDriver />
+        )}
+        <Route path="*" component={NotFound} />
+      </Switch>
     </div>
   );
 }

@@ -1,76 +1,94 @@
-.MainContainer{
+.MainContainer {
   width: 100%;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
   align-items: center;
+  justify-content: space-between;
 }
 
-.LogoDesktop{
+.backgroundimag {
+  margin: 6px;
   width: 100%;
-  margin-top: 2%;
-}
-
-.TextContainer{
- 
-  width: 60%;
-  align-items: center;
-}
-.TextContainer2{
-  align-items: center;
-  margin-top: 2%;
-  margin-bottom: 2%;
-}
-.Text{
-  color: var(--font-title-color);
-  font-size: 20px;
-  text-align: center;
-  display: none;
-}
-.witheText{
-  color: var(--font-title-color);
-  font-size: 18px;
-  text-align: center;
-  display: none;
-}
-.yellowText{
-  color: var(--font-title-yellow-color);
-  font-size: 18px;
-  text-align: center;
-  display: none;
-}
-.linkDecoration{
-  text-decoration: none;
-}
-/* Media queries for large-size devices (Laptop & Desktop) */
-@media screen
-and (min-device-width: 1200px) {
-.ContainerLogin{
-  flex-direction: row;
-  width: 75%;
-  gap: 70px;
-}
-
-.ImageContainer{
-  background: transparent;
-  gap: 20px;
-  justify-content: center;
 }
 
 .LogoDesktop {
-  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.TextContainer {
+  width: 90%;
+  padding: 7px;
+}
+
+.TextContainer2 {
+  align-items: center;
 }
 
 .Text {
-  display: block;
-}
-.witheText {
-  display: block;
-}
-.yellowText {
-  display: block;
+  color: var(--clear-color);
+  text-shadow: 0 0 1px rgb(0, 0, 0);
+  font-size: 14px;
+  text-align: center;
 }
 
-.middleImg{
-  display: block;
+.witheText {
+  color: var(--font-title-color);
+  font-size: 18px;
+  text-align: center;
 }
+
+.yellowText {
+  color: var(--font-title-yellow-color);
+  font-size: 18px;
+  text-align: center;
+}
+
+.linkDecoration {
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 800px) {
+  .LogoDesktop {
+    height: 200px;
+    /* object-fit: contain; */
+  }
+
+  .Text{
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .LogoDesktop {
+    height: 280px;
+    padding: 2px;
+    /* object-fit: scale-down; */
+  }
+
+  .Text{
+    font-size: 16px;
+  }
+
+  .TextContainer{
+    width: 65%;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .LogoDesktop {
+    height: 400px;
+    padding: 2px;
+    /* object-fit: scale-down; */
+  }
+
+  .Text{
+    font-size: 22px;
+  }
+
+  .TextContainer{
+    width: 65%;
+  }
 }
