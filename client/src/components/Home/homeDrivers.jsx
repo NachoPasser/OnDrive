@@ -111,6 +111,7 @@ export default function Home() {
                                             <HomeCard
                                                 key={trip.trip_id}
                                                 id={trip.trip_id}
+                                                driver_id={trip.driver_id}
                                                 album={trip.album}
                                                 rating={trip.rating}
                                                 capacity={trip.capacity}

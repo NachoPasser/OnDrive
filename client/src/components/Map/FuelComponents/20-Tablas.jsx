@@ -71,7 +71,7 @@ export default function Tabla({ distance }) {
     return (
         <div>
             {!show && !tabla.length && "Cargando últimos precios"}
-            {!show && !submited && <div className={style.Tablas}></div>}
+            {!show && !submited && <div className='Tablas'></div>}
             {submited &&
                 <button className={style.stat} onClick={render}>
                     {show ? "Ocultar " : "Mostrar "} precios del combustible
