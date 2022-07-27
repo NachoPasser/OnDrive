@@ -1,6 +1,6 @@
 const { models } = require("../../database/relations");
 const { Review } = require("../Review");
-const { User, Driver, Trip, Car } = models;
+const { User, Driver, Trip, Car, Capacity } = models;
 const axios = require('axios')
 var { API_IMG } = process.env
 
@@ -95,7 +95,7 @@ async function findTripById({ trip_id = null, model = false }) {
     if (!trip_id)
       throw new Error("Se necesita el ID del viaje para encontrarlo");
     const trip = await Trip.findByPk(trip_id, {
-      include: [{ model: User, attributes: { exclude: ["password", "users_trips"] } }, Review],
+      include: [{ model: User, attributes: { exclude: ["password", "users_trips"] } }, Review, Capacity],
     });
     if (!trip) throw new Error(`Viaje no encontrado`);
     return model ? trip : JSON.parse(JSON.stringify(trip, null, 2));

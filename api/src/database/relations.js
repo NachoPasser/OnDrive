@@ -6,6 +6,7 @@ const { Admin } = require("../Models/Admin");
 const { Car } = require("../Models/Car");
 const { Fuel } = require("../Models/Fuel");
 const { Review } = require('../Models/Review')
+const { Capacity} = require('../Models/Capacity')
 const { DataTypes } = require("sequelize");
 
 //relations:
@@ -25,6 +26,16 @@ User.hasOne(Driver, {
 //un viaje tiene muchas reviews
 Trip.hasMany(Review, { foreignKey: 'trip_id'})
 Review.belongsTo(Trip, { foreignKey: 'trip_id'})
+
+//una capacidad usa a un viaje (es decir primero debe existir un viaje para que tenga capacidad)
+//un viaje va alternando su capacidad
+Trip.hasMany(Capacity, { foreignKey: 'trip_id'})
+Capacity.belongsTo(Trip, { foreignKey: 'trip_id'})
+
+//un usuario ocupa cierta capacidad en distintos viajes
+//La capacidad de un usuario le pertenece a ese usuario
+User.hasMany(Capacity, {foreignKey: 'user_id'})
+Capacity.belongsTo(User, {foreignKey: 'user_id'})
 
 //una review pertenece a un usuario (es decir primero debe existir un usuario para que haya una review)
 //un usuario tiene muchas reviews
@@ -55,5 +66,5 @@ Trip.belongsToMany(User, {
 
 //exporto todo los modelos por si se utilizan en otros archivos
 module.exports = {
-  models: { User, Driver, Trip, Admin, Fuel, Car, Review},
+  models: { User, Driver, Trip, Admin, Fuel, Car, Review, Capacity},
 };

@@ -9,7 +9,8 @@ const {
   getAllTripsReviews,
   updateGeneralTripReview,
   getPhotosFromDestination,
-  updateDriverReview
+  updateDriverReview,
+  restorePurchase
 } = require("../controllers/tripController.js");
 
 const { getIdFromToken } = require('../controllers/Middlewares/middleware');
@@ -21,6 +22,7 @@ router.get("/", getTrips);
 router.get('/photo/get', getPhotosFromDestination)
 router.post("/", getIdFromToken, postTrip);
 router.post("/purchase-trip", purchaseTrip);
+router.delete('/restore-trip', restorePurchase)
 router.post('/review', reviewTrip);
 router.put('/review', updateReviewTrip);
 router.put('/review/driver', updateDriverReview)

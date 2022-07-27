@@ -35,7 +35,7 @@ function CardDetail({ id, show, fullscreen, setShow }) {
                     <Modal.Title>Modal</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {Object.keys(trip).length > 0 && Object.keys(driver).length > 0 ?
+                    {Object.keys(trip).length && Object.keys(driver).length ?
                         <div className={style.backdet}>
                             <div className={style.titleDetail}>
                                 <h1 className={style.titleY}>{trip.origin} </h1>
