@@ -3,6 +3,7 @@ import axios from "axios";
 import { API_URL } from "../config/enviroment";
 import { useEffect } from "react";
 
+
 const getBanStatus = (token) => {
   return axios.get(`${API_URL}/auth/verify/status`, {
     headers: {

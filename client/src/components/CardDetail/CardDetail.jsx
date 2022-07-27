@@ -7,6 +7,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import style from './CardDetail.module.css'
 import Spinner from 'react-bootstrap/Spinner';
 import { getDriverById } from '../../redux/actions/getDriverById.js'
+import LoaderMP from '../MercadoPago/loaderMP';
 
 
 function CardDetail({ id, show, fullscreen, setShow }) {
@@ -85,6 +86,10 @@ function CardDetail({ id, show, fullscreen, setShow }) {
                     }
                 </Modal.Body>
             </Modal>
+            {/* {Object.keys(trip).length ?
+                <div> <LoaderMP idTrip={id} start={trip.start_date} finish={trip.finish_date} price={trip.price} origin={trip.origin} destination={trip.destination} /> </div>
+                : <div>Cargando...</div>
+            } */}
         </>
     )
 }
