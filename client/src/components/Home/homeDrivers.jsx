@@ -84,15 +84,27 @@ export default function Home() {
                             <FilterByOrigin filters={filters} setFilters={setFilters} />
                             <img id={style.logoDestino} src={destino} alt='No se encontró la imagen.' />
                             <FilterByDestination filters={filters} setFilters={setFilters} />
-                            <button className={style.buttonSent} onClick={() => handleBtn()}> <img id={style.sent} src={sent} alt='No se encontró la imagen.' /> </button>
+                            <div className={style.buttons}>
+                                {
+                                    filters.filterOrg.length > 0 || filters.filterDest.length > 0
+                                        ?
+                                        <a className={style.buttonSent} onClick={() => handleBtn()}>
+                                            <img id={style.sent} src={sent} alt='No se encontró la imagen.' />
+                                        </a>
+                                        :
+                                        <div>
+                                            <a className={style.buttonSentDisabled} href="#">
+                                                <img id={style.sentDisabled} src={sent} alt='No se encontró la imagen.' />
+                                            </a>
+                                        </div>
+                                }
+                            </div>
                         </div>
                         <div className={style.containerFiltros}>
                             <div className={style.filtrosAvanzados}>
                                 <SortByRating style={style.filtros} sorters={sorters} setSorters={setSorters} />
-                                {/* <SortAlphabetically style={style.filtros} sorters={sorters} setSorters={setSorters} /> */}
                                 <FilterByCapacity style={style.filtros} />
                             </div>
-                            {/* <SearchBar style={style} /> */}
                             <button id={style.calendario} onClick={renderCalendar}>
                                 Filtrar por fecha de partida
                             </button>
