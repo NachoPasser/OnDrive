@@ -23,6 +23,7 @@ import { useRef, useState } from 'react'
 import Comparador from '../../Map/FuelComponents/18-Comparador'
 import PublicTrip from './PublicTrip'
 import NavBarDrivers from '../../NavBar/navbarDrivers'
+import { Dates } from './Dates.jsx';
 //prueba
 // import usePlacesAutocomplete, {
 //     getGeocode,
@@ -193,6 +194,7 @@ export default function MapCalculator() {
                             destination={destiantionRef && destiantionRef}
                             price={price && price}
                             distance={distance && distance}
+                            duration={duration && duration}
                         />
                     </div>
                 </Box>

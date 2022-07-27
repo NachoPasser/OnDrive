@@ -1,7 +1,7 @@
 const { createTripAsDriver, assingTrip } = require("../Models/utils/Creations");
-const { createReview, updateReview, updateDriverRating } = require('../Models/utils/Review')
-const { findAllTrips, findTripById, findReview, findAllReviews, findPhotos, findDriverById } = require("../Models/utils/Finders");
-const { isFitToBuy } = require('../Models/utils/Confirmer')
+const {createReview, updateReview, updateDriverRating} = require('../Models/utils/Review')
+const { findAllTrips, findTripById, findReview, findAllReviews, findPhotos, findDriverById, findUserById} = require("../Models/utils/Finders");
+const {isFitToBuy} = require('../Models/utils/Confirmer')
 const postTrip = async (req, res) => {
   try {
     const { user_id, decoded, trip } = req.body;
@@ -61,19 +61,37 @@ const purchaseTrip = async (req, res) => {
   }
 };
 
-const returnPurchase = async (req, res) => {
+const restorePurchase = async (req, res) => {
   try {
-    const { user_id, trip_id, capacity } = req.body;
+    const {user_id, trip_id} = req.headers;
+    console.log(user_id, 'TRIP', trip_id)
     if (!user_id || !trip_id)
       throw new Error("Faltan datos del viaje o del usuario");
-    const canBuy = await isFitToBuy(user_id, trip_id);
-    if (!canBuy)
-      return res
-        .status(401)
-        .json({ error: "No estas autorizado para comprar este viaje" });
-    //vincular viaje
-    const trip = await assingTrip({ user_id, trip_id, capacity });
-    res.json({ trip_purchased: trip });
+    
+    const trip = await findTripById({trip_id, model:true})
+    let capacities = trip.getDataValue('capacities')
+    let users = trip.getDataValue('users')
+    let number = 0
+    for (const user of users) {
+      if(user.getDataValue('user_id') === user_id){
+          await user.removeTrip(trip)
+          for (const capacity of capacities) {
+            if(capacity.getDataValue('user_id') === user_id){
+                number = capacity.getDataValue('number')
+                await trip.removeCapacity(capacity)
+                break;
+            }
+          }
+          if(number !== 0){
+            break;
+          }
+        }
+    }
+    
+    await trip.update({capacity: trip.getDataValue('capacity') + number, isAvailable: true})
+    await trip.save()
+
+    res.json({ trip_restored: trip });
   } catch (e) {
     res.status(400).json({ error: `${e.message}` });
   }
@@ -161,6 +179,7 @@ module.exports = {
   getTrips,
   getTripById,
   purchaseTrip,
+  restorePurchase,
   reviewTrip,
   updateReviewTrip,
   updateGeneralTripReview,
