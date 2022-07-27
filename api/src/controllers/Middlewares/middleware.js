@@ -4,7 +4,6 @@ const checkUser = async (req, res, next) => {
   try {
     let token = req.headers["authorization"];
     token = token.split(" ")[1];
-
     if (token !== "null") {
       jwt.verify(token, SECRET_KEY, async (err, decoded) => {
         if (err) next(res.status(498).json({ type: "visitor" }));

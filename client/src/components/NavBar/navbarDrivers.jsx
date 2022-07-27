@@ -56,9 +56,12 @@ export default function NavBarDrivers({ passenger = true, create = true, publish
                 <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/help">Ayuda</NavLink>
                 </li>{
-                    <li className={style.li}>
-                        <NavLink className={style.navLink} exact to="/aboutUs">Nosotros</NavLink>
-                    </li>}
+                <li className={style.li}>
+                    <NavLink className={style.navLink} exact to="/aboutUs">Nosotros</NavLink>
+                </li>}
+                <li className={style.li}>
+                        <NavLink className={style.navLink}  exact to="/auth-mp"> Auth MP </NavLink>
+                </li>
             </div>
         </ul>
     )

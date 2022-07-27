@@ -23,6 +23,7 @@ import { useRef, useState } from 'react'
 import Comparador from '../../Map/FuelComponents/18-Comparador'
 import PublicTrip from './PublicTrip'
 import NavBarDrivers from '../../NavBar/navbarDrivers'
+import { Dates } from './Dates.jsx';
 //prueba
 // import usePlacesAutocomplete, {
 //     getGeocode,
@@ -30,11 +31,12 @@ import NavBarDrivers from '../../NavBar/navbarDrivers'
 // } from "use-places-autocomplete";
 // import Comparador from './FuelComponents/18-Comparador';
 
+const {GOOGLE_MAPS_API_KEY} = process.env
 const center = { lat: -34.60376, lng: -58.38162 }
 
 export default function MapCalculator() {
     const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: "AIzaSyDDKqN7npMAhG-jYGX7TOz4waQth923OXc",
+        googleMapsApiKey:"AIzaSyDDKqN7npMAhG-jYGX7TOz4waQth923OXc",// GOOGLE_MAPS_API_KEY,//
         libraries: ['places'],
     })
 
@@ -193,6 +195,7 @@ export default function MapCalculator() {
                             destination={destiantionRef && destiantionRef}
                             price={price && price}
                             distance={distance && distance}
+                            duration={duration && duration}
                         />
                     </div>
                 </Box>

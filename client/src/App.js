@@ -1,4 +1,4 @@
-import { Route} from "react-router-dom";
+import { Route } from "react-router-dom";
 import React from "react";
 import Home from "./components/Home/home";
 import "./App.css";
@@ -16,12 +16,13 @@ import HomeDrivers from "./components/Home/homeDrivers.jsx";
 import Profile from "./components/Profile/Profile";
 import AddCar from "./components/Forms/AddCar/AddCar";
 import TermsAndConditions from "./components/Terminos/Terminos";
-import PublicTrip from "./components/Forms/PublicTrip/PublicTrip";
+// import PublicTrip from "./components/Forms/PublicTrip/PublicTrip";
 import UserToDriver from "./components/Forms/UserToDriver/UserToDriver";
-// import MapCalculator from "./components/Forms/PublicTrip/mapCalculator";
+import MapCalculator from "./components/Forms/PublicTrip/mapCalculator";
 import Help from "./components/Help/Help";
 import AboutUs from "./components/AboutUs/AboutUs";
-// import NotFound from "./components/NotFound/NotFound";
+import NotFound from "./components/NotFound/NotFound";
+import AuthMP from "./components/MercadoPago/AuthMP";
 
 function makePrivate(
   allowed = [],
@@ -46,20 +47,22 @@ function App() {
       <Route exact path="/help" component={Help} />
       <Route exact path="/aboutUs" component={AboutUs} />
       {makePrivate(["admin", "visitor"], "/home", "/home-passengers", <Home />)}
-      {makePrivate(["admin", "pageUser", "googleUser"],"/home-passengers","/home",<HomePassengers />)}
-      {makePrivate(["admin", "driverUser"],"/home-drivers","/home",<HomeDrivers />)}
+      {makePrivate(["admin", "pageUser", "googleUser"], "/home-passengers", "/home", <HomePassengers />)}
+      {makePrivate(["admin", "driverUser"], "/home-drivers", "/home", <HomeDrivers />)}
       {makePrivate(["admin"], "/adminPanel", "/loginAdmin", <AdminPanel />)}
-      {makePrivate(["visitor"],"/recovery-password","/home",<RecoveryPassword />)}
+      {makePrivate(["visitor"], "/recovery-password", "/home", <RecoveryPassword />)}
       {makePrivate(["visitor"], "/login", "/home", <Login />)}
       {makePrivate(["visitor"], "/register", "/home", <Register />)}
-      {makePrivate(["visitor"],"/loginAdmin","/home-passengers",<LoginAdmin />)}
+      {makePrivate(["visitor"], "/loginAdmin", "/home-passengers", <LoginAdmin />)}
       {makePrivate(["pageUser"], "/new-password", "/login", <NewPassword />)}
-      {makePrivate(["pageUser", "googleUser"],"/profile","/home-passengers",<Profile />)}
-      {makePrivate(["pageUser", "googleUser"],"/driver","/home",<UserToDriver />)}
+      {makePrivate(["pageUser", "googleUser"], "/profile", "/home-passengers", <Profile />)}
+      {makePrivate(["pageUser", "googleUser"], "/driver", "/home", <UserToDriver />)}
       {makePrivate(["driverUser"], "/addCar", "/login", <AddCar />)}
-      {makePrivate(["driverUser", "admin"], "/public", "/home", <PublicTrip />)}
+      {/* {makePrivate(["driverUser", "admin"], "/public", "/home", <PublicTrip />)} */}
       {/* <Route path="*" component={NotFound} /> */}
-    </div>
+      {makePrivate(["driverUser", "admin"], "/public", "/home", <MapCalculator />)}
+      {makePrivate(["admin", "driverUser"], "/auth-mp", "/home", <AuthMP />)}
+    </div >
   );
 }
 

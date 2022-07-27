@@ -3,7 +3,7 @@ const { isADriver } = require("./Confirmer");
 const { findUserById, findTripById, findReview } = require("./Finders");
 
 //models
-const { User, Driver, Trip, Car } = models;
+const { User, Driver, Trip, Car, Capacity } = models;
 
 async function createUser(userData = {}) {
   try {
@@ -90,7 +90,19 @@ async function createTripAsDriver(user_id, trip = {}) {
   }
 }
 
+async function createCapacityUsedByUser({ user = null, trip = null, number = null, model = false}){
+  try{
+    if (!user || !trip || !number) throw new Error("user or trip or capacity missing");
+    const capacity = await trip.createCapacity({
+      number,
+      user_id: user.getDataValue('user_id')
+    })
 
+    return model ? capacity : JSON.parse(JSON.stringify(capacity, null, 2));
+  } catch (e) {
+    throw new Error(`${e.message}`);
+  }
+}
 
 //ASIGNAR VIAJE A UN PASAJERO
 async function assingTrip({ user_id = null, trip_id = null, capacity = null}) {
@@ -102,10 +114,16 @@ async function assingTrip({ user_id = null, trip_id = null, capacity = null}) {
     //buscar viaje
     const trip = await findTripById({ trip_id, model: true });
     if (!trip) throw new Error("trip id invalid or does not exist");
-    //vincularlos
+
+    if(trip.getDataValue('capacity') < capacity) throw new Error('capacity is bigger than max allowed')
+    if(capacity <= 0) throw new Error('capacity is lower or equal to 0')
+    //me guardo el cambio de capacidad que hizo el usuario en el historial del viaje
+    await createCapacityUsedByUser({user, trip, number: capacity})
+    //actualizar capacidad del viaje
     let newCapacity = trip.getDataValue('capacity') - capacity
-    trip.update({capacity: newCapacity, isAvailable: !newCapacity ? false : true})
-    trip.save()
+    await trip.update({capacity: newCapacity, isAvailable: !newCapacity ? false : true})
+    await trip.save()
+    //vincularlos
     await user.addTrip(trip);
     return JSON.parse(JSON.stringify(trip, null, 2));
   } catch (e) {

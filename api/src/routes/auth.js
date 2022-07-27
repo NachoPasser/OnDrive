@@ -5,7 +5,7 @@ const {
   getUserById,
   registerDriver,
   verifyUser,
-  getDriver,
+  // getDriver,
   verifyBanStatus,
   getDriverById,
 } = require("../controllers/authController.js");
