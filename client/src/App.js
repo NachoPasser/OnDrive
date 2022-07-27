@@ -41,7 +41,7 @@ function makePrivate(
 function App() {
   return (
     <div className="App">
-      <Switch>
+      {/* <Switch> */}
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/terms&conditions" component={TermsAndConditions} />
         <Route exact path="/help" component={Help} />
@@ -100,8 +100,8 @@ function App() {
           "/home",
           <UserToDriver />
         )}
-        <Route path="*" component={NotFound} />
-      </Switch>
+        {/* <Route path="*" component={NotFound} /> */}
+      {/* </Switch> */}
     </div>
   );
 }
