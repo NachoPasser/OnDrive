@@ -5,10 +5,15 @@ import style from './navbar.module.css'
 
 export default function NavBar() {
 
+    const handleClick = (e) => {
+        e.preventDefault();
+        window.location.reload()
+    }
+
     return (
         <ul className={style.nav}>
             <li className={style.liLogo}>
-                <NavLink className={style.navLink} exact to="/home">
+                <NavLink className={style.navLink} exact to="/home" onClick={(e) => handleClick(e)}>
                     <img className={style.logo} src={logo} alt='No se encontró la imagen.' />
                 </NavLink>
             </li>
