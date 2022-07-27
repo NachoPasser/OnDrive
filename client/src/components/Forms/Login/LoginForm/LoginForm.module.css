@@ -99,26 +99,6 @@
 
 @media only screen and (min-width:1600px){
   .LoginFormContainer{
-    /* background-color: red; */
-    /* font-size: 22px; */
     width: 65%;
   }
 }
-
-/* Media queries for mid-size devices (Tablet) */
-/* @media screen
-and (min-device-width: 768px) 
-and (max-device-width: 1024px) {
-  .LoginFormContainer{
-    width: 65%;
-  }
-} */
-
-/* Media queries for large-size devices (Laptop & Desktop) */
-/* @media screen
-and (min-device-width: 1200px) {
-  .LoginFormContainer{
-    justify-content: center;
-    width: 100%;
-  }
-} */

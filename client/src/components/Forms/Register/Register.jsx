@@ -13,7 +13,6 @@ const Register = () => {
           <img className={styles.LogoDesktop} src={logo} alt="logo-onDrive" />
           <p className={styles.Text}>Registrate y completa tu perfil para acceder a los beneficios que brinda OnDrive. Asi, los conductores podran conocerte un poco mejor y podras unirte al viaje que desees. Ademas, podras calificar a tu conductor una vez finalizado el viaje.</p>
         </div>
-        <img className={styles.Logo} src={logo} alt="logo-onDrive" />
         <RegisterForm/>
       </section>
     </section>
