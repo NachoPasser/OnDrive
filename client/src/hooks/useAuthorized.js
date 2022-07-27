@@ -19,35 +19,41 @@ const getVerifyDriver = (id) => {
   });
 };
 
+const verifyComplete = async (allowed, token) => {
+  try {
+    //visitor sin token
+    if (!token) return allowed.includes("visitor"); //true or false
+
+    //case admin / pageUser
+    let verify = await getVerify(token);
+    const { type, id } = verify.data;
+    if (allowed.includes(type)) return true;
+
+    //verificamos la posibilidad de que sea un driverUser
+    if (allowed.includes("driverUser")) {
+      let verifyDriver = await getVerifyDriver(id);
+      return verifyDriver.data.driver !== null; //true or false
+    }
+  } catch (e) {
+    //498 error: caso visitor o token caducado
+    return allowed.includes("visitor"); //true or false
+  }
+};
+
 export function useAuthorized({ allowed = [] }) {
   const [authorized, setAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
   const [token] = useState(localStorage.getItem("token"));
 
   useEffect(() => {
-    getVerify(token)
-      .then((res) => {
-        //driver case
-        const { type, id } = res.data;
-        //pageUse - admin - googleUser
-        if (allowed.includes(type)) {
-          setAuthorized(true);
-          setLoading(false);
-        } else if (allowed.includes("driverUser")) {
-          getVerifyDriver(id)
-            .then((user) => {
-              if (user.data.driver !== null) setAuthorized(true);
-              setLoading(false);
-            })
-            .catch(() => {
-              setAuthorized(false);
-              setLoading(false);
-            });
-        } else setLoading(false);
+    setLoading(true);
+    verifyComplete(allowed, token)
+      .then((state) => {
+        setAuthorized(state);
+        setLoading(false);
       })
-      .catch((res) => {
-        const { type } = res.response.data;
-        allowed.includes(type) ? setAuthorized(true) : setAuthorized(false); //visitor
+      .catch((state) => {
+        setAuthorized(state);
         setLoading(false);
       });
   }, [allowed, token]);
