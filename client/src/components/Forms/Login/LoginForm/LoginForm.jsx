@@ -74,7 +74,7 @@ const LoginForm = () => {
         placeholder={"Ingresa tu contraseña"}
       />
       <Link to='/recovery-password' className={styles.ForgotPassword} >¿Olvidaste tu contraseña?</Link>
-      <Button disabled={disabled} title={"INICIAR SESIÓN"} type={"primary"} size={"lg"} width={"Full"} onClick={onSubmit}/>
+      <Button disabled={disabled} title={"INICIAR SESIÓN"} type={"primary"} size={"md"} width={"Full"} onClick={onSubmit}/>
       <div className={styles.DividerText}>
         <hr/>
         <span href="/">o inicia sesión con</span>
