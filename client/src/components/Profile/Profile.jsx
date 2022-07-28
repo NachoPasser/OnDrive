@@ -10,6 +10,7 @@ import NavBarProfile from "../NavBar/navbarProfile.jsx";
 import { FaStar } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import ImageProfile from "./ImageProfile/ImageProfile";
+import Situations from "./Situations";
 
 
 export default function Profile() {
@@ -62,14 +63,16 @@ export default function Profile() {
                               capacity={t.capacity}
                               price={t.price}
                             />
-                            <Review 
-                              user_id={user.user_id}
-                              trip_id={t.trip_id}
-                              driver_id={t.driver_id}
-                              actualRating={reviews[i]?.rating}
-                              actualComment={reviews[i]?.comment}
-                            />
+                             <Situations 
+                              user_id={user.user_id} 
+                              trip_id={t.trip_id}  
+                              driver_id={t.driver_id} 
+                              actualRating={reviews[i]?.rating}  
+                              actualComment={reviews[i]?.comment} 
+                              start_date={t.start_date} 
+                              finish_date={t.finish_date}/>
                           </div>
+
                 })}
               </div>
             : <h5 className={style.Negative}>No Tiene viajes próximos</h5> //si reviews no existe entonces no muestro los viajes del usuario (necesito saber si hizo alguna reseña sí o sí)
@@ -169,3 +172,4 @@ export default function Profile() {
     </div>
   )
 }
+  
