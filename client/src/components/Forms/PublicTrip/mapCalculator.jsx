@@ -97,6 +97,7 @@ export default function MapCalculator() {
         setDirectionsResponse(null)
         setDistance('')
         setDuration('')
+        setDisabled(false)
         originRef.current.value = ''
         destiantionRef.current.value = ''
     }
