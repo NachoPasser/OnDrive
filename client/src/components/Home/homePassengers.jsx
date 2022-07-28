@@ -118,7 +118,7 @@ export default function Home() {
                                 ).map(trip => {
                                     return (
                                         <div className={style.cards} key={trip.trip_id}>
-                                            <HomeCard
+                                              {trip.isAvailable ? <HomeCard
                                                 key={trip.trip_id}
                                                 id={trip.trip_id}
                                                 driver_id={trip.driver_id}
@@ -131,6 +131,7 @@ export default function Home() {
                                                 destination={trip.destination}
                                                 price={trip.price}
                                             />
+                                            :null}
                                         </div>
                                     )
                                 })
