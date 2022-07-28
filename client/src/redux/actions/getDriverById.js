@@ -17,7 +17,7 @@ export const GET_DRIVER_BY_ID = 'GET_DRIVER_BY_ID'
 
 
 export const getDriverById = (driver_id) => {
-    console.log(driver_id)
+    //console.log(driver_id)
     return function (dispatch) {
         axios.get("http://localhost:3001/auth/driver", {
             headers: {
