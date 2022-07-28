@@ -28,7 +28,7 @@ const TripsCard = ({ driver_id, origin, destination, start_date, finish_date, ca
                 <div className={style.driver}>
                     <span className={style.witheText}> - Conductor: </span>
                     <div className={style.driverContact}>
-                        <span className={style.witheText}>{driver.user.name} {driver.user.last_name}</span>
+                        <span className={style.witheText}>{driver.hasOwnProperty('user') && driver.user.name} {driver.hasOwnProperty('user') && driver.user.last_name}</span>
                         <span className={style.witheText}> 📱{tel}</span>
                     </div>
                 </div>
