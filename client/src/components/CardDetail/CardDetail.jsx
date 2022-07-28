@@ -78,7 +78,7 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
                         :
                         <Spinner animation="grow" />
                     }
-                    {trip.driver_id === driverId && Object.keys(driver).length && Object.keys(user).length ?
+                    {trip.driver_id === driverId && Object.keys(driver).length ?
                             <div>
                                 <LoaderMP
                                     user={user}
