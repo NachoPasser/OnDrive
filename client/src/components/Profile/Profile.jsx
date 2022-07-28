@@ -8,6 +8,7 @@ import NavBarProfile from "../NavBar/navbarProfile.jsx";
 import { FaStar } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import ImageProfile from "./ImageProfile/ImageProfile";
+import Situations from "./Situations";
 
 
 export default function Profile() {
@@ -62,14 +63,16 @@ export default function Profile() {
                           <span className={style.witheText}> - Conductor: </span>
                         </div>
                       </div>
+                    <Situations 
+                    user_id={user.user_id} 
+                    trip_id={t.trip_id}  
+                    driver_id={t.driver_id} 
+                    actualRating={reviews[i]?.rating}  
+                    actualComment={reviews[i]?.comment} 
+                    start_date={t.start_date} 
+                    finish_date={t.finish_date}/>
+                    
                     </div>
-                    <Review 
-                      user_id={user.user_id}
-                      trip_id={t.trip_id}
-                      driver_id={t.driver_id}
-                      actualRating={reviews[i]?.rating}
-                      actualComment={reviews[i]?.comment}
-                    />
                   </div>
                 })}
               </div>
@@ -170,3 +173,4 @@ export default function Profile() {
     </div>
   )
 }
+  
