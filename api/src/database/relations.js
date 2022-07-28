@@ -26,6 +26,12 @@ User.hasOne(Driver, {
   },
 });
 
+Car.hasMany(Trip, {foreignKey: 'car_id'})
+Trip.belongsTo(Car, {foreignKey: 'car_id'})
+
+
+//
+
 //una review pertenece a un viaje (es decir primero debe existir un viaje para que haya una review)
 //un viaje tiene muchas reviews
 Trip.hasMany(Review, { foreignKey: 'trip_id' })

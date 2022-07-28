@@ -7,7 +7,7 @@ import Prices from "./24-Prices";
 //estilos
 import style from './tabla.module.css'
 
-export default function Comparador({ distance, price, setPrice }) {
+export default function Comparador({ distance, price, setPrice}) {
 
     let [renderTabla, setRenderTabla] = useState(false)
     let [reload, setReload] = useState(false)
@@ -64,11 +64,11 @@ export default function Comparador({ distance, price, setPrice }) {
             }
             {comp_prices.state && prices.length > 0 && prices[0].length && typeof prices[0][0] === "object" &&
                 <div>
-                    <Prices price={price} setPrice={setPrice} prices={comp_prices.costs} fuels={comp_prices.oils} distance={distance} />
+                    <Prices  price={price} setPrice={setPrice} prices={comp_prices.costs} fuels={comp_prices.oils} distance={distance} />
                 </div>
             }{/*price={price} setPrice={setPrice}*/}
             <div>
-                {!reload === renderTabla && <Tabla distance={distance} price={price} setPrice={setPrice} />}
+                {!reload === renderTabla && <Tabla  distance={distance} price={price} setPrice={setPrice} />}
             </div>
         </div>
     )

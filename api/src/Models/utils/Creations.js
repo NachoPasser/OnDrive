@@ -83,15 +83,16 @@ async function createDriver(user_id = null, driverData = {}) {
 }
 
 //CREAR UN VIAJE(VERIFICA SI SOS UN DRIVER PRIMERO)
-async function createTripAsDriver(user_id, trip = {}) {
+async function createTripAsDriver(user_id, car_id, trip = {}) {
   try {
-    if (!trip || typeof trip !== "object")
-      throw new Error(`trip missing properties`);
+    if (!trip || typeof trip !== "object" || !car_id)
+      throw new Error(`trip missing properties or missing car_id`);
     const [isDriver, driver] = await isADriver(user_id);
     if (!isDriver)
       throw new Error(
         `(${user_id}) is not a driver, only drivers can publish trips`
       );
+    const car = await Car.findByPk(car_id)
     const driver_id = driver.getDataValue("driver_id");
     const newTrip = await Trip.create(
       {
@@ -99,16 +100,18 @@ async function createTripAsDriver(user_id, trip = {}) {
         driver_id,
       },
       {
-        include: Driver,
+        include: Driver
       }
     );
+    await newTrip.setCar(car)
     if (!newTrip)
       throw new Error(
         `something has wrong to try create the trip. duplicate, invalid or wrong data`
       );
     return JSON.parse(JSON.stringify(newTrip, null, 2));
   } catch (e) {
-    throw new Error(`${e.message}`);
+    console.log(e)
+    // throw new Error(`${e.message}`);
   }
 }
 

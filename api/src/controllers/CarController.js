@@ -30,14 +30,25 @@ const addCar = async (req, res) => {
   }
 };
 
-const getCars = async (req, res) => {
-  const cars = await Car.findAll({
-    include: Driver,
-  });
-  res.json(cars);
-};
+const getCarById = async(req, res) => {
+    try{
+        let car_id = req.params.id
+        const car = await Car.findByPk(car_id)
+        res.json(JSON.parse(JSON.stringify(car, null, 2)))
+    } catch (e) {
+        res.status(400).json({message: e.message});
+    }
+}
+
+const getCars = async(req, res) => {
+    const cars = await Car.findAll({
+        include: Driver
+    });
+    res.json(cars);
+}
 
 module.exports = {
-  addCar,
-  getCars,
-};
+    addCar,
+    getCars,
+    getCarById 
+}

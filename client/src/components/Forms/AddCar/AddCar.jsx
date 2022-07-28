@@ -16,17 +16,18 @@ function ControlFeedback(input) {
     const reg = new RegExp('^[A-Z]{3}-[0-9]{3}$');
     const regYear = new RegExp('^(20|[1-2][0-9]){2}$');
     let errors = {};
-    if (!reg.test(input.license_plate)) errors.license_plate = 'Debe ingresar una placa valida';
-    if (!regYear.test(input.year)) errors.year = 'Debe ingresar un año valido';
-    if (!marcas.includes(input.brand)) errors.brand = 'Debe ingresar un marca válido';
-    if (!input.brand) errors.brand = 'Debe ingresar una marca';
-    if (!input.model) errors.model = 'Debe ingresar un modelo';
-    if (!input.year) errors.year = 'Debe ingresar un año';
-    if (!input.license_plate) errors.license_plate = 'Debe ingresar una placa';
-    if (!input.color) errors.color = 'Debe ingresar un color';
-    if (!input.fuel) errors.fuel = 'Debe ingresar un tipo de combustible';
-    if (!input.type) errors.type = 'Debe ingresar un tipo de vehiculo';
-
+    if(!reg.test(input.license_plate)) errors.license_plate = 'Debe ingresar una placa valida';
+    if(!regYear.test(input.year)) errors.year = 'Debe ingresar un año valido';
+    if(!marcas.includes(input.brand)) errors.brand = 'Debe ingresar un marca válido';
+    if(!input.brand) errors.brand = 'Debe ingresar una marca';
+    if(!input.model) errors.model = 'Debe ingresar un modelo';
+    if(!input.year) errors.year = 'Debe ingresar un año';
+    if(!input.license_plate) errors.license_plate = 'Debe ingresar una placa';
+    if(!input.color) errors.color = 'Debe ingresar un color';
+    if(!input.fuel) errors.fuel = 'Debe ingresar un tipo de combustible';
+    if(!input.type) errors.type = 'Debe ingresar un tipo de vehiculo';
+    if(!input.capacity) errors.capacity = 'Debe ingresar el numero de asientos para pasajeros'
+    
     return errors;
 }
 
@@ -46,6 +47,7 @@ function AddCar() {
         fuel: "",
         image: "",
         brand: "",
+        capacity: ""
     });
 
     const handleCloseHome = () => {
@@ -107,53 +109,53 @@ function AddCar() {
     return (
         <div className={styles.formulario}>
             <Card>
-                <Card.Body>
-                    <Card.Title>Formulario para registrar vehículo</Card.Title>
-                    <br />
-                    <Card.Text>
-                        <Form validated={validated} onSubmit={handleSubmit}>
-                            <Row className="mb-3">
-                                <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
-                                    <Form.Label>Modelo</Form.Label>
-                                    <Form.Control
-                                        required
-                                        name='model'
-                                        type="text"
-                                        placeholder="308"
-                                        defaultValue=""
-                                    />
-                                    <Form.Control.Feedback>Se ve bien!</Form.Control.Feedback>
-                                    {errors.model && <Form.Text className='text-danger'>{errors.model}</Form.Text>}
-                                </Form.Group>
-                                <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
-                                    <Form.Label>Marca</Form.Label>
-                                    <Form.Control
-                                        required
-                                        name='brand'
-                                        type="text"
-                                        placeholder="Peugeot"
-                                        defaultValue=""
-                                    />
-                                    <Form.Control.Feedback>Se ve bien!</Form.Control.Feedback>
-                                    <Form.Control.Feedback type="invalid" tooltip>
-                                    </Form.Control.Feedback>
-                                    {errors.brand && <Form.Text className="text-danger">{errors.brand}</Form.Text>}
-                                </Form.Group>
-                                <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
-                                    <Form.Label>Tipo de coche</Form.Label>
-                                    <InputGroup hasValidation>
-                                        <Form.Control
-                                            type="text"
-                                            name='type'
-                                            placeholder="Compacto"
-                                            aria-describedby="inputGroupPrepend"
-                                            required
-                                        />
-                                    </InputGroup>
-                                    {errors.type && <Form.Text className="text-danger">{errors.type}</Form.Text>}
-                                </Form.Group>
-                                <br /><br /><br /><br />
-                                {/* </Row>
+            <Card.Body>
+                <Card.Title>Formulario para registrar vehículo</Card.Title>
+                <br/>
+                <Card.Text>
+                <Form validated={validated} onSubmit={handleSubmit}>
+                <Row className="mb-3">
+                    <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
+                    <Form.Label>Modelo</Form.Label>
+                    <Form.Control
+                        required
+                        name='model'
+                        type="text"
+                        placeholder="308"
+                        defaultValue=""
+                    />
+                    {/* <Form.Control.Feedback>Se ve bien!</Form.Control.Feedback> */}
+                    {errors.model && <Form.Text className='text-danger'>{errors.model}</Form.Text>}
+                    </Form.Group>
+                    <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
+                    <Form.Label>Marca</Form.Label>
+                    <Form.Control
+                        required
+                        name='brand'
+                        type="text"
+                        placeholder="Peugeot"
+                        defaultValue=""
+                    />
+                    {/* <Form.Control.Feedback>Se ve bien!</Form.Control.Feedback> */}
+                    <Form.Control.Feedback type="invalid" tooltip>
+                    </Form.Control.Feedback>
+                        {errors.brand && <Form.Text className="text-danger">{errors.brand}</Form.Text>}
+                    </Form.Group>
+                    <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
+                    <Form.Label>Tipo de coche</Form.Label>
+                    <InputGroup hasValidation>
+                        <Form.Control
+                        type="text"
+                        name='type'
+                        placeholder="Compacto"
+                        aria-describedby="inputGroupPrepend"
+                        required
+                        />
+                    </InputGroup>
+                        {errors.type && <Form.Text className="text-danger">{errors.type}</Form.Text>}
+                    </Form.Group>
+                    <br/><br/><br/><br/>
+                {/* </Row>
                 <Row className="mb-3"> */}
                     <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
                     <Form.Label>Año</Form.Label>
@@ -180,6 +182,14 @@ function AddCar() {
                         Este campo no puede ester vacío.
                     </Form.Control.Feedback>
                     {errors.license_plate && <Form.Text className="text-danger">{errors.license_plate}</Form.Text>}
+                    </Form.Group>
+                    <Form.Group as={Col} md="6" onChange={(e) => handleChange(e)}>
+                    <Form.Label>Capacidad</Form.Label>
+                    <Form.Control type="number" min={1} max={8} placeholder="Numero de asientos" name='capacity' required />
+                    <Form.Control.Feedback type="invalid">
+                        Este campo no puede ester vacío.
+                    </Form.Control.Feedback>
+                    {errors.capacity && <Form.Text className="text-danger">{errors.capacity}</Form.Text>}
                     </Form.Group>
                 </Row>
                 <Form.Group controlId="formFile" className="mb-3" onChange={(e) => handleChange(e)}>

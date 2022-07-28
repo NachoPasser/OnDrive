@@ -1,127 +1,155 @@
 import { useState } from 'react';
 import { useBan } from '../../../hooks/useBan.js'
 import axios from 'axios';
-import InputField from '../../Sections/InputField/InputField';
-import { API_URL } from '../../../config/enviroment';
+import { API_URL } from '../../../config/enviroment.js';
+import { useEffect} from "react";
+//componentes
 import { Dates } from './Dates.jsx';
-import { useEffect } from "react";
-import DtPicker from "react-calendar-datetime-picker";
+import InputField from '../../Sections/InputField/InputField';
+import Button from '../../Sections/Button/Button.jsx';
+//imagenes para no gasta Google
+import img1 from '../../../assets/HomeCard/L_134003_salta001.jpg'
+import img2 from '../../../assets/HomeCard/Toyota-Corolla-2001.jpg'
+import img3 from '../../../assets/HomeCard/WhatsApp-Image-2021-09-06-at-15.14.27-800x400.jpeg'
+//estilos
 import "react-calendar-datetime-picker/dist/index.css";
-// import img1 from '../../../assets/HomeCard/L_134003_salta001.jpg'
-// import img2 from '../../../assets/HomeCard/Toyota-Corolla-2001.jpg'
-// import img3 from '../../../assets/HomeCard/WhatsApp-Image-2021-09-06-at-15.14.27-800x400.jpeg'
 import './formtrip.css';
+import style from './PublicTrip.module.css'
 //pop up
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import style from './PublicTrip.module.css'
-import NavBarDrivers from '../../NavBar/navbarDrivers.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserById } from '../../../redux/actions/getUserById.js';
+import { getCarById, GET_CAR_BY_ID } from '../../../redux/actions/getCarById.js';
 
 
-// import Autocomplete from "react-google-autocomplete";
-// import Origin from './Origin';
-// import Destiny from './Destiny';
-// import Map from '../../Map/map';
-// // import { Autocomplete } from '@react-google-maps/api';
-// import { Input, PinInputField } from '@chakra-ui/react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { changeInput } from '../../../redux/actions/changeInput.js';
-// import MapCalculator from './mapCalculator';
+const formatDate = (date) => {
+    const offset = date.getTimezoneOffset()
+    date = new Date(date.getTime() - (offset*60*1000))
+    return date.toISOString()
+}
 
-export default function PublicTrip({ origin, destination, price, distance, duration }) {
+function cleanString(input) {
+    var output = "";
+    for (var i=0; i<input.length; i++) {
+        if (input.charCodeAt(i) <= 127) {
+            output += input.charAt(i);
+        }
+    }
+    return output;
+}
 
+export default function PublicTrip({origin, destination, price, distance, duration, errors, setErrors}) {
+    
+    const dispatch = useDispatch()
     const { ban, verifying, error } = useBan();
+    let distanceFloat= distance!==''? parseFloat(distance.split(",").join("")):0
 
-    let distanceFloat
-    if (distance) distanceFloat = distance !== '' ? parseFloat(distance.split(",").join("")) : 0
-    // console.log(distanceFloat, distance)
-    // console.log(price)
-    const [errors, setErrors] = useState({
-        tooLowerStartDate: false,
-        tooLowerFinishDate: false,
-        wrongCapacity: false,
-    })
-    // console.log(errors)
-
-    const [orig, setOrig] = useState()
-    const [dest, setDest] = useState()
-    const [pric, setPric] = useState()
+    const [orig, setOrig] = useState('')
+    const [dest, setDest] = useState('')
+    const [pric, setPric] = useState(0)
     const [disc, setDisc] = useState(0)
-    // console.log(orig, dest, pric, disc)
+    const [disabled, setDisabled] = useState(true)
+    const [capacity, setCapacity] = useState(1)
+    const [carSelected, setCar] = useState('Default')
+    const [dateStart, setDateStart] = useState(null);
+    const [dateFinish, setDateFinish] = useState('')
+    const user = useSelector(state => state.userById)
+    const car = useSelector(state => state.carById)
+
+    if(!price && pric) setPric(0)
 
     let initPoint
     let finishPoint
     if (origin && origin.current && typeof origin.current === "object" && origin.current.value !== orig) {
         initPoint = origin['current']['value']
         setOrig(initPoint)
-        // console.log("orig", orig)
     }
     if (destination && destination.current && typeof destination.current === "object" && destination.current.value !== dest) {
         finishPoint = destination['current']['value']
         setDest(finishPoint)
-        // console.log("dest", dest)
     }
 
-    const [infoTrip, setInfoTrip] = useState({
-        capacity: '',
-        start_date: '',
-        finish_date: '',
-    });
+    if(price && price !== pric) {
+        setErrors({...errors, price: ''})
+        setPric(price)
+    }
+    
+    if(distanceFloat !== disc) setDisc(distanceFloat);
+        
+    useEffect(() => {
+        dispatch(getUserById(window.localStorage.getItem('token')))
+    }, [])
+
+    useEffect(() => {
+        let disabled = false
+        // let form = [orig, dest, pric, capacity]
+        for (const prop of Object.keys(errors)) {
+            if(errors[prop]) disabled = true
+            if(!prop) disabled = true
+        }
+        setDisabled(disabled)
+    }, [errors])
 
     if (infoTrip.capacity && price) price = price / infoTrip.capacity
-
-
-    if (price !== pric) setPric(price);
-    if (distanceFloat !== disc) setDisc(distanceFloat);
-
-
-
-    function deshabilitar() {
-        if (!infoTrip.capacity || !infoTrip.start_date || !infoTrip.finish_date || !orig || !dest || !disc || !pric) return true
-        return false
+    
+    const handleCapacity = (e) => {
+        let num = Number(e.target.value)
+        if(!isNaN(num) && num >= 1 && num <= car.capacity){
+            setCapacity(num)
+            setErrors({...errors, capacity: ''})
+        }
+        
+        if(!e.target.value){
+            setCapacity('')
+            setErrors({...errors, capacity: 'Numero de pasajeros requerido.'})
+        }
     }
 
-    const handleChange = (e) => {
-        setInfoTrip({
-            ...infoTrip,
-            [e.target.name]: e.target.value
-        })
-        console.log({
-            ...infoTrip,
-            [e.target.name]: e.target.value
-        })
+    const handleSelect = (e) => {
+        let car_id = e.target.value
+        dispatch(getCarById(car_id))
+        setCar(car_id)
+        setErrors({...errors, car: ''})
     }
 
-    const handleSubmit = function (e) {
+    useEffect(() => { //para eliminar el auto del store
+        return () => {
+            dispatch({type: GET_CAR_BY_ID, payload: {}})
+          };
+    }, [])
+
+    const handleSubmit= function(e){
         e.preventDefault()
-        //LO COMENTO Y NO LO USO PARA NO CONSUMIR LA API DE GOOGLE QUE TIENE USO LIMITADO MEPA
-        console.log(infoTrip.dest)
-        const photos = axios.get(`${API_URL}/trip/photo/get`, {
-            headers: {
-                'destination': dest
-            }
-        }).then(resp => {
-            console.log(resp.data[1])
-            console.log(resp.data[2])
-            console.log(resp.data[3])
-
+        // //LO COMENTO Y NO LO USO PARA NO CONSUMIR LA API DE GOOGLE QUE TIENE USO LIMITADO MEPA
+        // console.log(infoTrip.dest)
+        console.log(cleanString(dest), typeof dest)
+        const photos = axios.get(`${API_URL}/trip/photo/get`, {headers: {
+        'destination': cleanString(dest)
+        }}).then(resp=>{ 
+            console.log(resp.data)
+            // console.log(resp.data[1]) 
+            // console.log(resp.data[2])
+            // console.log(resp.data[3])
+            
             const tripToSave = {
-                ...infoTrip, //CAPACIDAD DISPONIBLE Y FECHAS
                 origin: orig,
                 destination: dest,
                 price: pric,
                 distance: disc,
-                album: [resp.data[1], resp.data[2], resp.data[3]]
+                // album: [img1, img2, img3],
+                album: [resp.data[0], resp.data[1], resp.data[2]],
+                capacity,
+                start_date: formatDate(dateStart),
+                finish_date: formatDate(new Date(dateFinish))
             }
             console.log("infoTrip desde submit", tripToSave)
 
-            axios.post(`${API_URL}/trip`, { trip: tripToSave }, {
-                headers: {
-                    Authorization: `Bearer ${window.localStorage.getItem('token')}`
-                }
-            })
-                .then(res => console.log(res.data))
-                .catch(err => console.log(err));
+            axios.post(`${API_URL}/trip`,{trip: tripToSave, car_id: car.car_id}, {headers: {
+                Authorization: `Bearer ${window.localStorage.getItem('token')}`
+            }})
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err));
 
         })
     }
@@ -163,28 +191,57 @@ export default function PublicTrip({ origin, destination, price, distance, durat
                 )}
             </Popup>
                 :
+        <div>
+        {/* <NavBarDrivers publicar={false} passenger={false}/> */}
+            <form onSubmit= {(e)=>handleSubmit(e)} /*method="post" action=''*/>
+                
+                <Dates 
+                errors={errors} 
+                setErrors={setErrors}
+                duration={duration} 
+                dateStart={dateStart}
+                setDateStart={setDateStart}
+                dateFinish={dateFinish}
+                setDateFinish={setDateFinish}/>
+                
+                   
                 <div>
-                    {/* <NavBarDrivers publicar={false} passenger={false}/> */}
-                    <form onSubmit={(e) => handleSubmit(e)} method="post" action=''>
-
-                        <Dates duration={duration} />
-
-                        <InputField
-                            label="Capacidad"
-                            name="capacity"
-                            type="number"
-                            icon="document"
-                            value={infoTrip.capacity}
-                            onChange={handleChange}
-                        />
-                        <InputField //CAMPO AUTOMÁTICO
-                            label="Precio (AR$)"
-                            name="price"
-                            type="number"
-                            icon="document"
-                            value={price}
-                        />
-                        {/* <InputField //ADJUNTADA EN EL MODELO CAR
+                    <select style={{height: '50px'}} onChange={(e) => handleSelect(e)} value={carSelected}>
+                        <option selected disabled value="Default">Auto</option>
+                        {
+                            user.hasOwnProperty('driver') && user.driver.cars.map(c => 
+                                <option key={c.model} name={c.model} value={c.car_id}>
+                                    {c.model}
+                                </option>)
+                        }
+                    </select>
+                    {errors.car ? <span className={style.ErrorInputField}>{errors.car}</span> : null}
+                </div>
+                    
+                {
+                    car.hasOwnProperty('capacity') 
+                    ?<InputField
+                        label="Capacidad"
+                        name="capacity"
+                        type="number"
+                        icon="document"
+                        placeholder='Introduce el numero de pasajeros'
+                        error={errors.capacity}
+                        value={capacity}
+                        onChange={handleCapacity}
+                    />
+                    : null
+                }
+                <InputField //CAMPO AUTOMÁTICO
+                    label="Precio (AR$)"
+                    name="price"
+                    readOnly={true}
+                    type="number"
+                    icon="document"
+                    value={price}
+                />
+                {errors.price ? <span className={style.ErrorInputField}>{errors.price}</span> : null}
+                {/* <InputField //ADJUNTADA EN EL MODELO CAR
                     label="Hora"
                     name="car"
                     type="text"
@@ -192,9 +249,10 @@ export default function PublicTrip({ origin, destination, price, distance, durat
                     value={infoTrip.time}
                     onChange={handleChange}
                 /> */}
-                        <input id='subm' type="submit" disabled={deshabilitar()} />
-                    </form>
-                </div>
+                <Button disabled={disabled} title={"PUBLICAR"} type={"primary"} size={"lg"} width={"Full"}/>
+                {/* <input id='subm' type="submit"/> */}
+            </form>
+        </div>
         }
     </>
     )
