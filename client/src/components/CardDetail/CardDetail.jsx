@@ -17,7 +17,7 @@ function CardDetail({ id, show, fullscreen, setShow }) {
     const driver_id = trip.driver_id
     const driver = useSelector(state => state.driverById)
     const user = useSelector(state => state.userById)
-
+    console.log(user)
     useEffect(() => {
         dispatch(getTripById(id))
     }, [dispatch, id]);
@@ -96,10 +96,23 @@ function CardDetail({ id, show, fullscreen, setShow }) {
                         :
                         <Spinner animation="grow" />
                     }
-                    {comp ?
-                        <div> <LoaderMP user={user} driver={driver} idTrip={id} start={trip.start_date} finish={trip.finish_date} price={trip.price} origin={trip.origin} destination={trip.destination} /> </div>
-                        : <div>Cargando...</div>
-                    } 
+                    {trip.driver_id === driverId && Object.keys(driver).length && Object.keys(user).length ?
+                            <div>
+                                <LoaderMP
+                                    user={user}
+                                    idTrip={id}
+                                    driverId={driverId}
+                                    capacity={trip.capacity}
+                                    start={trip.start_date}
+                                    finish={trip.finish_date}
+                                    price={trip.price}
+                                    origin={trip.origin}
+                                    destination={trip.destination}
+                                />
+                            </div>
+                            :
+                            <div>Cargando...</div>
+                    }
                 </Modal.Body>
             </Modal>
         </>
