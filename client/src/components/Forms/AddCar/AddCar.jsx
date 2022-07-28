@@ -58,20 +58,21 @@ function AddCar() {
     };
 
     const handleChange = (event) => {
-        const {name,value,files} = event.target
-        if(name === "image"){
+        const { name, value, files } = event.target
+        if (name === "image") {
             const file = files[0];
-            let {type,size} = file;
+            let { type, size } = file;
             let ext = type.split('/')[1];
-            if(!['png','jpeg','jpg','webp'].includes(ext)) setErrors(
-                {...errors,[name]:"Extension invalida, soportamos(png, jpeg, jpg, webp)"
-            })
-            else setErrors({...errors,[name]:""})
-            if(size < 0 || size > 1000000) setErrors({...errors,[name]:"La imagen debe pesar maximo 1MB"})
-            else setErrors({...errors,[name]:""})
-            setCar({...car,[name]:file})
+            if (!['png', 'jpeg', 'jpg', 'webp'].includes(ext)) setErrors(
+                {
+                    ...errors, [name]: "Extension invalida, soportamos(png, jpeg, jpg, webp)"
+                })
+            else setErrors({ ...errors, [name]: "" })
+            if (size < 0 || size > 1000000) setErrors({ ...errors, [name]: "La imagen debe pesar maximo 1MB" })
+            else setErrors({ ...errors, [name]: "" })
+            setCar({ ...car, [name]: file })
         }
-        else{
+        else {
             setCar({ ...car, [name]: value });
             setErrors(ControlFeedback({
                 ...car,
@@ -79,30 +80,32 @@ function AddCar() {
             }));
         }
     }
-    
+
     const handleSubmit = (event) => {
         event.preventDefault();
         try {
             const form = event.currentTarget;
             if (form.checkValidity() === false) {
-            event.stopPropagation();
+                event.stopPropagation();
             }
             let carFormData = new FormData();
             Object.keys(car).forEach(key => {
                 console.log(key)
-                carFormData.append(key,car[key]);
+                carFormData.append(key, car[key]);
             })
 
-            axios.post(`${API_URL}/cars`, carFormData, {headers: {
-            Authorization: `Bearer ${window.localStorage.getItem('token')}`,
-            'Content-Type':'multipart/form-data'
-            }}).then(() => setShow(true))
-            .catch((err) => console.log(err))
+            axios.post(`${API_URL}/cars`, carFormData, {
+                headers: {
+                    Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(() => setShow(true))
+                .catch((err) => console.log(err))
 
             setValidated(true);
         } catch (e) {
             console.log(e.message)
-        }   
+        }
     };
     return (
         <div className={styles.formulario}>
@@ -155,51 +158,51 @@ function AddCar() {
                                 <br /><br /><br /><br />
                                 {/* </Row>
                 <Row className="mb-3"> */}
-                    <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
-                    <Form.Label>Año</Form.Label>
-                    <Form.Control type="text" placeholder="2019" required name='year'/>
-                    <Form.Control.Feedback type="invalid">
-                        Este campo no puede ester vacío.
-                    </Form.Control.Feedback>
-                    {errors.year && <Form.Text className="text-danger">{errors.year}</Form.Text>}
-                    </Form.Group>
-                    <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
-                    <Form.Label>Color</Form.Label>
-                    <Form.Control type="text" placeholder="Gris" name='color' required />
-                    {errors.color && <Form.Text className="text-danger">{errors.color}</Form.Text>}
-                    </Form.Group>
-                    <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
-                    <Form.Label>Combustible</Form.Label>
-                    <Form.Control type="text" placeholder="Gasoil" name='fuel' required />
-                    {errors.fuel && <Form.Text className="text-danger">{errors.fuel}</Form.Text>}
-                    </Form.Group>
-                    <Form.Group as={Col} md="6" onChange={(e) => handleChange(e)}>
-                    <Form.Label>Matrícula</Form.Label>
-                    <Form.Control type="text" placeholder="AAA-000" name='license_plate' required />
-                    <Form.Control.Feedback type="invalid">
-                        Este campo no puede ester vacío.
-                    </Form.Control.Feedback>
-                    {errors.license_plate && <Form.Text className="text-danger">{errors.license_plate}</Form.Text>}
-                    </Form.Group>
-                </Row>
-                <Form.Group controlId="formFile" className="mb-3" onChange={(e) => handleChange(e)}>
-                    <Form.Label>Agregué una foto del coche</Form.Label>
-                    <Form.Control type="file" name='image' accept="image/x-png,image/jpeg,image/jpg,image/webp" />
-                    {errors.img && <Form.Text className="text-danger">{errors.img}</Form.Text>}
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Check
-                    required
-                    label="Aceptar los términos y condiciones"
-                    feedback="Debes aceptar antes de registrar tu coche"
-                    feedbackType="invalid"
-                    />
-                    <a href="/terms&condicions">Ver términos y condiciones</a>
-                </Form.Group>
-                <Button required variant="primary" type="submit">Registrar</Button>
-                </Form>
-                </Card.Text>
-            </Card.Body>
+                                <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
+                                    <Form.Label>Año</Form.Label>
+                                    <Form.Control type="text" placeholder="2019" required name='year' />
+                                    <Form.Control.Feedback type="invalid">
+                                        Este campo no puede ester vacío.
+                                    </Form.Control.Feedback>
+                                    {errors.year && <Form.Text className="text-danger">{errors.year}</Form.Text>}
+                                </Form.Group>
+                                <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
+                                    <Form.Label>Color</Form.Label>
+                                    <Form.Control type="text" placeholder="Gris" name='color' required />
+                                    {errors.color && <Form.Text className="text-danger">{errors.color}</Form.Text>}
+                                </Form.Group>
+                                <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
+                                    <Form.Label>Combustible</Form.Label>
+                                    <Form.Control type="text" placeholder="Gasoil" name='fuel' required />
+                                    {errors.fuel && <Form.Text className="text-danger">{errors.fuel}</Form.Text>}
+                                </Form.Group>
+                                <Form.Group as={Col} md="6" onChange={(e) => handleChange(e)}>
+                                    <Form.Label>Matrícula</Form.Label>
+                                    <Form.Control type="text" placeholder="AAA-000" name='license_plate' required />
+                                    <Form.Control.Feedback type="invalid">
+                                        Este campo no puede ester vacío.
+                                    </Form.Control.Feedback>
+                                    {errors.license_plate && <Form.Text className="text-danger">{errors.license_plate}</Form.Text>}
+                                </Form.Group>
+                            </Row>
+                            <Form.Group controlId="formFile" className="mb-3" onChange={(e) => handleChange(e)}>
+                                <Form.Label>Agregué una foto del coche</Form.Label>
+                                <Form.Control type="file" name='image' accept="image/x-png,image/jpeg,image/jpg,image/webp" />
+                                {errors.img && <Form.Text className="text-danger">{errors.img}</Form.Text>}
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Check
+                                    required
+                                    label="Aceptar los términos y condiciones"
+                                    feedback="Debes aceptar antes de registrar tu coche"
+                                    feedbackType="invalid"
+                                />
+                                <a href="/terms&conditions" target="_blank">Ver términos y condiciones</a>
+                            </Form.Group>
+                            <Button required variant="primary" type="submit">Registrar</Button>
+                        </Form>
+                    </Card.Text>
+                </Card.Body>
             </Card>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
