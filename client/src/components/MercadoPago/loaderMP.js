@@ -8,6 +8,8 @@ import { API_URL } from "../../config/enviroment.js";
 
 export default function LoaderMP({ user, idTrip, driver, driverId, price, origin, destination, start, finish, capacity }) {
 
+    // console.log(user)
+    //console.log(origin, destination)
     let startDate = new Date(start)
     let finishDate = new Date(finish)
 
@@ -36,7 +38,7 @@ export default function LoaderMP({ user, idTrip, driver, driverId, price, origin
             .post(`${API_URL}/mercadopago`, { dataTrip })
             .then((data) => {
                 setDatos(data.data)
-                console.info('Contenido de data:', data)
+                //console.info('Contenido de data:', data)
             })
             .catch(err => console.error(err))
         setComprobant(true)

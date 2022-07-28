@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import s from '../MercadoPago/mp.module.css'
 
 export default function Comprar({ productos, data }) {
@@ -59,3 +58,28 @@ export default function Comprar({ productos, data }) {
     </div>
   )
 }
+
+
+//   return (
+//     <div className={s.general}>
+
+//       <h4>Checkout</h4>
+//       <div className={s.gridContainer} >
+//         {productos.map((producto, i) => {
+//           return (
+//             <div className={s.products} key={i}>
+//               <ul className={s.ul} >
+//                 <li>{producto.title}</li>
+//                 <li>{'$' + producto.price}</li>
+//                 <li>{producto.quantity}</li>
+//               </ul>
+//             </div>
+//           )
+//       })}
+//         <form className={s.form1} id="form1">
+//         </form>
+//       </div>
+
+//     </div>
+//   )
+// }
