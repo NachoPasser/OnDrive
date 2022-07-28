@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserById } from "../../redux/actions/getUserById";
 import { getAllTripsReviews } from "../../redux/actions/getAllTripReviews";
 import Review from "../Sections/Review/Review";
-import photoDefault from "../../assets/User/silueta-1.jpg";
 import style from "./Profile.module.css";
 import NavBarProfile from "../NavBar/navbarProfile.jsx";
 import { FaStar } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import ImageProfile from "./ImageProfile/ImageProfile";
 
 
 export default function Profile() {
@@ -19,15 +19,16 @@ export default function Profile() {
   useEffect(() => {
     dispatch(getUserById(localStorage.getItem('token')))
     //despacho una accion que me devuelve el perfil del usuario
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     if (user.hasOwnProperty('name')) dispatch(getAllTripsReviews(user.user_id))
     //despacho una accion que me devuelve TODAS LAS RESEÑAS QUE HIZO EL USUARIO
-  }, [user])
+  }, [user,dispatch])
 
   return (
     <div id="all">
+      {console.log(user)}
       <div classname={style.pasajero}>
         <NavBarProfile />
         <div className={style.top} style={{ color: 'white' }}>
@@ -35,9 +36,7 @@ export default function Profile() {
             <h1 className={style.name}>{user.name} {user.last_name}</h1>
             <span className={style.mail}>{user.email}</span>
           </div>
-          <div className={style.profileImg}>
-            <img src={photoDefault} alt="not found" className={style.imgprofile} />
-          </div>
+          <ImageProfile image={user.image}/>
         </div>
         <div className={style.PassVsDr}>
           <div>

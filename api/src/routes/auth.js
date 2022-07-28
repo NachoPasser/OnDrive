@@ -17,7 +17,7 @@ const { imageUploader } = require("../controllers/Middlewares/imageUploader");
 const router = require("express").Router();
 
 router.post("/register", registerUser);
-router.put("/profile/image", checkUser, imageUploader, uploadProfileImage);
+router.put("/profile/image", imageUploader, checkUser, uploadProfileImage);
 router.post("/login", loginUser);
 router.get("/verify", checkUser, verifyUser);
 router.get("/verify/status", checkUser, verifyBanStatus);
