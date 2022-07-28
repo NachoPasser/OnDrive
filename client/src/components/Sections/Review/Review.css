@@ -1,9 +1,0 @@
-#mainDiv{
-    display: flex;
-}
-
-.Mui-disabled{
-    background-color: red;
-    position: relative;
-    top: 50px;
-}

@@ -31,6 +31,11 @@ export default function NavBarProfile() {
                     <NavLink className={style.navLink} exact to="/new-password">Cambiar contraseña</NavLink>
                 </li>
             </div>
+            <div className={style.items}>
+                <li className={style.li}>
+                    <NavLink className={style.navLink} exact to="/recovery-password">Recuperar contraseña</NavLink>
+                </li>
+            </div>
         </ul>
     )
 }

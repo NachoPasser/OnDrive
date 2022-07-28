@@ -35,8 +35,6 @@ const reception = async (req, res) => {
 
     let { code, state } = req.query //AMBOS SON STRINGS POR MÄS NÜMEROS QUE HAYA
 
-    console.log(code)
-
     if (!code || !state) return res.status(204).send(`Código para obtener access_token no fue conseguido, por favor vuelva a autenticar su cuenta de Mercado Pago. Code to get access_token wasn't found, please try again to authenticate your Mercado Pago account.`)
 
     const requestAccessToken = await axios.post(`https://api.mercadopago.com/oauth/token`, {

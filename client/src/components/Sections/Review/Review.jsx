@@ -2,7 +2,8 @@ import React, { useState, useEffect  }from 'react'
 import Rating from '@mui/material/Rating';
 import axios from 'axios'
 import { API_URL } from '../../../config/enviroment';
-import './Review.css'
+import style from './Review.module.css'
+import Button from '../Button/Button'
 
 function Review({user_id, trip_id, driver_id, actualRating, actualComment}) { //actualRating y actualComment me traen el rating y comentario actual de la reseña
     const [rating, setRating] = useState(0)
@@ -33,13 +34,21 @@ function Review({user_id, trip_id, driver_id, actualRating, actualComment}) { //
     }
 
   return ( //En este div tengo Rating (componete de Mui) que muestra las estrellitas, el input que es donde pongo el comentario y un boton para submitear la reseña
-    <div id='mainDiv' style={{position: 'relative', bottom: '8px'}}>
+    <div className={style.reviewBox}>
       <Rating
       value={rating}
       onChange={(e, newRating) => setRating(newRating)}
       />
-      <input type="text" value={comment} onChange={(e) => setComment(e.target.value)}/>
-      <button onClick={handleSubmit}>Publicar reseña</button>
+      <input className={style.reviewInput} type="text" value={comment} onChange={(e) => setComment(e.target.value)}/>
+      <div className={style.bluebotton}>
+        <Button
+          title={"Publicar"}
+          type={"secondary"}
+          icon={"arrowRight"}
+          size={"sm"}
+          onClick={handleSubmit}
+        />
+      </div>
     </div>
   )
 }

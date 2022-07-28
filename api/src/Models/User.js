@@ -41,6 +41,12 @@ const User = conn.define(
       allowNull: true,
       defaultValue: null,
     },
+    image: {
+      type: DataTypes.STRING(200),
+      allowNull: true,
+      defaultValue:
+        "https://res.cloudinary.com/vombatidae/image/upload/v1658948667/default-avatar_cnydnd.jpg",
+    },
   },
   {
     timestamps: false,
