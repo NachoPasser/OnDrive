@@ -33,9 +33,11 @@ const Car = conn.define(
       type: DataTypes.STRING(20),
       allowNull: false,
     },
-    img: {
+    image: {
       type: DataTypes.STRING(200),
       allowNull: true, // para evitar errores
+      defaultValue:
+        "https://res.cloudinary.com/vombatidae/image/upload/v1658948705/default-car_umjqy2.png",
     },
     fuel: {
       type: DataTypes.STRING,
