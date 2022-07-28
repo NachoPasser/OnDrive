@@ -7,8 +7,8 @@ const { OPTIONS } = require("./cors");
 
 const server_settings = (server) => {
   server.use(cors(OPTIONS));
-  server.use(urlencoded({ extended: true, limit: "25kb" }));
-  server.use(json({ limit: "25kb" }));
+  server.use(urlencoded({ extended: true }));
+  server.use(json());
   server.use(cookieParser());
   server.use(morgan("dev"));
 };
