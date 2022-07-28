@@ -6,7 +6,7 @@ const { findUserById } = require("../Models/utils/Finders");
 const addCar = async (req, res) => {
   try {
     const { user_id, decoded } = req.body;
-    const { model, brand, type, license_plate, year, color, fuel } = req.body;
+    const { model, brand, type, license_plate, year, color, fuel, capacity } = req.body;
 
     let car = {
       file: req.file.path,
@@ -17,6 +17,7 @@ const addCar = async (req, res) => {
       year,
       color,
       fuel,
+      capacity
     };
 
     const { driver } = user_id

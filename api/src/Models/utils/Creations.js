@@ -35,9 +35,10 @@ async function createCar(driver_id, car = {}) {
       year:car.year,
       color:car.color,
       fuel:car.fuel,
+      capacity: car.capacity
     }
 
-
+    console.log(data)
     const [carCreated, created] = await Car.findOrCreate({
       where: {
         driver_id,
@@ -45,12 +46,15 @@ async function createCar(driver_id, car = {}) {
       },
       defaults: data,
     });
-
+    console.log(carCreated)
     if (created) {
       let { file } = car;
+      console.log('FILE:',file)
       const result = await uploader.upload(file, { folder: "OnDrive" });
-      await carCreated.update({ img: result.secure_url });
+      console.log(result)
+      await carCreated.update({ image: result.secure_url });
       await carCreated.save();
+      console.log(carCreated)
       return carCreated.getDataValue("car_id");
     }
 

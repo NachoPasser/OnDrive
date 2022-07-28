@@ -90,8 +90,8 @@ export default function PublicTrip({origin, destination, price, distance, durati
         }
         setDisabled(disabled)
     }, [errors])
-
-    if (infoTrip.capacity && price) price = price / infoTrip.capacity
+    
+    if(capacity && price) price = price / capacity
     
     const handleCapacity = (e) => {
         let num = Number(e.target.value)
