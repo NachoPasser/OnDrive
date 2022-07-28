@@ -48,6 +48,62 @@
 */
 
 p {
-    margin: auto;
     color: orange;
+}
+
+.containerAuth {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 90vh;
+    flex-direction: column;
+
+}
+
+.cajita {
+    background-color: #90a4b26d;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.toAuth {
+    position: relative;
+    top: 20px;
+    max-width: max-content;
+    background-color: rgb(31, 32, 33);
+    border-radius: 8px;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.toAuth:hover {
+    background-color: white;
+    color: rgb(31, 32, 33);
+    transition: .5s ease-in-out;
+}
+
+a {
+    text-decoration: none;
+}
+
+#noAuth {
+    position: relative;
+    top: 30px;
 }

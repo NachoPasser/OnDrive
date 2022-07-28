@@ -1,10 +1,13 @@
 import React from "react";
-
+import { useState } from "react";
+import NavBar from "../NavBar/navbar";
 import style from "./AboutUs.module.css";
 
-export default function AboutUs(){
-    return(
+export default function AboutUs() {
+    const [aboutUs, setAboutUs] = useState(false)
+    return (
         <div className={style.principalContainer}>
+            <NavBar aboutUs={aboutUs} />
             <div className={style.titleBox}>
                 <h1 className={style.titleP}>¿Quienes somos?🚘</h1>
             </div>
