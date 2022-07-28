@@ -10,11 +10,11 @@ const Order = conn.define(
         type: DataTypes.TEXT
     },
     status: {
-        type: DataTypes.ENUM('created', 'processing', 'cancelled', 'completed'),
+        type: DataTypes.ENUM('created', 'approved', 'processing', 'cancelled', 'completed'),
         allowNull: false
     },
     payment_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
         defaultValue: 0
     },
     payment_status: {

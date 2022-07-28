@@ -7,8 +7,8 @@ import CardDetail from "../../CardDetail/CardDetail";
 import { FaStar } from "react-icons/fa";
 import { getDriverById } from "../../../redux/actions/getDriverById";
 
-const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destination, album, rating, driver_id }) => {
-
+const HomeCard = ({user, id, price, capacity, start_date, finish_date, origin, destination, album, rating, driver_id }) => {
+   
     const dispatch = useDispatch();
 
     const [fullscreen, setFullscreen] = useState(true);
@@ -26,8 +26,8 @@ const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destin
         setShow(true);
     }
 
-    if(origin.split(",").length > 1)origin= origin.split(',').slice(0,1)
-    if(destination.split(",").length > 1)destination= destination.split(',').slice(0,1)
+    if (origin.split(",").length > 1) origin = origin.split(',').slice(0, 1)
+    if (destination.split(",").length > 1) destination = destination.split(',').slice(0, 1)
     //console.log(rating)
     // start_date = start_date.slice(0, 10)
     // finish_date = finish_date.slice(0, 10)
@@ -64,7 +64,7 @@ const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destin
                             {[...Array(5)].map((star, i) => {
                                 const ratingValue = i + 1;
                                 return (
-                                    <FaStar
+                                    <FaStar key={i}
                                         className={styles.star}
                                         color={ratingValue <= Math.floor(rating) ? "#fed428" : "#a7a1a1"}
                                         size={15}
@@ -80,7 +80,7 @@ const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destin
                 </div>
             </div>
             <div>
-                {show ? <CardDetail id={id} show={show} fullscreen={fullscreen} setShow={setShow} /> : null}
+                {show ? <CardDetail id={id} user={user} driverId={driverId} show={show} fullscreen={fullscreen} setShow={setShow} /> : null}
             </div>
         </div>
     );

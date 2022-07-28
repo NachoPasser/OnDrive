@@ -6,6 +6,7 @@ const axios = require('axios').default;
 
 // SDK de Mercado Pago
 const mercadopago = require('mercadopago');
+const { Trip } = require('../Models/Trip.js');
 
 //ACÁ VAN LAS RUTAS PARA CONSEGUIR EL ACCESS TOKEN
 
@@ -95,54 +96,39 @@ const access__token = async (req, res) => {
 
 const posteo = async (req, res) => {
 
-    //MODULO MATO INICIO
-    // const { dataTrip } = req.body
-    // const userUserId = dataTrip[2]
-
-    // mercadopago.configure({
-    //     access_token: "APP_USR-8074988940290506-072502-1157507314fe0f072808c3a1e331ca0b-705813127"
-    // });
-
-    // const tabla = await Order.findAll()
-    // const largoTabla = tabla.length + 1
-
-    // const id_orden = dataTrip[1].toString() + largoTabla
-    // console.log(id_orden)
-
-    //Cargamos el carrido de la bd
-
-    //MODULO MATI FIN
     const { dataTrip } = req.body
 
     const tabla = await Order.findAll()
     const largoTabla = tabla.length + 1
 
     const carrito = dataTrip[0]
-    const id_orden = dataTrip[1].toString() + "_T" + largoTabla
+    const id_orden = dataTrip[1].toString() + "_T0" + largoTabla //trip_id +'_T01
     const user_id = dataTrip[2]
-    // const quantity = dataTrip[3]
-    // const driver_id = dataTrip[4]
+    const driver_id = dataTrip[3]
+    const quantity = dataTrip[4]
 
     // const descpription = dataTrip[5]
     // const picture_url = dataTrip[6]
 
-    // await axios.post('http://localhost:3001/trip/purchase-trip', { //EDITO CAPACIDAD DEL VIAJE COMPRADO
-    //     user_id,
-    //     trip_id: dataTrip[1],
-    //     capacity: quantity,
-    // }).then(r => console.log(r))
+    await axios.post('http://localhost:3001/trip/purchase-trip', { //EDITO CAPACIDAD DEL VIAJE COMPRADO
+        user_id,
+        trip_id: dataTrip[1],
+        capacity: quantity,
+    }).then(r => console.log(r))
 
-    // let access_token = await OAuth.findOne({ //LLENO UNA FILA PARA EL AUTH DE UN DRIVER
-    //     where: {
-    //         driver_id
-    //     }
-    // })
+    let access_token = await OAuth.findOne({ //LLENO UNA FILA PARA EL AUTH DE UN DRIVER
+        where: {
+            driver_id
+        }
+    })
 
     mercadopago.configure({ //CONFIGURO ESA COMPRA PARA QUE SE DEPOSITE AL MP DEL DRIVER
         access_token: ACCESS_TOKEN,
     });
 
     //Cargamos el carrido de la bd
+
+    console.log(carrito)
 
     const items_ml = carrito.map(i => ({
         id: id_orden,
@@ -162,11 +148,6 @@ const posteo = async (req, res) => {
         items: items_ml,
         external_reference: `${id_orden}`,
         payment_methods: {
-            excluded_payment_types: [
-                {
-                    id: "atm"
-                }
-            ],
             installments: 3  //Cantidad máximo de cuotas
         },
         marketplace: MARKET_PLACE,
@@ -197,6 +178,7 @@ const posteo = async (req, res) => {
 const pagos = async (req, res) => {
 
     // console.info("EN LA RUTA PAGOS ", req)
+    console.log(req.query)
     const { user_id } = req.query
     const payment_id = req.query.payment_id
     const payment_status = req.query.status
@@ -205,33 +187,22 @@ const pagos = async (req, res) => {
     // console.log("EXTERNAL REFERENCE ", external_reference)
 
     await Order.create({
-        status: payment_status,
+        status: 'completed',
         id_order: external_reference,
-        user_id
+        user_id,
+        payment_id,
+        payment_status,
+        merchant_order_id,
+    }).then(() => {
+        console.log('redirect success')
+        return res.redirect("http://localhost:3000/home-passengers")
+    }).catch((err) => {
+        console.error('error al salvar')
+        return res.redirect(`http://localhost:3000/error/?error=${err}&where=al+salvar`)
+    }).catch(err => {
+        console.error('error al buscar')
+        return res.redirect(`http://localhost:3000/?error=${err}&where=al+buscar`)
     })
-    //Aquí edito el status de mi orden
-    await Order.findByPk(external_reference)
-        .then((order) => {
-            order.payment_id = payment_id
-            order.payment_status = payment_status
-            order.merchant_order_id = merchant_order_id
-            order.status = "completed"
-            console.info('Salvando order')
-            order.save()
-                .then((_) => {
-                    console.info('redirect success')
-
-                    return res.redirect("http://localhost:3000")
-                })
-                .catch((err) => {
-                    console.error('error al salvar')
-                    return res.redirect(`http://localhost:3000/?error=${err}&where=al+salvar`)
-                })
-        })
-        .catch(err => {
-            console.error('error al buscar')
-            return res.redirect(`http://localhost:3000/?error=${err}&where=al+buscar`)
-        })
 
 }
 
