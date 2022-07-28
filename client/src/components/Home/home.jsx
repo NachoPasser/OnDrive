@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import style from './home.module.css'
 import { getTrips } from "../../redux/actions/getTrips";
 import { getFilteredTrips } from "../../redux/actions/getFilteredTrips.js";
+import { getUserById } from "../../redux/actions/getUserById.js"
 
 //estilos
 import ubicacion from "../../assets/Home/ubicacion.png"
@@ -28,7 +29,9 @@ export default function Home() {
     //estados globales
     var trips = useSelector(state => state.trips)
     const storeFilters = useSelector(state => state.filters)
+    const user = useSelector(state => state.userById)
     //estados locales
+    const [userVerif, setUserVerif] = useState(true)
     const [calendar, setCalendar] = useState(false)
 
     const [filters, setFilters] = useState({
@@ -52,6 +55,7 @@ export default function Home() {
     //useEffects
     useEffect(() => {
         dispatch(getTrips());
+        dispatch(getUserById(localStorage.getItem('token')))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -69,10 +73,9 @@ export default function Home() {
         else setCalendar(false)
     }
 
-    // const deshabilitar = () => {
-    //     if (filters.filterOrg.length > 0 && filters.filterDest.length > 0) return false
-    //     else return true
-    // }
+    const handleVerif = () => {
+        window.location.href = "http://localhost:3000/login"
+    }
 
     return (
         <div className={style.containerAll}>
@@ -128,8 +131,10 @@ export default function Home() {
                                 ).map(trip => {
                                     return (
                                         <div className={style.cards} key={trip.trip_id}>
-                                            
+
                                             {trip.isAvailable ? <HomeCard
+                                                userVerif={userVerif}
+                                                handleVerif={handleVerif}
                                                 key={trip.trip_id}
                                                 id={trip.trip_id}
                                                 driver_id={trip.driver_id}
@@ -142,7 +147,7 @@ export default function Home() {
                                                 destination={trip.destination}
                                                 price={trip.price}
                                             />
-                                            :null}
+                                                : null}
                                         </div>
                                     )
                                 })
