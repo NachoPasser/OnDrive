@@ -7,7 +7,7 @@ import s from './mp.module.css'
 
 import { API_URL } from "../../config/enviroment.js";
 
-export default function LoaderMP({ driverId, user, idTrip, price, origin, destination, start, finish, capacity, driver }) {
+export default function LoaderMP({ user, idTrip, driver, driverId, price, origin, destination, start, finish, capacity }) {
 
     // console.log(user)
     //console.log(origin, destination)

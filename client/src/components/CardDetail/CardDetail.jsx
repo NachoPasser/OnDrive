@@ -16,7 +16,7 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
     const trip = useSelector((state) => state.tripById);
     const driver = useSelector(state => state.driverById)
     const user = useSelector(state => state.userById)
-
+    console.log(user)
     useEffect(() => {
         dispatch(getTripById(id))
         dispatch(getUserById(localStorage.getItem('token')))

@@ -4,7 +4,7 @@ import axios from 'axios';
 import InputField from '../../Sections/InputField/InputField';
 import { API_URL } from '../../../config/enviroment';
 import { Dates } from './Dates.jsx';
-import { useEffect} from "react";
+import { useEffect } from "react";
 import DtPicker from "react-calendar-datetime-picker";
 import "react-calendar-datetime-picker/dist/index.css";
 // import img1 from '../../../assets/HomeCard/L_134003_salta001.jpg'
@@ -28,15 +28,15 @@ import NavBarDrivers from '../../NavBar/navbarDrivers.jsx';
 // import { changeInput } from '../../../redux/actions/changeInput.js';
 // import MapCalculator from './mapCalculator';
 
-export default function PublicTrip({origin, destination, price, distance, duration}) {
-    
+export default function PublicTrip({ origin, destination, price, distance, duration }) {
+
     const { ban, verifying, error } = useBan();
-    
+
     let distanceFloat
-    if(distance)distanceFloat= distance!==''? parseFloat(distance.split(",").join("")):0
+    if (distance) distanceFloat = distance !== '' ? parseFloat(distance.split(",").join("")) : 0
     // console.log(distanceFloat, distance)
     // console.log(price)
-    const [errors,  setErrors] = useState({
+    const [errors, setErrors] = useState({
         tooLowerStartDate: false,
         tooLowerFinishDate: false,
         wrongCapacity: false,
@@ -51,19 +51,16 @@ export default function PublicTrip({origin, destination, price, distance, durati
 
     let initPoint
     let finishPoint
-    if(origin && origin.current && typeof origin.current==="object" && origin.current.value !== orig) {
-        initPoint= origin['current']['value']
+    if (origin && origin.current && typeof origin.current === "object" && origin.current.value !== orig) {
+        initPoint = origin['current']['value']
         setOrig(initPoint)
         // console.log("orig", orig)
     }
-    if(destination && destination.current && typeof destination.current==="object" && destination.current.value !== dest) {
-        finishPoint= destination['current']['value']
+    if (destination && destination.current && typeof destination.current === "object" && destination.current.value !== dest) {
+        finishPoint = destination['current']['value']
         setDest(finishPoint)
         // console.log("dest", dest)
     }
-    if(price !== pric) setPric(price); 
-    if(distanceFloat !== disc) setDisc(distanceFloat);
-
 
     const [infoTrip, setInfoTrip] = useState({
         capacity: '',
@@ -71,8 +68,16 @@ export default function PublicTrip({origin, destination, price, distance, durati
         finish_date: '',
     });
 
-    function deshabilitar(){
-        // if(!infoTrip.capacity|| !infoTrip.start_date|| !infoTrip.finish_date|| !orig|| !dest|| !disc|| !pric) return true
+    if (infoTrip.capacity && price) price = price / infoTrip.capacity
+
+
+    if (price !== pric) setPric(price);
+    if (distanceFloat !== disc) setDisc(distanceFloat);
+
+
+
+    function deshabilitar() {
+        if (!infoTrip.capacity || !infoTrip.start_date || !infoTrip.finish_date || !orig || !dest || !disc || !pric) return true
         return false
     }
 
@@ -87,17 +92,19 @@ export default function PublicTrip({origin, destination, price, distance, durati
         })
     }
 
-    const handleSubmit= function(e){
+    const handleSubmit = function (e) {
         e.preventDefault()
         //LO COMENTO Y NO LO USO PARA NO CONSUMIR LA API DE GOOGLE QUE TIENE USO LIMITADO MEPA
         console.log(infoTrip.dest)
-        const photos = axios.get(`${API_URL}/trip/photo/get`, {headers: {
-        'destination': dest
-        }}).then(resp=>{ 
-            console.log(resp.data[1]) 
+        const photos = axios.get(`${API_URL}/trip/photo/get`, {
+            headers: {
+                'destination': dest
+            }
+        }).then(resp => {
+            console.log(resp.data[1])
             console.log(resp.data[2])
             console.log(resp.data[3])
-            
+
             const tripToSave = {
                 ...infoTrip, //CAPACIDAD DISPONIBLE Y FECHAS
                 origin: orig,
@@ -108,11 +115,13 @@ export default function PublicTrip({origin, destination, price, distance, durati
             }
             console.log("infoTrip desde submit", tripToSave)
 
-            axios.post(`${API_URL}/trip`,{trip: tripToSave}, {headers: {
-                Authorization: `Bearer ${window.localStorage.getItem('token')}`
-            }})
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err));
+            axios.post(`${API_URL}/trip`, { trip: tripToSave }, {
+                headers: {
+                    Authorization: `Bearer ${window.localStorage.getItem('token')}`
+                }
+            })
+                .then(res => console.log(res.data))
+                .catch(err => console.log(err));
 
         })
     }
@@ -154,28 +163,28 @@ export default function PublicTrip({origin, destination, price, distance, durati
                 )}
             </Popup>
                 :
-        <div>
-        {/* <NavBarDrivers publicar={false} passenger={false}/> */}
-            <form onSubmit= {(e)=>handleSubmit(e)} method="post" action=''>
-                
-                <Dates duration={duration}/>
+                <div>
+                    {/* <NavBarDrivers publicar={false} passenger={false}/> */}
+                    <form onSubmit={(e) => handleSubmit(e)} method="post" action=''>
 
-                <InputField
-                    label="Capacidad"
-                    name="capacity"
-                    type="number"
-                    icon="document"
-                    value={infoTrip.capacity}
-                    onChange={handleChange}
-                />
-                <InputField //CAMPO AUTOMÁTICO
-                    label="Precio (AR$)"
-                    name="price"
-                    type="number"
-                    icon="document"
-                    value={price}
-                />
-                {/* <InputField //ADJUNTADA EN EL MODELO CAR
+                        <Dates duration={duration} />
+
+                        <InputField
+                            label="Capacidad"
+                            name="capacity"
+                            type="number"
+                            icon="document"
+                            value={infoTrip.capacity}
+                            onChange={handleChange}
+                        />
+                        <InputField //CAMPO AUTOMÁTICO
+                            label="Precio (AR$)"
+                            name="price"
+                            type="number"
+                            icon="document"
+                            value={price}
+                        />
+                        {/* <InputField //ADJUNTADA EN EL MODELO CAR
                     label="Hora"
                     name="car"
                     type="text"
@@ -183,10 +192,10 @@ export default function PublicTrip({origin, destination, price, distance, durati
                     value={infoTrip.time}
                     onChange={handleChange}
                 /> */}
-                <input id='subm' type="submit" disabled={deshabilitar()}/>
-            </form>
-        </div>
+                        <input id='subm' type="submit" disabled={deshabilitar()} />
+                    </form>
+                </div>
         }
-        </>
+    </>
     )
 }
