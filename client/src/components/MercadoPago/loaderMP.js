@@ -22,7 +22,7 @@ export default function LoaderMP({ user, idTrip, driverId, price, origin, destin
     const productos = [{
         title: origin + " - " + destination,
         quantity: capacity,
-        price
+        price:1
     }]
     // let aux;
     // if(Object.keys(user).length){

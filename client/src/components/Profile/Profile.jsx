@@ -97,7 +97,7 @@ export default function Profile() {
                   })}
                   <div>
                     <li className={style.li}>
-                        <NavLink className={style.navLink2} exact to="/addCars">Añadir Auto</NavLink>
+                        <NavLink className={style.navLink2} exact to="/addCar">Añadir Auto</NavLink>
                     </li>
                   </div>
                 </div>

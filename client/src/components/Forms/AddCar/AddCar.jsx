@@ -60,20 +60,21 @@ function AddCar() {
     };
 
     const handleChange = (event) => {
-        const {name,value,files} = event.target
-        if(name === "image"){
+        const { name, value, files } = event.target
+        if (name === "image") {
             const file = files[0];
-            let {type,size} = file;
+            let { type, size } = file;
             let ext = type.split('/')[1];
-            if(!['png','jpeg','jpg','webp'].includes(ext)) setErrors(
-                {...errors,[name]:"Extension invalida, soportamos(png, jpeg, jpg, webp)"
-            })
-            else setErrors({...errors,[name]:""})
-            if(size < 0 || size > 1000000) setErrors({...errors,[name]:"La imagen debe pesar maximo 1MB"})
-            else setErrors({...errors,[name]:""})
-            setCar({...car,[name]:file})
+            if (!['png', 'jpeg', 'jpg', 'webp'].includes(ext)) setErrors(
+                {
+                    ...errors, [name]: "Extension invalida, soportamos(png, jpeg, jpg, webp)"
+                })
+            else setErrors({ ...errors, [name]: "" })
+            if (size < 0 || size > 1000000) setErrors({ ...errors, [name]: "La imagen debe pesar maximo 1MB" })
+            else setErrors({ ...errors, [name]: "" })
+            setCar({ ...car, [name]: file })
         }
-        else{
+        else {
             setCar({ ...car, [name]: value });
             setErrors(ControlFeedback({
                 ...car,
@@ -81,30 +82,32 @@ function AddCar() {
             }));
         }
     }
-    
+
     const handleSubmit = (event) => {
         event.preventDefault();
         try {
             const form = event.currentTarget;
             if (form.checkValidity() === false) {
-            event.stopPropagation();
+                event.stopPropagation();
             }
             let carFormData = new FormData();
             Object.keys(car).forEach(key => {
                 console.log(key)
-                carFormData.append(key,car[key]);
+                carFormData.append(key, car[key]);
             })
 
-            axios.post(`${API_URL}/cars`, carFormData, {headers: {
-            Authorization: `Bearer ${window.localStorage.getItem('token')}`,
-            'Content-Type':'multipart/form-data'
-            }}).then(() => setShow(true))
-            .catch((err) => console.log(err))
+            axios.post(`${API_URL}/cars`, carFormData, {
+                headers: {
+                    Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(() => setShow(true))
+                .catch((err) => console.log(err))
 
             setValidated(true);
         } catch (e) {
             console.log(e.message)
-        }   
+        }
     };
     return (
         <div className={styles.formulario}>

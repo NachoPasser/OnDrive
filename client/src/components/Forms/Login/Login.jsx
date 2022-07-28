@@ -11,6 +11,7 @@ const Login = () => {
         <div className={styles.ImageContainer}>
           <img className={styles.Image} src={imageTop} alt="img-top-login" />
           <img className={styles.LogoDesktop} src={logo} alt="logo-onDrive" />
+          <p className={styles.Text}>Logeate para acceder a todos los beneficios que brinda OnDrive.</p>
         </div>
       <LoginForm/>
       </section>
