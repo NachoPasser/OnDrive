@@ -78,26 +78,6 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
                         :
                         <Spinner animation="grow" />
                     }
-<<<<<<< HEAD
-                    
-                    {trip.driver_id === driverId && Object.keys(driver).length  && Object.keys(user).length ?
-                        <div>
-                            <LoaderMP
-                                user={user}
-                                idTrip={id}
-                                capacity={trip.capacity}
-                                start={trip.start_date}
-                                finish={trip.finish_date}
-                                price={trip.price}
-                                origin={trip.origin}
-                                destination={trip.destination}
-                                driver= {driver} 
-                                driverId= {driverId}
-                            />
-                        </div>
-                        :
-                        <div>Cargando...</div>
-=======
                     {trip.driver_id === driverId && Object.keys(driver).length && Object.keys(user).length ?
                             <div>
                                 <LoaderMP
@@ -110,11 +90,11 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
                                     price={trip.price}
                                     origin={trip.origin}
                                     destination={trip.destination}
+                                    driver= {driver} 
                                 />
                             </div>
                             :
                             <div>Cargando...</div>
->>>>>>> e59ef1d31f8842d9519b6950387b87744b2200b6
                     }
                 </Modal.Body>
             </Modal>

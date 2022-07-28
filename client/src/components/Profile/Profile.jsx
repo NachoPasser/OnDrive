@@ -29,7 +29,7 @@ export default function Profile() {
   return (
     <div id="all">
       {console.log(user)}
-      <div classname={style.pasajero}>
+      <div className={style.pasajero}>
         <NavBarProfile />
         <div className={style.top} style={{ color: 'white' }}>
           <div className={style.userData}>
