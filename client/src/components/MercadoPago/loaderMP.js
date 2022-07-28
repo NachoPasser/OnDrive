@@ -6,7 +6,7 @@ import { getUserById } from '../../redux/actions/getUserById.js'
 
 import { API_URL } from "../../config/enviroment.js";
 
-export default function LoaderMP({ user, idTrip, price, origin, destination, start, finish, capacity }) {
+export default function LoaderMP({ user, idTrip, driverId, price, origin, destination, start, finish, capacity }) {
 
     // console.log(user)
     //console.log(origin, destination)
@@ -21,6 +21,7 @@ export default function LoaderMP({ user, idTrip, price, origin, destination, sta
 
     const productos = [{
         title: origin + " - " + destination,
+        quantity: capacity,
         price
     }]
     // let aux;
@@ -31,7 +32,7 @@ export default function LoaderMP({ user, idTrip, price, origin, destination, sta
 
     // useEffect(() => {
     if (!comprobant) {
-        const dataTrip = [productos, idTrip, user_id]
+        const dataTrip = [productos, idTrip, user_id, driverId]
         axios
             .post(`${API_URL}/mercadopago`, { dataTrip })
             .then((data) => {

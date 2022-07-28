@@ -129,7 +129,7 @@ export default function Home() {
                                 ).map(trip => {
                                     return (
                                         <div className={style.cards} key={trip.trip_id}>
-
+                                            
                                             {trip.isAvailable ? <HomeCard
                                                 key={trip.trip_id}
                                                 id={trip.trip_id}
