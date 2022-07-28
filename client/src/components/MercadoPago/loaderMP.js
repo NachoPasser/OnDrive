@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import MercadoPago from "./mp.jsx"
 import axios from 'axios'
 import { getUserById } from '../../redux/actions/getUserById.js'
+import s from './mp.module.css'
 
 import { API_URL } from "../../config/enviroment.js";
 
-export default function LoaderMP({ user, idTrip, driverId, price, origin, destination, start, finish, capacity }) {
+export default function LoaderMP({ user, idTrip, driver, driverId, price, origin, destination, start, finish, capacity }) {
 
     // console.log(user)
     //console.log(origin, destination)
@@ -16,23 +17,25 @@ export default function LoaderMP({ user, idTrip, driverId, price, origin, destin
     let s = startDate.toLocaleDateString()
     let f = finishDate.toLocaleDateString()
 
+    // const [seats, setSeats] = useState()
     const [datos, setDatos] = useState("")
     const [comprobant, setComprobant] = useState(false)
+    const [confirm, setConfirm] = useState(false)
+    const [cantSelect, setCantSelect] = useState(1)
 
     const productos = [{
         title: origin + " - " + destination,
-        quantity: capacity,
-        price:1
+        price: parseFloat(price.toFixed(2) * cantSelect)
     }]
-    // let aux;
-    // if(Object.keys(user).length){
-    //     aux = user.id
-    // }
+
     let user_id = user.user_id
 
-    // useEffect(() => {
-    if (!comprobant) {
-        const dataTrip = [productos, idTrip, user_id, driverId]
+    // useEffect(() => 
+    //CREAR PREFERENCIA
+    console.log(driverId)
+    if (!comprobant && confirm) {
+        const dataTrip = [productos, idTrip, user_id, driverId, cantSelect]
+        console.log(dataTrip)
         axios
             .post(`${API_URL}/mercadopago`, { dataTrip })
             .then((data) => {
@@ -41,14 +44,60 @@ export default function LoaderMP({ user, idTrip, driverId, price, origin, destin
             })
             .catch(err => console.error(err))
         setComprobant(true)
+        setConfirm(false)
+    }
+
+    function cash() {
+        setConfirm(true)
     }
     // }, [])
 
-    return (
-        <div>
-            {datos.length !== 0 &&
-                <MercadoPago productos={productos} data={datos} />
-            }
+    const handleChange = (e) => {
+        setCantSelect(e.target.value)
+    }
+
+    // function desable() {
+    //     if (confirm) return true
+    //     return false
+    // }
+
+    return (<div style={{ 'color': 'orange' }}>
+        <br></br>
+        <br></br>{!confirm && <>
+            <div style={{ 'color': 'wheat' }}>
+                <div>{cantSelect
+                    ? '$' + parseFloat(price.toFixed(2) * cantSelect)
+                    : '$' + parseFloat(price.toFixed(2))
+                }</div>
+                <div>
+                    <div>
+                        <label style={{ 'marginRight': '20px', 'width': '200px' }}>Â¿Cuantas butacas desea reservar?</label>
+                    </div>
+                    <input type='number' defaultValue={1} min={1} max={capacity} onChange={e => handleChange(e)}
+                    ></input>
+                </div>
+                <button onClick={cash} style={{ 'width': '200px', 'height': '30px' }} >
+                    Confirmar y pagar
+                </button>
+            </div>
+        </>}
+
+        <h4>Checkout</h4>
+        <div className={s.gridContainer} >
+            {productos.map((producto, i) => {
+                return (
+                    <div className={s.products} key={i}>
+                        <ul className={s.ul} >
+                            <li>{producto.title}</li>
+                        </ul>
+                    </div>
+                )
+            })}
         </div>
-    )
+
+        {datos.length !== 0 &&
+            <>{parseFloat(price.toFixed(2) * cantSelect)}
+                <MercadoPago data={datos} />
+            </>}
+    </div>)
 }
