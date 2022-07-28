@@ -11,7 +11,8 @@ import {
     Text,
 } from '@chakra-ui/react'
 import { FaLocationArrow, FaTimes } from 'react-icons/fa'
-
+import { useField } from '../../../hooks/useInputField';
+import InputField from '../../Sections/InputField/InputField';
 import {
     useJsApiLoader,
     GoogleMap,
@@ -19,11 +20,11 @@ import {
     Autocomplete,
     DirectionsRenderer,
 } from '@react-google-maps/api'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Comparador from '../../Map/FuelComponents/18-Comparador'
+import styles from './mapCalculator.module.css'
 import PublicTrip from './PublicTrip'
 import NavBarDrivers from '../../NavBar/navbarDrivers'
-import { Dates } from './Dates.jsx';
 //prueba
 // import usePlacesAutocomplete, {
 //     getGeocode,
@@ -42,23 +43,37 @@ export default function MapCalculator() {
 
     const [map, setMap] = useState(/** @type google.maps.Map */(null))
     const [directionsResponse, setDirectionsResponse] = useState(null)
+    const [errors, setErrors] = useState({
+        origin: 'Lugar de origen requerido.',
+        destination: 'Lugar de destino requerido.',
+        startDate: '',
+        capacity: '',
+        price: 'Calcule el precio.',
+        car: 'Seleccione un auto.',
+    })
+    const [disabled, setDisabled] = useState('')
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
-    // console.log(distance)
+    const [price, setPrice] = useState('')
+    
 
-    const [price, setPrice] = useState()
-    // if(price) console.log('price desde 46', price)
+    if(!distance && price) {
+        setErrors('Calcule el precio.')
+        setPrice(0)
+        setDisabled(false)
+    }
 
     /** @type React.MutableRefObject<HTMLInputElement> */
     const originRef = useRef()
     /** @type React.MutableRefObject<HTMLInputElement> */
     const destiantionRef = useRef()
-
-
+    
     if (!isLoaded) {
         return <SkeletonText />
     }
-
+    
+    console.log(originRef.current && originRef.current.value)
+    console.log(destiantionRef.current && destiantionRef.current.value)
 
     async function calculateRoute() {
         if (originRef.current.value === '' || destiantionRef.current.value === '') {
@@ -75,9 +90,8 @@ export default function MapCalculator() {
         setDirectionsResponse(results)
         setDistance(results.routes[0].legs[0].distance.text)
         setDuration(results.routes[0].legs[0].duration.text)
-
+        setDisabled(true)
     }
-
 
     function clearRoute() {
         setDirectionsResponse(null)
@@ -155,25 +169,36 @@ export default function MapCalculator() {
                         <Box flexGrow={1}>
                             <label style={{ 'color': 'rgb(165,165,165)', 'fontSize': '22px' }}>Origen</label>
                             <Autocomplete>
-                                <Input width="100%" borderRadius="8px"
-                                    height="49px" type='text'
-                                    placeholder='Ingresa una ubicación' ref={originRef}
-                                    backgroundColor="rgb(230,230,230)" fontSize='24px'
-                                    padding="3px 13px" color="rgb(40,40,40)"
+                                <Input
+                                    type='text'
+                                    readOnly={disabled}
+                                    placeholder='Ingresa una ubicación' 
+                                    ref={originRef}
+                                    className={styles.InputField}
+                                    onChange={() => {
+                                        if(!originRef.current.value) setErrors({...errors, origin: 'Lugar de destino requerido'})
+                                        else setErrors({...errors, origin: ''})
+                                    }}
                                 />
                             </Autocomplete>
+                            {errors.origin ? <span className={styles.ErrorInputField}>{errors.origin}</span> : null}
                         </Box>
                         <Box flexGrow={1}>
                             <label style={{ 'color': 'rgb(165,165,165)', 'fontSize': '22px' }}>Destino</label>
                             <Autocomplete>
-                                <Input height="49px" borderRadius="8px"
-                                    type='text' width="100%"
+                                <Input 
+                                    type='text' 
                                     placeholder='Ingresa una ubicación'
+                                    readOnly={disabled}
                                     ref={destiantionRef}
-                                    backgroundColor="rgb(230,230,230)" fontSize='24px'
-                                    padding="3px 13px" color="rgb(40,40,40)"
+                                    className={styles.InputField}
+                                    onChange={() => {
+                                        if(!destiantionRef.current.value) setErrors({...errors, destination: 'Lugar de destino requerido'})
+                                        else setErrors({...errors, destination: ''})
+                                    }}
                                 />
                             </Autocomplete>
+                            {errors.destination ? <span className={styles.ErrorInputField}>{errors.destination}</span> : null}
                         </Box>
 
                         <ButtonGroup>
@@ -183,16 +208,17 @@ export default function MapCalculator() {
                                 Calcular ruta
                             </Button>
                             <IconButton
-                                aria-label='center back' padding='2px'
-                                icon={<FaTimes />} borderRadius='6px'
-                                onClick={clearRoute} backgroundColor='red'
-                                height='30px' margin='16px auto auto 0px'
+                            aria-label='center back'
+                            icon={<FaTimes />}
+                            onClick={clearRoute}
                             />
                         </ButtonGroup>
                     </HStack>
                     <div>
                         <PublicTrip origin={originRef && originRef}
                             destination={destiantionRef && destiantionRef}
+                            errors={errors}
+                            setErrors={setErrors}
                             price={price && price}
                             distance={distance && distance}
                             duration={duration && duration}

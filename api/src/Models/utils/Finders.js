@@ -154,13 +154,18 @@ async function findPhotos(destination) {
     const photos = searchPhotos.data.result.photos
     // console.log(photos)
     const arrayImg = []
+    let i = 0
     if (photos !== undefined) {
-      for (let i = 0; i < 3; i++) {
+      while(arrayImg.length !== 3 && i < photos.length){
+        if(photos[i] && photos[i].photo_reference !== null){
         arrayImg.push(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photos[i].photo_reference}&key=${API_IMG}`)
+        }
+        i++;
       }
     } else {
-      arrayImg.push(/AÑADIR URL PARA IMAGEN NO ENCONTRADA/)
+      arrayImg.push('https://res.cloudinary.com/on-drive/image/upload/v1658991247/OnDrive/trip-default_mdav0t.webp')
     }
+
     return arrayImg
   } catch (e) {
     console.log(e)

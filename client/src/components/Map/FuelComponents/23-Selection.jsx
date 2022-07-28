@@ -24,7 +24,7 @@ export default function Selection({fuels, tabla, distance, price, setPrice}) {
 
     return (
         <div>
-            <Prices prices={objeto} fuels={fuels} distance={distance}  price={price} setPrice={setPrice}/>
+            <Prices  prices={objeto} fuels={fuels} distance={distance}  price={price} setPrice={setPrice}/>
             {/*  */}
         </div>
     )

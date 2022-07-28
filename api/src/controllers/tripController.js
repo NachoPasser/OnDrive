@@ -4,8 +4,8 @@ const { findAllTrips, findTripById, findReview, findAllReviews, findPhotos, find
 const {isFitToBuy} = require('../Models/utils/Confirmer')
 const postTrip = async (req, res) => {
   try {
-    const { user_id, decoded, trip } = req.body;
-    const publishedTrip = await createTripAsDriver(user_id ? user_id : decoded.id, trip)
+    const { user_id, decoded, trip, car_id } = req.body;
+    const publishedTrip = await createTripAsDriver(user_id ? user_id : decoded.id, car_id, trip)
     res.status(201).json(publishedTrip);
   } catch (e) {
     res.status(400).json({ error: `${e.message}` });

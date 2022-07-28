@@ -40,6 +40,7 @@ export default function Map() {
     const [directionsResponse, setDirectionsResponse] = useState(null)
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
+    const [price, setPrice] = useState()
 
 
     /** @type React.MutableRefObject<HTMLInputElement> */
@@ -164,7 +165,7 @@ export default function Map() {
                     />
                 </HStack>
             <div style={{'backgroundColor':'#252C38', 'color':'wheat'}}>
-                <Comparador distance={distance}/>
+                <Comparador distance={distance} setPrice={setPrice}/>
             </div>
             </Box>
         </Flex>

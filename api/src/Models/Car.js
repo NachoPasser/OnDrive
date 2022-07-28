@@ -42,6 +42,10 @@ const Car = conn.define(
     fuel: {
       type: DataTypes.STRING,
     },
+    capacity: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   },
   {
     timestamps: false,

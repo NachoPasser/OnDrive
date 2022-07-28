@@ -22,6 +22,10 @@ export default function CostTrip({distance, unicFuel, price, setPrice}){
 
     if(result) setPrice(parseFloat(result.toFixed(2)))
 
+    if(!distance && result){
+        setResult(0)
+    }
+
     function execute() {
         // console.log( unicFuel )
         litres? setResult(((total* distance)/ 100)* parseFloat(unicFuel[1])):
@@ -42,7 +46,9 @@ export default function CostTrip({distance, unicFuel, price, setPrice}){
     function disable() {
         if (unicFuel[1] && total && distance) return false
         return true
-    }
+    }  
+
+    console.log(distance)
 
     return (
         <div>
@@ -69,7 +75,7 @@ export default function CostTrip({distance, unicFuel, price, setPrice}){
             <button onClick={execute} disabled={disable()} className={unicFuel[1] && total && distance ? style.go : style.notgo}>
                 Estimar precio de un viaje
             </button>
-            {result && <><br />Precio estimado: AR$ {parseFloat(result.toFixed(2))}</>}
+            {result && distance ? <><br />Precio estimado: AR$ {parseFloat(result.toFixed(2))}</> : <br />}
         </div>
     )
 }
