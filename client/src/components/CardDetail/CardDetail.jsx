@@ -12,8 +12,6 @@ import LoaderMP from '../MercadoPago/loaderMP';
 
 function CardDetail({ id, show, fullscreen, setShow }) {
 
-    const [comp, setComp] =useState(false)
-
     const dispatch = useDispatch();
     const trip = useSelector((state) => state.tripById);
     const driver_id = trip.driver_id
@@ -36,6 +34,8 @@ function CardDetail({ id, show, fullscreen, setShow }) {
         dispatch(getUserById(localStorage.getItem('token')))
     }, [])
 
+    const [comp, setComp] =useState(false)
+    
     if(!comp && Object.keys(trip).length && Object.keys(user).length && Object.keys(driver).length) setComp(true)
 
     console.log(user)
@@ -97,7 +97,7 @@ function CardDetail({ id, show, fullscreen, setShow }) {
                         <Spinner animation="grow" />
                     }
                     {comp ?
-                        <div> <LoaderMP user={user} idTrip={id} start={trip.start_date} finish={trip.finish_date} price={trip.price} origin={trip.origin} destination={trip.destination} /> </div>
+                        <div> <LoaderMP user={user} driver={driver} idTrip={id} start={trip.start_date} finish={trip.finish_date} price={trip.price} origin={trip.origin} destination={trip.destination} /> </div>
                         : <div>Cargando...</div>
                     } 
                 </Modal.Body>
