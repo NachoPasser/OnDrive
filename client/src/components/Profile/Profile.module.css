@@ -134,11 +134,3 @@ Link {
 .reviewsBox{
     margin: 10px;
 }
-.driver{
-    display: flex;
-    gap: 10px;
-}
-.driverContact{
-    display: flex;
-    flex-direction: column;
-}
