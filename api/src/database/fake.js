@@ -40,6 +40,7 @@ function generateDriverData() {
   ];
   let license = Math.floor(10000000 + Math.random() * 90000000)
   let DNI = Math.floor(10000000 + Math.random() * 90000000)
+  // let tel = Math.floor(1000000000 + Math.random() * 9000000000)
   let car_insurance = company
 
   return [license, car_insurance, DNI];
@@ -111,7 +112,7 @@ async function loadFakeDrivers() {
 
     //convertir a la mitad de los usuarios en drivers
     for (let u of users) {
-      let [license, car_insurance, DNI] = generateDriverData();
+      let [license, car_insurance, DNI, tel] = generateDriverData();
       await createDriver(u.user_id, { license, car_insurance, DNI });
     }
   } catch (e) {
