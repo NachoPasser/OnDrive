@@ -16,7 +16,7 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
     const trip = useSelector((state) => state.tripById);
     const driver = useSelector(state => state.driverById)
     const user = useSelector(state => state.userById)
-
+    console.log(user)
     useEffect(() => {
         dispatch(getTripById(id))
         dispatch(getUserById(localStorage.getItem('token')))
@@ -78,21 +78,22 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
                         :
                         <Spinner animation="grow" />
                     }
-                    {trip.driver_id === driverId ?
-                        <div>
-                            <LoaderMP
-                                user={user}
-                                idTrip={id}
-                                capacity={trip.capacity}
-                                start={trip.start_date}
-                                finish={trip.finish_date}
-                                price={trip.price}
-                                origin={trip.origin}
-                                destination={trip.destination}
-                            />
-                        </div>
-                        :
-                        <div>Cargando...</div>
+                    {trip.driver_id === driverId && Object.keys(driver).length && Object.keys(user).length ?
+                            <div>
+                                <LoaderMP
+                                    user={user}
+                                    idTrip={id}
+                                    driverId={driverId}
+                                    capacity={trip.capacity}
+                                    start={trip.start_date}
+                                    finish={trip.finish_date}
+                                    price={trip.price}
+                                    origin={trip.origin}
+                                    destination={trip.destination}
+                                />
+                            </div>
+                            :
+                            <div>Cargando...</div>
                     }
                 </Modal.Body>
             </Modal>
