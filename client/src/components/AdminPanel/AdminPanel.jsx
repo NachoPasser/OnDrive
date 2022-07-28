@@ -63,7 +63,7 @@ export default function AdminPanel() {
                 key={u.id}
                 email={u.email}
                 ban_status={u.ban_status}
-                ban_publish={u.driver ? u.driver.publish : false}
+                ban_publish={u.driver ? u.driver.ban_publish : false}
                 ban_purchase={u.ban_purchase}
               />
             ) : null

@@ -7,7 +7,7 @@ import Selection from "./23-Selection";
 import style from './tabla.module.css';
 const axios = require("axios").default;
 
-export default function Tabla({ distance, setPrice, price }) {
+export default function Tabla({ distance, setPrice, price}) {
 
     let result = ""
     let array = useSelector(state => state.prices)

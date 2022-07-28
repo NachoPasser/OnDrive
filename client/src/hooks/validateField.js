@@ -33,6 +33,13 @@ export function validateField(value, field) {
     case 'DNI':
         if(!value) error = 'Numero de DNI requerido.'
         else if(!/^[0-9]{7,8}$/.test(value)) error = 'El numero de DNI introducido es invalido'
+        break;
+    case 'origin':
+        if(!value) error = 'Lugar de origen requerido.'
+        break;
+    case 'destination':
+        if(!value) error = 'Lugar de destino requerido.'
+        break;
     default:
         break;
     }

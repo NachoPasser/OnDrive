@@ -6,7 +6,7 @@ const { findUserById } = require("../Models/utils/Finders");
 const addCar = async (req, res) => {
   try {
     const { user_id, decoded } = req.body;
-    const { model, brand, type, license_plate, year, color, fuel } = req.body;
+    const { model, brand, type, license_plate, year, color, fuel, capacity } = req.body;
 
     let car = {
       file: req.file.path,
@@ -17,6 +17,7 @@ const addCar = async (req, res) => {
       year,
       color,
       fuel,
+      capacity
     };
 
     const { driver } = user_id
@@ -30,14 +31,25 @@ const addCar = async (req, res) => {
   }
 };
 
-const getCars = async (req, res) => {
-  const cars = await Car.findAll({
-    include: Driver,
-  });
-  res.json(cars);
-};
+const getCarById = async(req, res) => {
+    try{
+        let car_id = req.params.id
+        const car = await Car.findByPk(car_id)
+        res.json(JSON.parse(JSON.stringify(car, null, 2)))
+    } catch (e) {
+        res.status(400).json({message: e.message});
+    }
+}
+
+const getCars = async(req, res) => {
+    const cars = await Car.findAll({
+        include: Driver
+    });
+    res.json(cars);
+}
 
 module.exports = {
-  addCar,
-  getCars,
-};
+    addCar,
+    getCars,
+    getCarById 
+}

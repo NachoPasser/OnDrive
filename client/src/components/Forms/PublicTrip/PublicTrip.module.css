@@ -41,3 +41,9 @@
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
+
+.ErrorInputField{
+  font-size: 1.2rem;
+  color:var(--secondary-color);
+  margin-top: -3px;
+}
