@@ -27,7 +27,7 @@ export default function NavBarPsg() {
             </div>
             <div className={style.items}>
                 <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/home-drivers">Conductor</NavLink>
+                    <NavLink className={style.navLink} exact to="/driver">Ser un conductor</NavLink>
                 </li>
                 <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/profile">Perfil</NavLink>
