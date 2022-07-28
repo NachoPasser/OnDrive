@@ -9,17 +9,19 @@ import { FILTER_TRIPS } from '../actions/getFilteredTrips.js';
 import { GET_USER_BY_ID } from '../actions/getUserById.js';
 import { GET_ALL_REVIEWS } from '../actions/getAllTripReviews.js';
 import { GET_DRIVER_BY_ID } from '../actions/getDriverById.js';
+import { GET_CAR_BY_ID } from '../actions/getCarById.js';
 
 const initialState = {
     trips: [], // trips variables
     filters: { origin: 'Origen', destination: 'Destino', capacity: 'Capacidad', date: 'Fecha' },
     fixedTrips: [], //trips fijos
-    users: [],
-    tripById: {},
-    prices: [], //of fuels
-    userById: {},
     reviews: null,
-    driverById: {}
+    users: [],
+    prices: [], //of fuels
+    tripById: {},
+    userById: {},
+    driverById: {},
+    carById:{}
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -41,6 +43,12 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userById: action.payload
+            }
+        
+        case GET_CAR_BY_ID:
+            return {
+                ...state,
+                carById: action.payload
             }
 
         case GET_ALL_REVIEWS:

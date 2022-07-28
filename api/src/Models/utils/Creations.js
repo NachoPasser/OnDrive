@@ -1,6 +1,7 @@
 const { models } = require("../../database/relations");
 const { isADriver } = require("./Confirmer");
-const { findUserById, findTripById, findReview } = require("./Finders");
+const { findUserById, findTripById } = require("./Finders");
+const { uploader } = require("../../config/cloudinary");
 
 //models
 const { User, Driver, Trip, Car, Capacity } = models;
@@ -22,17 +23,42 @@ async function createUser(userData = {}) {
 async function createCar(driver_id, car = {}) {
   try {
     if (!driver_id || !car || typeof car !== "object")
-      throw new Error("car missing properties");
+      throw new Error("Faltan el auto o sus propiedades");
     const driver = await Driver.findByPk(driver_id);
-    if (!driver) throw new Error(`driver ${driver_id} not found`);
+    if (!driver) throw new Error(`Este usuario no es un conductor`);
+
+    data = {
+      model:car.model,
+      brand:car.brand,
+      type:car.type,
+      license_plate:car.license_plate,
+      year:car.year,
+      color:car.color,
+      fuel:car.fuel,
+      capacity: car.capacity
+    }
+
+    console.log(data)
     const [carCreated, created] = await Car.findOrCreate({
       where: {
         driver_id,
         license_plate: car.license_plate,
       },
-      defaults: car,
+      defaults: data,
     });
-    return created ? carCreated.getDataValue("car_id") : null;
+    console.log(carCreated)
+    if (created) {
+      let { file } = car;
+      console.log('FILE:',file)
+      const result = await uploader.upload(file, { folder: "OnDrive" });
+      console.log(result)
+      await carCreated.update({ image: result.secure_url });
+      await carCreated.save();
+      console.log(carCreated)
+      return carCreated.getDataValue("car_id");
+    }
+
+    return null;
   } catch (e) {
     throw new Error(`${e.message}`);
   }
@@ -61,15 +87,16 @@ async function createDriver(user_id = null, driverData = {}) {
 }
 
 //CREAR UN VIAJE(VERIFICA SI SOS UN DRIVER PRIMERO)
-async function createTripAsDriver(user_id, trip = {}) {
+async function createTripAsDriver(user_id, car_id, trip = {}) {
   try {
-    if (!trip || typeof trip !== "object")
-      throw new Error(`trip missing properties`);
+    if (!trip || typeof trip !== "object" || !car_id)
+      throw new Error(`trip missing properties or missing car_id`);
     const [isDriver, driver] = await isADriver(user_id);
     if (!isDriver)
       throw new Error(
         `(${user_id}) is not a driver, only drivers can publish trips`
       );
+    const car = await Car.findByPk(car_id)
     const driver_id = driver.getDataValue("driver_id");
     const newTrip = await Trip.create(
       {
@@ -77,16 +104,18 @@ async function createTripAsDriver(user_id, trip = {}) {
         driver_id,
       },
       {
-        include: Driver,
+        include: Driver
       }
     );
+    await newTrip.setCar(car)
     if (!newTrip)
       throw new Error(
         `something has wrong to try create the trip. duplicate, invalid or wrong data`
       );
     return JSON.parse(JSON.stringify(newTrip, null, 2));
   } catch (e) {
-    throw new Error(`${e.message}`);
+    console.log(e)
+    // throw new Error(`${e.message}`);
   }
 }
 
@@ -105,9 +134,10 @@ async function createCapacityUsedByUser({ user = null, trip = null, number = nul
 }
 
 //ASIGNAR VIAJE A UN PASAJERO
-async function assingTrip({ user_id = null, trip_id = null, capacity = null}) {
+async function assingTrip({ user_id = null, trip_id = null, capacity = null }) {
   try {
-    if (!user_id || !trip_id || !capacity) throw new Error("user id or trip id or capacity missing");
+    if (!user_id || !trip_id || !capacity)
+      throw new Error("user id or trip id or capacity missing");
     //buscar usuario
     const user = await findUserById({ user_id, model: true });
     if (!user) throw new Error("user id invalid or does not exist");
@@ -131,4 +161,10 @@ async function assingTrip({ user_id = null, trip_id = null, capacity = null}) {
   }
 }
 
-module.exports = { createUser, createTripAsDriver, createDriver, createCar, assingTrip};
+module.exports = {
+  createUser,
+  createTripAsDriver,
+  createDriver,
+  createCar,
+  assingTrip,
+};

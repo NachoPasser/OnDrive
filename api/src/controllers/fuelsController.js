@@ -12,11 +12,9 @@ const fetchTable = async (req, res) => {
     if (!refresh || refresh == "false" || refresh == false) {
         let fuels = await Fuel.findAll()
         if (fuels.length) {
-            // console.log("modelo fuels")
             return res.status(200).json(fuels)
         }
         else {
-            // console.log("Empty")
             return res.status(200).json(["Empty"])
         }
     }
@@ -44,7 +42,6 @@ const fetchTable = async (req, res) => {
         }
         let corte = totalcut()
 
-        // console.log("Desde el sitio")
         return res.status(200).send(corte)
     }
     else if (!call) {
@@ -59,7 +56,6 @@ POSTEO DE CADA PRECIO-COMBUSTIBLE EN LA BASE DE DATOS.
 const fillModel = async (req, res) => {
 
     let { tabla } = req.body
-    // console.log(tabla)
     let selected = []
     function select(t = tabla) {
         for (let y = 12; y >= 0; y--) {
@@ -69,7 +65,6 @@ const fillModel = async (req, res) => {
                 selected.push(t[2][y])
                 selected.push(t[3][y])
                 selected.push(t[4][y])
-                // console.log(selected)
                 return selected
             }
         }
@@ -104,7 +99,6 @@ const fillModel = async (req, res) => {
         }
     }
 
-    // console.log("Posteamos")
     return res.status(201).send("ok")
 
 };

@@ -131,6 +131,7 @@ async function loadFakeCarsToDrivers() {
       car = await Car.create({
         license_plate: generetaLicensePlate(is2016),
         brand: brand[Math.floor(Math.random() * brand.length)],
+        capacity: Math.floor(Math.random() * (7) + 1),
         ...carInfo,
       });
       await d.addCar(car);
@@ -143,10 +144,13 @@ async function loadFakeCarsToDrivers() {
 
 async function loadFakeTrips() {
   try {
-    let drivers = await Driver.findAll();
+    let drivers = await Driver.findAll({
+      include: Car
+    });
     for (let d of drivers) {
       let user_id = d.getDataValue("user_id");
       let tripFake = fakeTrips[Math.floor(Math.random() * fakeTrips.length)];
+      let car = d.cars[0].car_id
       //LO COMENTO PORQUE YA LO USE PARA CREAR VIAJES CON LOS NUEVOS DATOS, ESTA TODO EN data.json
       // const nameDestination = tripFake.destination;
       // const search = await axios.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?fields=formatted_address,place_id&input=${nameDestination}&inputtype=textquery&key=${API_IMG}`)
@@ -160,7 +164,7 @@ async function loadFakeTrips() {
       // tripFake['album'] = arrayImg
       // tripFake['capacity'] = Math.floor(Math.random() * (5 - 1) + 1)
       // tripFake['rating'] = Math.floor(Math.random() * 5)
-      let tripCreated = await createTripAsDriver(user_id, tripFake);
+      let tripCreated = await createTripAsDriver(user_id, car, tripFake);
     }
   } catch (e) {
     console.error("error al crear viajes falsos", e);

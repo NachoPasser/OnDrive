@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { useEffect } from 'react'
 import s from '../MercadoPago/mp.module.css'
 
 export default function Comprar({ productos, data }) {
+
+
   useEffect(() => {
     const script = document.createElement('script'); //Crea un elemento html script
 
@@ -21,6 +24,13 @@ export default function Comprar({ productos, data }) {
       document.getElementById('form1').removeChild(script);
     }
   }, [data])
+
+  const [cantSelect, setCantSelect] = useState()
+
+  const handleChange = (e) => {
+    setCantSelect(e.target.value)
+  }
+
   return (
     <div className={s.general}>
 
@@ -31,12 +41,17 @@ export default function Comprar({ productos, data }) {
             <div className={s.products} key={i}>
               <ul className={s.ul} >
                 <li>{producto.title}</li>
-                <li>{'$' + producto.price}</li>
-                <li>{producto.quantity}</li>
+                <li>{cantSelect
+                  ? '$' + producto.price * cantSelect
+                  : '$' + producto.price
+                }</li>
+                <li>¿Cuantas butacas desea reservar?
+                  <input type='number' defaultValue={1} min={1} max={producto.quantity} onChange={e => handleChange(e)}></input>
+                </li>
               </ul>
             </div>
           )
-      })}
+        })}
         <form className={s.form1} id="form1">
         </form>
       </div>

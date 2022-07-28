@@ -1,17 +1,15 @@
-const { findAllUsers, findUserById, findDriverById } = require("../Models/utils/Finders");
+const {
+  findAllUsers,
+  findUserById,
+  findDriverById,
+} = require("../Models/utils/Finders");
 const bcrypt = require("bcrypt");
-const {
-  isCorrectCredentials,
-} = require("../Models/utils/Confirmer");
-const {
-  createUser,
-  createDriver,
-} = require("../Models/utils/Creations");
+const { isCorrectCredentials } = require("../Models/utils/Confirmer");
+const { createUser, createDriver } = require("../Models/utils/Creations");
 
 const jwt = require("jsonwebtoken");
-const { Driver } = require("../Models/Driver");
-const { User } = require("../Models/User");
 const { SECRET_KEY } = process.env;
+const { uploader } = require("../config/cloudinary");
 
 const registerUser = async (req, res) => {
   try {
@@ -91,7 +89,13 @@ const verifyBanStatus = async (req, res) => {
     const status_purchase = user.ban_purchase;
     const status_publish = user.driver ? user.driver.ban_publish : false;
 
-    res.json({ type: decoded.type, id: decoded.id, status, status_purchase, status_publish });
+    res.json({
+      type: decoded.type,
+      id: decoded.id,
+      status,
+      status_purchase,
+      status_publish,
+    });
   } catch (e) {
     res.status(498).json({ type: "visitor" });
   }
@@ -120,13 +124,35 @@ const getUserById = async (req, res) => {
 
 const getDriverById = async (req, res) => {
   try {
-    const driver_id = req.headers['user_id']
-    const driver = await findDriverById({ driver_id })
+    const driver_id = req.headers["user_id"];
+    const driver = await findDriverById({ driver_id });
     res.json(driver);
   } catch (e) {
     res.status(400).json({ error: `${e.message}` });
   }
-}
+};
+
+const uploadProfileImage = async (req, res) => {
+  try {
+    const { decoded } = req.body;
+    let user_id = decoded?.id
+
+    if (!user_id)
+      throw new Error("ID(user_id) requerida para actualizar la imagen");
+    const user = await findUserById({ user_id, model: true });
+    if (!user) throw new Error("Usuario inexistente");
+
+    const result = await uploader.upload(req.file.path, { folder: "OnDrive" });
+
+
+    await user.update({ image: result.secure_url });
+    await user.save();
+
+    res.json({ message: "Imagen actualizada", image: result.secure_url });
+  } catch (e) {
+    res.status(400).json({ error: "Error al subir la imagen" });
+  }
+};
 
 module.exports = {
   registerUser,
@@ -137,4 +163,5 @@ module.exports = {
   loginUser,
   verifyUser,
   verifyBanStatus,
+  uploadProfileImage,
 };

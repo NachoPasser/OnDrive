@@ -10,36 +10,18 @@ import { getDriverById } from '../../redux/actions/getDriverById.js'
 import LoaderMP from '../MercadoPago/loaderMP';
 
 
-function CardDetail({ id, show, fullscreen, setShow }) {
-
-    const [comp, setComp] =useState(false)
+function CardDetail({ id, driverId, show, fullscreen, setShow }) {
 
     const dispatch = useDispatch();
     const trip = useSelector((state) => state.tripById);
-    const driver_id = trip.driver_id
     const driver = useSelector(state => state.driverById)
     const user = useSelector(state => state.userById)
-
+    console.log(user)
     useEffect(() => {
         dispatch(getTripById(id))
-    }, [dispatch, id]);
-
-    useEffect(() => {
-        dispatch(getDriverById(driver_id))
-    }, [driver_id])
-
-    useEffect(() => {
-        console.log(trip)
-    }, [trip])
-    
-    useEffect(() => {
         dispatch(getUserById(localStorage.getItem('token')))
-    }, [])
+    }, [id]);
 
-    if(!comp && Object.keys(trip).length && Object.keys(user).length && Object.keys(driver).length) setComp(true)
-
-    console.log(user)
-    console.log(trip)
 
     return (
         <>
@@ -96,10 +78,23 @@ function CardDetail({ id, show, fullscreen, setShow }) {
                         :
                         <Spinner animation="grow" />
                     }
-                    {comp ?
-                        <div> <LoaderMP user={user} idTrip={id} start={trip.start_date} finish={trip.finish_date} price={trip.price} origin={trip.origin} destination={trip.destination} /> </div>
-                        : <div>Cargando...</div>
-                    } 
+                    {trip.driver_id === driverId && Object.keys(driver).length && Object.keys(user).length ?
+                            <div>
+                                <LoaderMP
+                                    user={user}
+                                    idTrip={id}
+                                    driverId={driverId}
+                                    capacity={trip.capacity}
+                                    start={trip.start_date}
+                                    finish={trip.finish_date}
+                                    price={trip.price}
+                                    origin={trip.origin}
+                                    destination={trip.destination}
+                                />
+                            </div>
+                            :
+                            <div>Cargando...</div>
+                    }
                 </Modal.Body>
             </Modal>
         </>

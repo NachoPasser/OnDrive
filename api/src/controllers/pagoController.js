@@ -35,8 +35,6 @@ const reception = async (req, res) => {
 
     let { code, state } = req.query //AMBOS SON STRINGS POR MÄS NÜMEROS QUE HAYA
 
-    console.log(code)
-
     if (!code || !state) return res.status(204).send(`Código para obtener access_token no fue conseguido, por favor vuelva a autenticar su cuenta de Mercado Pago. Code to get access_token wasn't found, please try again to authenticate your Mercado Pago account.`)
 
     const requestAccessToken = await axios.post(`https://api.mercadopago.com/oauth/token`, {
@@ -105,6 +103,8 @@ const posteo = async (req, res) => {
     //Cargamos el carrido de la bd
     const carrito = dataTrip[0]
 
+    console.log(carrito)
+
     const items_ml = carrito.map(i => ({
         title: i.title,
         unit_price: i.price,
@@ -120,11 +120,6 @@ const posteo = async (req, res) => {
         items: items_ml,
         external_reference: `${id_orden}`,
         payment_methods: {
-            excluded_payment_types: [
-                {
-                    id: "atm"
-                }
-            ],
             installments: 3  //Cantidad máximo de cuotas
         },
         marketplace: 'MP-MKT-8074988940290506',
@@ -179,11 +174,11 @@ const pagos = async (req, res) => {
                 .then((_) => {
                     console.info('redirect success')
 
-                    return res.redirect("http://localhost:3000")
+                    return res.redirect("http://localhost:3000/home-passengers")
                 })
                 .catch((err) => {
                     console.error('error al salvar')
-                    return res.redirect(`http://localhost:3000/?error=${err}&where=al+salvar`)
+                    return res.redirect(`http://localhost:3000/error/?error=${err}&where=al+salvar`)
                 })
         })
         .catch(err => {

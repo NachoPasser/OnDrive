@@ -20,7 +20,6 @@ import NavBar from "../NavBar/navbar.js";
 import Fecha from "../Filters/filterByDate.jsx";
 import Paging from "../Paging/Paging.jsx";
 import Map from "../Map/map.jsx"
-import { useAuthorized } from "../../hooks/useAuthorized";
 
 export default function Home() {
     //dispatch
@@ -129,7 +128,7 @@ export default function Home() {
                                 ).map(trip => {
                                     return (
                                         <div className={style.cards} key={trip.trip_id}>
-
+                                            
                                             {trip.isAvailable ? <HomeCard
                                                 key={trip.trip_id}
                                                 id={trip.trip_id}

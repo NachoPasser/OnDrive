@@ -47,6 +47,10 @@
   outline: 3px solid var(--secondary-color);
 }
 
+.InputField:read-only{
+  pointer-events: none;
+}
+
 
 /* Styles for Icon img */
 .IconInputField {

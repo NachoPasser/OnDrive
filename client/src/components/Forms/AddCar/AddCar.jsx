@@ -26,6 +26,7 @@ function ControlFeedback(input) {
     if(!input.color) errors.color = 'Debe ingresar un color';
     if(!input.fuel) errors.fuel = 'Debe ingresar un tipo de combustible';
     if(!input.type) errors.type = 'Debe ingresar un tipo de vehiculo';
+    if(!input.capacity) errors.capacity = 'Debe ingresar el numero de asientos para pasajeros'
     
     return errors;
 }
@@ -44,8 +45,9 @@ function AddCar() {
         color: "",
         license_plate: "",
         fuel: "",
-        img: "",
+        image: "",
         brand: "",
+        capacity: ""
     });
 
     const handleCloseHome = () => {
@@ -58,27 +60,54 @@ function AddCar() {
     };
 
     const handleChange = (event) => {
-        setCar({ ...car, [event.target.name]: event.target.value });
-        setErrors(ControlFeedback({
-            ...car,
-            [event.target.name]: event.target.value
-        }));
-    }
-    
-    const handleSubmit = async(event) => {
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
+        const { name, value, files } = event.target
+        if (name === "image") {
+            const file = files[0];
+            let { type, size } = file;
+            let ext = type.split('/')[1];
+            if (!['png', 'jpeg', 'jpg', 'webp'].includes(ext)) setErrors(
+                {
+                    ...errors, [name]: "Extension invalida, soportamos(png, jpeg, jpg, webp)"
+                })
+            else setErrors({ ...errors, [name]: "" })
+            if (size < 0 || size > 1000000) setErrors({ ...errors, [name]: "La imagen debe pesar maximo 1MB" })
+            else setErrors({ ...errors, [name]: "" })
+            setCar({ ...car, [name]: file })
         }
-        console.log(car.img)
-        event.preventDefault();
-        await axios.post(`${API_URL}/cars`, {car}, {headers: {
-            Authorization: `Bearer ${window.localStorage.getItem('token')}`
-        }}).then(res => setShow(true))
-        .catch(res => console.log(res))
+        else {
+            setCar({ ...car, [name]: value });
+            setErrors(ControlFeedback({
+                ...car,
+                [name]: value
+            }));
+        }
+    }
 
-        setValidated(true);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        try {
+            const form = event.currentTarget;
+            if (form.checkValidity() === false) {
+                event.stopPropagation();
+            }
+            let carFormData = new FormData();
+            Object.keys(car).forEach(key => {
+                console.log(key)
+                carFormData.append(key, car[key]);
+            })
+
+            axios.post(`${API_URL}/cars`, carFormData, {
+                headers: {
+                    Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(() => setShow(true))
+                .catch((err) => console.log(err))
+
+            setValidated(true);
+        } catch (e) {
+            console.log(e.message)
+        }
     };
     return (
         <div className={styles.formulario}>
@@ -98,7 +127,7 @@ function AddCar() {
                         placeholder="308"
                         defaultValue=""
                     />
-                    <Form.Control.Feedback>Se ve bien!</Form.Control.Feedback>
+                    {/* <Form.Control.Feedback>Se ve bien!</Form.Control.Feedback> */}
                     {errors.model && <Form.Text className='text-danger'>{errors.model}</Form.Text>}
                     </Form.Group>
                     <Form.Group as={Col} md="4" onChange={(e) => handleChange(e)}>
@@ -110,7 +139,7 @@ function AddCar() {
                         placeholder="Peugeot"
                         defaultValue=""
                     />
-                    <Form.Control.Feedback>Se ve bien!</Form.Control.Feedback>
+                    {/* <Form.Control.Feedback>Se ve bien!</Form.Control.Feedback> */}
                     <Form.Control.Feedback type="invalid" tooltip>
                     </Form.Control.Feedback>
                         {errors.brand && <Form.Text className="text-danger">{errors.brand}</Form.Text>}
@@ -157,10 +186,19 @@ function AddCar() {
                     </Form.Control.Feedback>
                     {errors.license_plate && <Form.Text className="text-danger">{errors.license_plate}</Form.Text>}
                     </Form.Group>
+                    <Form.Group as={Col} md="6" onChange={(e) => handleChange(e)}>
+                    <Form.Label>Capacidad</Form.Label>
+                    <Form.Control type="number" min={1} max={8} placeholder="Numero de asientos" name='capacity' required />
+                    <Form.Control.Feedback type="invalid">
+                        Este campo no puede ester vacío.
+                    </Form.Control.Feedback>
+                    {errors.capacity && <Form.Text className="text-danger">{errors.capacity}</Form.Text>}
+                    </Form.Group>
                 </Row>
                 <Form.Group controlId="formFile" className="mb-3" onChange={(e) => handleChange(e)}>
                     <Form.Label>Agregué una foto del coche</Form.Label>
-                    <Form.Control type="file" name='img' accept="image/x-png,image/gif,image/jpeg" />
+                    <Form.Control type="file" name='image' accept="image/x-png,image/jpeg,image/jpg,image/webp" />
+                    {errors.img && <Form.Text className="text-danger">{errors.img}</Form.Text>}
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Check
@@ -178,16 +216,16 @@ function AddCar() {
             </Card>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                <Modal.Title>Asignado</Modal.Title>
+                    <Modal.Title>Asignado</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>Coche creado con éxito!</Modal.Body>
                 <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                    Agregar otro
-                </Button>
-                <Button variant="primary" onClick={handleCloseHome}>
-                    Inicio
-                </Button>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Agregar otro
+                    </Button>
+                    <Button variant="primary" onClick={handleCloseHome}>
+                        Inicio
+                    </Button>
                 </Modal.Footer>
             </Modal>
         </div>

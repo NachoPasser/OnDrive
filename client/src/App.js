@@ -23,6 +23,7 @@ import Help from "./components/Help/Help";
 import AboutUs from "./components/AboutUs/AboutUs";
 import NotFound from "./components/NotFound/NotFound";
 import AuthMP from "./components/MercadoPago/AuthMP";
+import Error from "./components/Sections/Error/Error";
 
 function makePrivate(
   allowed = [],
@@ -62,6 +63,7 @@ function App() {
       {/* <Route path="*" component={NotFound} /> */}
       {makePrivate(["driverUser", "admin"], "/public", "/home", <MapCalculator />)}
       {makePrivate(["admin", "driverUser"], "/auth-mp", "/home", <AuthMP />)}
+      {makePrivate(["admin", "driverUser"], "/error", "/home-passengers", <Error />)}
     </div >
   );
 }
