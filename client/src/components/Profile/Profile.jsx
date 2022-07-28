@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserById } from "../../redux/actions/getUserById";
 import { getAllTripsReviews } from "../../redux/actions/getAllTripReviews";
 import Review from "../Sections/Review/Review";
+import TripsCard from "../Sections/TripsCard/TripsCard";
+// import photoDefault from "../../assets/User/silueta-1.jpg";
 import style from "./Profile.module.css";
 import NavBarProfile from "../NavBar/navbarProfile.jsx";
 import { FaStar } from "react-icons/fa";
@@ -48,32 +50,29 @@ export default function Profile() {
                 {//ACLARACION: en la renderizacion de Review estoy pasando en actualRating y actualComment:
                 //el rating y comentario actual de la reseña de ese viaje
                 //Si la reseña no existe, ya que el usuario aún no lo reseño, entonces devuelven undefined (esto es importante en Review)
-                user.trips.map((t, i) => { //recorro los viajes del usuario y voy renderizandolos en ese div junto a Review
-                  return <div id="viajes">
-                    <div className={style.tripBox}>
-                      <span className={style.blueText2}> {t.origin} - {t.destination} </span>
-                      <span className={style.witheText}> - Salida: {t.start_date}</span>
-                      <span className={style.witheText}> - Llegada: {t.finish_date}</span>
-                      <span className={style.witheText}> - Lugares: {t.capacity}</span>
-                      <span className={style.witheText}> - Precio: AR${t.price}</span>
-                      <div className={style.driver}>
-                        <span className={style.witheText}> - Conductor: </span>
-                        <div className={style.driverContact}>
-                          <span className={style.witheText}> - Conductor: </span>
-                          <span className={style.witheText}> - Conductor: </span>
-                        </div>
-                      </div>
-                    <Situations 
-                    user_id={user.user_id} 
-                    trip_id={t.trip_id}  
-                    driver_id={t.driver_id} 
-                    actualRating={reviews[i]?.rating}  
-                    actualComment={reviews[i]?.comment} 
-                    start_date={t.start_date} 
-                    finish_date={t.finish_date}/>
-                    
-                    </div>
-                  </div>
+                user.trips.map((t, i) => {
+              
+                  //recorro los viajes del usuario y voy renderizandolos en ese div junto a Review
+                  return  <div>
+                            <TripsCard
+                              driver_id={t.driver_id}
+                              origin={t.origin}
+                              destination={t.destination}
+                              start_date={t.start_date}
+                              finish_date={t.finish_date}
+                              capacity={t.capacity}
+                              price={t.price}
+                            />
+                             <Situations 
+                              user_id={user.user_id} 
+                              trip_id={t.trip_id}  
+                              driver_id={t.driver_id} 
+                              actualRating={reviews[i]?.rating}  
+                              actualComment={reviews[i]?.comment} 
+                              start_date={t.start_date} 
+                              finish_date={t.finish_date}/>
+                          </div>
+
                 })}
               </div>
             : <h5 className={style.Negative}>No Tiene viajes próximos</h5> //si reviews no existe entonces no muestro los viajes del usuario (necesito saber si hizo alguna reseña sí o sí)
@@ -150,7 +149,7 @@ export default function Profile() {
                   <span className={style.blueText}>Próximos Viajes: </span>
                   {user.driver.trips.length && !user.driver.trips.reviews && user.driver.trips.map(t => { //Si el usuario hizo viajes como conductor entonces, mustro esos viajes
                     return  <div className={style.tripBox}>
-                              <span className={style.yellowText}> De {t.origin} a {t.destination} </span>
+                              <span className={style.yellowText}>{t.origin} - {t.destination} </span>
                               <span className={style.witheText}> - Salida: {t.start_date}</span>
                               <span className={style.witheText}> - Llegada: {t.finish_date}</span>
                               <span className={style.witheText}> - Capacidad: {t.capacity}</span>

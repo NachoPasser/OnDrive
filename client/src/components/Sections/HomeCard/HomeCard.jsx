@@ -6,9 +6,10 @@ import CardDetail from "../../CardDetail/CardDetail";
 // import Spinner from 'react-bootstrap/Spinner'
 import { FaStar } from "react-icons/fa";
 import { getDriverById } from "../../../redux/actions/getDriverById";
+import { getUserById } from "../../../redux/actions/getUserById";
 
-const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destination, album, rating, driver_id }) => {
-   
+const HomeCard = ({ handleVerif, userVerif, id, price, capacity, start_date, finish_date, origin, destination, album, rating, driver_id }) => {
+
     const dispatch = useDispatch();
 
     const [fullscreen, setFullscreen] = useState(true);
@@ -16,9 +17,11 @@ const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destin
 
     const driverId = driver_id
     const driver = useSelector(state => state.driverById)
+    const user = useSelector(state => state.userById)
 
     useEffect(() => {
         dispatch(getDriverById(driverId))
+        dispatch(getUserById(localStorage.getItem('token')))
     }, [driverId])
 
     function handleShow(breakpoint) {
@@ -33,7 +36,7 @@ const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destin
     // finish_date = finish_date.slice(0, 10)
     return (
         <div className={styles.comp_card}>
-            <div className={styles.card} onClick={() => handleShow(true)}>
+            <div className={styles.card} onClick={() => { if (userVerif) { handleVerif() } else { handleShow(true) } }}>
                 <div className={styles.cardimage}>
                     <div>
                         <Carousel>
@@ -82,7 +85,7 @@ const HomeCard = ({ id, price, capacity, start_date, finish_date, origin, destin
             <div>
                 {show ? <CardDetail id={id} driverId={driverId} show={show} fullscreen={fullscreen} setShow={setShow} /> : null}
             </div>
-        </div>
+        </div >
     );
 }
 export default HomeCard
