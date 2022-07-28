@@ -1,13 +1,18 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import logo from '../../assets/NavBar/on-logox0.5.png'
 import style from './navbar.module.css'
 
-export default function NavBar() {
-
+export default function NavBarPsg() {
+    const history = useHistory()
     const handleClick = (e) => {
         e.preventDefault();
         window.location.reload()
+    }
+
+    const handleLogOut = () => {
+        window.localStorage.clear()
+        history.push('/home')
     }
 
     return (
@@ -18,26 +23,21 @@ export default function NavBar() {
                 </NavLink>
             </li>
             <div className={style.buttons}>
-                {/* <NavLink className={style.login} exact to="/login">Login</NavLink>
-                <NavLink className={style.register} exact to="/register">Register</NavLink> */}
-                <button className={style.logout} onClick={() => window.localStorage.clear()}>Logout</button>
+                <button className={style.logout} onClick={() => handleLogOut()}>Cerrar sesión</button>
             </div>
             <div className={style.items}>
                 <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/recovery-password">Recuperar contraseña</NavLink>
+                    <NavLink className={style.navLink} exact to="/driver">Ser un conductor</NavLink>
                 </li>
                 <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/new-password">Cambiar contraseña</NavLink>
+                    <NavLink className={style.navLink} exact to="/profile">Perfil</NavLink>
                 </li>
                 <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/home">Volver al home general</NavLink>
-                </li>
-                {/* <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/community">Item 2</NavLink>
+                    <NavLink className={style.navLink} exact to="/help">Ayuda</NavLink>
                 </li>
                 <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/support">Item 1</NavLink>
-                </li> */}
+                    <NavLink className={style.navLink} exact to="/aboutUs">Nosotros</NavLink>
+                </li>
             </div>
         </ul>
     )

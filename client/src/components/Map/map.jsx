@@ -26,11 +26,13 @@ import { useRef, useState } from 'react'
 // } from "use-places-autocomplete";
 import Comparador from './FuelComponents/18-Comparador';
 
+const {GOOGLE_MAPS_API_KEY} = process.env
+// console.log(GOOGLE_MAPS_API_KEY)
 const center = { lat: -34.60376, lng: -58.38162 }
 
 export default function Map() {
     const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: "AIzaSyDDKqN7npMAhG-jYGX7TOz4waQth923OXc",
+        googleMapsApiKey: 'AIzaSyDDKqN7npMAhG-jYGX7TOz4waQth923OXc',// GOOGLE_MAPS_API_KEY, // 
         libraries: ['places'],
     })
 
@@ -38,6 +40,7 @@ export default function Map() {
     const [directionsResponse, setDirectionsResponse] = useState(null)
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
+    const [price, setPrice] = useState()
 
 
     /** @type React.MutableRefObject<HTMLInputElement> */
@@ -101,7 +104,7 @@ export default function Map() {
                     }}
                     onLoad={map => setMap(map)}
                 >
-                    <Marker position={center} />
+                    {/* <Marker position={center} /> */}
                     {directionsResponse && (
                         <DirectionsRenderer directions={directionsResponse} />
                     )}
@@ -111,11 +114,12 @@ export default function Map() {
                 position="fixed"
                 left={1000}
                 top={580}
-
+                border={"3px solid wheat"}
                 p={4}
                 borderRadius='lg'
                 m={4}
-                bgColor='white'
+                bgColor='#252C38;'
+                color='wheat'
                 shadow='base'
                 minW='container.md'
                 zIndex='1'
@@ -123,13 +127,13 @@ export default function Map() {
                 <HStack spacing={2} justifyContent='space-between' width="909px">
                     <Box flexGrow={1}>
                         <Autocomplete>
-                            <Input type='text' placeholder='Origin' ref={originRef} />
+                            <Input width="365px"  type='text' placeholder='Origin' ref={originRef} />
                         </Autocomplete>
                     </Box>
                     <Box flexGrow={1}>
                         <Autocomplete>
-                            <Input
-                                type='text'
+                            <Input color="red"
+                                type='text' width="365px"
                                 placeholder='Destination'
                                 ref={destiantionRef}
                             />
@@ -138,7 +142,7 @@ export default function Map() {
 
                     <ButtonGroup>
                         <Button colorScheme='pink' type='submit' onClick={calculateRoute}>
-                            Calculate Route
+                            Calcule su ruta
                         </Button>
                         <IconButton
                             aria-label='center back'
@@ -148,8 +152,8 @@ export default function Map() {
                     </ButtonGroup>
                 </HStack>
                 <HStack spacing={4} mt={4} justifyContent='space-between'>
-                    <Text>Distance: {distance} </Text>
-                    <Text>Duration: {duration} </Text>
+                    <div><Text>Distancia: {distance} </Text></div>
+                    <div><Text>Duración: {duration} </Text></div>
                     <IconButton
                         aria-label='center back'
                         icon={<FaLocationArrow />}
@@ -160,9 +164,8 @@ export default function Map() {
                         }}
                     />
                 </HStack>
-            <div>
-                
-                <Comparador distance={distance}/>
+            <div style={{'backgroundColor':'#252C38', 'color':'wheat'}}>
+                <Comparador distance={distance} setPrice={setPrice}/>
             </div>
             </Box>
         </Flex>

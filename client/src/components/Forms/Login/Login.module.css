@@ -1,16 +1,24 @@
 .MainContainer{
   width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
 }
 
-.MainContainer, .ContainerLogin, .ImageContainer{
+/* .MainContainer, .ContainerLogin, .ImageContainer{
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 .ContainerLogin{
+  display: flex;
+  flex-flow: column nowrap;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  /* background-color: rebeccapurple; */
   gap: 10px;
 }
 
@@ -18,63 +26,70 @@
 /* Styles for Container Image */
 .ImageContainer{
   width: 100%;
-  height: 20%;
-  background-color: var(--clear-color);
+  min-height: 10vh;
+  /* background-color: green; */
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
 }
 
 .Image{
   height: 100%;
+  display: none;
 }
 
 .LogoDesktop{
-  display: none;
-  width: 50%;
-}
-
-.Logo{
-  width: 50%;
+  width: 250px;
+  height: auto;
 }
 
 .Text{
-  color: var(--font-title-color);
-  font-size: 1.5rem;
-  text-align: center;
   display: none;
 }
 
 
-/* Media queries for mid-size devices (Tablet) */
-@media screen
-and (min-device-width: 768px) 
-and (max-device-width: 1024px) {
-  .ContainerLogin{
-  }
-}
-
-/* Media queries for large-size devices (Laptop & Desktop) */
-@media screen
-and (min-device-width: 1200px) {
-  .ContainerLogin{
-    flex-direction: row;
-    width: 75%;
-    gap: 70px;
+@media only screen and (min-width:768px){
+  .Image{
+    display: block;
+    width: 50%;
+    height: auto;
   }
 
-  .ImageContainer{
-    background: transparent;
-    gap: 20px;
+  .ContainerLogin{
+    padding: 20px;
+    /* background-color: green; */
+    flex-flow: row nowrap;
+    align-items: center;
     justify-content: center;
   }
 
-  .LogoDesktop {
-    display: block;
+  .LogoDesktop{
+    width: 60%;
   }
 
-  .Text {
+  .Text{
+    margin-top: 20px;
+    padding: 6px;
     display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #FFF;
+    width: 70%;
   }
 
-  .Logo{
-    display: none;
+}
+
+@media only screen and (min-width:1600px){
+  .ContainerLogin{
+    font-size: 24px;
+  }
+}
+
+@media only screen and (min-width:1920px){
+  .ContainerLogin{
+    font-size: 28px;
   }
 }

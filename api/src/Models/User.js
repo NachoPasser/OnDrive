@@ -15,7 +15,7 @@ const User = conn.define(
       unique: true,
     },
     password: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.STRING(100),
       allowNull: true,
     },
     name: {
@@ -30,6 +30,22 @@ const User = conn.define(
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
+    },
+    ban_purchase: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    recovery: {
+      type: DataTypes.STRING(100),
+      allowNull: true,
+      defaultValue: null,
+    },
+    image: {
+      type: DataTypes.STRING(200),
+      allowNull: true,
+      defaultValue:
+        "https://res.cloudinary.com/vombatidae/image/upload/v1658948667/default-avatar_cnydnd.jpg",
     },
   },
   {

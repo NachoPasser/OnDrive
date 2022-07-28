@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import HomeCard from "../Sections/HomeCard/HomeCard.jsx";
 import style from './home.module.css'
 import { getTrips } from "../../redux/actions/getTrips";
-
+import { getFilteredTrips } from "../../redux/actions/getFilteredTrips.js";
 //estilos
 import ubicacion from "../../assets/Home/ubicacion.png"
 import destino from "../../assets/Home/destino.png"
@@ -13,13 +13,9 @@ import buscarTuRuta from "../../assets/Home/busca-tu-ruta.png"
 //componentes
 import FilterByDestination from "../Filters/filterByDestination";
 import FilterByOrigin from "../Filters/filterByOrigin";
-import SortAlphabetically from "../Sorts/sortAlphabetically";
 import SortByRating from "../Sorts/sortByRating";
 import FilterByCapacity from "../Filters/filterByCapacity.jsx";
-import { getTripsByDestination } from '../../redux/actions/getTripsByDestination.js'
-import { getTripsByOrigin } from "../../redux/actions/getTripsByOrigin";
-import SearchBar from "../SearchBar/searchbar";
-import NavBar from "../NavBar/navbarPassengers.jsx";
+import NavBarPassengers from "../NavBar/navbarPassengers.jsx";
 import Fecha from "../Filters/filterByDate.jsx";
 import Paging from "../Paging/Paging.jsx";
 import Map from "../Map/map.jsx"
@@ -34,8 +30,8 @@ export default function Home() {
     const dispatch = useDispatch()
 
     //estados globales
-    const trips = useSelector(state => state.trips)
-
+    var trips = useSelector(state => state.trips)
+    const storeFilters = useSelector(state => state.filters)
     //estados locales
     const [calendar, setCalendar] = useState(false)
 
@@ -65,10 +61,7 @@ export default function Home() {
 
     //handlers
     async function handleBtn() {
-        console.log(filters) //ej {filterOrg: 'Salta', filterDest: 'Tucumán'}
-        dispatch(getTripsByOrigin(filters.filterOrg))
-        dispatch(getTripsByDestination(filters.filterDest))
-
+        dispatch(getFilteredTrips({ ...storeFilters, origin: filters.filterOrg, destination: filters.filterDest }))
     }
 
     function renderCalendar() {
@@ -79,7 +72,7 @@ export default function Home() {
 
     return (
         <div className={style.containerAll}>
-            <NavBar />
+            <NavBarPassengers />
             <div className={style.divisor}>
                 <div className={style.homeIzquierda}>
                     <img id={style.logoBuscaTuRuta} src={buscarTuRuta} alt='No se encontró la imagen.' />
@@ -89,15 +82,27 @@ export default function Home() {
                             <FilterByOrigin filters={filters} setFilters={setFilters} />
                             <img id={style.logoDestino} src={destino} alt='No se encontró la imagen.' />
                             <FilterByDestination filters={filters} setFilters={setFilters} />
-                            <button className={style.buttonSent} onClick={() => handleBtn()}> <img id={style.sent} src={sent} alt='No se encontró la imagen.' /> </button>
+                            <div className={style.buttons}>
+                                {
+                                    filters.filterOrg.length > 0 || filters.filterDest.length > 0
+                                        ?
+                                        <a className={style.buttonSent} onClick={() => handleBtn()}>
+                                            <img id={style.sent} src={sent} alt='No se encontró la imagen.' />
+                                        </a>
+                                        :
+                                        <div>
+                                            <a className={style.buttonSentDisabled} href="#">
+                                                <img id={style.sentDisabled} src={sent} alt='No se encontró la imagen.' />
+                                            </a>
+                                        </div>
+                                }
+                            </div>
                         </div>
                         <div className={style.containerFiltros}>
                             <div className={style.filtrosAvanzados}>
                                 <SortByRating style={style.filtros} sorters={sorters} setSorters={setSorters} />
-                                <SortAlphabetically style={style.filtros} sorters={sorters} setSorters={setSorters} />
                                 <FilterByCapacity style={style.filtros} />
                             </div>
-                            <SearchBar style={style} />
                             <button id={style.calendario} onClick={renderCalendar}>
                                 Filtrar por fecha de partida
                             </button>
@@ -112,10 +117,11 @@ export default function Home() {
                                     (numberOfPage - 1) * cardsPerPage + cardsPerPage
                                 ).map(trip => {
                                     return (
-                                        <div className={style.cards} key={trip.id}>
-                                            <HomeCard
-                                                key={trip.id}
-                                                id={trip.id}
+                                        <div className={style.cards} key={trip.trip_id}>
+                                              {trip.isAvailable ? <HomeCard
+                                                key={trip.trip_id}
+                                                id={trip.trip_id}
+                                                driver_id={trip.driver_id}
                                                 album={trip.album}
                                                 rating={trip.rating}
                                                 capacity={trip.capacity}
@@ -125,6 +131,7 @@ export default function Home() {
                                                 destination={trip.destination}
                                                 price={trip.price}
                                             />
+                                            :null}
                                         </div>
                                     )
                                 })

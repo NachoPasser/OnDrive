@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, STRING } = require("sequelize");
 const { conn } = require("../database/db");
 
 const Trip = conn.define(
@@ -9,6 +9,16 @@ const Trip = conn.define(
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
+    rating: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+      defaultValue: 0,
+    },
+    capacity: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1
+    },
     start_date: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -18,24 +28,29 @@ const Trip = conn.define(
       allowNull: false,
     },
     origin: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     destination: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.TEXT,
       allowNull: false,
     },
+    album: {
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+      allowNull: false
+    },
     price: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
     distance: {
-      type: DataTypes.DECIMAL(5),
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
-    onCourse: {
+    isAvailable: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: true,
     },
   },
   {

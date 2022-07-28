@@ -1,27 +1,7 @@
 const { Fuel } = require('../Models/Fuel.js');
 const axios = require('axios').default;
 
-/*PRIMERA FUNCTION lookFuelModel:
-BUSCA EN EL MODELO 'Fuel' DE LA BASE DE DATOS.
-SI ESTA TABLA 'Fuel' SE ENCUENTRA VACÍA,
-O SI TIENE INFO DEL DÍA ANTERIOR,
-LLAMA A LA 'API'.
-*/
-const lookFuelModel = async (req, res) => {
-    let fuels = await Fuel.findAll()
-
-    if (fuels.length) {
-        let today = new Date()
-        let todayString = today.toDateString()
-        let updatedString = fuels[0].dataValues['updatedAt'].toDateString()
-        if (todayString === updatedString) {
-            return res.status(200).json(fuels)
-        }
-    }
-    return res.status(200).json(["Empty"])
-};
-
-/*SEGUNDA FUNCTION fetchTable:
+/*FUNCTION fetchTable:
 LLAMADA A LA 'API' Y RECUPERACION DE TODO EL ELEMENTO <table></table>,
 Y SU innerHTML INCLUSIVE.
 */
@@ -32,11 +12,9 @@ const fetchTable = async (req, res) => {
     if (!refresh || refresh == "false" || refresh == false) {
         let fuels = await Fuel.findAll()
         if (fuels.length) {
-            // console.log("modelo fuels")
             return res.status(200).json(fuels)
         }
         else {
-            // console.log("Empty")
             return res.status(200).json(["Empty"])
         }
     }
@@ -64,7 +42,6 @@ const fetchTable = async (req, res) => {
         }
         let corte = totalcut()
 
-        // console.log("Desde el sitio")
         return res.status(200).send(corte)
     }
     else if (!call) {
@@ -72,20 +49,13 @@ const fetchTable = async (req, res) => {
     }
 };
 
-/* TERCERA FUNCTION fillModel:
-POSTEO DE LOS DATOS EN LA BASE DE DATOS. 
-¿Por qué no guardé los datos al llamar a la api?
-Porque la llamada no devuelve una respuesta en json,
-sino un elemento <table></table> en formato HTML.
-Era necesario, darle esa información HTML al frontend,
-para manipularla con el elemento document, y reenviarla
-al back en forma de javascript.
+/* FUNCTION fillModel:
+POSTEO DE CADA PRECIO-COMBUSTIBLE EN LA BASE DE DATOS. 
  */
 
 const fillModel = async (req, res) => {
 
     let { tabla } = req.body
-    // console.log(tabla)
     let selected = []
     function select(t = tabla) {
         for (let y = 12; y >= 0; y--) {
@@ -95,7 +65,6 @@ const fillModel = async (req, res) => {
                 selected.push(t[2][y])
                 selected.push(t[3][y])
                 selected.push(t[4][y])
-                // console.log(selected)
                 return selected
             }
         }
@@ -130,13 +99,11 @@ const fillModel = async (req, res) => {
         }
     }
 
-    // console.log("Posteamos")
     return res.status(201).send("ok")
 
 };
 
 module.exports = {
-    lookFuelModel,
     fetchTable,
     fillModel,
 }

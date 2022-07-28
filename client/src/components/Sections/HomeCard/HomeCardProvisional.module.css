@@ -74,7 +74,9 @@
     color: rgb(171, 145, 29);
     border-color: black;
     position: absolute;
-    left: 38%;
+    /* left: 38%; */
+    padding-top: 2%;
+    
 }
 
 .card:hover {
@@ -102,4 +104,7 @@
 .like {
     position: absolute;
     margin-left: 230px;
+}
+.rating{
+    color: var(--primary-color);
 }

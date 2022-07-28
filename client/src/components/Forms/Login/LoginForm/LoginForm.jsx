@@ -62,7 +62,7 @@ const LoginForm = () => {
       <InputField 
         {...email}
         icon={"email"}
-        label={"Mail"}
+        label={"Correo Electrónico"}
         name={"email"}
         placeholder={"Ingresa tu email"}
       />
@@ -71,10 +71,10 @@ const LoginForm = () => {
         icon={"password"}
         label={"Contraseña"}
         name={"password"}
-        placeholder={"Ingresa tu password"}
+        placeholder={"Ingresa tu contraseña"}
       />
       <Link to='/recovery-password' className={styles.ForgotPassword} >¿Olvidaste tu contraseña?</Link>
-      <Button disabled={disabled} title={"INICIAR SESIÓN"} type={"primary"} size={"lg"} width={"Full"} onClick={onSubmit}/>
+      <Button disabled={disabled} title={"INICIAR SESIÓN"} type={"primary"} size={"md"} width={"Full"} onClick={onSubmit}/>
       <div className={styles.DividerText}>
         <hr/>
         <span href="/">o inicia sesión con</span>
@@ -84,6 +84,7 @@ const LoginForm = () => {
       <h4 hidden={hidden} style={{color: 'white'}}>No existe un usuario registrado con ese mail.</h4>
       {/* <Button title={"Loguéate con Google"} type={"secondary"} size={"md"} width={"SemiFull"} icon={"google"}/> */}
       <span className={styles.NewAccount}>No estoy registrado, <Link to='/register'>Crear una Cuenta</Link></span>
+      <span className={styles.NewAccount}>¿Eres administrador?, <Link to='/loginAdmin'>Logueate aquí</Link></span>
 
     </section>
   )

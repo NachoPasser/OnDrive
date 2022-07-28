@@ -1,24 +1,29 @@
 const { Admin } = require("../../Models/Admin"); //admin model
-const { User } = require('../../Models/User');
+const { User } = require("../../Models/User");
+const bcrypt = require("bcrypt");
+const { Driver } = require("../Driver");
 
 //PARA AGREGAR UN NUEVO ADMIN A LA TABLA(NO UTILIZAR)
 async function createAdmin({ username, password }) {
   try {
-    const [admin, created] = await Admin.findOrCreate({
+    //hash pass
+    const passwordHash = await bcrypt.hash(password, 15);
+
+    const [_admin, created] = await Admin.findOrCreate({
       where: { username },
-      defaults: { username, password },
+      defaults: { username, password: passwordHash },
     });
 
     return created
       ? {
-          msg: "admin/s ready",
+          msg: "Administradores Listos.",
         }
       : {
-          msg: "error loading admins(not initialized)",
+          msg: "Error al cargar los usuarios Administradores",
         };
   } catch (e) {
     return {
-      msg: "error on create admin - " + e.message,
+      msg: "Error al crear los Administradores - " + e.message,
     };
   }
 }
@@ -26,11 +31,19 @@ async function createAdmin({ username, password }) {
 //PARA VER SI UN USERNAME & PASSWORD ES DE UN ADMIN O NO
 async function verifyAdmin({ username, password }) {
   try {
-    const admin = await Admin.findOne({ where: { username, password } });
+    const admin = await Admin.findOne({ where: { username } });
     if (admin === null) return false;
-    return true;
+
+    //check password
+    const valid = await bcrypt.compare(
+      password,
+      admin.getDataValue("password")
+    );
+
+    return valid; //(true or false)
   } catch (e) {
-    return { msg: "error verify admin - " + e.message };
+    console.error("Error al verificar el administrador - " + e.message);
+    return false;
   }
 }
 
@@ -43,18 +56,26 @@ async function administrator() {
     });
     console.log(msg);
   } catch (e) {
-    console.error("error initialization admin - " + e.message);
+    console.error(e.message);
   }
 }
 
 //FUNCION PARA BANEAR / DESBANEAR USUARIOS POR EMAIL
-async function setBanStatus(status = false, userEmail) {
+async function setBanStatus(status = false, userEmail, type = "ban_status") {
   try {
     const foundUser = await User.findOne({
       where: { email: userEmail },
+      include: Driver,
     }); //busco el user a banear/desbanear
-    await foundUser.update({ ban_status: status }); //actualizo el ban status
-    await foundUser.save(); //guardo en la database
+    if (type === "ban_publish") {
+      const driver = foundUser.driver;
+      console.log(driver);
+      await driver.update({ [type]: status });
+      await driver.save();
+    } else {
+      await foundUser.update({ [type]: status }); //actualizo el ban status
+      await foundUser.save();
+    } //guardo en la database
     return "updated ban status to = " + status;
   } catch (e) {
     return "error set ban status - " + e.message;

@@ -1,0 +1,105 @@
+.notFoundBackground {
+  background-image: url("../../assets/Loader/background-loader.png");
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: auto;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.NotFoundContainer {
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.644);
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 20px;
+}
+
+.errorSign {
+  width: 128px;
+  filter: drop-shadow(0 0 10px rgb(175, 134, 20));
+}
+
+.carContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carImg {
+  width: 164px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.logo {
+  width: 100px;
+  cursor: pointer;
+}
+
+.logo:hover,
+.carImg:hover {
+  filter: drop-shadow(0 0 5px var(--accent-color));
+}
+
+
+h2 {
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+h2,
+h4 {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+@media only screen and (min-width:768px) {
+  h2 {
+    font-size: 45px;
+  }
+
+  h4 {
+    font-size: 2em;
+  }
+
+  .logo {
+    width: 140px;
+  }
+
+  .carImg {
+    width: 164px;
+    margin-top: 39px;
+  }
+}
+
+@media only screen and (min-width:1366px) {
+  h2 {
+    font-size: 50px;
+  }
+
+  h4{
+    font-size: 2.2em;
+  }
+
+  .logo {
+    width: 150px;
+  }
+
+  .carImg {
+    width: 184px;
+    margin-top: 35px;
+  }
+}

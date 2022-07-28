@@ -1,22 +1,27 @@
 import { GET_TRIPS } from '../actions/getTrips.js';
-import { FILTER_TRIPS_BY_DESTINATION } from '../actions/getTripsByDestination.js';
 import { SORT_TRIPS_BY_RATING } from '../actions/sortTripsByRating.js';
 import { SORT_TRIPS_ALPHABETICALLY } from '../actions/sortTripsAlphabetically.js';
-import { FILTER_TRIPS_BY_ORIGIN } from '../actions/getTripsByOrigin.js';
-import { FILTER_TRIPS_BY_DATE } from '../actions/getTripsByDate.js';
-import { FILTER_TRIPS_BY_CAPACITY } from '../actions/getTripsByCapacity.js';
 import { GET_SEARCH_FOR_DESTINATION } from '../actions/getSearch.js';
 import { GET_USERS_FROM_DB } from '../actions/getUsersFromDatabase.js';
 import { GET_TRIP_BY_ID } from '../actions/getTripById.js'
 import { GET_FUELTABLE } from '../actions/getfuels.js';
+import { FILTER_TRIPS } from '../actions/getFilteredTrips.js';
+import { GET_USER_BY_ID } from '../actions/getUserById.js';
+import { GET_ALL_REVIEWS } from '../actions/getAllTripReviews.js';
+import { GET_DRIVER_BY_ID } from '../actions/getDriverById.js';
+import { GET_CAR_BY_ID } from '../actions/getCarById.js';
 
 const initialState = {
     trips: [], // trips variables
+    filters: { origin: 'Origen', destination: 'Destino', capacity: 'Capacidad', date: 'Fecha' },
     fixedTrips: [], //trips fijos
+    reviews: null,
     users: [],
-    tripById: {},
-
     prices: [], //of fuels
+    tripById: {},
+    userById: {},
+    driverById: {},
+    carById:{}
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -34,27 +39,49 @@ const rootReducer = (state = initialState, action) => {
                 users: action.payload
             }
 
-        case FILTER_TRIPS_BY_ORIGIN:
-            if (action.payload === 'Origen') {
-                return {
-                    ...state,
-                    trips: state.fixedTrips
-                }
-            }
-            let filteredOrgTrips = state.fixedTrips.filter(t => t.origin.includes(action.payload))
+        case GET_USER_BY_ID:
             return {
                 ...state,
-                trips: filteredOrgTrips
+                userById: action.payload
+            }
+        
+        case GET_CAR_BY_ID:
+            return {
+                ...state,
+                carById: action.payload
             }
 
-        case FILTER_TRIPS_BY_DESTINATION:
-            if (action.payload === 'Destino') {
-                return state
-            }
-            let filteredDestTrips = state.trips.filter(t => t.destination.includes(action.payload))
+        case GET_ALL_REVIEWS:
             return {
                 ...state,
-                trips: filteredDestTrips
+                reviews: action.payload
+            }
+
+        case FILTER_TRIPS:
+            let filteredTrips = state.fixedTrips
+            let { origin, destination, capacity, date } = action.payload
+            if (origin !== 'Origen' && destination !== 'Destino') { //origin && destination es false o es un string
+                let aux;
+                aux = filteredTrips.filter(t => t.origin.toLowerCase().includes(origin.toLowerCase()))
+                filteredTrips = aux.filter(t => t.destination.toLowerCase().includes(destination.toLowerCase()))
+            }
+
+            // if (destination !== 'Destino') { //destination es false o es un string
+            //     filteredTrips = filteredTrips.filter(t => t.destination.includes(destination))
+            // }
+
+            if (capacity !== 'Capacidad') { //capacidad es false o es un numero
+                filteredTrips = filteredTrips.filter(t => t.capacity === Number(capacity))
+            }
+
+            if (date !== 'Fecha') {  //date es false o es un objeto Date
+                filteredTrips = filteredTrips.filter((trip) => new Date(trip.start_date).toDateString() === date.toDateString())
+            }
+
+            return {
+                ...state,
+                trips: filteredTrips,
+                filters: action.payload
             }
 
         case GET_SEARCH_FOR_DESTINATION:
@@ -63,19 +90,6 @@ const rootReducer = (state = initialState, action) => {
                 trips: action.payload
             }
 
-        case FILTER_TRIPS_BY_DATE:
-            let found = state.fixedTrips.filter((trip) => new Date(trip.start_date).toDateString() === action.payload.toDateString())
-            return {
-                ...state,
-                trips: found
-            }
-
-        case FILTER_TRIPS_BY_CAPACITY:
-            let filteredCapTrips = state.fixedTrips.filter(t => t.capacity === Number(action.payload))
-            return {
-                ...state,
-                trips: filteredCapTrips
-            }
         case SORT_TRIPS_BY_RATING:
             let sortedByRating = action.payload === 'ASC'
                 ? state.trips.sort((a, b) => a.rating - b.rating)
@@ -106,6 +120,11 @@ const rootReducer = (state = initialState, action) => {
                 prices: [action.payload] //Va encerrado con corchetes
             };
 
+        case GET_DRIVER_BY_ID:
+            return {
+                ...state,
+                driverById: action.payload
+            };
         default:
             return state
     }

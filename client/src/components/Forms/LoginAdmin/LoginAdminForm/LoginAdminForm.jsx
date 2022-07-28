@@ -46,7 +46,7 @@ const LoginAdminForm= () => {
   return (
     <section className={styles.LoginFormContainer}>
 
-      <h2 className={styles.TitleLogin}>Loguéate</h2>
+      <h2 className={styles.TitleLogin}>Loguéate como Admin</h2>
       <InputField 
         {...username}
         icon={"user"}
@@ -61,6 +61,7 @@ const LoginAdminForm= () => {
         name={"password"}
         placeholder={"Ingresa tu password"}
       />
+      <Link to='/login' className={styles.VolverLogin} >¿No eres un administrador?</Link>
       <Button disabled={disable} title={"INICIAR SESIÓN"} type={"primary"} size={"lg"} width={"Full"} onClick={onSubmit}/>
     </section>
   )

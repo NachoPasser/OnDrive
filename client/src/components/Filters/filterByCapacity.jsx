@@ -2,19 +2,24 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getTripsByCapacity } from '../../redux/actions/getTripsByCapacity'
+import { getFilteredTrips } from '../../redux/actions/getFilteredTrips'
 
-export default function FilterByCapacity({ style, filters, setFilters }) {
+export default function FilterByCapacity({ style}) {
     let dispatch = useDispatch()
     const [capacity, setCapacity] = useState([])
     const [selected, setSelected] = useState('Destino')
     const fixedTrips = useSelector(state => state.fixedTrips)
     const trips = useSelector(state => state.trips)
+    const filters = useSelector(state => state.filters)
 
     const handleSelectCapacity= (e) => {
         setSelected(e.target.value) //cambio el valor del select
-        if(e.target.value !== 'Capacidad'){
-            dispatch(getTripsByCapacity(e.target.value))
-        }
+        // if(e.target.value !== 'Capacidad'){
+            let payload = {...filters, capacity: e.target.value}
+            dispatch(getFilteredTrips(payload))
+        // } else{
+        //     dispatch(getFilteredTrips({...filters, capacity: false}))
+        // }
     }
 
     useEffect(() => {

@@ -12,7 +12,7 @@ const LoginAdmin = () => {
         <div className={styles.ImageContainer}>
           <img className={styles.Image} src={imageTop} alt="img-top-login" />
           <img className={styles.LogoDesktop} src={logo} alt="logo-onDrive" />
-          <p className={styles.Text}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+          <p className={styles.Text}>¿Eres parte de la Familia OnDrive? Logeate como administrador con los datos que te facilitamos.</p>
         </div>
         <img className={styles.Logo} src={logo} alt="logo-onDrive" />
       <LoginAdminForm/>
