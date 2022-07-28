@@ -26,7 +26,6 @@ const addCar = async (req, res) => {
     const carCreated = await createCar(driver.driver_id, car);
     res.json(carCreated);
   } catch (e) {
-    console.log(e);
     res.status(400).json({ message: e.message });
   }
 };

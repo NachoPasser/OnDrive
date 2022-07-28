@@ -3,6 +3,10 @@ import { useBan } from '../../../hooks/useBan.js'
 import axios from 'axios';
 import InputField from '../../Sections/InputField/InputField';
 import { API_URL } from '../../../config/enviroment';
+import { Dates } from './Dates.jsx';
+import { useEffect} from "react";
+import DtPicker from "react-calendar-datetime-picker";
+import "react-calendar-datetime-picker/dist/index.css";
 // import img1 from '../../../assets/HomeCard/L_134003_salta001.jpg'
 // import img2 from '../../../assets/HomeCard/Toyota-Corolla-2001.jpg'
 // import img3 from '../../../assets/HomeCard/WhatsApp-Image-2021-09-06-at-15.14.27-800x400.jpeg'
@@ -24,19 +28,20 @@ import NavBarDrivers from '../../NavBar/navbarDrivers.jsx';
 // import { changeInput } from '../../../redux/actions/changeInput.js';
 // import MapCalculator from './mapCalculator';
 
-export default function PublicTrip({origin, destination, price, distance}) {
+export default function PublicTrip({origin, destination, price, distance, duration}) {
     
     const { ban, verifying, error } = useBan();
     
-    let distanceFloat= distance!==''? parseFloat(distance.split(",").join("")):0
+    let distanceFloat
+    if(distance)distanceFloat= distance!==''? parseFloat(distance.split(",").join("")):0
     // console.log(distanceFloat, distance)
-
+    // console.log(price)
     const [errors,  setErrors] = useState({
         tooLowerStartDate: false,
         tooLowerFinishDate: false,
         wrongCapacity: false,
     })
-    console.log(errors)
+    // console.log(errors)
 
     const [orig, setOrig] = useState()
     const [dest, setDest] = useState()
@@ -46,12 +51,12 @@ export default function PublicTrip({origin, destination, price, distance}) {
 
     let initPoint
     let finishPoint
-    if(origin.current && typeof origin.current==="object" && origin.current.value !== orig) {
+    if(origin && origin.current && typeof origin.current==="object" && origin.current.value !== orig) {
         initPoint= origin['current']['value']
         setOrig(initPoint)
         // console.log("orig", orig)
     }
-    if(destination.current && typeof destination.current==="object" && destination.current.value !== dest) {
+    if(destination && destination.current && typeof destination.current==="object" && destination.current.value !== dest) {
         finishPoint= destination['current']['value']
         setDest(finishPoint)
         // console.log("dest", dest)
@@ -67,7 +72,6 @@ export default function PublicTrip({origin, destination, price, distance}) {
     });
 
     function deshabilitar(){
-    return false
         if(!infoTrip.capacity|| !infoTrip.start_date|| !infoTrip.finish_date|| !orig|| !dest|| !disc|| !pric) return true
         return false
     }
@@ -92,7 +96,7 @@ export default function PublicTrip({origin, destination, price, distance}) {
         }}).then(resp=>{ 
             console.log(resp.data[1]) 
             console.log(resp.data[2])
-            console.log(resp.data)
+            console.log(resp.data[3])
             
             const tripToSave = {
                 ...infoTrip, //CAPACIDAD DISPONIBLE Y FECHAS
@@ -100,10 +104,7 @@ export default function PublicTrip({origin, destination, price, distance}) {
                 destination: dest,
                 price: pric,
                 distance: disc,
-                // isAvailable: true, 
-                // driver_id
-                // rating: 0,
-                album: [resp.data[1], resp.data[2]]
+                album: [resp.data[1], resp.data[2], resp.data[3]]
             }
             console.log("infoTrip desde submit", tripToSave)
 
@@ -156,23 +157,9 @@ export default function PublicTrip({origin, destination, price, distance}) {
         <div>
         {/* <NavBarDrivers publicar={false} passenger={false}/> */}
             <form onSubmit= {(e)=>handleSubmit(e)} method="post" action=''>
+                
+                <Dates duration={duration}/>
 
-                <InputField
-                    label="Fecha de inicio"
-                    name="start_date"
-                    type="date"
-                    icon="document"
-                    value={infoTrip.start_date}
-                    onChange={handleChange}
-                />
-                <InputField
-                    label="Fecha de Llegada"
-                    name="finish_date"
-                    type="date"
-                    icon="document"
-                    value={infoTrip.finish_date}
-                    onChange={handleChange}
-                />
                 <InputField
                     label="Capacidad"
                     name="capacity"
@@ -187,7 +174,6 @@ export default function PublicTrip({origin, destination, price, distance}) {
                     type="number"
                     icon="document"
                     value={price}
-                    onChange={handleChange}
                 />
                 {/* <InputField //ADJUNTADA EN EL MODELO CAR
                     label="Hora"
