@@ -1,4 +1,5 @@
 const { Order } = require('../Models/Order.js');
+const { OrderDetail } = require('../Models/OrderDetail.js');
 const { Driver } = require('../Models/Driver.js');
 const { OAuth } = require('../Models/OAuth.js');
 const server = require('express').Router();
@@ -31,7 +32,6 @@ const test = async (req, res) => { // PARA COMPROBAR QUE 'http://localhost:3001/
 }
 
 const {
-    ACCESS_TOKEN,
     MARKET_PLACE,
     FEE,
     CLIENT_SECRET,
@@ -79,18 +79,13 @@ const reception = async (req, res) => {
             refresh_token,
             driver_id: conductorDesignadoYResponsable.dataValues.driver_id,
         });
-        return res.status(302).send("Autenticación exitosa. Podés cerrar esta pestaña.")
+        return res.redirect("http://localhost:3000/home-drivers")
     }
 
     // console.log(requestAccessToken.data)
     return res.status(204).json("Algo salió mal.")
 
 }
-
-const access__token = async (req, res) => {
-    res.json(req.body)
-}
-// const accessToken= 
 
 //Agrega credenciales
 
@@ -102,7 +97,7 @@ const posteo = async (req, res) => {
     const largoTabla = tabla.length + 1
 
     const carrito = dataTrip[0]
-    const id_orden = dataTrip[1].toString() + "_T0" + largoTabla //trip_id +'_T01
+    const id_order = dataTrip[1].toString() + "_T0" + largoTabla //trip_id +'_T01
     const user_id = dataTrip[2]
     const driver_id = dataTrip[3]
     const quantity = dataTrip[4]
@@ -114,7 +109,7 @@ const posteo = async (req, res) => {
         user_id,
         trip_id: dataTrip[1],
         capacity: quantity,
-    }).then(r => console.log(r))
+    }).then(r => console.log(r.data)).catch(e => console.log(e))
 
     let access_token = await OAuth.findOne({ //LLENO UNA FILA PARA EL AUTH DE UN DRIVER
         where: {
@@ -123,21 +118,27 @@ const posteo = async (req, res) => {
     })
 
     mercadopago.configure({ //CONFIGURO ESA COMPRA PARA QUE SE DEPOSITE AL MP DEL DRIVER
-        access_token: ACCESS_TOKEN,
+        access_token,
     });
-
-    //Cargamos el carrido de la bd
 
     console.log(carrito)
 
     const items_ml = carrito.map(i => ({
-        id: id_orden,
+        id: id_order,
         title: i.title,
         unit_price: i.price,
         quantity: 1,
         // descpription,
         // picture_url,
     }))
+
+    await OrderDetail.create({
+        name: dataTrip[0].title,
+        price: dataTrip[0].price,
+        quantity,
+        id_order,
+        trip_id: dataTrip[1]
+    })
 
     let averagePriceForFee = 0
     carrito.map((itm) => averagePriceForFee += itm.price)
@@ -146,7 +147,7 @@ const posteo = async (req, res) => {
     // Crea un objeto de preferencia
     let preference = {
         items: items_ml,
-        external_reference: `${id_orden}`,
+        external_reference: `${id_order}`,
         payment_methods: {
             installments: 3  //Cantidad máximo de cuotas
         },
@@ -226,8 +227,6 @@ const pagosId = async (req, res) => {
 }
 
 module.exports = {
-    // test,
-    access__token,
     reception,
     posteo,
     pagos,

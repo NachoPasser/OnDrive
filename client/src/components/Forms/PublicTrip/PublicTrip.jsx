@@ -72,7 +72,7 @@ export default function PublicTrip({origin, destination, price, distance, durati
     });
 
     function deshabilitar(){
-        if(!infoTrip.capacity|| !infoTrip.start_date|| !infoTrip.finish_date|| !orig|| !dest|| !disc|| !pric) return true
+        // if(!infoTrip.capacity|| !infoTrip.start_date|| !infoTrip.finish_date|| !orig|| !dest|| !disc|| !pric) return true
         return false
     }
 

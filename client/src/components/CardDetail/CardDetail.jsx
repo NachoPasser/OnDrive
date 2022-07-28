@@ -21,7 +21,7 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
         dispatch(getTripById(id))
         dispatch(getUserById(localStorage.getItem('token')))
     }, [id]);
-
+    
 
     return (
         <>
@@ -78,7 +78,8 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
                         :
                         <Spinner animation="grow" />
                     }
-                    {trip.driver_id === driverId && Object.keys(driver).length  && Object.keys(user).length?
+                    
+                    {trip.driver_id === driverId && Object.keys(driver).length  && Object.keys(user).length ?
                         <div>
                             <LoaderMP
                                 user={user}
