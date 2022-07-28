@@ -134,22 +134,23 @@ const getDriverById = async (req, res) => {
 
 const uploadProfileImage = async (req, res) => {
   try {
-    const { user_id } = req.body;
+    const { decoded } = req.body;
+    let user_id = decoded?.id
 
     if (!user_id)
-      throw new Error("id(user_id) requerida para actualizar la imagen");
-
+      throw new Error("ID(user_id) requerida para actualizar la imagen");
     const user = await findUserById({ user_id, model: true });
-    if (!user) throw new Error("usuario inexistente");
+    if (!user) throw new Error("Usuario inexistente");
 
     const result = await uploader.upload(req.file.path, { folder: "OnDrive" });
+
 
     await user.update({ image: result.secure_url });
     await user.save();
 
-    res.json({ message: "imagen actualizada", image: result.secure_url });
+    res.json({ message: "Imagen actualizada", image: result.secure_url });
   } catch (e) {
-    res.status(400).json({ error: e.message });
+    res.status(400).json({ error: "Error al subir la imagen" });
   }
 };
 
