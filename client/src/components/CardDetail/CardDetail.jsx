@@ -39,6 +39,7 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
                             </div>
                             <div className={style.propsDetail}>
                                 <div className={style.propsDetail}>
+                                    <h1>{driver.driver_id}, {driverId} </h1>
                                     <div className={style.textDetail}>
                                         <h2 className={style.h2Det}>Fecha de partida: {new Date(trip.start_date).toLocaleString().slice(0, 9)}</h2>
                                         <h2 className={style.h2Det}>Fecha de llegada: {new Date(trip.finish_date).toLocaleString().slice(0, 9)}</h2>

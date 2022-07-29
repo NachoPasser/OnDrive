@@ -5,6 +5,8 @@ export default function Comprar({  data }) {
   useEffect(() => {
     const script = document.createElement('script'); //Crea un elemento html script
 
+    console.log( script)
+    
     const attr_data_preference = document.createAttribute('data-preference-id') //Crea un nodo atribute
     attr_data_preference.value = data.id  //Le asigna como valor el id que devuelve MP
 
@@ -14,6 +16,7 @@ export default function Comprar({  data }) {
 
     console.log(data)
 
+
     //Agrega el script como nodo hijo del elemento form
     document.getElementById('form1').appendChild(script)
     return () => {
@@ -21,8 +24,7 @@ export default function Comprar({  data }) {
       document.getElementById('form1').removeChild(script);
     }
   }, [data])
-
-
+  
   return (
     <div className={s.general}>
 

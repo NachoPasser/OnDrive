@@ -125,7 +125,7 @@ export function Dates({duration, errors, setErrors, dateStart, setDateStart, dat
       {errors.startDate ? <span className={styles.ErrorInputField}>{errors.startDate}</span> : null}
       </div>
     </section>
-    <input className={styles.InputFieldLlegada} type="text" value={dateFinish}/>
+    <input className={styles.InputFieldLlegada} type="text" defaultValue={dateFinish}/>
     </div>
     </div>
   );

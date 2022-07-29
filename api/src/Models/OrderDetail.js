@@ -7,19 +7,18 @@ const OrderDetail = conn.define(
     id: {
         type: DataTypes.UUID,
         primaryKey: true,
-        defaultValue: DataTypes.UUIDV4,
     },
     name: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: DataTypes.TEXT,
+        allowNull: true,
     },
     price: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     quantity: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     }
 });
 

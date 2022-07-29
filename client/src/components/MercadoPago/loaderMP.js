@@ -32,6 +32,7 @@ export default function LoaderMP({ user, idTrip, driver, driverId, price, origin
 
     // useEffect(() => 
     //CREAR PREFERENCIA
+    console.log(driverId)
     if (!comprobant && confirm) {
         const dataTrip = [productos, idTrip, user_id, driverId, cantSelect]
         console.log(dataTrip)

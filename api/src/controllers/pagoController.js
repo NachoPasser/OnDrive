@@ -9,6 +9,12 @@ const axios = require('axios').default;
 const mercadopago = require('mercadopago');
 const { Trip } = require('../Models/Trip.js');
 
+const ACCESS_TOKEN = 'APP_USR-8074988940290506-072021-81c9cfdb710be02d0ff222dc185f8178-229088880'
+const MARKET_PLACE = 'MP-MKT-8074988940290506'
+const FEE = 0.06
+const CLIENT_SECRET = '5jdeY13WC6nVNNwsWwxAG7sHjui69B08'
+const CLIENT_ID = 8074988940290506
+
 //ACÁ VAN LAS RUTAS PARA CONSEGUIR EL ACCESS TOKEN
 
 const test = async (req, res) => { // PARA COMPROBAR QUE 'http://localhost:3001/mercadopago/' Y SUS VARIACIONES FUNCIONAN
@@ -31,12 +37,13 @@ const test = async (req, res) => { // PARA COMPROBAR QUE 'http://localhost:3001/
 
 }
 
-const {
-    MARKET_PLACE,
-    FEE,
-    CLIENT_SECRET,
-    CLIENT_ID
-} = process.env;
+// const {
+//     MARKET_PLACE,
+//     FEE,
+//     CLIENT_SECRET,
+//     CLIENT_ID,
+//     ACCESS_TOKEN
+// } = process.env;
 
 const reception = async (req, res) => {
 
@@ -60,7 +67,7 @@ const reception = async (req, res) => {
         //RESCATAMOS EL OBJETO NETO
         let user_id
         if (state) user_id = state.slice(0, 36)
-        else if (!state) return res.send("Disculpe, no pudimos recibir determinado dato (id de usuario), vuelva a intentar por favor")
+        else if (!state) return res.send("No pudimos recibir determinado dato (id de usuario), vuelva a intentar")
         const data = requestAccessToken.data
         //LE EXTRAEMOS LO IMPORTANTE
         const access_token = data.access_token
@@ -98,28 +105,31 @@ const posteo = async (req, res) => {
     const id_order = dataTrip[1].toString() + "_T0" + largoTabla //trip_id +'_T01
     const user_id = dataTrip[2]
     const driver_id = dataTrip[3]
-    const quantity = dataTrip[4]
+    // const quantity = dataTrip[4]
 
     // const descpription = dataTrip[5]
     // const picture_url = dataTrip[6]
 
-    await axios.post('http://localhost:3001/trip/purchase-trip', { //EDITO CAPACIDAD DEL VIAJE COMPRADO
-        user_id,
-        trip_id: dataTrip[1],
-        capacity: quantity,
-    }).then(r => console.log(r.data)).catch(e => console.log(e))
+    // await axios.post('http://localhost:3001/trip/purchase-trip', { //EDITO CAPACIDAD DEL VIAJE COMPRADO
+    //     user_id,
+    //     trip_id: dataTrip[1],
+    //     capacity: quantity,
+    // }).then(r => console.log(r.data)).catch(e => console.log(e))
 
+    console.log(driver_id)
     let access_token = await OAuth.findOne({ //LLENO UNA FILA PARA EL AUTH DE UN DRIVER
         where: {
-            driver_id
+            driver_id: driver_id
         }
     })
-
+    console.log("access_token asdfavsrbtuievtnoi", access_token)
     mercadopago.configure({ //CONFIGURO ESA COMPRA PARA QUE SE DEPOSITE AL MP DEL DRIVER
-        access_token,
+        access_token: 'APP_USR-8074988940290506-072807-e5a5fe2ee5f8786773c228d600e8674f-705813127'
     });
 
     console.log(carrito)
+    console.log(dataTrip)
+    // let name = dataTrip[0].title
 
     const items_ml = carrito.map(i => ({
         id: id_order,
@@ -130,13 +140,13 @@ const posteo = async (req, res) => {
         // picture_url,
     }))
 
-    await OrderDetail.create({
-        name: dataTrip[0].title,
-        price: dataTrip[0].price,
-        quantity,
-        id_order,
-        trip_id: dataTrip[1]
-    })
+    // await OrderDetail.create({
+    //     name,
+    //     price: dataTrip[0].price,
+    //     quantity,
+    //     id_order,
+    //     trip_id: dataTrip[1]
+    // })
 
     let averagePriceForFee = 0
     carrito.map((itm) => averagePriceForFee += itm.price)
@@ -149,8 +159,8 @@ const posteo = async (req, res) => {
         payment_methods: {
             installments: 3  //Cantidad máximo de cuotas
         },
-        marketplace: MARKET_PLACE,
-        marketplace_fee: averagePriceForFee * FEE, //comission for us
+        marketplace: 'MP-MKT-8074988940290506',
+        marketplace_fee: averagePriceForFee * 0.06, //comission for us
         back_urls: {
             success: `http://localhost:3001/mercadopago/pagos?user_id=${user_id}`,
             failure: 'http://localhost:3001/mercadopago/pagos',

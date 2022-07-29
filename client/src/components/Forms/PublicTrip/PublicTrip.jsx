@@ -207,10 +207,10 @@ export default function PublicTrip({origin, destination, price, distance, durati
                    
                 <div>
                     <select style={{height: '50px'}} onChange={(e) => handleSelect(e)} value={carSelected}>
-                        <option selected disabled value="Default">Auto</option>
+                        <option selected disabled defaultValue="Default">Auto</option>
                         {
                             user.hasOwnProperty('driver') && user.driver.cars.map(c => 
-                                <option key={c.model} name={c.model} value={c.car_id}>
+                                <option key={c.model} name={c.model} defaultValue={c.car_id}>
                                     {c.model}
                                 </option>)
                         }
