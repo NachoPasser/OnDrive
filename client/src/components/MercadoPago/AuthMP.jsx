@@ -40,7 +40,7 @@ export default function AuthMP({ }) {
                     <p className={s.p}>Para recibir los pagos de otros usuarios cuando viajen con vos,
                         es necesario que autentiques tu cuenta de Mercado Pago.
                     </p>
-                    <p className={s.p}> Hacé clic en el botón de abajo para autenticar.
+                    <p className={s.p}> Hacé clic en el botón de abajo para autenticar. Te dirigiremos a <span style={{'color':'rgb(0, 158, 227)', 'fontWeight':'bold', backgroundColor: 'rgb(31,32,33)', borderRadius: '8px', padding: '1px 1px 2px 4px', marginRight: '3px'}}> auth.mercadopago.com </span> y después, te volveremos a traer aquí.
                     </p>
                     {/* <Link href="https://auth.mercadopago.com/authorization?client_id=8074988940290506&response_type=code&platform_id=mp&state=011&redirect_uri=http://localhost:3001/mercadopago/reception">
                 <button>
