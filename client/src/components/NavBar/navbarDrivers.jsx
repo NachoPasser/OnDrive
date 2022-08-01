@@ -5,7 +5,7 @@ import logo from '../../assets/NavBar/on-logox0.5.png'
 import style from './navbar.module.css'
 
 
-export default function NavBarDrivers({ passenger = true, create = true, publish = true }) {
+export default function NavBarDrivers({ authMP = true, passenger = true, create = true, publish = true }) {
 
     const history = useHistory()
 
@@ -24,7 +24,7 @@ export default function NavBarDrivers({ passenger = true, create = true, publish
     return (
         <ul className={style.nav}>
             {
-                publish
+                publish && authMP
                     ? <li className={style.liLogo}>
                         <NavLink className={style.navLink} exact to="/home-drivers" onClick={(e) => handleClick(e)}>
                             <img className={style.logo} src={logo} alt='No se encontró la imagen.' />
@@ -56,11 +56,11 @@ export default function NavBarDrivers({ passenger = true, create = true, publish
                 <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/help">Ayuda</NavLink>
                 </li>{
+                    <li className={style.li}>
+                        <NavLink className={style.navLink} exact to="/aboutUs">Nosotros</NavLink>
+                    </li>}
                 <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/aboutUs">Nosotros</NavLink>
-                </li>}
-                <li className={style.li}>
-                        <NavLink className={style.navLink}  exact to="/auth-mp"> Auth MP </NavLink>
+                    <NavLink className={style.navLink} exact to="/auth-mp"> Autenticar Mercado Pago </NavLink>
                 </li>
             </div>
         </ul>

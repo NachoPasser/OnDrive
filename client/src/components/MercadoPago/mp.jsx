@@ -24,15 +24,15 @@ export default function Comprar({  data }) {
       document.getElementById('form1').removeChild(script);
     }
   }, [data])
-  
+
   return (
     <div className={s.general}>
 
-        {/* <div className={s.gridContainer} > */}
-            
+        {/* { <div className={s.gridContainer} > /} */}
+
         <form className={s.form1} id="form1">
         </form>
-        {/* </div> */}
+         {/* </div>  */}
 
     </div>
   )

@@ -72,8 +72,8 @@ export default function MapCalculator() {
         return <SkeletonText />
     }
     
-    console.log(originRef.current && originRef.current.value)
-    console.log(destiantionRef.current && destiantionRef.current.value)
+    // console.log(originRef.current && originRef.current.value)
+    // console.log(destiantionRef.current && destiantionRef.current.value)
 
     async function calculateRoute() {
         if (originRef.current.value === '' || destiantionRef.current.value === '') {
@@ -97,6 +97,7 @@ export default function MapCalculator() {
         setDirectionsResponse(null)
         setDistance('')
         setDuration('')
+        setDisabled(false)
         originRef.current.value = ''
         destiantionRef.current.value = ''
     }
@@ -170,6 +171,7 @@ export default function MapCalculator() {
                             <label style={{ 'color': 'rgb(165,165,165)', 'fontSize': '22px' }}>Origen</label>
                             <Autocomplete>
                                 <Input
+                                    style={{'height':'48px', 'borderRadius': '7px', 'color': 'rgb:(40,40,40,)', 'backgroundColor': 'rgb(230,230,230)'}}
                                     type='text'
                                     readOnly={disabled}
                                     placeholder='Ingresa una ubicación' 

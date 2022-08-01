@@ -62,8 +62,8 @@ function App() {
       {makePrivate(["driverUser"], "/addCar", "/login", <AddCar />)}
       {/* {makePrivate(["driverUser", "admin"], "/public", "/home", <PublicTrip />)} */}
       {/* <Route path="*" component={NotFound} /> */}
-      {makePrivate(["driverUser", "admin"], "/public", "/home", <MapCalculator />)}
-      {/* {makePrivate(["admin", "driverUser"], "/auth-mp", "/home", <AuthMP />)} */}
+      {makePrivate(["driverUser"], "/public", "/home", <MapCalculator />)}
+      {makePrivate(["driverUser"], "/auth-mp", "/home", <AuthMP />)}
       {makePrivate(["admin", "driverUser"], "/error", "/home-passengers", <Error />)}
     </div >
   );

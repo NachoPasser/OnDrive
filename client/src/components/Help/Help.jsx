@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/Logo/onDrive-logo.png";
-import { NavLink } from "react-router-dom";
-
 import style from "./Help.module.css";
+import NavBar from "../NavBar/navbar";
 
-export default function Help(){
-    return(
+
+export default function Help() {
+    const [help, setHelp] = useState(false)
+    return (
         <div className={style.bigContainer}>
+            <NavBar help={help} />
             <div className={style.titleE}>
                 <h1 className={style.titleTextY}>Equipo de soporte</h1>
-                <img src={logo} alt="logo-onDrive" className={style.logo}/>
+                <img src={logo} alt="logo-onDrive" className={style.logo} />
             </div>
             <div className={style.boxSubTitleP}>
                 <h2 className={style.subTitleP}>Preguntas Frecuentes:</h2>

@@ -41,8 +41,9 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
                                 <div className={style.propsDetail}>
                                     <h1>{driver.driver_id}, {driverId} </h1>
                                     <div className={style.textDetail}>
-                                        <h2 className={style.h2Det}>Fecha de partida: {new Date(trip.start_date).toLocaleString().slice(0, 9)}</h2>
-                                        <h2 className={style.h2Det}>Fecha de llegada: {new Date(trip.finish_date).toLocaleString().slice(0, 9)}</h2>
+                                        <h1>{driverId}</h1>
+                                        <h2 className={style.h2Det}>Fecha de partida: {trip.start_date}</h2>
+                                        <h2 className={style.h2Det}>Fecha de llegada: {trip.finish_date}</h2>
                                         <h2 className={style.h2Det}>Capacidad: {trip.capacity}</h2>
                                         <h2 className={style.h2Det}>Datos del automovil: </h2>
                                         <h2 className={style.h2Det}>Marca: {driver.cars[0].brand}</h2>
@@ -79,7 +80,7 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
                         :
                         <Spinner animation="grow" />
                     }
-                    {trip.driver_id === driverId && Object.keys(driver).length && Object.keys(user).length ?
+                    {trip.driver_id === driverId && Object.keys(driver).length ?
                             <div>
                                 <LoaderMP
                                     user={user}

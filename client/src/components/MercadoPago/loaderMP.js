@@ -32,8 +32,10 @@ export default function LoaderMP({ user, idTrip, driver, driverId, price, origin
 
     // useEffect(() => 
     //CREAR PREFERENCIA
-    console.log(driverId)
-    if (!comprobant && confirm) {
+
+
+    function cash() {
+        // setConfirm(true)
         const dataTrip = [productos, idTrip, user_id, driverId, cantSelect]
         console.log(dataTrip)
         axios
@@ -43,12 +45,6 @@ export default function LoaderMP({ user, idTrip, driver, driverId, price, origin
                 //console.info('Contenido de data:', data)
             })
             .catch(err => console.error(err))
-        setComprobant(true)
-        setConfirm(false)
-    }
-
-    function cash() {
-        setConfirm(true)
     }
     // }, [])
 
@@ -63,7 +59,7 @@ export default function LoaderMP({ user, idTrip, driver, driverId, price, origin
 
     return (<div style={{ 'color': 'orange' }}>
         <br></br>
-        <br></br>{!confirm && <>
+        <br></br>{!datos && <>
             <div style={{ 'color': 'wheat' }}>
                 <div>{cantSelect
                     ? '$' + parseFloat(price.toFixed(2) * cantSelect)

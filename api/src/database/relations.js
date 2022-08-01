@@ -26,8 +26,8 @@ User.hasOne(Driver, {
   },
 });
 
-Car.hasMany(Trip, {foreignKey: 'car_id'})
-Trip.belongsTo(Car, {foreignKey: 'car_id'})
+Car.hasMany(Trip, { foreignKey: 'car_id' })
+Trip.belongsTo(Car, { foreignKey: 'car_id' })
 
 
 //
@@ -91,13 +91,20 @@ User.hasMany(Order, { foreignKey: 'user_id' })
 Order.belongsTo(User, { foreignKey: 'user_id' })
 
 //una orden puede tener varios detalle de compra
-Order.hasMany(OrderDetail, { foreignKey: 'id_order' })
-//un detalle pertenece a una orden específica
-OrderDetail.belongsTo(Order, { foreignKey: 'id_order' })
-//un viaje tiene varios detalles de compra
-Trip.hasMany(OrderDetail, { foreignKey: 'trip_id' })
-//y un detalle pertenece a un viaje
-OrderDetail.belongsTo(Trip, { foreignKey: 'trip_id' })
+// Order.hasMany(OrderDetail, { foreignKey: 'id_order' })
+// //un detalle pertenece a una orden específica
+// OrderDetail.belongsTo(Order, {
+//   foreignKey: {
+//     name: 'id_order',
+//     allowNull: true,
+//     type: DataTypes.TEXT,
+//   }
+
+// })
+// //un viaje tiene varios detalles de compra
+// Trip.hasMany(OrderDetail, { foreignKey: 'trip_id' })
+// //y un detalle pertenece a un viaje
+// OrderDetail.belongsTo(Trip, { foreignKey: 'trip_id' })
 
 //exporto todo los modelos por si se utilizan en otros archivos
 module.exports = {
