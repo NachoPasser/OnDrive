@@ -5,7 +5,7 @@ export default function Comprar({  data }) {
   useEffect(() => {
     const script = document.createElement('script'); //Crea un elemento html script
 
-    console.log( script)
+    // console.log( script)
     
     const attr_data_preference = document.createAttribute('data-preference-id') //Crea un nodo atribute
     attr_data_preference.value = data.id  //Le asigna como valor el id que devuelve MP

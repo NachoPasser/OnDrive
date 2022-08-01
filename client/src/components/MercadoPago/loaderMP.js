@@ -37,7 +37,7 @@ export default function LoaderMP({ user, idTrip, driver, driverId, price, origin
     function cash() {
         // setConfirm(true)
         const dataTrip = [productos, idTrip, user_id, driverId, cantSelect]
-        console.log(dataTrip)
+        // console.log(dataTrip, 'cantSelect'.cantSelect)
         axios
             .post(`${API_URL}/mercadopago`, { dataTrip })
             .then((data) => {

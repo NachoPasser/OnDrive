@@ -71,7 +71,7 @@ const posteo = async (req, res) => {
     const tabla = await Order.findAll()
     const largoTabla = tabla.length + 1
 
-    const carrito = dataTrip[0]
+    const mall_cart = dataTrip[0]
     const id_order = dataTrip[1].toString() + "_T0" + largoTabla //trip_id +'_T01'
     const user_id = dataTrip[2]
     const driver_id = dataTrip[3]
@@ -79,28 +79,21 @@ const posteo = async (req, res) => {
     // const descpription = dataTrip[5]
     // const picture_url = dataTrip[6]
 
-    // await axios.post('http://localhost:3001/trip/purchase-trip', { //EDITO CAPACIDAD DEL VIAJE COMPRADO
-    //     user_id,
-    //     trip_id: dataTrip[1],
-    //     capacity: quantity,
-    // }).then(r => console.log(r.data)).catch(e => console.log(e))
-
-    console.log(driver_id)
+    // console.log('quantity desde front', quantity)
+    // console.log('driver_id desde front', driver_id)
     let auth_segun_driver = await OAuth.findOne({ //LLENO UNA FILA PARA EL AUTH DE UN DRIVER
         where: {
             driver_id
         }
     })
-    console.log("access_token asdfavsrbtuievtnoi", auth_segun_driver.dataValues.access_token)
+    // console.log("access_token aquí", auth_segun_driver.dataValues.access_token)
     mercadopago.configure({ //CONFIGURO ESA COMPRA PARA QUE SE DEPOSITE AL MP DEL DRIVER
         access_token: auth_segun_driver.dataValues.access_token || ACCESS_TOKEN,
-        //'APP_USR-8074988940290506-072807-e5a5fe2ee5f8786773c228d600e8674f-705813127'
+        //En caso de que alguno de nosotros se olvide de autenticarse y no haya access_token de conductor, aparece el access_token de OnDrive para recibir el 96% del pago, y en consecuencia, no se rompa el back por faltarle un access_token a la configuración de mercadopago :D
     });
-
-    console.log(carrito)
-    console.log(dataTrip)
-
-    const items_ml = carrito.map(i => ({
+    // console.log('carrito', mall_cart)
+    // console.log('dataTrip', dataTrip)
+    const items_ml = mall_cart.map(i => ({
         id: id_order,
         title: i.title,
         unit_price: i.price,
@@ -109,18 +102,13 @@ const posteo = async (req, res) => {
         // picture_url,
     }))
 
-    // await Order.create({
-    //     status: 'processing',
-    //     id_order,
-    //     user_id,
-    // })
     let name = dataTrip[0][0].title
     let price = dataTrip[0][0].price
     let trip_id = dataTrip[1]
 
     let averagePriceForFee = 0
-    carrito.map((itm) => averagePriceForFee += itm.price)
-    console.log(averagePriceForFee)
+    mall_cart.map((itm) => averagePriceForFee += itm.price)
+    // console.log(averagePriceForFee)
 
     // Crea un objeto de preferencia
     let preference = {
@@ -129,7 +117,7 @@ const posteo = async (req, res) => {
         payment_methods: {
             installments: 3  //Cantidad máximo de cuotas
         },
-        marketplace: MARKET_PLACE,//'MP-MKT-8074988940290506',
+        marketplace: MARKET_PLACE,//,
         marketplace_fee: averagePriceForFee * FEE, //comission for us
         back_urls: {
             success: `http://localhost:3001/mercadopago/pagos?user_id=${user_id}&name=${name}&price=${price}&trip_id=${trip_id}&quantity=${quantity}`,
@@ -165,6 +153,12 @@ const pagos = async (req, res) => {
     const merchant_order_id = req.query.merchant_order_id
     // console.log("EXTERNAL REFERENCE ", external_reference)
     const id_order = external_reference
+
+    await axios.post('http://localhost:3001/trip/purchase-trip', { //EDITO CAPACIDAD DEL VIAJE COMPRADO
+        user_id,
+        trip_id,
+        capacity: quantity,
+    }).then(r => console.log("capacidad descontada en", quantity)).catch(e => console.log(e))
 
     await OrderDetail.create({
         name,

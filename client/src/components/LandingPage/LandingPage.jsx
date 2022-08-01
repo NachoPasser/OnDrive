@@ -16,7 +16,7 @@ const LandingPage = () => {
             </div>
             <div className={styles.TextContainer}>
                 <p className={styles.Text}>
-                    Trabajamos para mejorar la forma de viajar por el país. Nuestro objetivo es conectar a Conductores y Pasajeros con un mismo destino, para que puedan acompañarse y reducir gastos. Gracias al uso de vehiculos compartidos, ayudamos al medio ambiente disminuyendo la emision de C02.
+                    Trabajamos para mejorar la forma de viajar por el país. Nuestro objetivo es conectar a Conductores y Pasajeros con un mismo destino, para que puedan acompañarse y reducir gastos. Gracias al uso de vehiculos compartidos, ayudamos al medio ambiente disminuyendo la emision de CO2.
                 </p>
                 <p className={styles.Text}>
                     Por otro lado, ofrecemos la posibilidad a nuestros usuarios de calcular los gastos en combustible, en caso que decidan realizar un viaje por su cuenta, indicando origen, destino, tipo de combustible y consumo de su vehiculo. Mostramos asi tambien un mapa con la mejor ruta posible.
