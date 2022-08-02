@@ -87,20 +87,20 @@ const posteo = async (req, res) => {
             driver_id
         }
     })
-    console.log(auth_segun_driver)
-    var access_token = ACCESS_TOKEN
-    if (auth_segun_driver) {
-        if (Object.keys(auth_segun_driver).length) {
-            console.log("primer if", auth_segun_driver)
-            if (auth_segun_driver.dataValues.access_token) {
-                console.log("segundo if", auth_segun_driver)
-                access_token = auth_segun_driver.dataValues.access_token
-            }
-        }
-    }
+    // console.log(auth_segun_driver)
+    // var access_token = ACCESS_TOKEN
+    // if (auth_segun_driver) {
+    //     if (Object.keys(auth_segun_driver).length) {
+    //         console.log("primer if", auth_segun_driver)
+    //         if (auth_segun_driver.dataValues.access_token) {
+    //             console.log("segundo if", auth_segun_driver)
+    //             access_token = auth_segun_driver.dataValues.access_token
+    //         }
+    //     }
+    // }
     // console.log("access_token aquí", auth_segun_driver.dataValues.access_token)
     mercadopago.configure({ //CONFIGURO ESA COMPRA PARA QUE SE DEPOSITE AL MP DEL DRIVER
-        access_token,
+        access_token: auth_segun_driver.dataValues.access_token,
         //En caso de que alguno de nosotros se olvide de autenticarse y no haya access_token de conductor, aparece el access_token de OnDrive para recibir el 96% del pago, y en consecuencia, no se rompa el back por faltarle un access_token a la configuración de mercadopago :D
     });
     // console.log('carrito', mall_cart)
