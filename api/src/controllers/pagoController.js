@@ -76,8 +76,9 @@ const posteo = async (req, res) => {
     const user_id = dataTrip[2]
     const driver_id = dataTrip[3]
     const quantity = dataTrip[4]
-    // const descpription = dataTrip[5]
-    // const picture_url = dataTrip[6]
+    const email_driver = dataTrip[5]
+    // const descpription = dataTrip[6]
+    // const picture_url = dataTrip[7]
 
     // console.log('quantity desde front', quantity)
     // console.log('driver_id desde front', driver_id)
@@ -86,9 +87,16 @@ const posteo = async (req, res) => {
             driver_id
         }
     })
+    console.log(auth_segun_driver)
     var access_token = ACCESS_TOKEN
-    if (Object.keys(auth_segun_driver).length && auth_segun_driver.dataValues.access_token) {
-        access_token = auth_segun_driver.dataValues.access_token
+    if (auth_segun_driver) {
+        if (Object.keys(auth_segun_driver).length) {
+            console.log("primer if", auth_segun_driver)
+            if (auth_segun_driver.dataValues.access_token) {
+                console.log("segundo if", auth_segun_driver)
+                access_token = auth_segun_driver.dataValues.access_token
+            }
+        }
     }
     // console.log("access_token aquí", auth_segun_driver.dataValues.access_token)
     mercadopago.configure({ //CONFIGURO ESA COMPRA PARA QUE SE DEPOSITE AL MP DEL DRIVER
@@ -102,7 +110,7 @@ const posteo = async (req, res) => {
         title: i.title,
         unit_price: i.price,
         quantity: 1,
-        // descpription,
+        // descpription: email_driver,
         // picture_url,
     }))
 
@@ -117,7 +125,7 @@ const posteo = async (req, res) => {
     // Crea un objeto de preferencia
     let preference = {
         items: items_ml,
-        external_reference: `${id_order}`,
+        external_reference: id_order + "|" + email_driver,
         payment_methods: {
             installments: 3  //Cantidad máximo de cuotas
         },
@@ -169,8 +177,7 @@ const pagos = async (req, res) => {
         price,
         quantity,
         id_order, //CAMPO RELACIONAL
-        trip_id,
-        quantity
+        // trip_id,
     })
 
     await Order.create({

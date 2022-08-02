@@ -9,7 +9,6 @@ import { API_URL } from "../../config/enviroment.js";
 
 export default function LoaderMP({ user, idTrip, driver, driverId, price, origin, destination, start, finish, capacity }) {
 
-    // console.log(user)
     //console.log(origin, destination)
     let startDate = new Date(start)
     let finishDate = new Date(finish)
@@ -29,6 +28,7 @@ export default function LoaderMP({ user, idTrip, driver, driverId, price, origin
     }]
 
     let user_id = user.user_id
+    let email_driver = driver.user.email
 
     // useEffect(() => 
     //CREAR PREFERENCIA
@@ -36,7 +36,7 @@ export default function LoaderMP({ user, idTrip, driver, driverId, price, origin
 
     function cash() {
         // setConfirm(true)
-        const dataTrip = [productos, idTrip, user_id, driverId, cantSelect]
+        const dataTrip = [productos, idTrip, user_id, driverId, cantSelect, email_driver]
         // console.log(dataTrip, 'cantSelect'.cantSelect)
         axios
             .post(`${API_URL}/mercadopago`, { dataTrip })
