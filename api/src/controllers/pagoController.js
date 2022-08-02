@@ -76,7 +76,7 @@ const posteo = async (req, res) => {
     const user_id = dataTrip[2]
     const driver_id = dataTrip[3]
     const quantity = dataTrip[4]
-    const email_driver = dataTrip[5]
+    // const email_driver = dataTrip[5]
     // const descpription = dataTrip[6]
     // const picture_url = dataTrip[7]
 
@@ -125,7 +125,7 @@ const posteo = async (req, res) => {
     // Crea un objeto de preferencia
     let preference = {
         items: items_ml,
-        external_reference: id_order + "|" + email_driver,
+        external_reference: `${id_order}`,
         payment_methods: {
             installments: 3  //Cantidad máximo de cuotas
         },

@@ -28,7 +28,7 @@ export default function LoaderMP({ user, idTrip, driver, driverId, price, origin
     }]
 
     let user_id = user.user_id
-    let email_driver = driver.user.email
+    // let email_driver = driver.user.email
 
     // useEffect(() => 
     //CREAR PREFERENCIA
@@ -36,7 +36,7 @@ export default function LoaderMP({ user, idTrip, driver, driverId, price, origin
 
     function cash() {
         // setConfirm(true)
-        const dataTrip = [productos, idTrip, user_id, driverId, cantSelect, email_driver]
+        const dataTrip = [productos, idTrip, user_id, driverId, cantSelect]
         // console.log(dataTrip, 'cantSelect'.cantSelect)
         axios
             .post(`${API_URL}/mercadopago`, { dataTrip })
