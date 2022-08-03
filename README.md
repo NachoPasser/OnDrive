@@ -10,7 +10,14 @@ Este proyecto nace con la intención facilitar los viajes de larga distancia en 
 4. [Despliegue](#id4)
 5. [Tecnologías](#id5)
 6. [Aporta al proyecto](#id6)
-7. [Contacto 📨](#id10)
+7. [Vistas](#id7)
+    - [Informativas](#id71) 
+    - [Usuario Visitante](#id72)
+    - [Usuario Pasajero](#id73)
+    - [Usuario Conductor](#id74)
+    - [Usuario Administrador](#id75)
+8. [Equipo](#id8)
+9. [Contacto 📨](#id10)
 
 
 <div id='id1'/>  
@@ -127,10 +134,98 @@ Primero que nada necesitara preparar su entorno local para poder colaborar en el
    
    ![imagen](https://user-images.githubusercontent.com/71911407/182502254-487c3341-98fe-4d00-8afd-498fd575d8b5.png)
    
-  9. Si todo salio bien ya puedo comenzar a trabajar en nuestro proyecto, le recordamos que en `localhost:3000` se encuentra el cliente y en `localhost:3001` nuestro servidor. Cualquier duda o consulta no dude en [contactarnos](#id10).
+  9. Si todo salio bien ya puede comenzar a trabajar en nuestro proyecto, le recordamos que en `localhost:3000` se encuentra el cliente y en `localhost:3001` nuestro servidor. Cualquier duda o consulta no dude en [contactarnos](#id10).
   
-  
- 
+
+
+
+<div id='id7'/>  
+
+## Vistas
+Les dejamos unas capturas de como se ve actualmente nuestro sitio web.  
+
+<div id='id71'/>  
+
+### Informativas:
+
+**`Lading Page`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182505810-5754b397-ba03-4956-b386-268e4a98123b.png)  
+
+**`Problemas internos`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182506046-e35cea5d-33d3-4ea8-8874-d9dc39a96e68.png)  
+
+**`Loader`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182506222-baba67e5-e782-4f50-8805-d6e1302c717c.png)  
+
+**`Sobre nosotros`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182508258-457eb3bf-a090-4c83-ae73-1db701feee0c.png)
+
+**`Ayuda`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182508331-c12c550c-0ac4-40be-8a2e-2fe0421cfe6a.png)
+
+
+
+<div id='id72'/>  
+
+### Usuario Visitante:
+
+**`/home`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182506404-7f801dd8-5a4f-42b7-9eb5-092d614f3ada.png)  
+
+**`/login`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182506949-8169395f-c440-47fc-a2aa-741e88f40043.png)  
+
+**`/register`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182507121-d955fa8e-ba98-4f18-b6dd-3e9da3d3042e.png)  
+
+**`/loginAdmin`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182508115-3e6bce6e-6514-482d-9f75-f5e075933a7d.png)  
+
+**`/recovery-password`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182508454-245946bc-918e-4f8f-bbe6-d6db8a0e8c5f.png)  
+
+
+<div id='id73'/>  
+
+### Usuario Pasajero:  
+
+**`/home`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182509136-ad734dfe-170d-4a06-8fa6-3f71008f85b7.png)  
+
+**`/profile`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182509294-7d95ff6f-e6aa-4d1c-8eb8-98d10c06b728.png)  
+
+**`/driver`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182509535-6ee39224-9e47-40cc-b898-a88cdf365784.png)  
+
+<div id='id74'/>   
+
+### Usuario Conductor: 
+
+**`/home`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182510705-e638a630-5cb1-43c7-845e-0653696dce32.png)  
+
+**`/addCar`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182510497-ae74adaf-139e-487b-9595-b4088b426926.png)  
+
+**`/profile`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182511230-b631c75d-fe9e-49ee-8e9d-0231499dfe4d.png)  
+
+**`/auth-mp`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182511352-4a4c5fb0-e9bb-4880-8169-af13453f58a7.png)  
+
+**`/public`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182512058-1fa0e4e5-0e76-40aa-99a7-3c462ccd5377.png)  
+
+<div id='id75'/>   
+
+### Usuario Administrador: 
+
+**`/adminPanel`**:  
+![imagen](https://user-images.githubusercontent.com/71911407/182512782-f321f5cc-612e-4187-b40e-4479edf7e57e.png)
+
+
+
 
 <div id='id10'/>  
 
