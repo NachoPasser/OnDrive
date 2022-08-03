@@ -222,8 +222,18 @@ Les dejamos unas capturas de como se ve actualmente nuestro sitio web.
 ### Usuario Administrador: 
 
 **`/adminPanel`**:  
-![imagen](https://user-images.githubusercontent.com/71911407/182512782-f321f5cc-612e-4187-b40e-4479edf7e57e.png)
+![imagen](https://user-images.githubusercontent.com/71911407/182512782-f321f5cc-612e-4187-b40e-4479edf7e57e.png)  
 
+<div id='id8'/>  
+
+## Equipo  
+- [@NachoPasser](https://github.com/NachoPasser)
+- [@MarcoPoggi](https://github.com/MarcoPoggi)
+- [@santi-misael21](https://github.com/santi-misael21)
+- [@MatiasPereson](https://github.com/MatiasPereson)
+- [@MariRionda](https://github.com/MariRionda)
+- [@Ismanaos](https://github.com/Ismanaos)
+- [@maxsolfar](https://github.com/maxsolfar)
 
 
 
