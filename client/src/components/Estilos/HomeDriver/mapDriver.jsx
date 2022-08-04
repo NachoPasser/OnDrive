@@ -10,7 +10,9 @@ import {
     Text,
 } from '@chakra-ui/react'
 import { FaLocationArrow, FaTimes } from 'react-icons/fa'
-
+import { useField } from '../../../hooks/useInputField';
+import InputField from '../../Sections/InputField/InputField';
+import PublicTrip from './PublicTrip'
 import {
     useJsApiLoader,
     GoogleMap,
@@ -18,17 +20,17 @@ import {
     Autocomplete,
     DirectionsRenderer,
 } from '@react-google-maps/api'
-import { useRef, useState } from 'react'
-import style from './map.module.css'
-import sent from '../../assets/Home/sent.png'
-import origin from '../../assets/Home/ubicacion.png'
-import destination from '../../assets/Home/destino.png'
+import { useEffect, useRef, useState } from 'react'
+import style from './mapDriver.module.css'
+import sent from '../../../assets/Home/sent.png'
+import origin from '../../../assets/Home/ubicacion.png'
+import destination from '../../../assets/Home/destino.png'
 //prueba
 // import usePlacesAutocomplete, {
 //     getGeocode,
 //     getLatLng,
 // } from "use-places-autocomplete";
-import Comparador from './FuelComponents/18-Comparador';
+import Comparador from '../../Map/FuelComponents/18-Comparador';
 
 const {GOOGLE_MAPS_API_KEY} = process.env
 // console.log(GOOGLE_MAPS_API_KEY)
@@ -42,9 +44,25 @@ export default function Map() {
 
     const [map, setMap] = useState(/** @type google.maps.Map */(null))
     const [directionsResponse, setDirectionsResponse] = useState(null)
+    const [errors, setErrors] = useState({
+        origin: 'Lugar de origen requerido.',
+        destination: 'Lugar de destino requerido.',
+        startDate: '',
+        capacity: '',
+        price: 'Calcule el precio.',
+        car: 'Seleccione un auto.',
+    })
+    const [disabled, setDisabled] = useState('')
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
-    const [price, setPrice] = useState()
+    const [price, setPrice] = useState('')
+    
+
+    if(!distance && price) {
+        setErrors('Calcule el precio.')
+        setPrice(0)
+        setDisabled(false)
+    }
 
 
     /** @type React.MutableRefObject<HTMLInputElement> */
@@ -73,7 +91,7 @@ export default function Map() {
         setDirectionsResponse(results)
         setDistance(results.routes[0].legs[0].distance.text)
         setDuration(results.routes[0].legs[0].duration.text)
-
+        setDisabled(true)
     }
 
 
@@ -81,6 +99,7 @@ export default function Map() {
         setDirectionsResponse(null)
         setDistance('')
         setDuration('')
+        setDisabled(false)
         originRef.current.value = ''
         destiantionRef.current.value = ''
     }
@@ -135,14 +154,34 @@ export default function Map() {
                     <img id={style.originImg} src={origin} alt="" />
                     <div className={style.containerInput}>
                         <Autocomplete>
-                            <input id={style.inputOrigin} type='text' placeholder='Origen' ref={originRef} />
+                            <input 
+                            id={style.inputOrigin} 
+                            type='text' 
+                            placeholder='Origen' 
+                            ref={originRef}
+                            // onChange={() => {
+                            //     if(!originRef.current.value) setErrors({...errors, origin: 'Lugar de destino requerido'})
+                            //     else setErrors({...errors, origin: ''})
+                            // }}
+                            />
                         </Autocomplete>
+                        {/* {errors.origin ? <span className={style.ErrorInputField}>{errors.origin}</span> : null} */}
                     </div>
                     <img id={style.destinationImg} src={destination} alt="" />
                     <div className={style.containerInput}>
                         <Autocomplete>
-                            <input id={style.inputDestination} type='text' placeholder='Destino' ref={destiantionRef} />
+                            <input 
+                            id={style.inputDestination} 
+                            type='text' 
+                            placeholder='Destino' 
+                            ref={destiantionRef}
+                            // onChange={() => {
+                            //     if(!destiantionRef.current.value) setErrors({...errors, destination: 'Lugar de destino requerido'})
+                            //     else setErrors({...errors, destination: ''})
+                            // }} 
+                            />
                         </Autocomplete>
+                        {/* {errors.destination ? <span className={style.ErrorInputField}>{errors.destination}</span> : null} */}
                     </div>
 
                     <ButtonGroup position="absolute" right={-60}>
@@ -162,6 +201,14 @@ export default function Map() {
                 <Comparador style={style} distance={distance} setPrice={setPrice}/>
             </div>
         </Flex>
+        {/* <PublicTrip origin={originRef && originRef}
+                            destination={destiantionRef && destiantionRef}
+                            errors={errors}
+                            setErrors={setErrors}
+                            price={price && price}
+                            distance={distance && distance}
+                            duration={duration && duration}
+                        /> */}
         </div>
     )
 }

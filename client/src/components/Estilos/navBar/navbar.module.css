@@ -1,0 +1,48 @@
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1e232e;
+    
+    /* fijar navbar*/
+    top: 0;
+    height: 65px;
+    width: 100%
+}
+
+.liLogo {
+    position: absolute;
+    left: 40px;
+    top: 10px;
+    width: 150px;
+}
+
+.li {
+    position: relative;
+    left:1150px;
+    margin: 20px;
+}
+
+.items {
+    height: 100%;
+    /* margin-right: 280px; */
+    display: flex;
+    align-items: center;
+}
+
+.navLink {
+    display: block;
+    background-color: #1e232e;
+    color: #FED428;
+    text-align: center;
+    text-decoration: none;
+}
+
+.navLink:hover{
+    color: white;
+}
+
+.logo {
+    width: 100%;
+}

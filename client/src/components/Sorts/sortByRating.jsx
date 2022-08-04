@@ -1,24 +1,21 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { sortTripsByDestination } from '../../redux/actions/sortTripsByRating.js'
+import { getSortedRatingTrips } from '../../redux/actions/getSortedRatingTrips.js'
 export default function SortByRating({ style, sorters, setSorters}) {
     let dispatch = useDispatch()
-    const handleSelectOrder= (e) => {
+    const handleClick= (e) => {
+        
         setSorters({
-            sortRating: e.target.value,
-            sortAlphabetically: ''
-        }) //cambio el valor del select
-                
-        if(e.target.value !== 'Orden') dispatch(sortTripsByDestination(e.target.value))
+            rating: 'Presionado!',
+            proximity: ''
+        }) //cambio el valor del sort
+        let payload = {...sorters, rating: 'Presionado!'}
+        dispatch(getSortedRatingTrips(payload))
        
     }
     return (
         <div>
-            <select className={style} onChange={handleSelectOrder} value={sorters.sortRating}>
-                <option value="Orden">Calificación</option>
-                <option value="ASC">Peores conductores</option>
-                <option value="DSC">Mejores conductores</option>
-            </select>
+            <button className={sorters.rating === 'Presionado!' ? style.btnRatingPressed : style.btnRating} onClick={handleClick}>Mejor calificación</button>
         </div>
     )
 }

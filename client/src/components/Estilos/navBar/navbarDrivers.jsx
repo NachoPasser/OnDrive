@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import logo from '../../assets/Logo/onDrive-logo.png'
-import style from './navbar.module.css'
+import logo from '../../../assets/Logo/onDrive-logo.png'
+import style from './navbarDrivers.module.css'
 
 export default function NavBarPsg() {
     const history = useHistory()
@@ -27,7 +27,7 @@ export default function NavBarPsg() {
             </div>
             <div className={style.items}>
                 <li className={style.li}>
-                    <NavLink className={style.navLink} exact to="/driver">Ser un conductor</NavLink>
+                    <NavLink className={style.navLink} exact to="/public">Publicar viaje</NavLink>
                 </li>
                 <li className={style.li}>
                     <NavLink className={style.navLink} exact to="/profile">Perfil</NavLink>

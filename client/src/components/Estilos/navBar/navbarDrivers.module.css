@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #212734;
+    background-color: #1e232e;
     
     /* fijar navbar*/
     top: 0;
@@ -14,31 +14,33 @@
 .liLogo {
     position: absolute;
     left: 30px;
-    top: 0px;
+    top: 10px;
     width: 150px;
 }
 
 .li {
-    float: right;
-    margin-left: 20px;
-    height: 100%;
+    position: relative;
+    left: 740px;
+    margin: 20px;
 }
 
 .items {
-    margin-right: 280px;
+    height: 100%;
+    /* margin-right: 280px; */
+    display: flex;
+    align-items: center;
 }
 
 .navLink {
     display: block;
-    background-color: #212734;
+    background-color: #1e232e;
     color: #FED428;
     text-align: center;
-    padding: 18px 16px;
     text-decoration: none;
 }
 
-.navLink:hover {
-    background-color: #111;
+.navLink:hover{
+    color: white;
 }
 
 .logo {
@@ -47,6 +49,15 @@
 
 .buttons {
     float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 6px;
+    right: 25px;
+    /* border: 5px solid red; */
+
 }
 
 .login {

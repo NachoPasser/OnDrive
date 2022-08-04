@@ -33,3 +33,9 @@
     color:var(--secondary-color);
     margin-top: -3px;
   }
+
+  .comparador{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+ }

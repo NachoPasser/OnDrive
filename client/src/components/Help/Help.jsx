@@ -8,7 +8,7 @@ export default function Help() {
     const [help, setHelp] = useState(false)
     return (
         <div className={style.bigContainer}>
-            <NavBar help={help} />
+            {/* <NavBar help={help} /> */}
             <div className={style.titleE}>
                 <h1 className={style.titleTextY}>Equipo de soporte</h1>
                 <img src={logo} alt="logo-onDrive" className={style.logo} />

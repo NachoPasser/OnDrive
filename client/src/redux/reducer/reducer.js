@@ -1,11 +1,11 @@
 import { GET_TRIPS } from '../actions/getTrips.js';
-import { SORT_TRIPS_BY_RATING } from '../actions/sortTripsByRating.js';
-import { SORT_TRIPS_ALPHABETICALLY } from '../actions/sortTripsAlphabetically.js';
 import { GET_SEARCH_FOR_DESTINATION } from '../actions/getSearch.js';
 import { GET_USERS_FROM_DB } from '../actions/getUsersFromDatabase.js';
 import { GET_TRIP_BY_ID } from '../actions/getTripById.js'
 import { GET_FUELTABLE } from '../actions/getfuels.js';
 import { FILTER_TRIPS } from '../actions/getFilteredTrips.js';
+import { SORT_BY_RATING } from '../actions/getSortedRatingTrips.js';
+import { SORT_BY_PROXIMITY } from '../actions/getSortedProximityTrips.js';
 import { GET_USER_BY_ID } from '../actions/getUserById.js';
 import { GET_ALL_REVIEWS } from '../actions/getAllTripReviews.js';
 import { GET_DRIVER_BY_ID } from '../actions/getDriverById.js';
@@ -16,6 +16,7 @@ const initialState = {
     trips: [], // trips variables
     filters: { origin: 'Origen', destination: 'Destino', capacity: 'Capacidad', date: 'Fecha' },
     fixedTrips: [], //trips fijos
+    notSortedTrips: [],
     reviews: null,
     users: [],
     prices: [], //of fuels
@@ -104,7 +105,11 @@ const rootReducer = (state = initialState, action) => {
             // }
 
             if (capacity !== 'Capacidad') { //capacidad es false o es un numero
-                filteredTrips = filteredTrips.filter(t => t.capacity === Number(capacity))
+                if(capacity === '8+'){
+                    filteredTrips = filteredTrips.filter(t => t.capacity > 8)
+                } else{
+                    filteredTrips = filteredTrips.filter(t => capacity.includes(t.capacity))
+                }
             }
 
             if (date !== 'Fecha') {  //date es false o es un objeto Date
@@ -117,23 +122,20 @@ const rootReducer = (state = initialState, action) => {
                 filters: action.payload
             }
 
-
-        case SORT_TRIPS_BY_RATING:
-            let sortedByRating = action.payload === 'ASC'
-                ? state.trips.sort((a, b) => a.rating - b.rating)
-                : state.trips.sort((a, b) => b.rating - a.rating)
+        case SORT_BY_PROXIMITY:
+            let sortedTripsProximity = action.payload === 'ASC'
+                ? state.trips.sort((a, b) => new Date(a.start_date) - new Date(b.start_date))
+                : state.trips.sort((a, b) => new Date(b.start_date) - new Date(a.start_date))
             return {
                 ...state,
-                trips: [...sortedByRating]
+                trips: [...sortedTripsProximity],
             }
 
-        case SORT_TRIPS_ALPHABETICALLY:
-            let sortedAlphabetically = action.payload === 'ASC'
-                ? state.trips.sort((a, b) => a.destination.localeCompare(b.destination))
-                : state.trips.sort((a, b) => b.destination.localeCompare(a.destination))
+        case SORT_BY_RATING:
+            let sortedTripsRating = state.trips.sort((a, b) => b.rating - a.rating)
             return {
                 ...state,
-                trips: [...sortedAlphabetically]
+                trips: [...sortedTripsRating],
             }
 
         default:

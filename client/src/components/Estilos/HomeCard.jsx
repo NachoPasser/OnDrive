@@ -4,6 +4,8 @@ import styles from './HomeCard.module.css'
 import Carousel from 'react-bootstrap/Carousel';
 import CardDetail from "../CardDetail/CardDetail";
 // import Spinner from 'react-bootstrap/Spinner'
+import axios from 'axios'
+import { API_URL } from "../../config/enviroment";
 import photoDefault from "../../assets/User/silueta-1.jpg";
 import { FaStar } from "react-icons/fa";
 import { Rating } from "@mui/material";
@@ -17,14 +19,17 @@ const HomeCard = ({ handleVerif, userVerif, id, price, capacity, start_date, fin
 
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
-
+    const [user, setUser] = useState({})
+    const [driver, setDriver] = useState({})
     const driverId = driver_id
-    const driver = useSelector(state => state.driverById)
-    const user = useSelector(state => state.userById)
-
     useEffect(() => {
-        dispatch(getDriverById(driverId))
-        // dispatch(getUserById(localStorage.getItem('token')))
+        axios.get(`${API_URL}/auth/driver`, {
+            headers: {
+                user_id: driverId
+            }
+        })
+            .then(info => setDriver(info.data))
+            .catch(c => console.log(c))
     }, [driverId])
 
     function handleShow(breakpoint) {
@@ -35,7 +40,12 @@ const HomeCard = ({ handleVerif, userVerif, id, price, capacity, start_date, fin
     useEffect(() => {
         // console.log(driver)
         if(driver.user && driver.user.hasOwnProperty('user_id')){
-            dispatch(getUserById(driver.user.user_id))
+            axios.get(`${API_URL}/auth/profile`, {
+                headers: {
+                    user_id: driver.user.user_id
+                }
+            }).then(user => setUser(user.data))
+              .catch(c => console.log(c))
         }
     }, [driver])
 
@@ -102,12 +112,12 @@ const HomeCard = ({ handleVerif, userVerif, id, price, capacity, start_date, fin
                         </div>
                         <div id={styles.driverInfo}>
                                 <span>Conductor: </span>
-                                <span>{user.name} {user.last_name}</span>
+                                <span>{user?.name} {user?.last_name}</span>
                         </div>
                 </div>
             </div>
             <div>
-                {show ? <CardDetail id={id} driverId={driverId} show={show} fullscreen={fullscreen} setShow={setShow} /> : null}
+                {show ? <CardDetail id={id} driver={driver} driverId={driverId} show={show} fullscreen={fullscreen} setShow={setShow} /> : null}
             </div>
         </div >
     );

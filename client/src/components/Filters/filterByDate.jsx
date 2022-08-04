@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import sumarDias, { Ascensora } from "./AuxiliarJS/orderDates";
 import { getTrips } from "../../redux/actions/getTrips";
 import { getFilteredTrips } from "../../redux/actions/getFilteredTrips";
+import calendar from '../../assets/Home/calendar.png'
 
 export default function Fecha({style}) {
     const filters = useSelector(state => state.filters)
@@ -52,6 +53,7 @@ export default function Fecha({style}) {
             }}>Buscar fecha</button>
             </div>
             <div id={style.filterDate}>
+                <img id={style.calendarImg}src={calendar} alt="" />
                 <input id={style.inputFilterDate} type="text" placeholder="dd/mm/yyyy" value={inputValue}/>
             </div>
         </div >
