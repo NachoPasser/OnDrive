@@ -10,6 +10,7 @@ import { GET_USER_BY_ID } from '../actions/getUserById.js';
 import { GET_ALL_REVIEWS } from '../actions/getAllTripReviews.js';
 import { GET_DRIVER_BY_ID } from '../actions/getDriverById.js';
 import { GET_CAR_BY_ID } from '../actions/getCarById.js';
+import { GET_DRIVERS_BY_RATING } from '../actions/getDriversByRating.js';
 
 const initialState = {
     trips: [], // trips variables
@@ -21,7 +22,8 @@ const initialState = {
     tripById: {},
     userById: {},
     driverById: {},
-    carById:{}
+    carById:{},
+    ratings: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -56,10 +58,41 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 reviews: action.payload
             }
+            
+        case GET_DRIVERS_BY_RATING:
+            return {
+                ...state,
+                ratings: action.payload
+            }
+                
+        case GET_TRIP_BY_ID:
+            return {
+                ...state,
+                tripById: action.payload,
+            }
 
+        case GET_FUELTABLE:
+            return {
+                ...state,
+                prices: [action.payload] //Va encerrado con corchetes
+            };
+
+        case GET_DRIVER_BY_ID:
+            return {
+                ...state,
+                driverById: action.payload
+            };
+            
+        case GET_SEARCH_FOR_DESTINATION:
+            return {
+                ...state,
+                trips: action.payload
+            }
+            
         case FILTER_TRIPS:
             let filteredTrips = state.fixedTrips
             let { origin, destination, capacity, date } = action.payload
+            console.log(action.payload)
             if (origin !== 'Origen' && destination !== 'Destino') { //origin && destination es false o es un string
                 let aux;
                 aux = filteredTrips.filter(t => t.origin.toLowerCase().includes(origin.toLowerCase()))
@@ -84,11 +117,6 @@ const rootReducer = (state = initialState, action) => {
                 filters: action.payload
             }
 
-        case GET_SEARCH_FOR_DESTINATION:
-            return {
-                ...state,
-                trips: action.payload
-            }
 
         case SORT_TRIPS_BY_RATING:
             let sortedByRating = action.payload === 'ASC'
@@ -108,23 +136,6 @@ const rootReducer = (state = initialState, action) => {
                 trips: [...sortedAlphabetically]
             }
 
-        case GET_TRIP_BY_ID:
-            return {
-                ...state,
-                tripById: action.payload,
-            }
-
-        case GET_FUELTABLE:
-            return {
-                ...state,
-                prices: [action.payload] //Va encerrado con corchetes
-            };
-
-        case GET_DRIVER_BY_ID:
-            return {
-                ...state,
-                driverById: action.payload
-            };
         default:
             return state
     }

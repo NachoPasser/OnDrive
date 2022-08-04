@@ -6,7 +6,7 @@ import sumarDias, { Ascensora } from "./AuxiliarJS/orderDates";
 import { getTrips } from "../../redux/actions/getTrips";
 import { getFilteredTrips } from "../../redux/actions/getFilteredTrips";
 
-export default function Fecha() {
+export default function Fecha({style}) {
     const filters = useSelector(state => state.filters)
     let trips = useSelector(state => state.trips)
     let fixedTrips = useSelector(state => state.fixedTrips)
@@ -33,17 +33,26 @@ export default function Fecha() {
     }
 
     const [value, onChange] = React.useState(new Date());
+    const [inputValue, setInputValue] = React.useState('dd/mm/yyyy')
 
     return (
-        <div>
+        <div id={style.wtf}>
+            <div id={style.calendar}>
             <Calendar onChange={onChange} value={value} minDate={new Date(prev)} maxDate={new Date(away)} />
-            <button id="btnQuitar" onClick={() => dispatch(getFilteredTrips({...filters, date: 'Fecha'}))}>Quitar filtro de fecha</button>
-            <div id="divBuscar">
-                {value && <>Viajes con salida el día</>} {value && value.toLocaleDateString()}
-                <button id="btnBuscar" onClick={() => {
-                    let payload = {...filters, date: value}
-                    dispatch(getFilteredTrips(payload))
-                    }}>Buscar</button>
+            </div>
+            <div id={style.handleDate}>
+            <button id={style.deleteDate} onClick={() => {
+                setInputValue('dd/mm/yyyy')
+                dispatch(getFilteredTrips({...filters, date: 'Fecha'}))
+            }}>Quitar fecha</button>
+            <button id={style.searchDate} onClick={() => {
+                let payload = {...filters, date: value}
+                setInputValue(value.toLocaleDateString())
+                dispatch(getFilteredTrips(payload))
+            }}>Buscar fecha</button>
+            </div>
+            <div id={style.filterDate}>
+                <input id={style.inputFilterDate} type="text" placeholder="dd/mm/yyyy" value={inputValue}/>
             </div>
         </div >
     )

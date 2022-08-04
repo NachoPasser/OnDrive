@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getUserById } from "../../redux/actions/getUserById";
+import { getUserByToken } from "../../redux/actions/getUserByToken";
 import s from '../MercadoPago/mp.module.css'
 import NavBarDrivers from "../NavBar/navbarDrivers";
 
@@ -15,7 +15,7 @@ export default function AuthMP({ }) {
 
     const user = useSelector(state => state.userById)
     useEffect(() => {
-        dispatch(getUserById(localStorage.getItem('token')))
+        dispatch(getUserByToken(localStorage.getItem('token')))
     }, [])
 
     // const dataTrip = [productos, idTrip, user.user_id]

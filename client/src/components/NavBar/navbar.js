@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from '../../assets/NavBar/on-logox0.5.png'
+import logo from '../../assets/Logo/onDrive-logo.png'
 import style from './navbar.module.css'
 
 export default function NavBar({ aboutUs = true, help = true }) {
@@ -15,17 +15,17 @@ export default function NavBar({ aboutUs = true, help = true }) {
             {
                 aboutUs && help
                     ?
-                    <li className={style.liLogo}>
+                    <div className={style.liLogo}>
                         <NavLink className={style.navLink} exact to="/home" onClick={(e) => handleClick(e)}>
                             <img className={style.logo} src={logo} alt='No se encontró la imagen.' />
                         </NavLink>
-                    </li>
+                    </div>
                     :
-                    <li className={style.liLogo}>
+                    <div className={style.liLogo}>
                         <NavLink className={style.navLink} exact to="/home" >
                             <img className={style.logo} src={logo} alt='No se encontró la imagen.' />
                         </NavLink>
-                    </li>
+                    </div>
 
             }
             <div className={style.buttons}>

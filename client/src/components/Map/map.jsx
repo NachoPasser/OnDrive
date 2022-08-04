@@ -19,6 +19,10 @@ import {
     DirectionsRenderer,
 } from '@react-google-maps/api'
 import { useRef, useState } from 'react'
+import style from './map.module.css'
+import sent from '../../assets/Home/sent.png'
+import origin from '../../assets/Home/ubicacion.png'
+import destination from '../../assets/Home/destino.png'
 //prueba
 // import usePlacesAutocomplete, {
 //     getGeocode,
@@ -90,17 +94,18 @@ export default function Map() {
             h='85vh'
             w='100vw'
         >
-            <Box position='fixed' left={1000} top={100} h='50%' w='46%'>
+            <div className={style.map}>
                 {/* Google Map Box */}
                 <GoogleMap
                     center={center}
                     zoom={14}
-                    mapContainerStyle={{ width: '100%', height: '100%' }}
+                    mapContainerStyle={{ width: '100%', height: '100%', borderRadius: '20px'}}
                     options={{
                         zoomControl: true,
                         streetViewControl: false,
                         mapTypeControl: false,
                         fullscreenControl: false,
+                        
                     }}
                     onLoad={map => setMap(map)}
                 >
@@ -109,52 +114,11 @@ export default function Map() {
                         <DirectionsRenderer directions={directionsResponse} />
                     )}
                 </GoogleMap>
-            </Box>
-            <Box
-                position="fixed"
-                left={1000}
-                top={580}
-                border={"3px solid wheat"}
-                p={4}
-                borderRadius='lg'
-                m={4}
-                bgColor='#252C38;'
-                color='wheat'
-                shadow='base'
-                minW='container.md'
-                zIndex='1'
-            >{/*PARA MODIFICAR EL ANCHO DEL BOX DE CALCULOS, VER WIDTH -> */}
-                <HStack spacing={2} justifyContent='space-between' width="909px">
-                    <Box flexGrow={1}>
-                        <Autocomplete>
-                            <Input width="365px"  type='text' placeholder='Origin' ref={originRef} />
-                        </Autocomplete>
-                    </Box>
-                    <Box flexGrow={1}>
-                        <Autocomplete>
-                            <Input color="red"
-                                type='text' width="365px"
-                                placeholder='Destination'
-                                ref={destiantionRef}
-                            />
-                        </Autocomplete>
-                    </Box>
-
-                    <ButtonGroup>
-                        <Button colorScheme='pink' type='submit' onClick={calculateRoute}>
-                            Calcule su ruta
-                        </Button>
-                        <IconButton
-                            aria-label='center back'
-                            icon={<FaTimes />}
-                            onClick={clearRoute}
-                        />
-                    </ButtonGroup>
-                </HStack>
-                <HStack spacing={4} mt={4} justifyContent='space-between'>
-                    <div><Text>Distancia: {distance} </Text></div>
-                    <div><Text>Duración: {duration} </Text></div>
-                    <IconButton
+                <div id={style.distanceDuration}>
+                <HStack spacing={40} mt={4} justifyContent='space-around'>
+                    <div><Text color="black">Distancia: {distance} </Text></div>
+                    <div><Text color="black" >Duración: {duration} </Text></div>
+                    {/* <IconButton
                         aria-label='center back'
                         icon={<FaLocationArrow />}
                         isRound
@@ -162,12 +126,41 @@ export default function Map() {
                             map.panTo(center)
                             map.setZoom(15)
                         }}
-                    />
+                    /> */}
                 </HStack>
-            <div style={{'backgroundColor':'#252C38', 'color':'wheat'}}>
+                </div>
+            </div>
+            <div id={style.originDestination}>
+                <HStack justifyContent='center' width="609px">
+                    <img id={style.originImg} src={origin} alt="" />
+                    <div className={style.containerInput}>
+                        <Autocomplete>
+                            <input id={style.inputOrigin} type='text' placeholder='Origen' ref={originRef} />
+                        </Autocomplete>
+                    </div>
+                    <img id={style.destinationImg} src={destination} alt="" />
+                    <div className={style.containerInput}>
+                        <Autocomplete>
+                            <input id={style.inputDestination} type='text' placeholder='Destino' ref={destiantionRef} />
+                        </Autocomplete>
+                    </div>
+
+                    <ButtonGroup position="absolute" right={-60}>
+                        <Button backgroundColor='#FED428' borderRadius="10px" border={'none'}width={'50px'} height={'46px'} paddingRight={2} type='submit' onClick={calculateRoute}>
+                            <img src={sent} alt="" width={33} height={35} />
+                        </Button>
+                        {/* <IconButton
+                            aria-label='center back'
+                            icon={<FaTimes />}
+                            onClick={clearRoute}
+                        /> */}
+                    </ButtonGroup>
+                </HStack>
+            </div>
+            
+            <div className={style.calculator}>
                 <Comparador distance={distance} setPrice={setPrice}/>
             </div>
-            </Box>
         </Flex>
         </div>
     )

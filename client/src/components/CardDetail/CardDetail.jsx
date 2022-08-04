@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTripById } from '../../redux/actions/getTripById';
-import { getUserById } from '../../redux/actions/getUserById';
+import { getUserByToken } from '../../redux/actions/getUserByToken';
 import Modal from 'react-bootstrap/Modal';
 import Carousel from 'react-bootstrap/Carousel';
 import style from './CardDetail.module.css'
@@ -19,7 +19,7 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
     console.log(user)
     useEffect(() => {
         dispatch(getTripById(id))
-        dispatch(getUserById(localStorage.getItem('token')))
+        dispatch(getUserByToken(localStorage.getItem('token')))
     }, [id]);
 
 

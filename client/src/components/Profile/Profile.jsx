@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserById } from "../../redux/actions/getUserById";
+import { getUserByToken } from "../../redux/actions/getUserByToken";
 import { getAllTripsReviews } from "../../redux/actions/getAllTripReviews";
 import Review from "../Sections/Review/Review";
 import TripsCard from "../Sections/TripsCard/TripsCard";
@@ -20,7 +20,7 @@ export default function Profile() {
   const user = useSelector(state => state.userById) //obtengo el perfil del usuario
 
   useEffect(() => {
-    dispatch(getUserById(localStorage.getItem('token')))
+    dispatch(getUserByToken(localStorage.getItem('token')))
     //despacho una accion que me devuelve el perfil del usuario
   }, [dispatch])
 

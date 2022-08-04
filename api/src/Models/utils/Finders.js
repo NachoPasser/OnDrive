@@ -166,9 +166,24 @@ async function findPhotos(destination) {
       arrayImg.push('https://res.cloudinary.com/on-drive/image/upload/v1658991247/OnDrive/trip-default_mdav0t.webp')
     }
     
-    return arrayImg.map(p => p !== null)
+    return arrayImg.filter(p => p !== null)
   } catch (e) {
     console.log(e)
+    throw new Error(`Error: ${e.message}`);
+  }
+
+}
+
+const findDriversByRating = async () => {
+  try {
+    const drivers = Driver.findAll({
+      include: User,
+      order: [
+        ['rating', 'DESC']
+      ]
+    })
+    return drivers
+  } catch (e) {
     throw new Error(`Error: ${e.message}`);
   }
 }
@@ -177,6 +192,7 @@ module.exports = {
   findUserByEmail,
   findUserById,
   findDriverById,
+  findDriversByRating,
   findAllUsers,
   findAllTrips,
   findTripById,

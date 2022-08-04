@@ -24,6 +24,7 @@ import AboutUs from "./components/AboutUs/AboutUs";
 import NotFound from "./components/NotFound/NotFound";
 import AuthMP from "./components/MercadoPago/AuthMP";
 import Error from "./components/Sections/Error/Error";
+import HomeStyle from "./components/Estilos/home";
 
 function makePrivate(
   allowed = [],
@@ -47,6 +48,7 @@ function App() {
       <Route exact path="/terms&conditions" component={TermsAndConditions} />
       <Route exact path="/help" component={Help} />
       <Route exact path="/aboutUs" component={AboutUs} />
+      <Route exact path='/styleHome' component={HomeStyle}/>
       {makePrivate(["admin", "visitor"], "/home", "/home-passengers", <Home />)}
       {makePrivate(["admin", "pageUser", "googleUser"], "/home-passengers", "/home", <HomePassengers />)}
       {makePrivate(["admin", "driverUser"], "/home-drivers", "/home", <HomeDrivers />)}
@@ -64,6 +66,7 @@ function App() {
       {makePrivate(["driverUser", "admin"], "/public", "/home", <MapCalculator />)}
       {makePrivate(["admin", "driverUser"], "/auth-mp", "/home", <AuthMP />)}
       {makePrivate(["admin", "driverUser"], "/error", "/home-passengers", <Error />)}
+      
     </div >
   );
 }

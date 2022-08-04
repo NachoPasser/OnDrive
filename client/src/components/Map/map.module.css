@@ -1,0 +1,103 @@
+.map{
+    width: 1000px;
+    height: 50%;
+    border-radius: 20px;
+    position: relative;
+    left: -141px;
+    top: 23px;
+}
+
+.calculator{
+    width: 1000px;
+    height: fit-content;
+    position: relative;
+    top: 0px;
+    right: 140px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #06060633;
+    color: white
+}
+
+#inputOrigin{
+    box-sizing: border-box;
+
+    /* Auto layout */
+    position: relative;
+    right: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1px 25px;
+    gap: 10px;
+
+    width: 75%;
+    height: 28px;
+
+    background: #212734;
+    border-radius: 10px;
+    border: none;
+}
+
+#inputDestination{
+    box-sizing: border-box;
+
+    /* Auto layout */
+    position: relative;
+    right: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1px 25px;
+    gap: 10px;
+
+    width: 75%;
+    height: 28px;
+
+    background: #212734;
+    border-radius: 10px;
+    border: none;
+}
+
+.containerInput{
+    position: relative;
+    left: 22px;
+    padding: 12px;
+}
+
+#originDestination{
+    position: relative;
+    top: -270px;
+    right: 380px;
+    width: 466px;
+    padding-right: 15px;
+    background-color: rgba(6, 6, 6, 0.8);
+    border-radius: 20px;
+}
+
+#originImg{
+    position: relative;
+    left: 20px;
+}
+
+#destinationImg{
+    position: relative;
+    right: 60px;
+}
+
+#distanceDuration{
+    position: relative;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    /* line-height: 25px; */
+    /* identical to box height, or 83% */
+
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+
+    bottom: 40px;
+    left: 20px;
+}

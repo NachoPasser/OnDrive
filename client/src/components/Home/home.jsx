@@ -122,6 +122,15 @@ export default function Home() {
                             {calendar && <Fecha />}
                         </div>
                     </div>
+                    <div className={style.beDriver}>
+                        <div className={style.beDriverContent}>
+                            <h1 id={style.beDriverH1}>Sé un conductor OnDrive</h1>
+                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt voluptas sit quia voluptas sit.</p>
+                            <button id={style.join}>
+                                <span>Únete</span>
+                            </button>
+                        </div>
+                    </div>
                     {
                         trips.length !== 0 ?
                             <div className={style.homecards}>

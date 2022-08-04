@@ -20,7 +20,7 @@ export default function FilterByOrigin({ style, filters, setFilters }) {
     return (
         <div>
             <input
-                className={style}
+                id={style}
                 onChange={e => handleOrigin(e)}
                 type='search'
                 placeholder='Ingrese un origen...'

@@ -19,7 +19,7 @@ import style from './PublicTrip.module.css'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserById } from '../../../redux/actions/getUserById.js';
+import { getUserByToken } from '../../../redux/actions/getUserByToken.js';
 import { getCarById, GET_CAR_BY_ID } from '../../../redux/actions/getCarById.js';
 
 
@@ -78,7 +78,7 @@ export default function PublicTrip({origin, destination, price, distance, durati
     if(distanceFloat !== disc) setDisc(distanceFloat);
         
     useEffect(() => {
-        dispatch(getUserById(window.localStorage.getItem('token')))
+        dispatch(getUserByToken(window.localStorage.getItem('token')))
     }, [])
 
     useEffect(() => {
