@@ -10,7 +10,11 @@ const OrderDetail = conn.define(
         allowNull: false,
         defaultValue: DataTypes.UUIDV4,
     },
-    name: {
+    origin: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+    },
+    destiny: {
         type: DataTypes.TEXT,
         allowNull: true,
     },
@@ -25,6 +29,12 @@ const OrderDetail = conn.define(
     id_order: {
         type: DataTypes.TEXT
     },
+    email: {
+        type: DataTypes.TEXT
+    },
+    external_reference: {
+        type: DataTypes.TEXT
+    }
 });
 
 module.exports = { OrderDetail };

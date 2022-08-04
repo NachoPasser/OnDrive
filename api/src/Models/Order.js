@@ -24,6 +24,9 @@ const Order = conn.define(
     merchant_order_id: {
         type: DataTypes.BIGINT,
         defaultValue: 0
+    },
+    external_reference: {
+        type: DataTypes.TEXT
     }
 });
 

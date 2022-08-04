@@ -1,4 +1,4 @@
-.MainContainer{
+.MainContainer {
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -13,7 +13,7 @@
   align-items: center;
 } */
 
-.ContainerLogin{
+.ContainerLogin {
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
@@ -24,7 +24,7 @@
 
 
 /* Styles for Container Image */
-.ImageContainer{
+.ImageContainer {
   width: 100%;
   min-height: 10vh;
   /* background-color: green; */
@@ -35,29 +35,29 @@
   object-fit: contain;
 }
 
-.Image{
+.Image {
   height: 100%;
   display: none;
 }
 
-.LogoDesktop{
+.LogoDesktop {
   width: 250px;
   height: auto;
 }
 
-.Text{
+.Text {
   display: none;
 }
 
 
-@media only screen and (min-width:768px){
-  .Image{
+@media only screen and (min-width:768px) {
+  .Image {
     display: block;
     width: 50%;
     height: auto;
   }
 
-  .ContainerLogin{
+  .ContainerLogin {
     padding: 20px;
     /* background-color: green; */
     flex-flow: row nowrap;
@@ -65,11 +65,11 @@
     justify-content: center;
   }
 
-  .LogoDesktop{
+  .LogoDesktop {
     width: 60%;
   }
 
-  .Text{
+  .Text {
     margin-top: 20px;
     padding: 6px;
     display: block;
@@ -82,14 +82,14 @@
 
 }
 
-@media only screen and (min-width:1600px){
-  .ContainerLogin{
+@media only screen and (min-width:1600px) {
+  .ContainerLogin {
     font-size: 24px;
   }
 }
 
-@media only screen and (min-width:1920px){
-  .ContainerLogin{
+@media only screen and (min-width:1920px) {
+  .ContainerLogin {
     font-size: 28px;
   }
 }

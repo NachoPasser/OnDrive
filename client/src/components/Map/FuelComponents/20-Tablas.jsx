@@ -7,7 +7,7 @@ import Selection from "./23-Selection";
 import style from './tabla.module.css';
 const axios = require("axios").default;
 
-export default function Tabla({ distance, setPrice, price}) {
+export default function Tabla({ distance, setPrice, price, setFuels}) {
 
     let result = ""
     let array = useSelector(state => state.prices)
@@ -66,12 +66,14 @@ export default function Tabla({ distance, setPrice, price}) {
     for (let a = 1; a < tabla.length; a++) {
         fuels.push(tabla[a][0])
     }
-    // console.log(fuels, tabla)
+    
+    console.log(tabla)
+
 
     return (
         <div>
             {!show && !tabla.length && "Cargando últimos precios"}
-            {!show && !submited && <div className='Tablas'></div>}
+            {!tabla.length && <div className='Tablas'></div>}
             {submited &&
                 <button className={style.stat} onClick={render}>
                     {show ? "Ocultar " : "Mostrar "} precios del combustible

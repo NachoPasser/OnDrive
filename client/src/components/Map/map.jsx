@@ -25,6 +25,7 @@ import { useRef, useState } from 'react'
 //     getLatLng,
 // } from "use-places-autocomplete";
 import Comparador from './FuelComponents/18-Comparador';
+import DiseñoMágico from './FuelComponents/40-DiseñoMágico';
 
 const {GOOGLE_MAPS_API_KEY} = process.env
 // console.log(GOOGLE_MAPS_API_KEY)
@@ -41,7 +42,8 @@ export default function Map() {
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
     const [price, setPrice] = useState()
-
+    const [newTool, setNewTool] = useState(true)
+    const [fuels, setFuels] = useState()
 
     /** @type React.MutableRefObject<HTMLInputElement> */
     const originRef = useRef()
@@ -114,7 +116,7 @@ export default function Map() {
                 position="fixed"
                 left={1000}
                 top={580}
-                border={"3px solid wheat"}
+                border={"3px solid orangered"}
                 p={4}
                 borderRadius='lg'
                 m={4}
@@ -123,17 +125,18 @@ export default function Map() {
                 shadow='base'
                 minW='container.md'
                 zIndex='1'
+                marginTop='160px'
             >{/*PARA MODIFICAR EL ANCHO DEL BOX DE CALCULOS, VER WIDTH -> */}
-                <HStack spacing={2} justifyContent='space-between' width="909px">
+                <HStack spacing={2} justifyContent='space-between' width="1000px" >
                     <Box flexGrow={1}>
                         <Autocomplete>
-                            <Input width="365px"  type='text' placeholder='Origin' ref={originRef} />
+                            <Input width="100%"  type='text' placeholder='Origin' ref={originRef} />
                         </Autocomplete>
                     </Box>
                     <Box flexGrow={1}>
                         <Autocomplete>
                             <Input color="red"
-                                type='text' width="365px"
+                                type='text' width='100%'
                                 placeholder='Destination'
                                 ref={destiantionRef}
                             />
@@ -163,12 +166,23 @@ export default function Map() {
                             map.setZoom(15)
                         }}
                     />
-                </HStack>
+                </HStack> {
+                // newTool ?
             <div style={{'backgroundColor':'#252C38', 'color':'wheat'}}>
-                <Comparador distance={distance} setPrice={setPrice}/>
+                {/* <Comparador distance={distance} setPrice={setPrice} setFuels={setFuels}/> */}
             </div>
+            }{
+            // :
+            <div>
+                <DiseñoMágico distance={distance} setPrice={setPrice} />
+            </div>
+            }
             </Box>
         </Flex>
+        {/* <button onClick={()=>newTool? setNewTool(false): setNewTool(true)}
+        style={{"marginRight": "500px"}}>
+            Change tool
+        </button> */}
         </div>
     )
 }

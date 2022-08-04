@@ -10,11 +10,11 @@ import { getDriverById } from '../../redux/actions/getDriverById.js'
 import LoaderMP from '../MercadoPago/loaderMP';
 
 
-function CardDetail({ id, driverId, show, fullscreen, setShow }) {
+function CardDetail({ id, driverId, show, fullscreen, setShow, driver }) {
 
     const dispatch = useDispatch();
     const trip = useSelector((state) => state.tripById);
-    const driver = useSelector(state => state.driverById)
+    // const driver = useSelector(state => state.driverById)
     const user = useSelector(state => state.userById)
     console.log(user)
     useEffect(() => {
@@ -22,6 +22,10 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
         dispatch(getUserById(localStorage.getItem('token')))
     }, [id]);
     
+    // console.log(driver)
+    // let [local, setLocal] = useState(false)
+    // let found= driver.trips.find((t,i)=> t.trip_id===id) 
+    // console.log(found)
 
     return (
         <>

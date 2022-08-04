@@ -1,4 +1,5 @@
 import Prices from "./24-Prices"
+import DiseñoMágico from "./40-DiseñoMágico"
 
 export default function Selection({fuels, tabla, distance, price, setPrice}) {
 
@@ -26,6 +27,7 @@ export default function Selection({fuels, tabla, distance, price, setPrice}) {
         <div>
             <Prices  prices={objeto} fuels={fuels} distance={distance}  price={price} setPrice={setPrice}/>
             {/*  */}
+            {/* <DiseñoMágico fuels={fuels}/> */}
         </div>
     )
 }

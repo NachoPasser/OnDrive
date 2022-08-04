@@ -130,6 +130,7 @@ export default function Home() {
                                                 origin={trip.origin}
                                                 destination={trip.destination}
                                                 price={trip.price}
+                                                trip={trip}
                                             />
                                             :null}
                                         </div>

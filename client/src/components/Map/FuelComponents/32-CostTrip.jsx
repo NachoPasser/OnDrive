@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import DiseñoMágico from "./40-DiseñoMágico";
 import style from './tabla.module.css'
 
-export default function CostTrip({distance, unicFuel, price, setPrice}){
+export default function CostTrip({distance, unicFuel, prices, setPrice, fuels}){
     // console.log("distance", distance)
 
     if(distance.slice(distance.length-2,distance.length)=='mi'){
