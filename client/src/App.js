@@ -47,6 +47,7 @@ function App() {
       <Route exact path="/terms&conditions" component={TermsAndConditions} />
       <Route exact path="/help" component={Help} />
       <Route exact path="/aboutUs" component={AboutUs} />
+      <Route path='/auth-mp' component={AuthMP} />
       {makePrivate(["admin", "visitor"], "/home", "/home-passengers", <Home />)}
       {makePrivate(["admin", "pageUser", "googleUser"], "/home-passengers", "/home", <HomePassengers />)}
       {makePrivate(["admin", "driverUser"], "/home-drivers", "/home", <HomeDrivers />)}

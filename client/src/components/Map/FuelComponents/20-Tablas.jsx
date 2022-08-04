@@ -12,7 +12,7 @@ export default function Tabla({ distance, setPrice, price}) {
     let result = ""
     let array = useSelector(state => state.prices)
     if (array.length && array[0] !== "Empty") result = array[0]
-    console.log(result)
+    // console.log(result)
     let dispatch = useDispatch()
     
     useEffect(() => a())

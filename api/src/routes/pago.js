@@ -1,4 +1,4 @@
-const { pagos, posteo, pagosId, reception,/* test,*/ access__token } = require('../controllers/pagoController.js');
+const { pagos, posteo, pagosId, reception } = require('../controllers/pagoController.js');
 const router = require('express').Router();
 
 router.post('/', posteo);
