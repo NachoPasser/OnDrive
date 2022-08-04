@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './magia.css';
 
-export default function DiseñoMágico({distance}){
+export default function DiseñoMágico({distance, setPrice}){
     
     if(distance.slice(distance.length-2,distance.length)=='mi'){
         distance= parseFloat(distance.split(",").join(""))
@@ -20,6 +20,8 @@ export default function DiseñoMágico({distance}){
     let [l, setL] = useState({ int: 0, dec: 0 })
     let [result, setResult] = useState()
     let total = l.int + l.dec
+    
+    if(result) setPrice(parseFloat(result.toFixed(2)))
 
     let objeto = {}
 
