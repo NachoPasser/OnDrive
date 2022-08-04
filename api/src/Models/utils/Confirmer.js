@@ -25,7 +25,7 @@ async function isCorrectCredentials(email = null, password = null) {
     if (!user) return [false, null];
     const passwordHashed = user.password;
 
-    if(password && !passwordHashed) {
+    if (password && !passwordHashed) {
       throw new Error('Mail registrado con Google, logueese con Google.')
     }
     if (!passwordHashed) return [true, user, "googleUser"];

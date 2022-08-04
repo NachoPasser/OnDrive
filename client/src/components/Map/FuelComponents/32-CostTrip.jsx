@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import style from './tabla.module.css'
 
 export default function CostTrip({distance, unicFuel, price, setPrice}){
@@ -13,7 +14,7 @@ export default function CostTrip({distance, unicFuel, price, setPrice}){
         distance= parseFloat(distance.split(",").join(""))
     }
 
-    // console.log(distance)
+    // let globalPrice= useSelector((state)=> state.globalprice)
     
     let [litres, setLitres] = useState(true)
     let [l, setL] = useState({ int: 0, dec: 0 })
@@ -21,6 +22,7 @@ export default function CostTrip({distance, unicFuel, price, setPrice}){
     let total = l.int + l.dec
 
     if(result) setPrice(parseFloat(result.toFixed(2)))
+    // if(result) dispatch(updatePrice(result))
 
     if(!distance && result){
         setResult(0)

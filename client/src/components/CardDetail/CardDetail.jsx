@@ -20,7 +20,7 @@ function CardDetail({ id, driver, driverId, show, fullscreen, setShow }) {
         dispatch(getTripById(id))
         dispatch(getUserByToken(localStorage.getItem('token')))
     }, [id]);
-
+    
 
     return (
         <>
@@ -38,6 +38,7 @@ function CardDetail({ id, driver, driverId, show, fullscreen, setShow }) {
                             </div>
                             <div className={style.propsDetail}>
                                 <div className={style.propsDetail}>
+                                    <h1>{driver.driver_id}, {driverId} </h1>
                                     <div className={style.textDetail}>
                                         <h1>{driverId}</h1>
                                         <h2 className={style.h2Det}>Fecha de partida: {trip.start_date}</h2>
@@ -90,6 +91,7 @@ function CardDetail({ id, driver, driverId, show, fullscreen, setShow }) {
                                     price={trip.price}
                                     origin={trip.origin}
                                     destination={trip.destination}
+                                    driver= {driver} 
                                 />
                             </div>
                             :
