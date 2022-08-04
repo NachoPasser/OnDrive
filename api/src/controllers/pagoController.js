@@ -2,52 +2,22 @@ const { Order } = require('../Models/Order.js');
 const { OrderDetail } = require('../Models/OrderDetail.js');
 const { Driver } = require('../Models/Driver.js');
 const { OAuth } = require('../Models/OAuth.js');
+const { Trip } = require('../Models/Trip.js');
 const server = require('express').Router();
 const axios = require('axios').default;
 
 // SDK de Mercado Pago
 const mercadopago = require('mercadopago');
-const { Trip } = require('../Models/Trip.js');
 
-const ACCESS_TOKEN = 'APP_USR-8074988940290506-072021-81c9cfdb710be02d0ff222dc185f8178-229088880'
-const MARKET_PLACE = 'MP-MKT-8074988940290506'
-const FEE = 0.06
-const CLIENT_SECRET = '5jdeY13WC6nVNNwsWwxAG7sHjui69B08'
-const CLIENT_ID = 8074988940290506
-
-//ACÁ VAN LAS RUTAS PARA CONSEGUIR EL ACCESS TOKEN
-
-const test = async (req, res) => { // PARA COMPROBAR QUE 'http://localhost:3001/mercadopago/' Y SUS VARIACIONES FUNCIONAN
-    let { code, state } = req.query
-    let object = { code, state }
-
-    const requestAccessToken = await axios.post(`https://api.mercadopago.com/oauth/token`, {
-        client_secret: "5jdeY13WC6nVNNwsWwxAG7sHjui69B08",
-        client_id: "8074988940290506",
-        grant_type: "authorization_code",
-        code,
-        redirect_uri: `http://localhost:3001/mercadopago/reception`
-    })
-
-    let response = [object, requestAccessToken.data]
-
-    if (Object.keys(response[0]).length === 2 && Object.keys(response[1]).length) return res.send("Autenticación exitosa. Podés cerrar esta pestaña.")
-
-    return res.json("Algo salió mal.")
-
-}
-
-// const {
-//     MARKET_PLACE,
-//     FEE,
-//     CLIENT_SECRET,
-//     CLIENT_ID,
-//     ACCESS_TOKEN
-// } = process.env;
+const {
+    MARKET_PLACE,
+    FEE,
+    CLIENT_SECRET,
+    CLIENT_ID,
+    ACCESS_TOKEN
+} = process.env;
 
 const reception = async (req, res) => {
-
-    // if (Object.keys(req.body).length) return res.json(req.body)
 
     let { code, state } = req.query //AMBOS SON STRINGS POR MÄS NÜMEROS QUE HAYA
 
@@ -101,56 +71,56 @@ const posteo = async (req, res) => {
     const tabla = await Order.findAll()
     const largoTabla = tabla.length + 1
 
-    const carrito = dataTrip[0]
-    const id_order = dataTrip[1].toString() + "_T0" + largoTabla //trip_id +'_T01
+    const mall_cart = dataTrip[0]
+    const id_order = dataTrip[1].toString() + "_T0" + largoTabla //trip_id +'_T01'
     const user_id = dataTrip[2]
     const driver_id = dataTrip[3]
-    // const quantity = dataTrip[4]
+    const quantity = dataTrip[4]
+    // const email_driver = dataTrip[5]
+    // const descpription = dataTrip[6]
+    // const picture_url = dataTrip[7]
 
-    // const descpription = dataTrip[5]
-    // const picture_url = dataTrip[6]
-
-    // await axios.post('http://localhost:3001/trip/purchase-trip', { //EDITO CAPACIDAD DEL VIAJE COMPRADO
-    //     user_id,
-    //     trip_id: dataTrip[1],
-    //     capacity: quantity,
-    // }).then(r => console.log(r.data)).catch(e => console.log(e))
-
-    console.log(driver_id)
-    let access_token = await OAuth.findOne({ //LLENO UNA FILA PARA EL AUTH DE UN DRIVER
+    // console.log('quantity desde front', quantity)
+    // console.log('driver_id desde front', driver_id)
+    let auth_segun_driver = await OAuth.findOne({ //LLENO UNA FILA PARA EL AUTH DE UN DRIVER
         where: {
-            driver_id: driver_id
+            driver_id
         }
     })
-    console.log("access_token asdfavsrbtuievtnoi", access_token)
+    // console.log(auth_segun_driver)
+    // var access_token = ACCESS_TOKEN
+    // if (auth_segun_driver) {
+    //     if (Object.keys(auth_segun_driver).length) {
+    //         console.log("primer if", auth_segun_driver)
+    //         if (auth_segun_driver.dataValues.access_token) {
+    //             console.log("segundo if", auth_segun_driver)
+    //             access_token = auth_segun_driver.dataValues.access_token
+    //         }
+    //     }
+    // }
+    // console.log("access_token aquí", auth_segun_driver.dataValues.access_token)
     mercadopago.configure({ //CONFIGURO ESA COMPRA PARA QUE SE DEPOSITE AL MP DEL DRIVER
-        access_token: 'APP_USR-8074988940290506-072807-e5a5fe2ee5f8786773c228d600e8674f-705813127'
+        access_token: auth_segun_driver.dataValues.access_token,
+        //En caso de que alguno de nosotros se olvide de autenticarse y no haya access_token de conductor, aparece el access_token de OnDrive para recibir el 96% del pago, y en consecuencia, no se rompa el back por faltarle un access_token a la configuración de mercadopago :D
     });
-
-    console.log(carrito)
-    console.log(dataTrip)
-    // let name = dataTrip[0].title
-
-    const items_ml = carrito.map(i => ({
+    // console.log('carrito', mall_cart)
+    // console.log('dataTrip', dataTrip)
+    const items_ml = mall_cart.map(i => ({
         id: id_order,
         title: i.title,
         unit_price: i.price,
         quantity: 1,
-        // descpription,
+        // descpription: email_driver,
         // picture_url,
     }))
 
-    // await OrderDetail.create({
-    //     name,
-    //     price: dataTrip[0].price,
-    //     quantity,
-    //     id_order,
-    //     trip_id: dataTrip[1]
-    // })
+    let name = dataTrip[0][0].title
+    let price = dataTrip[0][0].price
+    let trip_id = dataTrip[1]
 
     let averagePriceForFee = 0
-    carrito.map((itm) => averagePriceForFee += itm.price)
-    console.log(averagePriceForFee)
+    mall_cart.map((itm) => averagePriceForFee += itm.price)
+    // console.log(averagePriceForFee)
 
     // Crea un objeto de preferencia
     let preference = {
@@ -159,10 +129,10 @@ const posteo = async (req, res) => {
         payment_methods: {
             installments: 3  //Cantidad máximo de cuotas
         },
-        marketplace: 'MP-MKT-8074988940290506',
-        marketplace_fee: averagePriceForFee * 0.06, //comission for us
+        marketplace: MARKET_PLACE,//,
+        marketplace_fee: averagePriceForFee * FEE, //comission for us
         back_urls: {
-            success: `http://localhost:3001/mercadopago/pagos?user_id=${user_id}`,
+            success: `http://localhost:3001/mercadopago/pagos?user_id=${user_id}&name=${name}&price=${price}&trip_id=${trip_id}&quantity=${quantity}`,
             failure: 'http://localhost:3001/mercadopago/pagos',
             pending: 'http://localhost:3001/mercadopago/pagos',
         },
@@ -188,16 +158,31 @@ const pagos = async (req, res) => {
 
     // console.info("EN LA RUTA PAGOS ", req)
     console.log(req.query)
-    const { user_id } = req.query
+    const { user_id, name, price, trip_id, quantity } = req.query
     const payment_id = req.query.payment_id
     const payment_status = req.query.status
     const external_reference = req.query.external_reference
     const merchant_order_id = req.query.merchant_order_id
     // console.log("EXTERNAL REFERENCE ", external_reference)
+    const id_order = external_reference
+
+    await axios.post('http://localhost:3001/trip/purchase-trip', { //EDITO CAPACIDAD DEL VIAJE COMPRADO
+        user_id,
+        trip_id,
+        capacity: quantity,
+    }).then(r => console.log("capacidad descontada en", quantity)).catch(e => console.log(e))
+
+    await OrderDetail.create({
+        name,
+        price,
+        quantity,
+        id_order, //CAMPO RELACIONAL
+        // trip_id,
+    })
 
     await Order.create({
         status: 'completed',
-        id_order: external_reference,
+        id_order, //CAMPO RELACIONAL
         user_id,
         payment_id,
         payment_status,

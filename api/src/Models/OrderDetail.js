@@ -4,18 +4,27 @@ const { conn } = require("../database/db");
 // Luego le injectamos la conexion a sequelize.
 const OrderDetail = conn.define(
     'orderDetail', {
-    name: {
-        type: DataTypes.STRING,
+    orderDetail_id: {
+        type: DataTypes.UUID,
+        primaryKey: true,
         allowNull: false,
+        defaultValue: DataTypes.UUIDV4,
+    },
+    name: {
+        type: DataTypes.TEXT,
+        allowNull: true,
     },
     price: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+        type: DataTypes.FLOAT,
+        allowNull: true,
     },
     quantity: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-    }
+        allowNull: true,
+    },
+    id_order: {
+        type: DataTypes.TEXT
+    },
 });
 
 module.exports = { OrderDetail };

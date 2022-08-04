@@ -53,7 +53,6 @@ function App() {
       <Route exact path='/old-home' component={Home}/>
       <Route exact path='/old-home-passengers' component={HomePassengers}/>
       <Route exact path='/old-home-drivers' component={HomeDrivers}/>
-      
       {makePrivate(["admin", "visitor"], "/home", "/home-passengers", <HomeVisitorStyle />)}
       {makePrivate(["admin", "pageUser", "googleUser"], "/home-passengers", "/home", <HomePassengerStyle />)}
       {makePrivate(["admin", "driverUser"], "/home-drivers", "/home", <HomeDriversStyle />)}
