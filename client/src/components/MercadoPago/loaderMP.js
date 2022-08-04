@@ -9,7 +9,6 @@ import { API_URL } from "../../config/enviroment.js";
 
 export default function LoaderMP({ user, idTrip, driver, driverId, price, origin, destination, start, finish, capacity }) {
 
-    // console.log(user)
     //console.log(origin, destination)
     let startDate = new Date(start)
     let finishDate = new Date(finish)
@@ -29,13 +28,16 @@ export default function LoaderMP({ user, idTrip, driver, driverId, price, origin
     }]
 
     let user_id = user.user_id
+    // let email_driver = driver.user.email
 
     // useEffect(() => 
     //CREAR PREFERENCIA
-    console.log(driverId)
-    if (!comprobant && confirm) {
+
+
+    function cash() {
+        // setConfirm(true)
         const dataTrip = [productos, idTrip, user_id, driverId, cantSelect]
-        console.log(dataTrip)
+        // console.log(dataTrip, 'cantSelect'.cantSelect)
         axios
             .post(`${API_URL}/mercadopago`, { dataTrip })
             .then((data) => {
@@ -43,12 +45,6 @@ export default function LoaderMP({ user, idTrip, driver, driverId, price, origin
                 //console.info('Contenido de data:', data)
             })
             .catch(err => console.error(err))
-        setComprobant(true)
-        setConfirm(false)
-    }
-
-    function cash() {
-        setConfirm(true)
     }
     // }, [])
 
@@ -63,7 +59,7 @@ export default function LoaderMP({ user, idTrip, driver, driverId, price, origin
 
     return (<div style={{ 'color': 'orange' }}>
         <br></br>
-        <br></br>{!confirm && <>
+        <br></br>{!datos && <>
             <div style={{ 'color': 'wheat' }}>
                 <div>{cantSelect
                     ? '$' + parseFloat(price.toFixed(2) * cantSelect)
@@ -71,7 +67,7 @@ export default function LoaderMP({ user, idTrip, driver, driverId, price, origin
                 }</div>
                 <div>
                     <div>
-                        <label style={{ 'marginRight': '20px', 'width': '200px' }}>Â¿Cuantas butacas desea reservar?</label>
+                        <label style={{ 'marginRight': '20px', 'width': '200px' }}>¿Cuantas butacas desea reservar?</label>
                     </div>
                     <input type='number' defaultValue={1} min={1} max={capacity} onChange={e => handleChange(e)}
                     ></input>

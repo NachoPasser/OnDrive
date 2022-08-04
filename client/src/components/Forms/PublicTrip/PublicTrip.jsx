@@ -123,14 +123,15 @@ export default function PublicTrip({origin, destination, price, distance, durati
         e.preventDefault()
         // //LO COMENTO Y NO LO USO PARA NO CONSUMIR LA API DE GOOGLE QUE TIENE USO LIMITADO MEPA
         // console.log(infoTrip.dest)
-        console.log(cleanString(dest), typeof dest)
+        // console.log(cleanString(dest), typeof dest)
         const photos = axios.get(`${API_URL}/trip/photo/get`, {headers: {
         'destination': cleanString(dest)
         }}).then(resp=>{ 
-            console.log(resp.data)
+            // console.log(resp.data)
             // console.log(resp.data[1]) 
             // console.log(resp.data[2])
             // console.log(resp.data[3])
+            // console.log(dateStart)
             
             const tripToSave = {
                 origin: orig,
@@ -140,19 +141,25 @@ export default function PublicTrip({origin, destination, price, distance, durati
                 // album: [img1, img2, img3],
                 album: [resp.data[0], resp.data[1], resp.data[2]],
                 capacity,
-                start_date: formatDate(dateStart),
-                finish_date: formatDate(new Date(dateFinish))
+                start_date: (dateStart),
+                finish_date: (dateFinish)
             }
-            console.log("infoTrip desde submit", tripToSave)
 
-            axios.post(`${API_URL}/trip`,{trip: tripToSave, car_id: car.car_id}, {headers: {
+            let car_id= user.driver.cars[0].car_id
+            // console.log('the car_id', car_id)
+
+            axios.post(`${API_URL}/trip`,{trip: tripToSave, car_id}, {headers: {
                 Authorization: `Bearer ${window.localStorage.getItem('token')}`
             }})
             .then(res => console.log(res.data))
             .catch(err => console.log(err));
+            // console.log("infoTrip desde submit", tripToSave)
+            // console.log(car_id, window.localStorage.getItem('token'))
 
-        })
+        }).catch(e=> console.log(e))
     }
+
+    // console.log(car)
 
     return (<>
         {
@@ -207,10 +214,10 @@ export default function PublicTrip({origin, destination, price, distance, durati
                    
                 <div>
                     <select style={{height: '50px'}} onChange={(e) => handleSelect(e)} value={carSelected}>
-                        <option selected disabled value="Default">Auto</option>
+                        <option selected disabled defaultValue="Default">Auto</option>
                         {
                             user.hasOwnProperty('driver') && user.driver.cars.map(c => 
-                                <option key={c.model} name={c.model} value={c.car_id}>
+                                <option key={c.model} name={c.model} defaultValue={c.car_id}>
                                     {c.model}
                                 </option>)
                         }
@@ -219,8 +226,9 @@ export default function PublicTrip({origin, destination, price, distance, durati
                 </div>
                     
                 {
-                    car.hasOwnProperty('capacity') 
-                    ?<InputField
+                    // car.hasOwnProperty('capacity')&&
+                    <InputField
+                        style={{'height':'48px','borderRadius':'7px','color':'rgb:(40,40,40,)','backgroundColor':'rgb(230,230,230)'}}
                         label="Capacidad"
                         name="capacity"
                         type="number"
@@ -230,7 +238,6 @@ export default function PublicTrip({origin, destination, price, distance, durati
                         value={capacity}
                         onChange={handleCapacity}
                     />
-                    : null
                 }
                 <InputField //CAMPO AUTOMÁTICO
                     label="Precio (AR$)"
@@ -249,7 +256,7 @@ export default function PublicTrip({origin, destination, price, distance, durati
                     value={infoTrip.time}
                     onChange={handleChange}
                 /> */}
-                <Button disabled={disabled} title={"PUBLICAR"} type={"primary"} size={"lg"} width={"Full"}/>
+                <Button disabled={false} title={"PUBLICAR"} type={"primary"} size={"lg"} width={"Full"}/>
                 {/* <input id='subm' type="submit"/> */}
             </form>
         </div>

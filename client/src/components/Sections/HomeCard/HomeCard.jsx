@@ -8,7 +8,7 @@ import { FaStar } from "react-icons/fa";
 import { getDriverById } from "../../../redux/actions/getDriverById";
 import { getUserById } from "../../../redux/actions/getUserById";
 
-const HomeCard = ({ handleVerif, userVerif, id, price, capacity, start_date, finish_date, origin, destination, album, rating, driver_id }) => {
+const HomeCard = ({ /*user, */handleVerif, userVerif, id, price, capacity, start_date, finish_date, origin, destination, album, rating, driver_id }) => {
 
     const dispatch = useDispatch();
 
@@ -67,7 +67,7 @@ const HomeCard = ({ handleVerif, userVerif, id, price, capacity, start_date, fin
                             {[...Array(5)].map((star, i) => {
                                 const ratingValue = i + 1;
                                 return (
-                                    <FaStar
+                                    <FaStar key={i}
                                         className={styles.star}
                                         color={ratingValue <= Math.floor(rating) ? "#fed428" : "#a7a1a1"}
                                         size={15}
@@ -83,7 +83,7 @@ const HomeCard = ({ handleVerif, userVerif, id, price, capacity, start_date, fin
                 </div>
             </div>
             <div>
-                {show ? <CardDetail id={id} driverId={driverId} show={show} fullscreen={fullscreen} setShow={setShow} /> : null}
+                {show ? <CardDetail id={id} user={user} driverId={driverId} show={show} fullscreen={fullscreen} setShow={setShow} /> : null}
             </div>
         </div >
     );
