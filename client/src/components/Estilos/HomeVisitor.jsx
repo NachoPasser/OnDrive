@@ -5,7 +5,7 @@ import { getTrips } from "../../redux/actions/getTrips";
 import { getFilteredTrips } from "../../redux/actions/getFilteredTrips.js";
 import { getUserByToken } from "../../redux/actions/getUserByToken.js"
 import { getDriversByRating } from "../../redux/actions/getDriversByRating";
-
+import { NavLink } from "react-router-dom";
 //estilos
 import ubicacion from "../../assets/Home/ubicacion.png"
 import destino from "../../assets/Home/destino.png"
@@ -16,6 +16,8 @@ import topDriver from '../../assets/Test/Top Drivers.png'
 import topDriverBadge from '../../assets/Test/topDriverBadge.png'
 import star from '../../assets/Home/rating.png'
 import clock from '../../assets/Home/clock.png'
+import auto from '../../assets/Home/auto.jpg'
+import logo from '../../assets/Logo/onDrive-logo.png'
 import { Rating } from "@mui/material";
 //componentes
 import HomeCard from "./HomeCard.jsx";
@@ -28,6 +30,7 @@ import NavBar from './navBar/navbar';
 import Fecha from "../Filters/filterByDate.jsx";
 import Paging from "../Paging/Paging.jsx";
 import Map from "../Map/map.jsx"
+import Testimonial from "./Testimonial/Testimonial";
 
 export default function HomeVisitorStyle() {
     //dispatch
@@ -77,6 +80,21 @@ export default function HomeVisitorStyle() {
             <NavBar />
             <div className={style.divisor}>
                 <div className={style.homeIzquierda}>
+                    <Testimonial/>
+                    <div id={style.carImgDiv}>
+                        <img id={style.carImg} src={auto} alt="" />
+                        <h1 className={style.text1Img}><h1 style={{color: '#FED428'}}>¿</h1>Aun no eres</h1>
+                        <h1 className={style.text2Img}>parte de la comunidad</h1>
+                        <img id={style.logo} src={logo} alt="" />
+                        <h1 className={style.text3Img}>?</h1>
+                        <NavLink to='/register'>
+                            <button id={style.btnRegister}>Uneté</button>
+                        </NavLink>
+                        <h1 className={style.text4Img}>¿Ya formas parte?</h1>
+                        <NavLink to='/login'>
+                            <button id={style.btnLogin}>Iniciar sesion</button>
+                        </NavLink>
+                    </div>
                     <div className={style.boxSearchAndFilters}>
                           <div className={style.sorts}>
                                 <h2>Ordenes</h2>

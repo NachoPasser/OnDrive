@@ -52,6 +52,122 @@
     grid-row-gap: 40px;
 }
 
+#carImgDiv{
+    width: fit-content;
+    height: fit-content;
+}
+
+#carImg{
+    position: absolute;
+    top: 95px;
+    z-index: -1;
+    left: 535px;
+    width: 800px;
+    height: 480px;
+    border-radius: 20px;
+    filter: brightness(60%);
+}
+
+.text1Img{
+    display: flex;
+    position: absolute;
+    left: 680px;
+    top: 200px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 35px;
+    line-height: 66px;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+}
+
+.text2Img{
+    display: flex;
+    position: absolute;
+    left: 680px;
+    top: 250px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 35px;
+    line-height: 66px;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+
+}
+
+.text3Img{
+    position: absolute;
+    right: 55px;
+    top: 250px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 35px;
+    line-height: 66px;
+    letter-spacing: 1px;
+    color: #FED428;
+}
+
+.text4Img{
+    position: absolute;
+    bottom: 230px;
+    right: 215px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 66px;
+    letter-spacing: 1px;
+    color: white;
+}
+
+#logo{
+    position: absolute;
+    right: 80px;
+    top: 260px;
+    height: 50px;
+}
+#btnRegister{
+    position: absolute;
+    bottom: 250px;
+    left: 680px;
+    width: 150px;
+    height: 42px;
+    border: none;
+    background: #00A3FE;
+    border-radius: 6px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 22px;
+    /* identical to box height */
+
+    letter-spacing: -0.015em;
+    color: white;
+}
+
+#btnLogin{
+    position: absolute;
+    bottom: 250px;
+    right: 60px;
+    width: 150px;
+    height: 42px;
+    border: none;
+    background: white;
+    border-radius: 6px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 22px;
+    /* identical to box height */
+
+    letter-spacing: -0.015em;
+    color: #00A3FE;
+}
 .containerFiltros {
     height: 200px;
     width: auto;
