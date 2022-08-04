@@ -165,7 +165,6 @@ async function findPhotos(destination) {
     } else {
       arrayImg.push('https://res.cloudinary.com/on-drive/image/upload/v1658991247/OnDrive/trip-default_mdav0t.webp')
     }
-    
     return arrayImg.filter(p => p !== null)
   } catch (e) {
     console.log(e)
