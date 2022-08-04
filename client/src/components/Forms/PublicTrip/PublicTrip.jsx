@@ -54,8 +54,11 @@ export default function PublicTrip({origin, destination, price, distance, durati
     const [carSelected, setCar] = useState('Default')
     const [dateStart, setDateStart] = useState(null);
     const [dateFinish, setDateFinish] = useState('')
-    const user = useSelector(state => state.userById)
-    const car = useSelector(state => state.carById)
+    let user = useSelector(state => state.userById)
+    let car = useSelector(state => state.carById)
+    // let price = useSelector(state=> state.renderPrice)
+
+    // console.log('price desde 61 del public', price)
 
     if(!price && pric) setPric(0)
 

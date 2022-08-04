@@ -10,6 +10,7 @@ import { GET_USER_BY_ID } from '../actions/getUserById.js';
 import { GET_ALL_REVIEWS } from '../actions/getAllTripReviews.js';
 import { GET_DRIVER_BY_ID } from '../actions/getDriverById.js';
 import { GET_CAR_BY_ID } from '../actions/getCarById.js';
+import { UPDATE_PRICE } from '../actions/updatePrice.js';
 
 const initialState = {
     trips: [], // trips variables
@@ -21,7 +22,8 @@ const initialState = {
     tripById: {},
     userById: {},
     driverById: {},
-    carById:{}
+    carById: {},
+    renderPrice: 0
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -44,7 +46,7 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 userById: action.payload
             }
-        
+
         case GET_CAR_BY_ID:
             return {
                 ...state,
@@ -125,6 +127,11 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 driverById: action.payload
             };
+        case UPDATE_PRICE:
+            return {
+                ...state,
+                renderPrice: action.payload
+            }
         default:
             return state
     }

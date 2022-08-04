@@ -1,16 +1,26 @@
 import React from 'react';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import PublicTrip from '../../Forms/PublicTrip/PublicTrip';
 import './magia.css';
+import { updatePrice } from '../../../redux/actions/updatePrice.js' 
 
 export default function DiseñoMágico({distance, setPrice}){
+
+    // console.log(typeof distance, distance, "distance before")
     
-    if(distance.slice(distance.length-2,distance.length)=='mi'){
-        distance= parseFloat(distance.split(",").join(""))
-        distance= distance *1.609344
+    if(typeof distance=== 'string'){
+        if(distance.slice(distance.length-2,distance.length)=='mi'){
+            distance= parseFloat(distance.split(",").join(""))
+            distance= distance *1.609344
+        }
     }
     
-    if(distance.slice(distance.length-2,distance.length)=='km'){
-        distance= parseFloat(distance.split(",").join(""))
+    // console.log(typeof distance, distance, "distance middle")
+    if(typeof distance=== 'string'){
+        if(distance.slice(distance.length-2,distance.length)=='km'){
+            distance= parseFloat(distance.split(",").join(""))
+        }
     }
 
     let fuels= ["_", "Super", "Premium", "Gasoil", "Euro"]
@@ -21,7 +31,16 @@ export default function DiseñoMágico({distance, setPrice}){
     let [result, setResult] = useState()
     let total = l.int + l.dec
     
-    if(result) setPrice(parseFloat(result.toFixed(2)))
+    if(true){
+        if(result) setPrice(parseFloat(result.toFixed(2)))
+    }
+
+    // const dispatch= useDispatch()
+    // if(result) dispatch(updatePrice(parseFloat(result.toFixed(2))))
+    
+    if(!distance && result){
+        setResult(0)
+    }
 
     let objeto = {}
 
@@ -47,6 +66,7 @@ export default function DiseñoMágico({distance, setPrice}){
     }
 
     return (
+        <div>
         <div className='disaffected'>
             <label id='title'><div>Calculadora de costos:</div><div id='ask'>¿Cómo funciona?</div></label>
             <div className='main_div'>
@@ -88,6 +108,7 @@ export default function DiseñoMágico({distance, setPrice}){
                     <p>Una vez ingresados un origen y un destino en el mapa y calculada la ruta, deberás indicar el tipo de combustible y el consumo de tu vehículo en kilómetros por litro para poder estimar el costo del viaje.</p>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

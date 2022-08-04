@@ -103,6 +103,8 @@ export default function MapCalculator() {
         destiantionRef.current.value = ''
     }
 
+    console.log(duration, typeof duration)
+
     return (
         <div>
             <NavBarDrivers publish={false} create={false} passenger={false} />
@@ -149,7 +151,10 @@ export default function MapCalculator() {
                     zIndex='1'
                 >
                     {/* <Comparador distance={distance} price='' setPrice={setPrice} /> */}
-                    <DiseñoMágico distance={distance} price='' setPrice={setPrice}/>
+                    <div style={{border: '1px solid white'}}>
+                        <DiseñoMágico distance={typeof distance=== "string" && distance} price='' setPrice={setPrice}/>
+                        {/* price='' setPrice={setPrice} */}
+                    </div>
                     {/*PARA MODIFICAR EL ANCHO DEL BOX DE CALCULOS, VER WIDTH -> */}
                     <br></br>
                     <h1>Publicar viaje</h1>
@@ -224,7 +229,7 @@ export default function MapCalculator() {
                             errors={errors}
                             setErrors={setErrors}
                             price={price && price}
-                            distance={distance && distance}
+                            distance={typeof distance==="string" && distance}
                             duration={duration && duration}
                         />
                     </div>
