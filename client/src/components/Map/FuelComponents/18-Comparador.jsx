@@ -7,7 +7,7 @@ import Prices from "./24-Prices";
 //estilos
 import style from './tabla.module.css'
 
-export default function Comparador({ distance, price, setPrice}) {
+export default function Comparador({ distance, price, setPrice, style}) {
 
     let [renderTabla, setRenderTabla] = useState(false)
     let [reload, setReload] = useState(false)
@@ -56,7 +56,7 @@ export default function Comparador({ distance, price, setPrice}) {
     // console.log(comp_prices)
 
     return (
-        <div>
+        <div className={style.comparador}>
             {!renderTabla && !reload &&
                 <button className={style.button} onClick={seeTable}>
                     Ver Tabla de costos

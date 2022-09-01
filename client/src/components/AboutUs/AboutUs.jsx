@@ -7,7 +7,7 @@ export default function AboutUs() {
     const [aboutUs, setAboutUs] = useState(false)
     return (
         <div className={style.principalContainer}>
-            <NavBar aboutUs={aboutUs} />
+            {/* <NavBar aboutUs={aboutUs} /> */}
             <div className={style.titleBox}>
                 <h1 className={style.titleP}>¿Quienes somos?🚘</h1>
             </div>

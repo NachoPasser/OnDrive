@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import logo from '../../assets/NavBar/on-logox0.5.png'
+import logo from '../../assets/Logo/onDrive-logo.png'
 import style from './navbar.module.css'
 
 export default function NavBarPsg() {

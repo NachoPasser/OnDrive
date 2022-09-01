@@ -1,0 +1,113 @@
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1e232e;
+    
+    /* fijar navbar*/
+    top: 0;
+    height: 65px;
+    width: 100%
+}
+
+.liLogo {
+    position: absolute;
+    left: 30px;
+    top: 10px;
+    width: 150px;
+}
+
+.li {
+    position: relative;
+    left: 880px;
+    margin: 20px;
+}
+
+.items {
+    height: 100%;
+    /* margin-right: 280px; */
+    display: flex;
+    align-items: center;
+}
+
+.navLink {
+    display: block;
+    background-color: #1e232e;
+    color: #FED428;
+    text-align: center;
+    text-decoration: none;
+}
+
+.navLink:hover{
+    color: white;
+}
+
+.logo {
+    width: 100%;
+}
+
+.buttons {
+    float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 6px;
+    right: 25px;
+    /* border: 5px solid red; */
+
+}
+
+.login {
+    margin-right: 10px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    border: none;
+    color: #00A3FE;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.login:hover {
+    background-color: #00A3FE;
+    color: white;
+}
+
+
+.register {
+    margin-right: 10px;
+    background-color: #00A3FE;
+    border-radius: 8px;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.register:hover {
+    background-color: white;
+    color: #00A3FE;
+}
+
+.logout{
+    background-color: rgb(31, 32, 33);
+    border-radius: 8px;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.logout:hover {
+    background-color: white;
+    color: rgb(31, 32, 33);
+}

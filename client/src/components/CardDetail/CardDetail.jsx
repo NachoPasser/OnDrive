@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTripById } from '../../redux/actions/getTripById';
-import { getUserById } from '../../redux/actions/getUserById';
+import { getUserByToken } from '../../redux/actions/getUserByToken';
 import Modal from 'react-bootstrap/Modal';
 import Carousel from 'react-bootstrap/Carousel';
 import style from './CardDetail.module.css'
@@ -10,16 +10,15 @@ import { getDriverById } from '../../redux/actions/getDriverById.js'
 import LoaderMP from '../MercadoPago/loaderMP';
 
 
-function CardDetail({ id, driverId, show, fullscreen, setShow }) {
+function CardDetail({ id, driver, driverId, show, fullscreen, setShow }) {
 
     const dispatch = useDispatch();
     const trip = useSelector((state) => state.tripById);
-    const driver = useSelector(state => state.driverById)
     const user = useSelector(state => state.userById)
     console.log(user)
     useEffect(() => {
         dispatch(getTripById(id))
-        dispatch(getUserById(localStorage.getItem('token')))
+        dispatch(getUserByToken(localStorage.getItem('token')))
     }, [id]);
     
 
@@ -30,7 +29,7 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
                     <Modal.Title>Modal</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {Object.keys(trip).length > 0 && Object.keys(driver).length > 0 ?
+                    {Object.keys(trip).length ?
                         <div className={style.backdet}>
                             <div className={style.titleDetail}>
                                 <h1 className={style.titleY}>{trip.origin} </h1>
@@ -80,7 +79,7 @@ function CardDetail({ id, driverId, show, fullscreen, setShow }) {
                         :
                         <Spinner animation="grow" />
                     }
-                    {trip.driver_id === driverId && Object.keys(driver).length ?
+                    {Object.keys(trip).length ?
                             <div>
                                 <LoaderMP
                                     user={user}

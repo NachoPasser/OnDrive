@@ -1,0 +1,39 @@
+.nav {
+    background-color: #1e232e;
+    display: flex;
+    justify-content: space-between;
+    /* fijar navbar*/
+    top: 0;
+    height: 65px;
+    width: 100%
+}
+
+.liLogo {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.logo {
+    width: 150px;
+    height: 50px;
+}
+
+.items {
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.navLink {
+    display: block;
+    color: #FED428;
+    text-align: center;
+    text-decoration: none;
+}
+
+.navLink:hover{
+    color: white;
+}

@@ -24,6 +24,9 @@ import AboutUs from "./components/AboutUs/AboutUs";
 import NotFound from "./components/NotFound/NotFound";
 import AuthMP from "./components/MercadoPago/AuthMP";
 import Error from "./components/Sections/Error/Error";
+import HomePassengerStyle from "./components/Estilos/homePassengers";
+import HomeVisitorStyle from "./components/EstilosDefinitivos/HomeVisitor/HomeVisitor";
+import HomeDriversStyle from "./components/Estilos/HomeDriver/HomeDrivers";
 
 function makePrivate(
   allowed = [],
@@ -47,10 +50,12 @@ function App() {
       <Route exact path="/terms&conditions" component={TermsAndConditions} />
       <Route exact path="/help" component={Help} />
       <Route exact path="/aboutUs" component={AboutUs} />
-      <Route path='/auth-mp' component={AuthMP} />
-      {makePrivate(["admin", "visitor"], "/home", "/home-passengers", <Home />)}
-      {makePrivate(["admin", "pageUser", "googleUser"], "/home-passengers", "/home", <HomePassengers />)}
-      {makePrivate(["admin", "driverUser"], "/home-drivers", "/home", <HomeDrivers />)}
+      <Route exact path='/old-home' component={Home}/>
+      <Route exact path='/old-home-passengers' component={HomePassengers}/>
+      <Route exact path='/old-home-drivers' component={HomeDrivers}/>
+      {makePrivate(["admin", "visitor"], "/home", "/home-passengers", <HomeVisitorStyle />)}
+      {makePrivate(["admin", "pageUser", "googleUser"], "/home-passengers", "/home", <HomePassengerStyle />)}
+      {makePrivate(["admin", "driverUser"], "/home-drivers", "/home", <HomeDriversStyle />)}
       {makePrivate(["admin"], "/adminPanel", "/loginAdmin", <AdminPanel />)}
       {makePrivate(["visitor"], "/recovery-password", "/home", <RecoveryPassword />)}
       {makePrivate(["visitor"], "/login", "/home", <Login />)}
@@ -65,6 +70,7 @@ function App() {
       {makePrivate(["driverUser"], "/public", "/home", <MapCalculator />)}
       {makePrivate(["driverUser"], "/auth-mp", "/home", <AuthMP />)}
       {makePrivate(["admin", "driverUser"], "/error", "/home-passengers", <Error />)}
+      
     </div >
   );
 }

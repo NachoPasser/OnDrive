@@ -147,7 +147,7 @@ export default function MapCalculator() {
                     minW='container.md'
                     zIndex='1'
                 >
-                    <Comparador distance={distance} price='' setPrice={setPrice} />
+                    <Comparador style={styles} distance={distance} price='' setPrice={setPrice} />
                     {/*PARA MODIFICAR EL ANCHO DEL BOX DE CALCULOS, VER WIDTH -> */}
                     <br></br>
                     <h1>Publicar viaje</h1>

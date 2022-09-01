@@ -2,6 +2,7 @@ const {
   findAllUsers,
   findUserById,
   findDriverById,
+  findDriversByRating
 } = require("../Models/utils/Finders");
 const bcrypt = require("bcrypt");
 const { isCorrectCredentials } = require("../Models/utils/Confirmer");
@@ -154,11 +155,21 @@ const uploadProfileImage = async (req, res) => {
   }
 };
 
+const getDriversOrderByRatings = async (req, res) => {
+  try {
+    const drivers = await findDriversByRating()
+    res.json(drivers)
+  } catch (e) {
+    res.status(400).json({ error: "Error al subir la imagen" });
+  }
+}
+
 module.exports = {
   registerUser,
   getUsers,
   getUserById,
   getDriverById,
+  getDriversOrderByRatings,
   registerDriver,
   loginUser,
   verifyUser,
