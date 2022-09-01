@@ -1,0 +1,909 @@
+.containerAll {
+    overflow: hidden;
+}
+
+/*
+TESTIMONIO E IMAGEN DEL AUTO
+*/
+
+.testimonialAndImg{
+    position: relative;
+    display: flex;
+    width: 1455px;
+    height: 500px;
+    margin: auto;
+}
+
+#carImgDiv{
+    position: relative;
+    right: 15px;
+    width: 60%;
+    background-image: url('../../../assets/Home/auto2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    border-radius: 20px;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#textBtnContainer{
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    justify-content: space-between;
+}
+
+.carImgHeader{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 35px;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+#logo{
+    height: 50px;
+    position: relative;
+    bottom: 5px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+#authContainer{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#authContainer div{
+    display: flex;
+    align-items: center;
+}
+
+#authText{
+    position: relative;
+    right: 5px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: white;
+}
+
+
+#btnRegister{
+    width: 150px;
+    height: 42px;
+    border: none;
+    background: #00A3FE;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#registerText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.015em;
+    color: white;
+}
+
+/* #loginContainer{
+    display: flex;
+
+    align-items: center;
+} */
+
+#btnLogin{
+    width: 150px;
+    height: 42px;
+    border: none;
+    background: white;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    /* identical to box height */
+
+    letter-spacing: -0.015em;
+    color: #00A3FE;
+}
+
+@media (max-width: 1500px) {
+    .testimonialAndImg{
+        width: 90%;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1400px){
+    #carImgDiv{
+        background-size: 120% 100%;
+        
+    }
+
+    #textBtnContainer{
+        position: relative;
+        left: 20px;
+    }
+
+    .carImgHeader{
+        font-size: 30px;
+    }
+
+}
+
+@media (max-width: 1200px) {
+
+    .testimonialAndImg{
+        width: 80%;
+        height: 0;
+        padding-bottom: 40%;
+    }
+
+    #carImgDiv{
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        right: 0px;
+    }
+  }
+
+@media (max-width: 1000px){
+    .carImgHeader{
+        font-size: 4.2vw;
+    }
+
+    #logo{
+        height: 5vw;
+        position: relative;
+        top: 1px;
+    }
+    
+}
+
+@media (max-width: 875px){
+    .testimonialAndImg{
+        width: 90%;
+        height: 0;
+        padding-bottom: 40%;
+    }
+
+    #carImgDiv{
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        right: 0px;
+    }
+
+    #textBtnContainer{
+        justify-content: center;
+    }
+}
+
+@media (max-width: 750px){
+    
+    .testimonialAndImg{
+        width: 100%;
+        padding-bottom: 50%;
+    }
+
+    #carImgDiv{
+        border-radius: 0px;
+    }
+
+    #authText{
+        font-size: 2.5vw;
+    }
+}
+
+@media(max-width: 650px){
+
+    #authContainer{
+        width: 100%;
+        height: 0;
+        padding-bottom: 10%;
+    }
+
+    #btnRegister{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 30%;
+        height: 100%;
+    }
+
+    #registerText{
+        font-size: 3.5vw;
+    }
+    
+    #loginContainer{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 70%;
+        height: 100%;
+        justify-content: center;
+    }
+   
+    #btnLogin{
+        position: relative;
+        width: 60%;
+        height: 100%;
+    } 
+
+    #loginText{
+        font-size: 3.5vw;
+    }
+
+    #authText{
+        position: relative;
+        right: 5px;
+        text-align: right;
+        width: fit-content;
+    }
+}
+
+/*
+///////////////
+    CONTENEDOR
+        DE
+    FILTROS Y HOMECARDS
+///////////////
+*/
+
+#filterAndCards{
+    position: relative;
+    top: 40px;
+    left: 20px;
+    display: grid;
+    width: 100%;
+    margin: auto;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 0px;
+    align-items: center;
+    justify-items: center;
+}
+
+/*
+///////////////
+
+    HOMECARDS
+
+///////////////
+*/
+
+.homecards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+}
+
+/* 
+///////////////
+  FILTROS
+    Y
+  ORDENES
+//////////////
+*/
+.boxSearchAndFilters {
+    width: 425px;
+    height: fit-content;
+    background: rgba(6, 6, 6, 0.2);
+    opacity: 0.9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+/*
+
+    ORDENES
+
+*/
+.sorts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height:220px;
+    z-index: -1;
+}
+
+.sorts h2{
+    position: relative;
+    top: 30px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    color: #FFFFFF;
+}
+
+.sortRating{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btnRating{
+    position: relative;
+    top: 40px;
+    box-sizing: border-box;
+    width: 198px;
+    height: 35px;
+    background-color: transparent;
+    border: 2px solid #DADADA;
+    border-radius: 8px;
+    cursor:pointer;
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center; 
+
+    color: rgba(241, 242, 246, 0.7);
+}
+
+.btnRatingPressed{
+    position: relative;
+    top: 40px;
+    box-sizing: border-box;
+    width: 198px;
+    height: 35px;
+    background-color: #DADADA;
+    border: 2px solid rgba(6, 6, 6);
+    border-radius: 8px;
+    pointer-events: none;
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center; 
+
+    color: rgba(6, 6, 6);
+}
+
+#star{
+    width: 30px;
+    right: 30px;
+    position: absolute;
+    left: 70px;
+    top: 95px;
+}
+
+.sortProximity{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.inputSortProximity{
+    position: relative;
+    top: 70px;
+    box-sizing: border-box;
+    width: 198px;
+    height: 35px;
+    background-color: transparent;
+    border: 2px solid #DADADA;
+    border-radius: 8px;
+    
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center; 
+
+    color: rgba(241, 242, 246, 0.7);
+}
+
+#clock{
+    width: 30px;
+    right: 30px;
+    position: absolute;
+    left: 70px;
+    top: 165px;
+}
+
+/*
+
+    FILTROS
+
+*/
+
+.filters h2{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    color: #FFFFFF;
+}
+
+#filterOrigin{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: center; */
+    /* border: 2px solid red; */
+    
+}
+
+#inputFilterOrigin{
+    position: relative;
+    left: 15px;
+    width: 230px;
+    height: 35px;
+    border: none;
+    background: #212734;
+    border-radius: 10px;
+}
+
+#logoUbicacion {
+    width: 30px;
+    right: 30px;
+    position: absolute;
+    left: 70px;
+}
+
+#filterDestination{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    top: 30px;
+}
+
+#inputFilterDestination{
+    position: relative;
+    left: 15px;
+    width: 230px;
+    height: 35px;
+    border: none;
+    background: #212734;
+    border-radius: 10px;
+}
+
+#logoDestino {
+    width: 30px;
+    right: 30px;
+    position: absolute;
+    left: 70px;
+}
+
+#filterSent{
+    cursor: pointer;
+    background-color: #FED428;
+    width: 50px;
+    height: 46px;
+    border-radius: 10px;
+    position: relative;
+    bottom: 40px;
+    left: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#filterSentImg{
+    width: 40px;
+    height: 36px;
+}
+
+#filterDate{
+    z-index: -1;
+    display: flex;
+    width: fit-content;
+    height: 370px;
+    position: relative;
+    bottom: 12px;
+    left: 115px;
+}
+
+#inputFilterDate{
+    width: 230px;
+    height: 35px;
+    border: none;
+    background: #212734;
+    border-radius: 10px;
+    color:  #6C757D;
+}
+
+#calendarImg{
+    width: 40px;
+    position: absolute;
+    left: -50px;
+}
+#handleDate{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#searchDate{
+    position: relative;
+    /* left:120px ; */
+    top: 350px;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    background-color: #00A3FE;
+}
+
+#calendar{
+    position: relative;
+    right: 565px;
+    top: 850px;
+}
+
+#deleteDate{
+    position: relative;
+    /* right: 45px; */
+    top: 350px;
+    border: none;
+    background-color: #FB8701;
+    color: white;
+    border-radius: 10px;
+}
+
+/*
+
+    CAPACIDAD
+
+*/
+.divCapacity{
+    position: relative;
+}
+
+.capacity{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.divCapacity h2{
+    color: var(--secondary-color);
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.carDiv{
+    position: relative;
+    background-color: white;
+    border-radius: 20px;
+    height: 180px;
+    width: 210px;
+    margin: 20px;
+}
+
+.carFooter{
+    position:absolute;
+    bottom: 0px;
+    height: 50px;
+    width: 100%;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: #00A3FE;
+}
+
+.paxs{
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 55px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+}
+
+.carImg{
+    position: relative;
+    top: 20px;
+    cursor: pointer;
+}
+
+.buttonSent {
+    cursor: pointer;
+    background-color: #ddbe3e;
+    border-radius: 8px;
+    height: 50px;
+    width: 50px;
+}
+
+
+.buttonSentDisabled {
+    background-color: #ddbe3e;
+    border-radius: 8px;
+    opacity: 0.65;
+    cursor: not-allowed;
+    height: 50px;
+    width: 50px;
+}
+
+#sent,
+#sentDisabled {
+    margin-left: 3px;
+    margin-bottom: 3px;
+    height: 25px;
+    width: 30px;
+}
+
+
+
+.beDriver{
+    width: 1000px;
+    height: 226px;
+    position: relative;
+    top: -10px;
+    border-top: solid 3px #ffffff80;
+    left: 39px;
+    background: rgba(6, 6, 6, 0.2);
+    opacity: 0.9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-bottom-left-radius: 20px;
+}
+
+.beDriver img {
+    position: absolute;
+    right: 30px;
+    bottom: -25px;
+    width: 248px;
+    height: 248px;
+    transform: matrix(-1, 0, 0, 1, 0, 0) scaleX(-1);;
+}
+.beDriverContent{
+    position: relative;
+    top: 30px;
+    left: 30px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.beDriver h1{
+    /* position: absolute; */
+    position: relative;
+    right: 6cm;
+    width: 827px;
+    height: 36px;
+
+    font-style: normal;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 36px;
+    /* identical to box height, or 95% */
+
+    letter-spacing: -0.005em;
+
+    color: #FB8701;
+}
+
+.beDriver p {
+    position: relative;
+    top: 10px;
+    width: 700px;
+    height: 69px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 25px;
+    /* or 125% */
+    text-align: left;
+    letter-spacing: -0.015em;
+
+    color: rgba(241, 242, 246, 0.8);
+}
+#join{
+    position: relative;
+    height: 52px;
+    width: 192px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--accent-color);
+}
+
+#join span {
+    position: absolute;
+    left: 26.15%;
+    right: 42.6%;
+    top: 19.81%;
+    bottom: 22.5%;
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 100;
+    font-size: 20px;
+    line-height: 30px;
+    /* identical to box height */
+    
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.015em;
+    
+    color: #FFFFFF;
+}
+
+/*RATING
+    |
+    |
+    |
+    v
+
+*/
+.ranking{
+    position: relative;
+    bottom: 780px;
+    left: 28cm;
+    width: 280px;
+    height: 800px;
+    background: rgba(254, 212, 40, 0.95);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(10, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    /* justify-items:left; */
+
+}
+
+.rankingRating{
+    /* border: 2px solid red; */
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+#rankingLine{
+    position: absolute;
+    width: 249px;
+    height: 0px;
+    bottom: 0px;
+    left: 18px;
+    border: 1px solid rgba(84, 97, 121, 0.4);
+}
+
+#rankingImg{
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    object-fit: cover;
+    padding: 12px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    transition: all 300ms;
+}
+
+#driverInfo{
+    position: relative;
+    top: 20px;
+    left: 40px;
+    width: 271px;
+    height: 57.82px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+
+    color: #546179;
+    /* z-index: 10; */
+}
+
+#rating{
+    position: absolute;
+    top: 45px;
+    left: 100px;
+    height: 21px;
+}
+
+#driverRating{
+    position: absolute;
+    top: -1px;
+    left: 95px;
+    font-size: 17px;
+    position: absolute;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    /* font-size: 14px; */
+    line-height: 21px;
+    /* identical to box height */
+
+    text-align: right;
+
+    /* Gray / Slate Gray */
+
+    color: #546179;
+
+}
+
+#amountReviews{
+    position: absolute;
+    top: -1px;
+    left: 110px;
+    font-size: 17px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    /* font-size: 14px; */
+    line-height: 21px;
+    /* identical to box height */
+
+    text-align: right;
+
+    /* Gray / Slate Gray */
+
+    color: #546179;
+}
+
+#rank{
+    position: absolute;
+    left: 65px;
+    top: 50px;
+    z-index: 10;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+#topDriver{
+    position: absolute;
+    top: -60px;
+    left: 60px;
+    z-index: 20;
+}
+
+/*FILTROS Y ORDENES
+    |
+    |
+    |
+    v
+
+*/

@@ -25,7 +25,7 @@ import NotFound from "./components/NotFound/NotFound";
 import AuthMP from "./components/MercadoPago/AuthMP";
 import Error from "./components/Sections/Error/Error";
 import HomePassengerStyle from "./components/Estilos/homePassengers";
-import HomeVisitorStyle from "./components/Estilos/HomeVisitor";
+import HomeVisitorStyle from "./components/EstilosDefinitivos/HomeVisitor/HomeVisitor";
 import HomeDriversStyle from "./components/Estilos/HomeDriver/HomeDrivers";
 
 function makePrivate(
